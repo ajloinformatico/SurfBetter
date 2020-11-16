@@ -1,0 +1,37 @@
+<!--SIGN IN POP UP DESKTOP-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta title="Surf Better Sign In Desktop">
+    <meta name="keyboard" content="Surf Better, Cádiz, Playas, Beaches, app">
+    <meta name="author" content="Antonio José Lojo Ojeda">
+    <link href="css/style.css"rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <title>Sign in</title>
+</head>
+<body>
+    <header class="header legalnotices">
+        <img src="img/logoSurfBetterHeader.png" alt="surfbetter logo" title="surf better logo" width="330" height="120"/>
+        <!--Función js para cerrar la ventana-->
+        <a href="#" title="Close page" alt="close page" onclick="closeWindow();"><i class="fas fa-times fa-3x"></i></a>
+    </header>
+    <main class="sigin-up">
+        <form action="profiledesk.html" method="post" autocomplete="on">
+            <label for="username"></label>
+            <input type="text" name="username" id="username" minlength="2" maxlength="64" size="30" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}" title="Introduzca su nombre" placeholder="Introduzca su nombre *" required />
+            <br>
+            <label for="password"></label>
+            <input type="password" name="password" id="password" minlength="2" maxlength="64" size="30" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}" title="Introduzca su contraseña" placeholder="Introduzca su contraseña *" required /> 
+            <!--Al input y al enlace le doy la misma clase para hacer un botón en el css-->
+            <br>
+            <input class="form-button" type="submit" value="Sign in">
+            <a class="form-button" href="javascript:changeInUp('signupdesk.html');" title="Sign up" alt="sign up button">Sign up</a>
+            
+        </form>
+    </main>
+    <!--Script font awesome-->
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
+</body>
+<body>
