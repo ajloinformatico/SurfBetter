@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1973.613" height="3156.5" viewBox="0 0 1973.613 3156.5">
+  <defs>
+    <filter id="Favorite_Beaches" x="0" y="780.5" width="1970.613" height="804" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Favorite_Beaches-2" x="3" y="2352.5" width="1970.613" height="804" filterUnits="userSpaceOnUse">
+      <feOffset dx="3" dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="background" transform="translate(25.381)">
+    <g id="Favorite_Beaches-3" data-name="Favorite_Beaches" transform="translate(-16.381 1566.811)" fill="#6fe2dd">
+      <path d="M 1950.048950195312 791.1891479492188 L 0.5001449584960938 791.1891479492188 L 0.5001449584960938 0.7423064708709717 L 1950.048950195312 791.1891479492188 Z" stroke="none"/>
+      <path d="M 0.9998779296875 1.48455810546875 L 0.9998779296875 790.6891479492188 L 1947.48486328125 790.6891479492188 L 0.9998779296875 1.48455810546875 M -0.0001220703125 6.103515625e-05 L 1952.612548828125 791.6891479492188 L -0.0001220703125 791.6891479492188 L -0.0001220703125 6.103515625e-05 Z" stroke="none" fill="#6fe2dd"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -25.38, 0)" filter="url(#Favorite_Beaches)">
+      <path id="Favorite_Beaches-4" data-name="Favorite_Beaches" d="M0,786V0H1952.613Z" transform="translate(9 786.5)" fill="#6fe2dd"/>
+    </g>
+    <g id="Favorite_Beaches-5" data-name="Favorite_Beaches" transform="translate(-16.381)" fill="#6fe2dd">
+      <path d="M 1952.11279296875 785.5 L 2.581145763397217 785.5 L 1952.11279296875 0.7402186989784241 L 1952.11279296875 785.5 Z" stroke="none"/>
+      <path d="M 1951.612548828125 1.48040771484375 L 5.161865234375 785 L 1951.612548828125 785 L 1951.612548828125 1.48040771484375 M 1952.612548828125 0 L 1952.612548828125 786 L -0.0001220703125 786 L 1952.612548828125 0 Z" stroke="none" fill="#6fe2dd"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -25.38, 0)" filter="url(#Favorite_Beaches-2)">
+      <g id="Favorite_Beaches-6" data-name="Favorite_Beaches" transform="translate(12.74 2359.99)" fill="#6fe2dd">
+        <path d="M 1948.3740234375 783.771728515625 L -1.152913331985474 -0.9860697984695435 L 1948.3740234375 0.4968210160732269 L 1948.3740234375 783.771728515625 Z" stroke="none"/>
+        <path d="M 1947.8740234375 783.0315551757812 L 1947.8740234375 0.9964408874511719 L 1.432974576950073 -0.4841026961803436 L 1947.8740234375 783.0315551757812 M 1948.8740234375 784.511962890625 L -3.738801717758179 -1.488037109375 L 1948.8740234375 -0.00279901409521699 L 1948.8740234375 784.511962890625 Z" stroke="none" fill="#6fe2dd"/>
+      </g>
+    </g>
+  </g>
+</svg>
+
+

@@ -1,3 +1,4 @@
+<!--TODO poner el tamaño después en el css-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,7 @@
     <script type="text/javascript" src="js/scripts.js"></script>
     <title>Surf Better Profile</title>
 </head>
+
 <body>
     <header class="headerLoging">
         <ul>
@@ -20,8 +22,8 @@
             <li><a href="profile.html" title="go to Profile" alt="link to profile">Profile</a></li>
             <li><a href="index.html" title="Exit app" alt="link to loging"><i class="fas fa-door-open"></i></a></li>
         </ul>
-    
     </header>
+
     <main>
         <section class="user-info">
             <figure>
@@ -37,16 +39,127 @@
                 <p>A great app my congratulations to the infolojo team</p>
             </address>
         </section>
-        <section class="user-fav-beaches">
-            <!--Estas son las playas por defecto-->
-            <div class="beach">
-                <img src="img/playas/lasRedes.jpg" alt="playa de las redes" title="playa de las redes"/>
-                <span class="green-flag"><i class="fas fa-flag"></i></span>
-            </div>
 
+        <section class="user-fav-beaches">
+            <header>
+            <h2>Fav Beaches</h2>
+            </header>
+            <section class="content-fav-beaches">
+
+                <div class="beach-box">
+                    <div class="header-beach-box">
+                        <!--lleva un span con la clase para darle estilo a los tres tipos de bandera-->
+                        <span class="green-flag"><i class="fas fa-flag"></i></span>
+                        <img src="img/playas/lasRedes.jpg" alt="Beach image" title="redes beach"/>
+                    </div>
+                    <div class="beach-points">
+                        <img class="star" src="img/stars/5star.png" width="30" height="30" title="Total Points" alt="points">
+                        <h2>Las Redes</h2>
+                        <ul>
+                            <li>
+                                <p><img src="img/beachIcons/WavesSecuency-min.png" width="30px" height="30px"
+                                        alt="wave sequence icon" title="wave sequence"/> Wave Sequence</p>
+                            </li>
+                            <li>
+                                <p><img src="img/beachIcons/WavesforceBrazo-min.png" width="30px" height="30px"
+                                        alt="wave force icon" title="wave force"/> Wave Force</p>
+                            </li>
+                            <li>
+                                <p><img src="img/beachIcons/WaveHeight-min.png" width="30px" height="30px"
+                                        alt="wave height icon" title="wave height"/> Wave Height</p>
+                            </li>
+                            <li>
+                                <p><img src="img/beachIcons/Tides-min.png" width="30px" height="30px"
+                                     alt="Tidies icon" title="Tidies"/> Tidies</p>
+                            </li>
+                            <li>
+                                <p><img src="img/beachIcons/viento-min.png" width="30px" height="30px"
+                                     alt="Wind icon" title="Wind speed"/> Wind Speed</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-box-beach">
+                        <p>comment /add fav <i class="fas fa-heart"></i></p>
+                    </div>
+                </div>
+
+                <div class="beach-box">
+                    <header>
+                        <!--lleva un span con la clase para darle estilo a los tres tipos de bandera-->
+                        <span class="green-flag"><i class="fas fa-flag"></i></span>
+                        <img src="img/playas/Santa_Cata_Lina.jpg" alt="Beach image" title="Santa Catalina beach"/>
+                    </header>
+                    <section class="beach-points">
+                        <img class="star" src="img/stars/2star.png" width="30" height="30" title="Total Points" alt="points">
+                        <h2>Santa Catalina</h2>
+                        <ul>
+                            <li>
+                                <p><img src="img/beachIcons/WavesSecuency-min.png" width="30px" height="30px"
+                                        alt="wave sequence icon" title="wave sequence"/> Wave Sequence</p>
+                            </li>
+                            <li>
+                                <p><img src="img/beachIcons/WavesforceBrazo-min.png" width="30px" height="30px"
+                                        alt="wave force icon" title="wave force"/> Wave Force</p>
+                            </li>
+                            <li>
+                                <p><img src="img/beachIcons/WaveHeight-min.png" width="30px" height="30px"
+                                        alt="wave height icon" title="wave height"/> Wave Height</p>
+                            </li>
+                            <li>
+                                <p><img src="img/beachIcons/Tides-min.png" width="30px" height="30px"
+                                        alt="Tidies icon" title="Tidies"/> Tidies</p>
+                            </li>
+                            <li>
+                                <p><img src="img/beachIcons/viento-min.png" width="30px" height="30px"
+                                        alt="Wind icon" title="Wind speed"/> Wind Speed</p>
+                            </li>
+                        </ul>
+                    </section>
+                    <footer>
+                        <p>comment /add fav <i class="fas fa-heart"></i></p>
+                    </footer>
+                </div>
+
+                <div class="beach-box">
+                    <header>
+                        <!--lleva un span con la clase para darle estilo a los tres tipos de bandera-->
+                        <span class="green-flag"><i class="fas fa-flag"></i></span>
+                        <img src="img/playas/cala-de-los-alemanes-cadiz.jpg" alt="Beach image" title="Cala de los alemanes beach"/>
+                    </header>
+                    <section class="beach-points">
+                        <img class="star" src="img/stars/5star.png" width="30" height="30" title="Total Points" alt="points">
+                        <h2>La cala de los alemanes</h2>
+                        <ul>
+                            <li>
+                                <p><img src="img/beachIcons/WavesSecuency-min.png" width="30px" height="30px"
+                                        alt="wave sequence icon" title="wave sequence"/> Wave Sequence</p>
+                            </li>
+                            <li>
+                                <p><img src="img/beachIcons/WavesforceBrazo-min.png" width="30px" height="30px"
+                                        alt="wave force icon" title="wave force"/> Wave Force</p>
+                            </li>
+                            <li>
+                                <p><img src="img/beachIcons/WaveHeight-min.png" width="30px" height="30px"
+                                        alt="wave height icon" title="wave height"/> Wave Height</p>
+                            </li>
+                            <li>
+                                <p><img src="img/beachIcons/Tides-min.png" width="30px" height="30px"
+                                        alt="Tidies icon" title="Tidies"/> Tidies</p>
+                            </li>
+                            <li>
+                                <p><img src="img/beachIcons/viento-min.png" width="30px" height="30px"
+                                        alt="Wind icon" title="Wind speed"/> Wind Speed</p>
+                            </li>
+                        </ul>
+                    </section>
+                    <footer>
+                        <p>comment /add fav <i class="fas fa-heart"></i></p>
+                    </footer>
+                </div>
+            </section>
         </section>
     </main>
-    <footer><!--Todo los footer son iguales-->
+    <footer>
         <p>
             At Surf-Better we use cookies and sessions to make your experience and browsing much better.
             If you agree with its use, click okey
