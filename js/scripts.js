@@ -9,7 +9,7 @@ function openSecondWindow(url, nombre, tipo){
     debugger
     //Si el tipo es avisos legales
     if(tipo === "legalNoticesDesk"){
-        var specs = "width=1383,height=1393,scrollbars=NO";    //XD specs    
+        var specs = "width=800,height=600,scrollbars=NO";    //XD specs    
     }else if(tipo === "signInDesk"){
         var specs = "width=653,height=722,scrollbars=NO";
     }

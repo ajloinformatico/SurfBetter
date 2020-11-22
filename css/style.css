@@ -1,4 +1,198 @@
+/*Import Noto Sans JP*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap');
+  
+@font-face{
+    font-family: krugthep;
+    src: url('../fonts/Krungthep.ttf');
+}
+
+
+:root{
+    /*Backgrounds*/
+    --BackGroundDesk : url("../img/background/back.svg");/*Desktop*/
+    /*TODO Mobile Background*/
+    
+    /*Fonts*//*TODO instalar fuentes*/
+    --font-spacial : krugthep; /*Sections beaches, logo, beaches titles*/
+    --font-common: 'Noto Sans JP', sans-serif; /*Normal font*/
+    --size-menu-desk: 14pt;
+    /*Colors*/
+    --color-header: #16697A;
+    --color-yellow: #FFA62B;
+
+
+     /*Efectos transition emñaces*/
+    /*menu*/
+    --mouse-is-over-menu: linear 0.2s;
+    --mouse-is-hover-menu:color  0.2s linear 0.2s;
+
+    /*elementos normales*/
+
+    --mouse-is-over-normal: linear 0.1s;
+    --mouse-is-hover-mormal:color  0.1s linear 0.1s;
+    
+}
 html{
-    background-image: url("../img/background/back.svg");
+    background-image: var(--BackGroundDesk);
+}
+
+body{
+    min-width: 350px;
+    text-align: center;
+    font-family: var(--font-common);
+    margin: 0;
+}
+
+header{
+    width: 100%;
+    height: 100px;
+    background-color: var(--color-header);
+}
+
+header>img{
+    height: 100px;
+    width: 270px;
+    float: left;   
+}
+
+a{
+    text-decoration: None;
+}
+
+
+header>a{
+    font-size: var(--size-menu-desk);
+    transition: var(--mouse-is-over-menu); /*when the mouse is removed*/
+    text-shadow: 1px 2px 2px black;
+}
+
+header>a:hover{
+    transition: var(--mouse-is-hover-menu); /*when the mouse is over*/
+    font-weight: bolder;
+    color: black;
+    text-shadow: 1px 2px 2px white;
+
 
 }
+#SigninIndex{
+    float: right;
+    padding-top: 2em;
+    padding-right: 1em;
+    color: white;
+}
+#SigninIndex:hover{
+    transition: var(--mouse-is-hover-menu); /*when the mouse is over*/
+    font-weight: bolder;
+    color: black;
+    text-shadow: 1px 2px 2px white;
+}
+
+main{
+    margin-top: 1em;
+    width: 90%;
+    display: inline-block;/*Centra el contenido*/ /*TODO check if a should change it to margin-left margin-right*/
+    
+}
+footer{
+    width: 100%;/*Centra el contenido*/ /*TODO check if a should change it to margin-left margin-right*/
+
+
+}
+
+/*main loging*/
+
+.logingmain{
+    padding-top: 2.5em;
+}
+
+.logingmain>img{
+    width: 267px; /*o 400*/
+    height: 200px; /*o 300*/
+    border-color: #000000c1;
+}
+.logingmain>div{
+    background-color: #3EFDF6;
+    margin-left:4em;
+    margin-right:4em;
+    margin-top: .3em;
+    padding: 1em;
+}
+
+
+
+
+footer{
+    height: 100px;
+    background-color: var(--color-header);
+    color: white;
+}
+footer>*{
+    margin-right: 1em;
+    margin-left: 1em;
+}
+
+
+
+footer>a{
+    background-color: var(--color-yellow);
+    color: black;
+    font-weight: bolder;
+    padding: .5em;
+    transition: var(--mouse-is-over-normal);
+
+}
+footer>a:hover{
+    transition: var(--mouse-is-hover-mormal);
+    color:white;
+    background-color: #633c05;
+}
+
+/*For footer fixeds*/
+.footerFixed{
+    position: absolute;
+    bottom: 0;
+  }
+
+
+/**************************legal Notices*******************************/
+/*H1 de legalnotices*/
+.logingmain>h1{
+    text-align: left;
+    padding-left: 2em;
+}
+/*footer legalNotices*/
+.footer-leglNotices{
+    background-color: #00000000;
+    position: absolute;
+    bottom: 0;
+    
+}
+#BackLegal{
+    color: red;
+    float: right;
+    padding-top: 1.8em;
+    padding-right: 1em; 
+    transition: var(--mouse-is-over-menu);
+    
+}
+#BackLegal:hover{
+    transition: var(--mouse-is-hover-menu);
+    font-weight: bolder;
+    text-shadow: 1px 2px 2px black;
+    color:black;
+}
+/*
+#SigninIndex{
+    float: right;
+    padding-top: 2.1em;
+    padding-right: 1em;
+    color: white;
+}
+#SigninIndex:hover{
+    
+
+*/
+
+
+
+

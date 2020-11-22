@@ -12,14 +12,17 @@
     <title>Legal Notices</title>
 </head>
 <body>
-    <header class="header legalnotices">
+    <header>
         <img src="img/logoSurfBetterHeader.png" alt="surfbetter logo" title="surf better logo" width="330" height="120"/>
         <!--Función js para cerrar la ventana-->
-        <a href="#" title="Close page" alt="close page" onclick="closeWindow();"><i class="fas fa-times fa-3x"></i></a>
+        <a id="BackLegal" href="#" title="Close page" alt="close page" onclick="closeWindow();"><i class="fas fa-times fa-2x"></i></a>
     </header>
-    <main class="main_legalnotices">
-        <section>
-            <h1>Legal Notices</h1>
+    <!--Aquí he reutilizado la clase con la única excepción
+    de que no necesito padding por eso del style-->
+    <main class="logingmain" style="padding: 0;">
+        <h1>Our Politics</h1>
+        <div>
+            <h2>Legal Notices</h2>
             <p>
                 Lorem Ipsum is simply dummy text of the 
                 printing and typesetting industry. Lorem 
@@ -31,9 +34,11 @@
                 dummy text ever since the 1500s, when 
                 an unknown printer took a 
             </p>
-
-        </section>
+        </div>
     </main>
+    <footer class="footer-leglNotices">
+        <a onclick="closeWindow()" alt="agree button" title="I accept everything">That seems great</a>
+    </footer>
     <!--Script font awesome-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
 </body>
