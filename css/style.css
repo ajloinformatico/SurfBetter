@@ -15,7 +15,9 @@
     /*Fonts*//*TODO instalar fuentes*/
     --font-spacial : krugthep; /*Sections beaches, logo, beaches titles*/
     --font-common: 'Noto Sans JP', sans-serif; /*Normal font*/
-    --size-menu-desk: 14pt;
+    --size-menu-desk: 14pt; /*fontsize menu desktop*/
+    --size-common-table: 10pt;
+    --size-common-mobile: 8pt;
     /*Colors*/
     --color-header: #16697A;
     --color-yellow: #FFA62B;
@@ -196,3 +198,27 @@ footer>a:hover{
 
 
 
+/************************************************************MediaQuerys*************************************************/
+/*Tablet*/
+@media screen and (max-width: 1024px) {
+    html{
+        font-size: var(--size-common-table)
+    }
+    
+    
+    
+}
+/*Smartphone*/
+@media screen and (max-width: 480px) {
+    
+    
+    /*For footer on loging*/
+    html{
+        font-size: var(--size-common-mobile);
+    }
+    
+    .footerFixed{
+        position: fixed;
+        
+    }
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta title="Surf Better login">
+    <meta name="keyboard" content="Surf Better, Cádiz, Playas, Beaches, app">
+    <meta name="author" content="Antonio José Lojo Ojeda">
+    <link href="css/style.css" rel="stylesheet" type="text/css">      
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <title>Surf Better</title>
+</head>
+<body>
+    <header>
+
+        <img src="img/logoSurfBetterHeader.png" alt="surfbetter logo" title="surf better logo" width="330" height="120"/>    
+        <input type="checkbox" id="btn-modal">
+        <label for="btn-modal" class="lbl-modal"><a id="SigninIndex"  href="javascript:openSecondWindow('signindesk.html', 'Sign In', 'signInDesk');" title="Sign in or sign up" alt="link to loging">Sign in</a></label>
+    
+    </header>
+    <main class="logingmain">
+        <img src="img/SurfBetter.png" alt="logo SurfBetter" title="logo surfbetter" width="400" height="300" />
+        <div>
+            <h2>Tired of not having a chance to enjoy your favorite sport?</h2>
+            <p>
+                We are also SURFERS developers and we have the pleasure of presenting you our service. 
+                Here you will find comprehensive and detailed information about our beaches of our bay. 
+                Being able to know their status in real time, In order to choose the correct 
+                option whenever you want to surf. Click Sign in and configure your profile. <strong>A social network 
+                of beaches is waiting for you !!!</strong>
+            </p>
+        </div>
+
+        <!--Modal loging-->
+        <!--TODO terminar estilo ya hacer el registro antes de que acabe el dia-->
+
+
+        <div class='modal'>
+            <div class='contenedor'>
+                <header>
+                    <h3>Añade un nuevo registro</h3>
+                <!--El label con la x se usa a modo de botón le he puesto el mismo nombre que el inoput para que cuando
+                    se pulse este se cambie el valor del check box
+                -->
+                    <label  for='btn-modal'><a class='btn-salir-modal' href="index.html">X</a></label><!--Mismo nombre del input PARA EL BOTÓN DE CERRAR-->
+                </header>
+                
+                <div class="contenido">
+                    <form class='formulario' action='profile.html' method='POST' enctype="multipart/form-data" autocomplete="on">
+                        <!--Campos ocultos para el update es el que llega por post-->
+                        <input type="hidden" id="oculto" name="oculto" >
+                        <!--Carga la antigua matricula sin modificar para hacer el update-->
+
+                        <input type="hidden" id="anMatricula" name="anMatricula">
+                        <!--Campos normales-->
+                        <label for="matricula">Matrícula: </label>
+                        <input type="text" id="matricula" name="matricula"  pattern="^[0-9]{1,4}(?!.*(LL|CH))[BCDFGHJKLMNPRSTVWXYZ]{3}" minlength="7" maxlength="7" title="Introduzca una matrícula válida" placeholder="Introduzca una matrícula" required/>
+                        <br>
+                        <label for="precio">Precio: </label>
+                        <input type="number" step="any" id="precio" name="precio"  title="Introduzca un precio"   placeholder="Introduzca un precio" maxlength="7" required/>
+                        <br>
+                        <label for="marca">Marca: </label>
+                        <input type="text" id="marca" name="marca"   title="Introduce la marca" minlength="2" maxlegnth="15"  placeholder="Introduce la marca" required/>
+                        <br>
+                        <label for="modelo">Modelo: </label>
+                        <input type="text" id="modelo" name="modelo"   title="Introduce un modelo" maxlength="15"  placeholder="Introduce un modelo" required/>
+                        <br>
+                        <label for="puertas">Número de puertas: </label>
+                        <select name="puertas" id="puertas" title="seleccione una opción"  required>
+                            <option>1</option>
+                            <option>2</option>
+                            <option selected>4</option>
+                            <option>6</option>
+                        </select>
+                        <br><br>
+                        <label for="color">Color: </label>
+                        <input type="text" id="color" name="color"  maxlength="10"   title="Introduzca un color" placeholder="Introduzca un color" required>
+                        <br>
+                        <label for="edad">Edad: </label>
+                        <input type="date" id="edad" name="edad" title="Introduzca la decha de la primera matriculación"  placeholder="Señale el tiempo que tiene el coche" required/>
+                        <br>
+                        <button type="submit" value="enviar" title="Ingresar reguistro">Ingresar</button>           
+                        <!--<input type="text" id="username" name="username" maxlength="10"><br><br>-->
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        
+    </main>
+    <footer class="footerFixed"><!--Todo los footer son iguales-->
+        <p>
+            At Surf-Better we use cookies and sessions to make your experience and browsing much better.
+            If you agree with its use, click okey
+        </p>
+        <a href="#" title="I accept all the terms" alt="Acepto los término de privacidad">I agrre !</a>
+        <a href="javascript:openSecondWindow('legalnotices.html', 'Legal Notices', 'legalNoticesDesk');" title="Legal notices cookies sessions" alt="Legal notices cookies sessions">Show more</a>
+    </footer>
+    <!--Script font awesome-->
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
+</body>
+</html>
+<!--
+    LLamar a una función en un enlace
+    href="javascript:función js"
+
+    <input type='checkbox' id='btn-modal'/>
+        <label for='btn-modal' class='lbl-modal'><span class='far fa-plus-square fa-2x' style='color:black; cursor: pointer;' title='Agrege un nuevo coche'></span></label>
+
+
+
+-->
