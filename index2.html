@@ -13,14 +13,17 @@
 <body>
     <header>
 
-        <img src="img/logoSurfBetterHeader.png" alt="surfbetter logo" title="surf better logo" width="330" height="120"/>    
-        <input type="checkbox" id="btn-modal">
-        <label for="btn-modal" class="lbl-modal"><a id="SigninIndex"  href="javascript:openSecondWindow('signindesk.html', 'Sign In', 'signInDesk');" title="Sign in or sign up" alt="link to loging">Sign in</a></label>
-    
+        <img src="img/logoSurfBetterHeader.png" alt="surfbetter logo" title="surf better logo" width="330" height="120"/>
+        <label for="btn-modal" class="lbl-modal">
+            <!--TODO aplicar el estilo en css externo-->
+            <a title="Log in the app">Loging</a>
+        </label>
+
+
     </header>
     <main class="logingmain">
         <img src="img/SurfBetter.png" alt="logo SurfBetter" title="logo surfbetter" width="400" height="300" />
-        <div>
+        <div class="content-main">
             <h2>Tired of not having a chance to enjoy your favorite sport?</h2>
             <p>
                 We are also SURFERS developers and we have the pleasure of presenting you our service. 
@@ -33,8 +36,8 @@
 
         <!--Modal loging-->
         <!--TODO terminar estilo ya hacer el registro antes de que acabe el dia-->
-
-
+        <!--El input type checkbox lo utilzo de trigger para abrir el modal-->
+        <input type='checkbox' id='btn-modal'/>
         <div class='modal'>
             <div class='contenedor'>
                 <header>
@@ -42,45 +45,24 @@
                 <!--El label con la x se usa a modo de botón le he puesto el mismo nombre que el inoput para que cuando
                     se pulse este se cambie el valor del check box
                 -->
-                    <label  for='btn-modal'><a class='btn-salir-modal' href="index.html">X</a></label><!--Mismo nombre del input PARA EL BOTÓN DE CERRAR-->
+                    <label  for='btn-modal'><a class='btn-salir-modal' href="index2.html">X</a></label><!--Mismo nombre del input PARA EL BOTÓN DE CERRAR-->
+                    <!--Redirecciona al index-->
                 </header>
                 
                 <div class="contenido">
                     <form class='formulario' action='profile.html' method='POST' enctype="multipart/form-data" autocomplete="on">
-                        <!--Campos ocultos para el update es el que llega por post-->
-                        <input type="hidden" id="oculto" name="oculto" >
-                        <!--Carga la antigua matricula sin modificar para hacer el update-->
 
-                        <input type="hidden" id="anMatricula" name="anMatricula">
-                        <!--Campos normales-->
-                        <label for="matricula">Matrícula: </label>
-                        <input type="text" id="matricula" name="matricula"  pattern="^[0-9]{1,4}(?!.*(LL|CH))[BCDFGHJKLMNPRSTVWXYZ]{3}" minlength="7" maxlength="7" title="Introduzca una matrícula válida" placeholder="Introduzca una matrícula" required/>
+                        <!--Se que es recomensable semanticamente que exista un label por cada input pero dado que mi diseño no incluye
+                        ningún label he decidido no ponerlo-->
+                        <input type="text" id="user_name" name="user_name"  minlength="2" maxlength="64" size="40" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}" title="Please input your name" placeholder="UserName *" required />
+                        <input type="email" id="mail" name="mail"  title="Please input your mail"  size="40" maxlength="7"  placeholder="Mail *"  required/>
+                        <input type="password" id="password" name="password"  title="Please input your password" size="40" minlength="4" maxlength="15" placeholder="Password" required/>
+                        <input type="password" id="repassword" name="repassword"   title="Repeat your password" size="40" minlength="4" maxlength="15"  placeholder="Repassword" required/>
+                        <label for="politica">Políticas de privacidad de datos <span class="required">*</span></label>
+                        <input type="checkbox" id="politica" name="politica" title="Acepto la ley y gestión que se va ha realizar sobre mis datos" required>
                         <br>
-                        <label for="precio">Precio: </label>
-                        <input type="number" step="any" id="precio" name="precio"  title="Introduzca un precio"   placeholder="Introduzca un precio" maxlength="7" required/>
-                        <br>
-                        <label for="marca">Marca: </label>
-                        <input type="text" id="marca" name="marca"   title="Introduce la marca" minlength="2" maxlegnth="15"  placeholder="Introduce la marca" required/>
-                        <br>
-                        <label for="modelo">Modelo: </label>
-                        <input type="text" id="modelo" name="modelo"   title="Introduce un modelo" maxlength="15"  placeholder="Introduce un modelo" required/>
-                        <br>
-                        <label for="puertas">Número de puertas: </label>
-                        <select name="puertas" id="puertas" title="seleccione una opción"  required>
-                            <option>1</option>
-                            <option>2</option>
-                            <option selected>4</option>
-                            <option>6</option>
-                        </select>
-                        <br><br>
-                        <label for="color">Color: </label>
-                        <input type="text" id="color" name="color"  maxlength="10"   title="Introduzca un color" placeholder="Introduzca un color" required>
-                        <br>
-                        <label for="edad">Edad: </label>
-                        <input type="date" id="edad" name="edad" title="Introduzca la decha de la primera matriculación"  placeholder="Señale el tiempo que tiene el coche" required/>
-                        <br>
-                        <button type="submit" value="enviar" title="Ingresar reguistro">Ingresar</button>           
-                        <!--<input type="text" id="username" name="username" maxlength="10"><br><br>-->
+                        <button type="submit" value="signup" title="Log in">Sign up</button>
+                        <button type="submit" value="signin" title="Sign in">Sign in</button>
                     </form>
                 </div>
             </div>
