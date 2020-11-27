@@ -43,8 +43,10 @@ function changeUpIn(url){
 }
 
 
-
-
-function openSignIn(){
-    //TODO onclick label button
+function hiddeFooter(){
+    const footer = document.querySelector('footer');
+    footer.classList.add('visible');
+    footer.classList.remove('visible');
+    footer.classList.add('oculto');
+    //footer.style.display = 'none';
 }

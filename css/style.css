@@ -22,6 +22,7 @@
     /*Colors*/
     --color-header: #16697A;
     --color-yellow: #FFA62B;
+    --color-blue-content: #3EFDF6;
 
 
      /*Efectos transition emñaces*/
@@ -35,6 +36,9 @@
     --mouse-is-hover-mormal:color  0.1s linear 0.1s;
     
 }
+
+/*Common content*/
+
 html{
     background-image: var(--BackGroundDesk);
 }
@@ -58,30 +62,11 @@ header>img{
     float: left;   
 }
 
-a{
-    text-decoration: None;
-}
-
-
-header>a{
-    font-size: var(--size-menu-desk);
-    transition: var(--mouse-is-over-menu); /*when the mouse is removed*/
-    text-shadow: 1px 2px 2px black;
-}
-
-header>a:hover{
-    transition: var(--mouse-is-hover-menu); /*when the mouse is over*/
-    font-weight: bolder;
-    color: black;
-    text-shadow: 1px 2px 2px white;
-
-
-}
 
 /*label for modal signup checkbox triger*/
 header>label{
     float: right;
-    padding-top: 2em;
+    padding-top: 2.5em;
     padding-right: 1em;
     color: white;
 }
@@ -99,11 +84,23 @@ main{
     display: inline-block;/*Centra el contenido*/ /*TODO check if a should change it to margin-left margin-right*/
     
 }
-footer{
-    width: 100%;/*Centra el contenido*/ /*TODO check if a should change it to margin-left margin-right*/
 
-
+a{
+    text-decoration: None;
 }
+
+footer{
+    height: 100px;
+    background-color: var(--color-header);
+    color: white;
+    width: 100%;
+}
+
+footer>*{
+    margin: 1em;
+}
+
+
 
 /*main loging*/
 
@@ -114,44 +111,30 @@ footer{
 .logingmain>img{
     width: 267px; /*o 400*/
     height: 200px; /*o 300*/
-    border-color: #000000c1;
 }
 .content-main { /*Contenido del main*/
-    background-color: #3EFDF6;
+    background-color: var(--color-blue-content);
     margin-left:4em;
     margin-right:4em;
     margin-top: .3em;
     padding: 1em;
 }
 
-
-
-
-footer{
-    height: 100px;
-    background-color: var(--color-header);
-    color: white;
-}
-footer>*{
-    margin-right: 1em;
-    margin-left: 1em;
-}
-
-
-
-footer>a{
+.button_yellow{
     background-color: var(--color-yellow);
     color: black;
     font-weight: bolder;
     padding: .5em;
     transition: var(--mouse-is-over-normal);
-
 }
-footer>a:hover{
+
+.button_yellow:hover{
     transition: var(--mouse-is-hover-mormal);
     color:white;
     background-color: #633c05;
 }
+
+
 
 /*For footer fixeds*/
 .footerFixed{
@@ -202,10 +185,8 @@ footer>a:hover{
 
 /************************************************** MODALES *************************************************************/
 
-/*Modal registro*/
 
-
-/*Modal*/
+/********** MODAL SIGN IN *********/
 body .modal{
     width: 100%;
     height: 100vh;
@@ -235,15 +216,42 @@ body .modal{
     visibility: visible;
 }
 
+/********** MODAL SIGN UP **********/
+body .modal-log{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.modal-log{
+    position: fixed;
+    top: 0;
+    left: 0;
+    /*Pone oscuro el fonddo el último valor es para la transparencia*/
+    background-color: RGBA(0,0,0,0.5);
+    /*Efecto de transición*/
+    transition: all 500ms ease;
 
+    /*MAS IMPORTANTE ES LO QUE OCULTA EL MODAL*/
+    opacity: 0;
+    visibility: hidden;
+}
+
+#btn-modal-log:checked ~ .modoal-log{
+    opacity: 1;
+    visibility: visible;
+}
+
+/*********************************** COMUNES *********************************/
 
 /*Estilo del modal*/
 .contenedor{
     text-align: left;
 
     width: 400px;
-    height: 300px;
+    height: 500px;
     margin: auto; /*Centra el contenido*/
     background-color: white;
     box-shadow: 1px 7px 25px rgba(0,0,0,0.6);/*Sombra*/
@@ -252,38 +260,89 @@ body .modal{
 
 /*Estilo de la cabezera coloco un display block para alinear en una linea los elementos*/
 .contenedor header{
-    display: block;
-    background: black;
-    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    background-color: var(--color-header);
 
 }
-/*Estilo del titulo le digo que flote a la izquierda*/
-.contenedor header h3{
-    float: left;
-    padding-left: 15px
+
+
+.contenedor img{
+    height: auto; /*100*/
+    width: 200px;
+    
+}
+/*Estilo del botón quiero colocarlo a la derecha del header por eso de la posición absoluta*/
+.btn-salir-modal{
+    display: block; 
+    /*Preformateo la etiqueta que originalmente venía en linea y ahora
+    está en blocker*/ 
+    color: var(--color-yellow);
+    padding-bottom: 2em;
+    /*cursor: pointer; /*NUEVOO CAMBIA EL RATÓN CUANDO PASA POR ENCIMA*/
 }
 
 .contenido form label{
-    display: inline-block;
     font-size: var(--size-modal-label);
 }
 
 .contenido form{
     text-align: center;
+    padding-top: 3em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+}
+.contenido form>input{
+    
+    background-color: var( --color-blue-content);
+    text-align: center;
+    margin: .5em;
+    padding: .5em;
+    color: black;
+    border-style: none;
+    
+}
+.contenido form>input::placeholder { 
+    color:black; 
+    font-weight: bolder; 
 }
 
 
 
-/*Estilo del botón quiero colocarlo a la derecha del header por eso de la posición absoluta*/
-.btn-salir-modal{
-    float: right;
-    padding-top: 17px;
-    padding-right: 15px;
-    color: red;
-    font-size: 20pt;
-    text-decoration: none;
-    /*cursor: pointer; /*NUEVOO CAMBIA EL RATÓN CUANDO PASA POR ENCIMA*/
+
+/*Botones*/
+.contenido div>button{
+    width: 7.9em;
+    margin: 0 .5em;
+    border-style: none;
+    
 }
+
+.contenido div:last-of-type{
+    margin-top: 2em
+}
+
+
+
+/*Imagenes de los iconos de modal*/
+.contenedor div>img{
+    width: 40px;
+    height: auto;
+    padding: 1em;
+}
+.contenedor div>img:last-child{
+    width: 60px;
+    height: auto;
+}
+
+
+
 .btn-salir-modal:hover{
     color:black;
 }
@@ -304,9 +363,21 @@ body .modal{
 
 
 
+/*Show and hidde footer*/
+.oculto{
+    transition: opacity 2s linear;
+    visibility: hidden; /* Al alterar las márgenes y el height no es necesaria esta propiedad */
+    opacity: 0;
+    height: 0;
+    padding: 0;
+}
 
+/*Show an element*/
+.visible{
+    visibility: visible; /* Al alterar las márgenes y el height no es necesaria esta propiedad */
+    opacity: 1;
 
-
+}
 
 
 
@@ -319,6 +390,10 @@ body .modal{
     html{
         font-size: var(--size-common-table)
     }
+    header>label{
+        padding-top: 3em;
+    }
+
     
     
     
@@ -330,6 +405,9 @@ body .modal{
     /*For footer on loging*/
     html{
         font-size: var(--size-common-mobile);
+    }
+    header>label{
+        padding-top: 4em;
     }
     
     .footerFixed{

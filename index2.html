@@ -14,7 +14,7 @@
     <header>
 
         <img src="img/logoSurfBetterHeader.png" alt="surfbetter logo" title="surf better logo" width="330" height="120"/>
-        <label for="btn-modal" class="lbl-modal">
+        <label for="btn-modal">
             <!--TODO aplicar el estilo en css externo-->
             <a title="Log in the app">Loging</a>
         </label>
@@ -41,11 +41,11 @@
         <div class='modal'>
             <div class='contenedor'>
                 <header>
-                    <h3>Añade un nuevo registro</h3>
+                    <img src="img/logoSurfBetterHeader.png" alt="logo SurfBetter" title="logo surfBetter" width="400" height="300">
                 <!--El label con la x se usa a modo de botón le he puesto el mismo nombre que el inoput para que cuando
                     se pulse este se cambie el valor del check box
                 -->
-                    <label  for='btn-modal'><a class='btn-salir-modal' href="index2.html">X</a></label><!--Mismo nombre del input PARA EL BOTÓN DE CERRAR-->
+                    <label  for='btn-modal'><a class='btn-salir-modal'><i class="fas fa-arrow-left fa-2x"></i></a></label><!--Mismo nombre del input PARA EL BOTÓN DE CERRAR-->
                     <!--Redirecciona al index-->
                 </header>
                 
@@ -54,15 +54,59 @@
 
                         <!--Se que es recomensable semanticamente que exista un label por cada input pero dado que mi diseño no incluye
                         ningún label he decidido no ponerlo-->
-                        <input type="text" id="user_name" name="user_name"  minlength="2" maxlength="64" size="40" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}" title="Please input your name" placeholder="UserName *" required />
-                        <input type="email" id="mail" name="mail"  title="Please input your mail"  size="40" maxlength="7"  placeholder="Mail *"  required/>
-                        <input type="password" id="password" name="password"  title="Please input your password" size="40" minlength="4" maxlength="15" placeholder="Password" required/>
-                        <input type="password" id="repassword" name="repassword"   title="Repeat your password" size="40" minlength="4" maxlength="15"  placeholder="Repassword" required/>
-                        <label for="politica">Políticas de privacidad de datos <span class="required">*</span></label>
-                        <input type="checkbox" id="politica" name="politica" title="Acepto la ley y gestión que se va ha realizar sobre mis datos" required>
+                        <input type="text" id="user_name" name="user_name"  minlength="2" maxlength="64" size="30" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}" title="Please input your name" placeholder="UserName *" required />
+                        <input type="email" id="mail" name="mail"  title="Please input your mail"  size="30" maxlength="60"  placeholder="Mail *"  required/>
+                        <input type="password" id="password" name="password"  title="Please input your password" size="30" minlength="4" maxlength="15" placeholder="Password *" required/>
+                        <input type="password" id="repassword" name="repassword"   title="Repeat your password" size="30" minlength="4" maxlength="15"  placeholder="Repassword *" required/>
+                        <label for="politica">Políticas de privacidad de datos <span class="required">*</span>
+                            <input type="checkbox" id="politica" name="politica" title="Acepto la ley y gestión que se va ha realizar sobre mis datos" required>
+                        </label>
                         <br>
-                        <button type="submit" value="signup" title="Log in">Sign up</button>
-                        <button type="submit" value="signin" title="Sign in">Sign in</button>
+                        <div>
+                            <button class='button_yellow' type="submit" value="signup" title="Log in">Sign up</button>
+                            <label for='btn-modal-log'><a class="button_yellow" title="Sign in">Sign in</a></label>
+                        </div>
+                        <div>
+                            <img src="img/facebook-min.png">
+                            <img src="img/googleCompleto-min.png">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--Modal register-->
+        <input type="checkbox" id='btn-modal-log'>
+        <div class='modal-log'>
+            <div class='contenedor'>
+                <header>
+                    <img src="img/logoSurfBetterHeader.png" alt="logo SurfBetter" title="logo surfBetter" width="400" height="300">
+                <!--El label con la x se usa a modo de botón le he puesto el mismo nombre que el inoput para que cuando
+                    se pulse este se cambie el valor del check box
+                -->
+                    <label  for='modal-log'><a class='btn-salir-modal' href="index2.html"><i class="fas fa-arrow-left fa-2x"></i></a></label><!--Mismo nombre del input PARA EL BOTÓN DE CERRAR-->
+                    <!--Redirecciona al index-->
+                </header>
+                
+                <div class="contenido">
+                    <form class='formulario' action='profile.html' method='POST' enctype="multipart/form-data" autocomplete="on">
+
+                        <!--Se que es recomensable semanticamente que exista un label por cada input pero dado que mi diseño no incluye
+                        ningún label he decidido no ponerlo-->
+                        <input type="email" id="mail" name="mail"  title="Please input your mail"  size="30" maxlength="60"  placeholder="Mail *"  required/>
+                        <input type="password" id="password" name="password"  title="Please input your password" size="30" minlength="4" maxlength="15" placeholder="Password *" required/>
+                        <label for="politica">Políticas de privacidad de datos <span class="required">*</span>
+                            <input type="checkbox" id="politica" name="politica" title="Acepto la ley y gestión que se va ha realizar sobre mis datos" required>
+                        </label>
+                        <br>
+                        <div>
+                            <button class='button_yellow' type="submit" value="signup" title="Log in">Sign up</button>
+                            <button class="button_yellow" type="submit" value="signin" title="Sign in">Sign in</button>
+                        </div>
+                        <div>
+                            <img src="img/facebook-min.png">
+                            <img src="img/googleCompleto-min.png">
+                        </div>
                     </form>
                 </div>
             </div>
@@ -75,8 +119,8 @@
             At Surf-Better we use cookies and sessions to make your experience and browsing much better.
             If you agree with its use, click okey
         </p>
-        <a href="#" title="I accept all the terms" alt="Acepto los término de privacidad">I agrre !</a>
-        <a href="javascript:openSecondWindow('legalnotices.html', 'Legal Notices', 'legalNoticesDesk');" title="Legal notices cookies sessions" alt="Legal notices cookies sessions">Show more</a>
+        <a class='button_yellow' href="javascript:hiddeFooter()" title="I accept all the terms" alt="Acepto los término de privacidad">I agrree !</a>
+        <a class='button_yellow' href="javascript:openSecondWindow('legalnotices.html', 'Legal Notices', 'legalNoticesDesk');" title="Legal notices cookies sessions" alt="Legal notices cookies sessions">Show more</a>
     </footer>
     <!--Script font awesome-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
