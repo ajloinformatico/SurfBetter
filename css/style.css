@@ -54,6 +54,7 @@ header{
     width: 100%;
     height: 100px;
     background-color: var(--color-header);
+    overflow: hidden;
 }
 
 header>img{
@@ -87,7 +88,94 @@ main{
 
 a{
     text-decoration: None;
+    color: white;
 }
+a:hover{
+    transition: var(--mouse-is-hover-menu); /*when the mouse is over*/
+    font-weight: bolder;
+    color: black;
+    text-shadow: 1px 2px 2px white;
+}
+
+
+/*********************** profile ******************************/
+
+/*************** COMMON MENU   *******************/
+/*the header is float, img at left, list at right*/
+/*ul flex*/
+ul {
+    list-style: none;
+    display: flex; /*default row*/
+    justify-content: space-around;
+    align-items: flex-end;
+}
+ul li{
+    padding-top: .5em;
+}
+#exitButonHeader{
+    color: red;
+    font-size: large;
+    transition: var(--mouse-is-over-menu);
+}
+#exitButonHeader:hover{
+    transition: var(--mouse-is-hover-menu);
+    color:white;
+}
+
+/************* END COMMON MENU ***********************/
+/*I use here float because just two sections*/
+.user-info{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 1em;
+    text-align: left;
+}
+.user-info>figure{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    float: left;
+}
+
+
+.user-info>figure>img{
+    width: 250px; /*200 150 in reaponsive*/
+    border: 3px solid black;
+    border-radius: 50%;
+}
+
+.user-info figcaption{
+    display: block;
+    text-align: center;
+}
+.user-info figcaption>p{
+    font-weight: bolder;
+}
+
+
+.user-info>div{
+    padding-right: 1em;
+}
+
+.user-info>div>h2{
+    margin-bottom: 3em;
+    font-weight: bolder;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 footer{
     height: 100px;
