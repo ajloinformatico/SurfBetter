@@ -23,9 +23,10 @@
     --color-header: #16697A;
     --color-yellow: #FFA62B;
     --color-blue-content: #3EFDF6;
+    --color-back-beaches: #EFEDEC;
 
 
-     /*Efectos transition emñaces*/
+     /*links transitions*/
     /*menu*/
     --mouse-is-over-menu: linear 0.2s;
     --mouse-is-hover-menu:color  0.2s linear 0.2s;
@@ -123,6 +124,10 @@ ul li{
 }
 
 /************* END COMMON MENU ***********************/
+
+
+
+/**************************************************** PROFILE ********************************/
 /*I use here float because just two sections*/
 .user-info{
     display: flex;
@@ -158,18 +163,73 @@ ul li{
     padding-right: 1em;
 }
 
-.user-info>div>h2{
-    margin-bottom: 3em;
+.user-info>div>h1{
+    margin-bottom: 2em;
     font-weight: bolder;
 }
 
 
+.user-fav-beaches>header{
+    background-color: rgba(0, 0, 0, 0); /* Transparent background */
+    font-family: var(--font-spacial);
+}
+
+
+/******************************* beaches box **************************************/
+
+.content-fav-beaches{
 
 
 
+}
+
+/*vertical beaches*/
+
+/*
+first element and every fourth element. To select the beach that is horizontal
+I know it would be more effective to use id but I wanted
+test selectors
+*/
+.beach-box:first-child , .beach-box:nth-child(n+4){
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
 
 
 
+#special-beach>div{
+    width: 500px; /*500/3 = 166 | 500-166 = 334*/
+    height: 324px; /*324/3 = 108 | 324-108 = 216*/
+}
+
+/*bg img*/
+#special-beach>div:first-child{
+    background-image: url("../img/playas/lasRedes.jpg");
+}
+
+#special-beach>div>span{
+    float: left;
+    color: green;
+}
+
+
+
+#special-beach>div:nth-child(2){
+    background-color: var(--color-back-beaches);
+}
+
+
+/*horizontal beaches*/
+.beach-box{
+    float: left;
+    width: 50%;
+}
+
+.beach-box>img{
+    width: 200px;
+}
 
 
 
@@ -451,7 +511,7 @@ body .modal-log{
 }
 
 /********************************************** END MODALS *****************************************************/
-
+/********************************************** VARS       *****************************************************/
 
 
 /*Show and hidde footer*/
@@ -471,6 +531,25 @@ body .modal-log{
 }
 
 
+
+/*flag classes*/
+.green-flag{
+    color: green;
+    float: left;
+    padding: .5em;
+}
+
+.red-flag{
+    color: red;
+    float: left;
+    padding: .5em;
+}
+
+.yellow-flag{
+    color: yellow;
+    float: left;
+    padding: .5em;
+}
 
 
 

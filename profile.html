@@ -37,7 +37,8 @@
                 </figcaption>
             </figure>
             <div><!--Porque define información de contacto-->
-                <h2>User Name</h2>
+                <h1>Profile</h1>
+                <h2>User Description</h2>
                 <p>I am a pretty intense fan I really like this sport. Don't let this beard fool you, I'm a machine</p>
                 <p>A great app my congratulations to the infolojo team</p>
             </div>
@@ -49,49 +50,53 @@
             </header>
             <section class="content-fav-beaches">
 
-                <div class="beach-box">
-                    <div class="header-beach-box">
-                        <!--lleva un span con la clase para darle estilo a los tres tipos de bandera-->
-                        <span class="green-flag"><i class="fas fa-flag"></i></span>
-                        <img src="img/playas/lasRedes.jpg" alt="Beach image" title="redes beach"/>
-                    </div>
-                    <div class="beach-points">
-                        <img class="star" src="img/stars/5star.png" width="30" height="30" title="Total Points" alt="points">
-                        <h2>Las Redes</h2>
-                        <ul>
-                            <li>
-                                <p><img src="img/beachIcons/WavesSecuency-min.png" width="30px" height="30px"
-                                        alt="wave sequence icon" title="wave sequence"/> Wave Sequence</p>
-                            </li>
-                            <li>
-                                <p><img src="img/beachIcons/WavesforceBrazo-min.png" width="30px" height="30px"
-                                        alt="wave force icon" title="wave force"/> Wave Force</p>
-                            </li>
-                            <li>
-                                <p><img src="img/beachIcons/WaveHeight-min.png" width="30px" height="30px"
-                                        alt="wave height icon" title="wave height"/> Wave Height</p>
-                            </li>
-                            <li>
-                                <p><img src="img/beachIcons/Tides-min.png" width="30px" height="30px"
-                                     alt="Tidies icon" title="Tidies"/> Tidies</p>
-                            </li>
-                            <li>
-                                <p><img src="img/beachIcons/viento-min.png" width="30px" height="30px"
-                                     alt="Wind icon" title="Wind speed"/> Wind Speed</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-box-beach">
-                        <p>comment /add fav <i class="fas fa-heart"></i></p>
-                    </div>
-                </div>
-
-                <div class="beach-box">
+                <div id="special-beach" class="beach-box">
                     <div>
                         <!--lleva un span con la clase para darle estilo a los tres tipos de bandera-->
-                        <span class="green-flag"><i class="fas fa-flag"></i></span>
-                        <img src="img/playas/Santa_Cata_Lina.jpg" alt="Beach image" title="Santa Catalina beach"/>
+                         <span class="green-flag"><i class="fas fa-flag fa-2x"></i></span>
                     </div>
+                    <div class="beach-info">
+                        <div class="beach-header">
+                            <img class="star" src="img/stars/5star.png" width="30" height="30" title="Total Points" alt="points">
+                            <h2>Las Redes</h2>
+                        </div>
+                        <div class="beach-points">
+                            <ul>
+                                <li>
+                                    <p><img src="img/beachIcons/WavesSecuency-min.png" width="30px" height="30px"
+                                            alt="wave sequence icon" title="wave sequence"/> Wave Sequence</p>
+                                </li>
+                                <li>
+                                    <p><img src="img/beachIcons/WavesforceBrazo-min.png" width="30px" height="30px"
+                                            alt="wave force icon" title="wave force"/> Wave Force</p>
+                                </li>
+                                <li>
+                                    <p><img src="img/beachIcons/WaveHeight-min.png" width="30px" height="30px"
+                                            alt="wave height icon" title="wave height"/> Wave Height</p>
+                                </li>
+                                <li>
+                                    <p><img src="img/beachIcons/Tides-min.png" width="30px" height="30px"
+                                            alt="Tidies icon" title="Tidies"/> Tidies</p>
+                                </li>
+                                <li>
+                                    <p><img src="img/beachIcons/viento-min.png" width="30px" height="30px"
+                                            alt="Wind icon" title="Wind speed"/> Wind Speed</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="beach-footer">
+                            <p>comment /add fav <i class="fas fa-heart"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!--TODO preguntar porque no respeta el 100%-->
+
+                <div class="beach-box">
+                        <!--lleva un span con la clase para darle estilo a los tres tipos de bandera-->
+                    <figure>
+                        <span class="red-flag"><i class="fas fa-flag"></i></span>
+                        <img src="img/playas/Santa_Cata_Lina.jpg" alt="Beach image" title="Santa Catalina beach"/>
+                    </figure>
                     <div class="beach-points">
                         <img class="star" src="img/stars/2star.png" width="30" height="30" title="Total Points" alt="points">
                         <h2>Santa Catalina</h2>
@@ -117,18 +122,18 @@
                                         alt="Wind icon" title="Wind speed"/> Wind Speed</p>
                             </li>
                         </ul>
+                        <div>
+                            <p>comment /add fav <i class="fas fa-heart"></i></p>
+                        </div>
                     </div>
-                    <div>
-                        <p>comment /add fav <i class="fas fa-heart"></i></p>
-                    </div>
+
                 </div>
 
                 <div class="beach-box">
-                    <div>
-                        <!--lleva un span con la clase para darle estilo a los tres tipos de bandera-->
-                        <span class="green-flag"><i class="fas fa-flag"></i></span>
+                    <figure>
+                        <span class="yellow-flag"><i class="fas fa-flag"></i></span>
                         <img src="img/playas/cala-de-los-alemanes-cadiz.jpg" alt="Beach image" title="Cala de los alemanes beach"/>
-                    </div>
+                    </figure>
                     <div class="beach-points">
                         <img class="star" src="img/stars/5star.png" width="30" height="30" title="Total Points" alt="points">
                         <h2>La cala de los alemanes</h2>
@@ -154,9 +159,10 @@
                                         alt="Wind icon" title="Wind speed"/> Wind Speed</p>
                             </li>
                         </ul>
-                    </div>
-                    <div>
-                        <p>comment /add fav <i class="fas fa-heart"></i></p>
+
+                        <div>
+                            <p>comment /add fav <i class="fas fa-heart"></i></p>
+                        </div>
                     </div>
                 </div>
             </section>
