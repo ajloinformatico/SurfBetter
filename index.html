@@ -12,12 +12,23 @@
 </head>
 <body>
     <header>
-        <img src="img/logoSurfBetterHeader.png" alt="surfbetter logo" title="surf better logo" width="330" height="120"/>    
-        <a id="SigninIndex"  href="javascript:openSecondWindow('signindesk.html', 'Sign In', 'signInDesk');" title="Sign in or sign up" alt="link to loging">Sign in</a>
+
+        <img src="img/logoSurfBetterHeader.png" alt="surfbetter logo" title="surf better logo" width="330" height="120"/>
+        <label for="btn-modal">
+            <a title="Log in the app">Sign up</a>
+        </label>
+        <label for="btn-modal-log">
+            <a title="Log in the app">Log in</a>
+        </label>
+
+
+
+
+
     </header>
     <main class="logingmain">
         <img src="img/SurfBetter.png" alt="logo SurfBetter" title="logo surfbetter" width="400" height="300" />
-        <div>
+        <div class="content-main">
             <h2>Tired of not having a chance to enjoy your favorite sport?</h2>
             <p>
                 We are also SURFERS developers and we have the pleasure of presenting you our service. 
@@ -27,6 +38,79 @@
                 of beaches is waiting for you !!!</strong>
             </p>
         </div>
+
+        <!--Modal loging-->
+        <!--TODO terminar estilo ya hacer el registro antes de que acabe el dia-->
+        <!--El input type checkbox lo utilzo de trigger para abrir el modal-->
+        <input type='checkbox' id='btn-modal'/>
+        <div class='modal'>
+            <div class='contenedor'>
+                <header>
+                    <img src="img/logoSurfBetterHeader.png" alt="logo SurfBetter" title="logo surfBetter" width="400" height="300">
+                <!--El label con la x se usa a modo de botón le he puesto el mismo nombre que el inoput para que cuando
+                    se pulse este se cambie el valor del check box
+                -->
+                    <label  for='btn-modal'><a class='btn-salir-modal'><i class="fas fa-arrow-left fa-2x"></i></a></label><!--Mismo nombre del input PARA EL BOTÓN DE CERRAR-->
+                    <!--Redirecciona al index-->
+                </header>
+                
+                <div class="contenido">
+                    <form class='formulario' action='profile.html' method='POST' enctype="multipart/form-data" autocomplete="on">
+
+                        <!--Se que es recomensable semanticamente que exista un label por cada input pero dado que mi diseño no incluye
+                        ningún label he decidido no ponerlo-->
+                        <input type="text" id="user_name" name="user_name"  minlength="2" maxlength="64" size="30" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}" title="Please input your name" placeholder="UserName *" required />
+                        <input type="email" id="mail" name="mail"  title="Please input your mail"  size="30" maxlength="60"  placeholder="Mail *"  required/>
+                        <input type="password" id="password" name="password"  title="Please input your password" size="30" minlength="4" maxlength="15" placeholder="Password *" required/>
+                        <input type="password" id="repassword" name="repassword"   title="Repeat your password" size="30" minlength="4" maxlength="15"  placeholder="Repassword *" required/>
+                        <label for="politica">Políticas de privacidad de datos <span class="required">*</span>
+                            <input type="checkbox" id="politica" name="politica" title="Acepto la ley y gestión que se va ha realizar sobre mis datos" required>
+                        </label>
+                        <br>
+                        <button class='button_yellow' type="submit" value="signup" title="Log in">Sign up</button>
+                        <div>
+                            <img src="img/facebook-min.png">
+                            <img src="img/googleCompleto-min.png">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--Modal register-->
+        <input type="checkbox" id='btn-modal-log'>
+        <div class='modal-log'>
+            <div class='contenedor'>
+                <header>
+                    <img src="img/logoSurfBetterHeader.png" alt="logo SurfBetter" title="logo surfBetter" width="400" height="300">
+                <!--El label con la x se usa a modo de botón le he puesto el mismo nombre que el inoput para que cuando
+                    se pulse este se cambie el valor del check box
+                -->
+                    <label  for='btn-modal-log'><a class='btn-salir-modal'><i class="fas fa-arrow-left fa-2x"></i></a></label><!--Mismo nombre del input PARA EL BOTÓN DE CERRAR-->
+                    <!--Redirecciona al index-->
+                </header>
+                
+                <div class="contenido">
+                    <form class='formulario' action='profile.html' method='POST' enctype="multipart/form-data" autocomplete="on">
+
+                        <!--Se que es recomensable semanticamente que exista un label por cada input pero dado que mi diseño no incluye
+                        ningún label he decidido no ponerlo-->
+                        <input type="email" id="mail" name="mail"  title="Please input your mail"  size="30" maxlength="60"  placeholder="Mail *"  required/>
+                        <input type="password" id="password" name="password"  title="Please input your password" size="30" minlength="4" maxlength="15" placeholder="Password *" required/>
+                        <label for="politica">Políticas de privacidad de datos <span class="required">*</span>
+                            <input type="checkbox" id="politica" name="politica" title="Acepto la ley y gestión que se va ha realizar sobre mis datos" required>
+                        </label>
+                        <br>
+                        <button class='button_yellow' type="submit" value="signup" title="Log in">Sign up</button>
+                        <div>
+                            <img src="img/facebook-min.png">
+                            <img src="img/googleCompleto-min.png">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         
     </main>
     <footer class="footerFixed"><!--Todo los footer son iguales-->
@@ -34,8 +118,8 @@
             At Surf-Better we use cookies and sessions to make your experience and browsing much better.
             If you agree with its use, click okey
         </p>
-        <a href="#" title="I accept all the terms" alt="Acepto los término de privacidad">I agrre !</a>
-        <a href="javascript:openSecondWindow('legalnotices.html', 'Legal Notices', 'legalNoticesDesk');" title="Legal notices cookies sessions" alt="Legal notices cookies sessions">Show more</a>
+        <a class='button_yellow' href="javascript:hiddeFooter()" title="I accept all the terms" alt="Acepto los término de privacidad">I agrree !</a>
+        <a class='button_yellow' href="javascript:openSecondWindow('legalnotices.html', 'Legal Notices', 'legalNoticesDesk');" title="Legal notices cookies sessions" alt="Legal notices cookies sessions">Show more</a>
     </footer>
     <!--Script font awesome-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>

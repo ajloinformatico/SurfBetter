@@ -16,7 +16,7 @@
     --font-spacial : krugthep; /*Sections beaches, logo, beaches titles*/
     --font-common: 'Noto Sans JP', sans-serif; /*Normal font*/
     --size-menu-desk: 14pt; /*fontsize menu desktop*/
-    --size-modal-label: 8pt; /*font-size label*/
+    --size-modal-label: 10pt; /*font-size label*/
     --size-common-table: 10pt;
     --size-common-mobile: 8pt;
     /*Colors*/
@@ -239,7 +239,7 @@ body .modal-log{
     visibility: hidden;
 }
 
-#btn-modal-log:checked ~ .modoal-log{
+#btn-modal-log:checked ~ .modal-log{
     opacity: 1;
     visibility: visible;
 }
@@ -347,9 +347,12 @@ body .modal-log{
     color:black;
 }
 
-/*CON EL ID DEL CHECKBOX LE QUITO EL DISPLAY Y SOLO SE VE LA IMAGEN DEL LABERL*/
+/*CON EL ID DEL CHECKBOX LE QUITO EL DISPLAY Y SOLO SE VE LA IMAGEN */
 #btn-modal{
    display: none;
+}
+#btn-modal-log{
+    display: none;
 }
 .modal_img{
     cursor: pointer;
@@ -359,7 +362,7 @@ body .modal-log{
     display: none;
 }
 
-
+/********************************************** END MODALS *****************************************************/
 
 
 
@@ -409,9 +412,5 @@ body .modal-log{
     header>label{
         padding-top: 4em;
     }
-    
-    .footerFixed{
-        position: fixed;
-        
-    }
+
 }
