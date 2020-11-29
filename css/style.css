@@ -178,10 +178,22 @@ ul li{
 /******************************* beaches box **************************************/
 
 .content-fav-beaches{
-
-
-
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
 }
+/*
+margin-top: 2em;
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+align-content: space-around;
+align-items: baseline;
+*/
+
 
 /*vertical beaches*/
 
@@ -190,46 +202,136 @@ first element and every fourth element. To select the beach that is horizontal
 I know it would be more effective to use id but I wanted
 test selectors
 */
-.beach-box:first-child , .beach-box:nth-child(n+4){
+#special-beach{
+    margin-top: 0;
+    margin-bottom: 4em;
     width: 100%;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: normal;
 
 }
 
 
 
-#special-beach>div{
+.special-beach>div{
     width: 500px; /*500/3 = 166 | 500-166 = 334*/
     height: 324px; /*324/3 = 108 | 324-108 = 216*/
 }
 
 /*bg img*/
-#special-beach>div:first-child{
+.las_redes{
     background-image: url("../img/playas/lasRedes.jpg");
 }
 
-#special-beach>div>span{
-    float: left;
-    color: green;
+
+.beach-box>div:nth-child(2){
+    background-color: var(--color-blue-content);
 }
 
+/*Header of beach info
+I could have called it with your class but I am testing selectors
+*/
+.beach-box>.beach-info>div:first-child{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    background-color: var(--color-back-beaches);
+}
+#special-beach>.beach-info>div:first-child>h2{
 
+    padding-left: 1em;
+}
 
-#special-beach>div:nth-child(2){
+.beach-box>.beach-info>div:first-child>h2{
+    font-family: var(--font-spacial);
+    padding-right: 1em;
+}
+
+.beach-box>.beach-info>div:first-child>img{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    left: 20px;
+    bottom: 27px;
+}
+
+/*Points of the beach*/
+#special-beach>.beach-info>.beach-points{
+    padding-right: 3em;
+    background-color: var(--color-back-beaches);
+}
+.beach-box>.beach-info>.beach-points{
+    padding-right: 3em;
     background-color: var(--color-back-beaches);
 }
 
+.beach-box .beach-info>.beach-points>ul{
+    display: block;
+    margin-left: 1em;
+    font-family: var(--size-common-table);
+}
+.beach-box .beach-info>.beach-points>ul>li{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: -1.7em;
+    margin-bottom: -1.7em;
+}
+
+
+
+
+.beach-box .beach-footer{
+    /*TODO Preguntar porque se me va */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    align-content: flex-start;
+    position: relative;
+    bottom: -3px;
+    /*argin-top: 1.5em;*/
+    width: 100%;
+}
+.beach-box .beach-footer>span:last-child{
+    margin-right: 2.7em;
+}
+.beach-box .beach-footer>p{
+    margin-left: 5.3em;
+    font-weight: bolder;
+}
+
+
+.beach-footer>span{
+    color: red;
+}
 
 /*horizontal beaches*/
 .beach-box{
-    float: left;
-    width: 50%;
+    margin-top: 5em;
+    margin-bottom: 4em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    align-items: baseline;
+}
+.beach-box>div{
+    width: 500px; /*500/3 = 166 | 500-166 = 334*/
+    height: 324px; /*324/3 = 108 | 324-108 = 216*/
+}
+.santaCatalina{
+    background-image: url('../img/playas/Santa_Cata_Lina.jpg');
 }
 
-.beach-box>img{
-    width: 200px;
+.calaAlemanas{
+    background-image: url('../img/playas/cala-de-los-alemanes-cadiz.jpg');
 }
+
 
 
 
