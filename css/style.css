@@ -127,7 +127,7 @@ ul li{
 
 
 
-/**************************************************** PROFILE ********************************/
+/***************************** USER PROFILE ********************************/
 /*I use here float because just two sections*/
 .user-info{
     display: flex;
@@ -494,7 +494,7 @@ body .modal-log{
     visibility: visible;
 }
 
-/*********************************** COMUNES *********************************/
+/******************* COMUNES **************/
 
 /*Estilo del modal*/
 .contenedor{
