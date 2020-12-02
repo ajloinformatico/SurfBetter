@@ -19,6 +19,7 @@
     --size-modal-label: 10pt; /*font-size label*/
     --size-common-table: 10pt;
     --size-common-mobile: 8pt;
+    --size-common-normal: 12pt;
     /*Colors*/
     --color-header: #16697A;
     --color-yellow: #FFA62B;
@@ -48,6 +49,7 @@ body{
     min-width: 350px;
     text-align: center;
     font-family: var(--font-common);
+    font-size: var(--size-common-normal);
     margin: 0;
 }
 
@@ -97,6 +99,270 @@ a:hover{
     color: black;
     text-shadow: 1px 2px 2px white;
 }
+
+
+/*main loging*/
+
+.logingmain{
+    padding-top: 2.5em;
+}
+
+.logingmain>img{
+    width: 267px; /*o 400*/
+    height: 200px; /*o 300*/
+}
+.content-main { /*Contenido del main*/
+    background-color: var(--color-blue-content);
+    margin-left:4em;
+    margin-right:4em;
+    margin-top: .3em;
+    padding: 1em;
+}
+
+.button_yellow{
+    background-color: var(--color-yellow);
+    color: black;
+    font-weight: bolder;
+    padding: .5em;
+    transition: var(--mouse-is-over-normal);
+}
+
+.button_yellow:hover{
+    transition: var(--mouse-is-hover-mormal);
+    color:white;
+    background-color: #633c05;
+}
+
+
+
+/*For footer fixeds*/
+.footerFixed{
+    position: absolute;
+    bottom: 0;
+}
+
+
+/**************************legal Notices*******************************/
+/*H1 de legalnotices*/
+.logingmain>h1{
+    text-align: left;
+    padding-left: 2em;
+}
+/*footer legalNotices*/
+.footer-leglNotices{
+    background-color: #00000000;
+    position: absolute;
+    bottom: 0;
+
+}
+#BackLegal{
+    color: red;
+    float: right;
+    padding-top: 1.8em;
+    padding-right: 1em;
+    transition: var(--mouse-is-over-menu);
+
+}
+#BackLegal:hover{
+    transition: var(--mouse-is-hover-menu);
+    font-weight: bolder;
+    text-shadow: 1px 2px 2px black;
+    color:black;
+}
+/*
+#SigninIndex{
+    float: right;
+    padding-top: 2.1em;
+    padding-right: 1em;
+    color: white;
+}
+#SigninIndex:hover{
+
+
+*/
+
+
+/************************************************** MODALES *************************************************************/
+
+
+/********** MODAL SIGN IN *********/
+body .modal{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Posición del modal siempre en el centro*/
+.modal{
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    /*Pone oscuro el fonddo el último valor es para la transparencia*/
+    background-color: RGBA(0,0,0,0.5);
+    /*Efecto de transición*/
+    transition: all 500ms ease;
+
+    /*MAS IMPORTANTE ES LO QUE OCULTA EL MODAL*/
+    opacity: 0;
+    visibility: hidden;
+}
+/*CUANDO EL BTON ESTE CHEKED MUESTRA TODO EL MODAL*/
+#btn-modal:checked ~ .modal{
+    opacity: 1;
+    visibility: visible;
+}
+
+/********** MODAL SIGN UP **********/
+body .modal-log{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-log{
+    position: fixed;
+    top: 0;
+    left: 0;
+    /*Pone oscuro el fonddo el último valor es para la transparencia*/
+    background-color: RGBA(0,0,0,0.5);
+    /*Efecto de transición*/
+    transition: all 500ms ease;
+
+    /*MAS IMPORTANTE ES LO QUE OCULTA EL MODAL*/
+    opacity: 0;
+    visibility: hidden;
+}
+
+#btn-modal-log:checked ~ .modal-log{
+    opacity: 1;
+    visibility: visible;
+}
+
+/******************* COMUNES **************/
+
+/*Estilo del modal*/
+.contenedor{
+    text-align: left;
+
+    width: 350px;
+    height: 450px;
+    margin: auto; /*Centra el contenido*/
+    background-color: white;
+    box-shadow: 1px 7px 25px rgba(0,0,0,0.6);/*Sombra*/
+    transition: all 500ms ease;
+}
+
+/*Estilo de la cabezera coloco un display block para alinear en una linea los elementos*/
+.contenedor header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: baseline;
+    align-items: center;
+    background-color: var(--color-header);
+
+}
+
+
+.contenedor img{
+    height: auto; /*100*/
+    width: 200px;
+
+}
+/*Estilo del botón quiero colocarlo a la derecha del header por eso de la posición absoluta*/
+.btn-salir-modal{
+    display: block;
+    /*Preformateo la etiqueta que originalmente venía en linea y ahora
+    está en blocker*/
+    color: var(--color-yellow);
+    padding-bottom: 2em;
+    /*cursor: pointer; /*NUEVOO CAMBIA EL RATÓN CUANDO PASA POR ENCIMA*/
+}
+
+.contenido form label{
+    font-size: var(--size-modal-label);
+}
+
+.contenido form{
+    text-align: center;
+    padding-top: 3em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+}
+.contenido form>input{
+
+    background-color: var( --color-blue-content);
+    text-align: center;
+    margin: .5em;
+    padding: .5em;
+    color: black;
+    border-style: none;
+
+}
+.contenido form>input::placeholder {
+    color:black;
+    font-weight: bolder;
+}
+
+
+
+
+/*Botones*/
+.contenido div>button{
+    width: 7.9em;
+    margin: 0 .5em;
+    border-style: none;
+
+}
+
+.contenido div:last-of-type{
+    margin-top: 2em
+}
+
+
+
+/*Imagenes de los iconos de modal*/
+.contenedor div>img{
+    width: 40px;
+    height: auto;
+    padding: 1em;
+}
+.contenedor div>img:last-child{
+    width: 60px;
+    height: auto;
+}
+
+
+
+.btn-salir-modal:hover{
+    color:black;
+}
+
+/*CON EL ID DEL CHECKBOX LE QUITO EL DISPLAY Y SOLO SE VE LA IMAGEN */
+#btn-modal{
+    display: none;
+}
+#btn-modal-log{
+    display: none;
+}
+.modal_img{
+    cursor: pointer;
+}
+
+.btn-editar{
+    display: none;
+}
+
+/********************************************** END MODALS *****************************************************/
+
 
 
 /*********************** profile ******************************/
@@ -160,7 +426,7 @@ ul li{
 
 
 .user-info>div{
-    padding-right: 1em;
+    margin-right: 1em;
 }
 
 .user-info>div>h1{
@@ -453,267 +719,7 @@ footer>*{
 
 
 
-/*main loging*/
 
-.logingmain{
-    padding-top: 2.5em;
-}
-
-.logingmain>img{
-    width: 267px; /*o 400*/
-    height: 200px; /*o 300*/
-}
-.content-main { /*Contenido del main*/
-    background-color: var(--color-blue-content);
-    margin-left:4em;
-    margin-right:4em;
-    margin-top: .3em;
-    padding: 1em;
-}
-
-.button_yellow{
-    background-color: var(--color-yellow);
-    color: black;
-    font-weight: bolder;
-    padding: .5em;
-    transition: var(--mouse-is-over-normal);
-}
-
-.button_yellow:hover{
-    transition: var(--mouse-is-hover-mormal);
-    color:white;
-    background-color: #633c05;
-}
-
-
-
-/*For footer fixeds*/
-.footerFixed{
-    position: absolute;
-    bottom: 0;
-  }
-
-
-/**************************legal Notices*******************************/
-/*H1 de legalnotices*/
-.logingmain>h1{
-    text-align: left;
-    padding-left: 2em;
-}
-/*footer legalNotices*/
-.footer-leglNotices{
-    background-color: #00000000;
-    position: absolute;
-    bottom: 0;
-    
-}
-#BackLegal{
-    color: red;
-    float: right;
-    padding-top: 1.8em;
-    padding-right: 1em; 
-    transition: var(--mouse-is-over-menu);
-    
-}
-#BackLegal:hover{
-    transition: var(--mouse-is-hover-menu);
-    font-weight: bolder;
-    text-shadow: 1px 2px 2px black;
-    color:black;
-}
-/*
-#SigninIndex{
-    float: right;
-    padding-top: 2.1em;
-    padding-right: 1em;
-    color: white;
-}
-#SigninIndex:hover{
-    
-
-*/
-
-
-/************************************************** MODALES *************************************************************/
-
-
-/********** MODAL SIGN IN *********/
-body .modal{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/*Posición del modal siempre en el centro*/
-.modal{
-
-    position: fixed;
-    top: 0;
-    left: 0;
-    /*Pone oscuro el fonddo el último valor es para la transparencia*/
-    background-color: RGBA(0,0,0,0.5);
-    /*Efecto de transición*/
-    transition: all 500ms ease;
-
-    /*MAS IMPORTANTE ES LO QUE OCULTA EL MODAL*/
-    opacity: 0;
-    visibility: hidden;
-}
-/*CUANDO EL BTON ESTE CHEKED MUESTRA TODO EL MODAL*/
-#btn-modal:checked ~ .modal{
-    opacity: 1;
-    visibility: visible;
-}
-
-/********** MODAL SIGN UP **********/
-body .modal-log{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-log{
-    position: fixed;
-    top: 0;
-    left: 0;
-    /*Pone oscuro el fonddo el último valor es para la transparencia*/
-    background-color: RGBA(0,0,0,0.5);
-    /*Efecto de transición*/
-    transition: all 500ms ease;
-
-    /*MAS IMPORTANTE ES LO QUE OCULTA EL MODAL*/
-    opacity: 0;
-    visibility: hidden;
-}
-
-#btn-modal-log:checked ~ .modal-log{
-    opacity: 1;
-    visibility: visible;
-}
-
-/******************* COMUNES **************/
-
-/*Estilo del modal*/
-.contenedor{
-    text-align: left;
-
-    width: 400px;
-    height: 500px;
-    margin: auto; /*Centra el contenido*/
-    background-color: white;
-    box-shadow: 1px 7px 25px rgba(0,0,0,0.6);/*Sombra*/
-    transition: all 500ms ease;
-}
-
-/*Estilo de la cabezera coloco un display block para alinear en una linea los elementos*/
-.contenedor header{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: center;
-    align-items: center;
-    background-color: var(--color-header);
-
-}
-
-
-.contenedor img{
-    height: auto; /*100*/
-    width: 200px;
-    
-}
-/*Estilo del botón quiero colocarlo a la derecha del header por eso de la posición absoluta*/
-.btn-salir-modal{
-    display: block; 
-    /*Preformateo la etiqueta que originalmente venía en linea y ahora
-    está en blocker*/ 
-    color: var(--color-yellow);
-    padding-bottom: 2em;
-    /*cursor: pointer; /*NUEVOO CAMBIA EL RATÓN CUANDO PASA POR ENCIMA*/
-}
-
-.contenido form label{
-    font-size: var(--size-modal-label);
-}
-
-.contenido form{
-    text-align: center;
-    padding-top: 3em;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    align-content: center;
-}
-.contenido form>input{
-    
-    background-color: var( --color-blue-content);
-    text-align: center;
-    margin: .5em;
-    padding: .5em;
-    color: black;
-    border-style: none;
-    
-}
-.contenido form>input::placeholder { 
-    color:black; 
-    font-weight: bolder; 
-}
-
-
-
-
-/*Botones*/
-.contenido div>button{
-    width: 7.9em;
-    margin: 0 .5em;
-    border-style: none;
-    
-}
-
-.contenido div:last-of-type{
-    margin-top: 2em
-}
-
-
-
-/*Imagenes de los iconos de modal*/
-.contenedor div>img{
-    width: 40px;
-    height: auto;
-    padding: 1em;
-}
-.contenedor div>img:last-child{
-    width: 60px;
-    height: auto;
-}
-
-
-
-.btn-salir-modal:hover{
-    color:black;
-}
-
-/*CON EL ID DEL CHECKBOX LE QUITO EL DISPLAY Y SOLO SE VE LA IMAGEN */
-#btn-modal{
-   display: none;
-}
-#btn-modal-log{
-    display: none;
-}
-.modal_img{
-    cursor: pointer;
-}
-
-.btn-editar{
-    display: none;
-}
-
-/********************************************** END MODALS *****************************************************/
 /********************************************** VARS       *****************************************************/
 
 
@@ -759,17 +765,43 @@ body .modal-log{
 
 /************************************************************MediaQuerys*************************************************/
 /*Tablet*/
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1250px) {
+    .user-info>div{
+        margin: 0;
+        font-size: var(--size-common-table);
+        width: 50%;
+    }
+}
+
+
+
+
+@media screen and (max-width: 1025px) {
     html{
-        font-size: var(--size-common-table)
+        font-size: var(--size-common-normal)
     }
     header>label{
         padding-top: 3em;
     }
 
-    
-    
-    
+    /*Contact*/
+    .user-info{
+        flex-direction: column;
+        text-align: center;
+    }
+    .user-info>div{
+        font-size: var(--size-common-normal);
+        width: 100%;
+    }
+    /*
+    .user-info{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-top: 1em;
+        text-align: left;
+    }
+    */
 }
 /*Smartphone*/
 @media screen and (max-width: 480px) {
@@ -777,10 +809,20 @@ body .modal-log{
     
     /*For footer on loging*/
     html{
-        font-size: var(--size-common-mobile);
+        font-size: var(--size-common-);
     }
     header>label{
         padding-top: 4em;
     }
+
+    /*Change the size of the logo image in the index*/
+    .logingmain>img{
+        width: 220px;  /*o 300*/
+        height: 150px;
+    }
+
+
+
+
 
 }
