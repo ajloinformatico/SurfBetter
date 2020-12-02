@@ -809,7 +809,7 @@ footer>*{
     
     /*For footer on loging*/
     html{
-        font-size: var(--size-common-);
+        font-size: var(--size-common-mobile);
     }
     header>label{
         padding-top: 4em;
