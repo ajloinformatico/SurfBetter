@@ -82,7 +82,7 @@ header>label>a:hover{
 
 main{
     margin-top: 1em;
-    width: 90%;
+    width: 80%; /*TODO Ver si lo cambio por 90*/
     display: inline-block;/*Centra el contenido*/ /*TODO check if a should change it to margin-left margin-right*/
     
 }
@@ -332,6 +332,107 @@ I could have called it with your class but I am testing selectors
     background-image: url('../img/playas/cala-de-los-alemanes-cadiz.jpg');
 }
 
+
+/*********************************************** CONTACT ******************************************************/
+
+/****************** infolojo info *************/
+
+.infolojo{
+    margin-top: 2em;
+}
+.infolojo h1{
+    font-family:  var(--font-spacial);
+}
+.infolojo figure{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.infolojo figure>img{
+}
+.infolojo figure>figcaption{
+    text-align: left;
+    width: 60%;
+}
+
+/****************** infolojo Team *****************/
+.infolojo-members{
+    width: 80%;
+    margin: 4em auto;
+
+}
+
+.infolojo-members header{
+    font-family: var(--font-spacial);
+    background-color: rgba(0, 0, 0, 0);
+
+}
+
+.memebers{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.memebers div{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-back-beaches);
+    margin-top: 1em;
+}
+.memebers div *{
+    width: 250px;
+
+}
+
+/*Member img*/
+.memebers div>img:first-of-type{
+    width: 250px;
+    height: 300px;
+}
+.memebers div>ul{
+    padding-inline-start: 0; /*Preformatea el texto*/
+}
+
+.memebers div>ul img{
+    width: 60px;
+    padding: 0;
+    margin: 0;
+}
+
+/********************* Send mail *****************************/
+.contact{
+    margin-bottom: 2em;
+}
+.contact h2{
+    font-family: var(--font-spacial);
+}
+.contact input{
+    display: block;
+    margin: 1em auto;
+    text-align: center;
+    padding: .5em;
+    border: 10px solid;
+    border-color: var(--color-blue-content);
+}
+
+.contact input::placeholder{
+    color: black;
+}
+
+.contact textarea{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: .5em;
+    border: 10px solid;
+    border-color: var(--color-blue-content);
+    color: black;
+}
+.contact button{
+    margin-top: 1em;
+    font-size: large;
+}
 
 
 
