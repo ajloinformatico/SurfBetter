@@ -100,6 +100,20 @@ a:hover{
     text-shadow: 1px 2px 2px white;
 }
 
+footer{
+    height: 100px;
+    background-color: var(--color-header);
+    color: white;
+    width: 100%;
+}
+
+footer>*{
+    margin: 1em;
+}
+
+
+
+
 
 /*main loging*/
 
@@ -525,10 +539,7 @@ I could have called it with your class but I am testing selectors
 }
 
 /*Points of the beach*/
-#special-beach>.beach-info>.beach-points{
-    padding-right: 3em;
-    background-color: var(--color-back-beaches);
-}
+
 .beach-box>.beach-info>.beach-points{
     padding-right: 3em;
     background-color: var(--color-back-beaches);
@@ -771,14 +782,30 @@ footer>*{
         font-size: var(--size-common-table);
         width: 50%;
     }
+
+    /*beaches*/
+    /*BEACHES*/
+    .beach-box{
+        margin-top: 0;
+        margin-bottom: 4em;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: normal;
+    }
+
+
+
 }
 
 
 
 
 @media screen and (max-width: 1025px) {
-    html{
-        font-size: var(--size-common-normal)
+    body{
+        font-size: var(--size-common-table)
     }
     header>label{
         padding-top: 3em;
@@ -790,29 +817,26 @@ footer>*{
         text-align: center;
     }
     .user-info>div{
-        font-size: var(--size-common-normal);
+        font-size: var(--size-common-table);
         width: 100%;
     }
-    /*
-    .user-info{
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        margin-top: 1em;
-        text-align: left;
-    }
-    */
+
+
+
+
 }
 /*Smartphone*/
 @media screen and (max-width: 480px) {
-    
+    body {
+        font-size: var(--size-common-table);
+    }
     
     /*For footer on loging*/
-    html{
-        font-size: var(--size-common-mobile);
-    }
     header>label{
-        padding-top: 4em;
+        padding-top:2.5em;
+    }
+    .logingmain{
+        width: 90%;
     }
 
     /*Change the size of the logo image in the index*/
@@ -821,6 +845,9 @@ footer>*{
         height: 150px;
     }
 
+    footer>*{
+        margin: 1em;
+    }
 
 
 
