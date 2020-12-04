@@ -199,7 +199,7 @@ footer>*{
 /************************************************** MODALES *************************************************************/
 
 
-/********** MODAL SIGN IN *********/
+/********** MODAL SIGN UP *********/
 body .modal{
     width: 100%;
     height: 100vh;
@@ -212,6 +212,7 @@ body .modal{
 .modal{
 
     position: fixed;
+    margin-top: -5em;
     top: 0;
     left: 0;
     /*Pone oscuro el fonddo el último valor es para la transparencia*/
@@ -229,7 +230,24 @@ body .modal{
     visibility: visible;
 }
 
-/********** MODAL SIGN UP **********/
+/*Cambios solo en modal sign up a petición del profesor*/
+
+/*subo un poco el botón*/
+.modal form>button{
+    margin-top: -1em;
+}
+/*Imágenes de los iconos del modal*/
+.modal>.contenedor div>img{
+    margin-top: -2em;
+}
+
+/*subo un poco el contenido*/
+.modal .contenido{
+    margin-top: -1em;
+}
+
+
+/********** MODAL SIGN IN **********/
 body .modal-log{
     width: 100%;
     height: 100vh;
@@ -329,12 +347,12 @@ body .modal-log{
 
 
 
+
 /*Botones*/
 .contenido div>button{
     width: 7.9em;
     margin: 0 .5em;
     border-style: none;
-
 }
 
 .contenido div:last-of-type{
@@ -343,12 +361,14 @@ body .modal-log{
 
 
 
-/*Imagenes de los iconos de modal*/
+/*Imagenes de los iconos de modal loging*/
 .contenedor div>img{
     width: 40px;
     height: auto;
     padding: 1em;
 }
+
+
 .contenedor div>img:last-child{
     width: 60px;
     height: auto;
@@ -630,7 +650,7 @@ I could have called it with your class but I am testing selectors
 }
 .infolojo figure>figcaption{
     text-align: left;
-    width: 60%;
+    width: 50%;
     padding-left: 2em;
     padding-right: 7em;
 }
