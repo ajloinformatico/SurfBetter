@@ -643,21 +643,21 @@ I could have called it with your class but I am testing selectors
 .infolojo figure{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .infolojo figure>img{
-    padding-left: 3em;
+    width: 256px;
 }
 .infolojo figure>figcaption{
     text-align: left;
     width: 50%;
     padding-left: 2em;
-    padding-right: 7em;
+    padding-right: -4em;
 }
 .infolojo figure>figcaption>a{
     display: block;
     width: 75px;
-    margin-top: 6em;
+    margin-top: 2em;
 }
 
 /****************** infolojo Team *****************/
@@ -825,18 +825,28 @@ footer>*{
         align-items: normal;
     }
 
+    /*Contact about*/
+    .infolojo figure{
+        justify-content: space-between;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .infolojo figure>img{
+        margin: 0 auto;
+        padding: 0;
+        width: 213px;
+    }
+
     /*contact form*/
     .contact input, .contact textarea{
         width: 80%;
         margin: 2em auto;
     }
-
-
-
 }
 
 
-
+/********************* BREAK INTERMEDIO PARA RES``MSOVE DE CONTACT******************/
 
 @media screen and (max-width: 1025px) {
     body{
@@ -846,7 +856,7 @@ footer>*{
         padding-top: 3em;
     }
 
-    /*Contact*/
+    /*Profile*/
     .user-info{
         flex-direction: column;
         text-align: center;
@@ -856,16 +866,36 @@ footer>*{
         width: 100%;
     }
 
+}
 
 
+@media screen and (max-width: 880px) {
+    .infolojo figure{
+        flex-flow: column;
+        width: 100%;
+    }
+
+    .infolojo figure>figcaption{
+        width: 80%;
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;
+    }
+    .infolojo figure>figcaption>a{
+        display: inline;
+    }
+
+    /*TODO COLUMN MEMBERS*/
 
 }
+
+
+
+
+
 /*Smartphone*/
 @media screen and (max-width: 480px) {
-    body {
-        font-size: var(--size-common-table);
-    }
-    
+
     /*For footer on loging*/
     header>label{
         padding-top:2.5em;
@@ -879,6 +909,18 @@ footer>*{
         width: 220px;  /*o 300*/
         height: 150px;
     }
+
+
+    .infolojo figure>img {
+        width: 128px;
+    }
+
+
+
+
+
+
+
     /*contact form*/
     .contact input, .contact textarea{
         width: 90%;
