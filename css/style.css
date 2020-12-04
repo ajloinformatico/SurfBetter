@@ -729,12 +729,6 @@ I could have called it with your class but I am testing selectors
     font-size: large;
 }
 
-
-
-
-
-
-
 footer{
     height: 100px;
     background-color: var(--color-header);
@@ -749,7 +743,7 @@ footer>*{
 
 
 
-/********************************************** VARS       *****************************************************/
+/********************************************** VARS *****************************************************/
 
 
 /*Show and hidde footer*/
