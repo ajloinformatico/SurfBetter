@@ -108,7 +108,7 @@ footer{
 }
 
 footer>*{
-    margin: 1em;
+    margin: 2em;
 }
 
 
@@ -183,17 +183,7 @@ footer>*{
     text-shadow: 1px 2px 2px black;
     color:black;
 }
-/*
-#SigninIndex{
-    float: right;
-    padding-top: 2.1em;
-    padding-right: 1em;
-    color: white;
-}
-#SigninIndex:hover{
 
-
-*/
 
 
 /************************************************** MODALES *************************************************************/
@@ -832,11 +822,13 @@ footer>*{
         margin: 0 auto;
         text-align: center;
     }
+
     .infolojo figure>img{
         margin: 0 auto;
         padding: 0;
-        width: 213px;
     }
+
+
 
     /*contact form*/
     .contact input, .contact textarea{
@@ -852,6 +844,11 @@ footer>*{
     body{
         font-size: var(--size-common-table)
     }
+
+    main{
+        width: 90%
+    }
+
     header>label{
         padding-top: 3em;
     }
@@ -869,10 +866,17 @@ footer>*{
 }
 
 
+/*I needed it to contact*/
 @media screen and (max-width: 880px) {
+
+
     .infolojo figure{
         flex-flow: column;
         width: 100%;
+    }
+
+    .infolojo figure>img{
+        width: 213px;
     }
 
     .infolojo figure>figcaption{
@@ -884,11 +888,14 @@ footer>*{
     .infolojo figure>figcaption>a{
         display: inline;
     }
-
-    /*TODO COLUMN MEMBERS*/
+    /*change memebers to column*/
+    .memebers{
+        flex-flow: column;
+        width: 250px;
+        margin: 0 auto;
+    }
 
 }
-
 
 
 
@@ -901,7 +908,7 @@ footer>*{
         padding-top:2.5em;
     }
     .logingmain{
-        width: 90%;
+        width: 100%;
     }
 
     /*Change the size of the logo image in the index*/
@@ -910,30 +917,19 @@ footer>*{
         height: 150px;
     }
 
+    /*user photo at profile*/
+    .user-info>figure>img{
+        width: 213px;
+    }
 
+    /*infolojo logo at contact*/
     .infolojo figure>img {
         width: 128px;
     }
-
-
-
-
-
-
 
     /*contact form*/
     .contact input, .contact textarea{
         width: 90%;
         margin: 2em auto;
     }
-
-
-
-    footer>*{
-        margin: 1em;
-    }
-
-
-
-
 }
