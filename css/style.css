@@ -394,7 +394,7 @@ ul li{
     padding-top: .5em;
 }
 #exitButonHeader{
-    color: red;
+    color: var(--color-yellow);
     font-size: large;
     transition: var(--mouse-is-over-menu);
 }
@@ -626,10 +626,18 @@ I could have called it with your class but I am testing selectors
     justify-content: space-between;
 }
 .infolojo figure>img{
+    padding-left: 3em;
 }
 .infolojo figure>figcaption{
     text-align: left;
     width: 60%;
+    padding-left: 2em;
+    padding-right: 7em;
+}
+.infolojo figure>figcaption>a{
+    display: block;
+    width: 75px;
+    margin-top: 6em;
 }
 
 /****************** infolojo Team *****************/
@@ -783,6 +791,7 @@ footer>*{
         width: 50%;
     }
 
+
     /*beaches*/
     /*BEACHES*/
     .beach-box{
@@ -794,6 +803,12 @@ footer>*{
         flex-wrap: wrap;
         justify-content: center;
         align-items: normal;
+    }
+
+    /*contact form*/
+    .contact input, .contact textarea{
+        width: 80%;
+        margin: 2em auto;
     }
 
 
@@ -844,6 +859,13 @@ footer>*{
         width: 220px;  /*o 300*/
         height: 150px;
     }
+    /*contact form*/
+    .contact input, .contact textarea{
+        width: 90%;
+        margin: 2em auto;
+    }
+
+
 
     footer>*{
         margin: 1em;
