@@ -162,15 +162,13 @@ footer>*{
 .trigger-burger{
     display: none;
 }
-.menu-empty{/*clas to hidde menu*/
+.menu-empty{/*class to hidde menu*/
     display: none;
 }
 
-
-.menu-mobile{
+.menu-mobile{ /*class to show menu*/
     display: none;
 }
-
 .menu-mobile ul{ /*class to show menu*/
     display: flex;
     justify-content: space-around;
