@@ -156,6 +156,31 @@ footer>*{
 }
 
 
+/********************************* TRIGGER MENU ************************/
+
+/*The elements are hidden*/
+.trigger-burger{
+    display: none;
+}
+.menu-empty{/*clas to hidde menu*/
+    display: none;
+}
+
+
+.menu-mobile{
+    display: none;
+}
+
+.menu-mobile ul{ /*class to show menu*/
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    background-color: black;
+    margin-top: 0;
+    padding-bottom: 1.5em; 
+}
+
+
 /**************************legal Notices*******************************/
 /*H1 de legalnotices*/
 .logingmain>h1{
@@ -759,8 +784,8 @@ footer>*{
 .visible{
     visibility: visible; /* Al alterar las márgenes y el height no es necesaria esta propiedad */
     opacity: 1;
-
 }
+
 
 
 
@@ -863,6 +888,16 @@ footer>*{
 /*I needed it to contact*/
 @media screen and (max-width: 880px) {
 
+    /***************Change to burger menu*****************/
+    .nav-desk{ /*hidde menu*/
+        display: none;
+    }
+    .trigger-mobile{ /*I have done the logic with js*/
+       display: block;
+    }
+    .menu-mobile{
+        display: block;
+    }
 
     .infolojo figure{
         flex-flow: column;
@@ -896,6 +931,18 @@ footer>*{
 
 /*Smartphone*/
 @media screen and (max-width: 480px) {
+
+
+    /*mobile menu*/
+    .menu-mobile ul{
+        flex-flow: column;
+        align-items: center;
+        padding-bottom: 1em;
+    }
+    .menu-mobil ul li{
+        margin: .5em;
+    }
+
 
     /*For footer on loging*/
     header>label{

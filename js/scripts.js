@@ -43,10 +43,32 @@ function changeUpIn(url){
 }
 
 
+
+/**
+ * because the style is already done
+ */
 function hiddeFooter(){
     const footer = document.querySelector('footer');
     footer.classList.add('visible');
     footer.classList.remove('visible');
     footer.classList.add('oculto');
     //footer.style.display = 'none';
+}
+
+var showHidden = 0;
+function showHiddeMenu(){
+    const menuDesktop = document.getElementById('menu-mobile');
+        if(showHidden === 0){
+            menuDesktop.classList.remove('menu-empty');
+            menuDesktop.classList.add('menu-mobile');
+            showHidden = 1;
+            console.log(showHiddeMenu)
+            
+        }else if(showHidden === 1){
+            menuDesktop.classList.remove('menu-mobile');
+            menuDesktop.classList.add('menu-empty');
+            showHidden = 0;
+            console.log(showHiddeMenu)
+        }
+    console.log(showHidden);
 }
