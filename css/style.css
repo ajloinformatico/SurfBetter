@@ -105,11 +105,24 @@ footer{
     background-color: var(--color-header);
     color: white;
     width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
-footer>*{
-    margin: 2em;
+/******************* I use this container to format the block formatted links *************/
+footer div{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
 }
+footer div>a{
+    display: block;
+    width: 100px;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+
 
 
 
@@ -725,6 +738,12 @@ I could have called it with your class but I am testing selectors
 .contact h2{
     font-family: var(--font-spacial);
 }
+
+
+/***************************************** Beaches Page ********************************************************/
+/*Beaches box from contact Contact*/
+/*form search from contact*/
+/* Search form | Mail form */
 .contact input{
     display: block;
     margin: 1em auto;
@@ -747,20 +766,10 @@ I could have called it with your class but I am testing selectors
     border-color: var(--color-blue-content);
     color: black;
 }
+
 .contact button{
     margin-top: 1em;
     font-size: large;
-}
-
-footer{
-    height: 100px;
-    background-color: var(--color-header);
-    color: white;
-    width: 100%;
-}
-
-footer>*{
-    margin: 1em;
 }
 
 
@@ -805,6 +814,8 @@ footer>*{
     float: left;
     padding: .5em;
 }
+
+
 
 
 
