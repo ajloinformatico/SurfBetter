@@ -34,10 +34,12 @@
     --mouse-is-hover-menu:color  0.2s linear 0.2s;
 
     /*elementos normales*/
-
     --mouse-is-over-normal: linear 0.1s;
     --mouse-is-hover-mormal:color  0.1s linear 0.1s;
     
+    /*Dark*/
+   /*--Background-Dark: url("../img/background/backDark.svg"); OLD*/
+   --Background-Dark: #262b32; /*#041412*/ /*#041b1f*/ /*020c0e*/
 }
 
 /*Common content*/
@@ -802,8 +804,24 @@ I could have called it with your class but I am testing selectors
     float: left;
     padding: .5em;
 }
-
-
+/***************************************** DARK MODE & LIKE MODELO *******************************************************/
+.darkMode{
+    background: var(--Background-Dark);
+}
+.darkModeInput{
+    border-color: #16697A;
+    background-color: #EFEDEC;
+}
+/*
+.contact input{
+    display: block;
+    margin: 1em auto;
+    text-align: center;
+    padding: .5em;
+    border: 10px solid;
+    border-color: var(--color-background-beach-form);
+}
+*/
 
 
 

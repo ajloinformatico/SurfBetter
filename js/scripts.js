@@ -55,6 +55,23 @@ function hiddeFooter(){
     //footer.style.display = 'none';
 }
 
+
+function changeToDark(){
+    debugger;
+    alert("Te voy a cambiar a oscuro");
+    /*
+    var cuerpo = document.getElementsByTagName('html');
+    documnet.html.classList.toggle("darkmode");
+    */
+   var fondo = document.querySelector("html");
+   fondo.classList.toggle('darkMode');
+
+   var inputBUsqueda = document.getElementById('beachSearch');
+   inputBUsqueda.classList.toggle('darkModeInput');
+
+}
+
+
 var showHidden = 0;
 function showHiddeMenu(){
     const menuDesktop = document.getElementById('menu-mobile');

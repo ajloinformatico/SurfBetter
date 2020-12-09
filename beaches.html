@@ -18,6 +18,7 @@
             <li><a href="options.html" title="go to Options" alt="link to loging">Options</a></li>
             <li><a href="beaches.html" title="go to Beaches" alt="link to beaches">Beaches</a></li>
             <li><a href="profile.html" title="go to Profile" alt="link to profile">Profile</a></li>
+            <li><a onclick=" return changeToDark();" title="Dark Mode buttom"><i class="fas fa-moon fa-2x"></i></a></li>
             <li><a id="exitButonHeader" href="index.html" title="Exit app" alt="link to loging"><i class="fas fa-door-open fa-2x"></i></a></li>
         </ul>
         <!--Trigger burger menu-->
@@ -31,15 +32,12 @@
             <li><a href="options.html" title="go to Options" alt="link to loging">Options</a></li>
             <li><a href="beaches.html" title="go to Beaches" alt="link to beaches">Beaches</a></li>
             <li><a href="profile.html" title="go to Profile" alt="link to profile">Profile</a></li>
+            <li><a onclick=" return changeToDark();" title="Dark Mode buttom"><i class="fas fa-moon fa-2x"></i></a></li>
             <li><a id="exitButonHeader" href="index.html" title="Exit app" alt="link to loging"><i class="fas fa-door-open fa-2x"></i></a></li>
         </ul>
     </nav>
 
     <main>
-        <section class="modes"><!--DarkMode and white mod fixed position-->
-            <a onclick=" return changeToDark();" title="Dark Mode buttom"><i class="fas fa-moon fa-3x"></i></a>
-            <a onclick=" return changeToWhite();" title="White Mode buttom"><i class="fas fa-sun fa-3x"></i></a>
-        </section>
         <section class="contact">
             <form class="specialForm" action="" method="POST" enctype="multipart/form-data" autocomplete="on"><!--TO CONTROLLER-->
                 <input type="text" id="beachSearch" name="beachSearch" size="125" maxlength="60" placeholder="Beach Name" title="Please enter the name of the beach" required>
