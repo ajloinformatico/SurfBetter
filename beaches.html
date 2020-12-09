@@ -36,6 +36,10 @@
     </nav>
 
     <main>
+        <section class="modes"><!--DarkMode and white mod fixed position-->
+            <a onclick=" return changeToDark();" title="Dark Mode buttom"><i class="fas fa-moon fa-3x"></i></a>
+            <a onclick=" return changeToWhite();" title="White Mode buttom"><i class="fas fa-sun fa-3x"></i></a>
+        </section>
         <section class="contact">
             <form class="specialForm" action="" method="POST" enctype="multipart/form-data" autocomplete="on"><!--TO CONTROLLER-->
                 <input type="text" id="beachSearch" name="beachSearch" size="125" maxlength="60" placeholder="Beach Name" title="Please enter the name of the beach" required>
@@ -43,12 +47,11 @@
             </form>
         </section>
 
-        <section class="user-fav-beaches">
+        <section id="bestBeaches" class="user-fav-beaches"><!--I inherit from the class so as not to repeat myself I use id as identifier and I leave the contact class-->
             <header>
-            <h2>Fav Beaches</h2>
+                <h2>Best Beaches</h2>
             </header>
             <section class="content-fav-beaches">
-
                 <div class="beach-box" id="special-beach">
                     <div class="las_redes">
                         <!--lleva un span con la clase para darle estilo a los tres tipos de bandera-->
@@ -58,6 +61,7 @@
                         <div class="beach-header">
                             <h2>Las Redes</h2>
                             <img class="star" src="img/stars/5star.png" width="30" height="30" title="Total Points" alt="points">
+                           
                         </div>
                         <div class="beach-points">
                             <ul>
@@ -110,8 +114,8 @@
                     </div>
                     <div class="beach-info">
                         <div class="beach-header">
-                            <img class="star" src="img/stars/2star.png" width="30" height="30" title="Total Points" alt="points">
                             <h2>Santa Catalina</h2>
+                            <img class="star" src="img/stars/2star.png" width="30" height="30" title="Total Points" alt="points">   
                         </div>
                         <div class="beach-points">
                             <ul>
@@ -162,8 +166,9 @@
                     </div>
                     <div class="beach-info">
                         <div class="beach-header">
-                            <img class="star" src="img/stars/5star.png" width="30" height="30" title="Total Points" alt="points">
                             <h2>La cala de los alemanes</h2>
+                            <img class="star" src="img/stars/5star.png" width="30" height="30" title="Total Points" alt="points">
+                           
                         </div>
                         <div class="beach-points">
                             <ul>
@@ -209,6 +214,123 @@
                 </div>
             </section>
         </section>
+
+        <section id="Most Voted" class="user-fav-beaches"><!--I inherit from the class so as not to repeat myself I use id as identifier and I leave the contact class-->
+            <header>
+                <h2>Most Voted</h2>
+            </header>
+            <section class="content-fav-beaches">
+                <div class="beach-box" id="special-beach">
+                    <div class="las_redes">
+                        <!--lleva un span con la clase para darle estilo a los tres tipos de bandera-->
+                         <span class="green-flag"><i class="fas fa-flag fa-2x"></i></span>
+                    </div>
+                    <div class="beach-info">
+                        <div class="beach-header">
+                            <h2>Las Redes</h2>
+                            <img class="star" src="img/stars/5star.png" width="30" height="30" title="Total Points" alt="points">
+                            
+                        </div>
+                        <div class="beach-points">
+                            <ul>
+                                <li>
+                                    <img src="img/beachIcons/WavesSecuency-min.png" width="30px" height="30px"
+                                            alt="wave sequence icon" title="wave sequence"/>
+                                    <p>Wave Sequence</p>
+                                    <span>4</span>
+                                </li>
+                                <li>
+                                    <img src="img/beachIcons/WavesforceBrazo-min.png" width="30px" height="30px"
+                                            alt="wave force icon" title="wave force"/>
+                                    <p>Wave Force</p>
+                                    <span>5</span>
+                                </li>
+                                <li>
+                                    <img src="img/beachIcons/WaveHeight-min.png" width="30px" height="30px"
+                                            alt="wave height icon" title="wave height"/>
+                                    <p>Wave Height</p>
+                                    <span>4</span>
+                                </li>
+                                <li>
+                                    <img src="img/beachIcons/Tides-min.png" width="30px" height="30px"
+                                            alt="Tidies icon" title="Tidies"/>
+                                    <p>Tidies</p>
+                                    <span>5</span>
+                                </li>
+                                <li>
+                                    <img src="img/beachIcons/viento-min.png" width="30px" height="30px"
+                                            alt="Wind icon" title="Wind speed"/>
+                                    <p>Wind Speed</p>
+                                    <span>5</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="beach-footer">
+                            <span></span>
+                            <p><b>comment /add fav</b></p>
+                            <span><i class="fas fa-heart"></i></span>
+
+                        </div>
+                    </div>
+                </div>
+                <!--TODO preguntar porque no respeta el 100%-->
+
+                <div class="beach-box" id="special-beach">
+                    <!--img on the background of the width-->
+                    <div class="santaCatalina">
+                        <span class="red-flag"><i class="fas fa-flag fa-2x"></i></span>
+                    </div>
+                    <div class="beach-info">
+                        <div class="beach-header">
+                            <h2>Santa Catalina</h2>
+                            <img class="star" src="img/stars/2star.png" width="30" height="30" title="Total Points" alt="points">
+                            
+                        </div>
+                        <div class="beach-points">
+                            <ul>
+                                <li>
+                                    <img src="img/beachIcons/WavesSecuency-min.png" width="30px" height="30px"
+                                        alt="wave sequence icon" title="wave sequence"/>
+                                    <p>Wave Sequence</p>
+                                    <span>1</span>
+                                </li>
+                                <li>
+                                    <img src="img/beachIcons/WavesforceBrazo-min.png" width="30px" height="30px"
+                                        alt="wave force icon" title="wave force"/>
+                                    <p>Wave Force</p>
+                                    <span>3</span>
+                                </li>
+                                <li>
+                                    <img src="img/beachIcons/WaveHeight-min.png" width="30px" height="30px"
+                                        alt="wave height icon" title="wave height"/>
+                                    <p>Wave Height</p>
+                                    <span>3</span>
+                                </li>
+                                <li>
+                                    <img src="img/beachIcons/Tides-min.png" width="30px" height="30px"
+                                        alt="Tidies icon" title="Tidies"/>
+                                    <p>Tidies</p>
+                                    <span>1</span>
+                                </li>
+                                <li>
+                                    <img src="img/beachIcons/viento-min.png" width="30px" height="30px"
+                                        alt="Wind icon" title="Wind speed"/>
+                                    <p>Wind Speed</p>
+                                    <span>1</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="beach-footer">
+                            <span></span>
+                            <p>comment /add fav </p>
+                            <span><i class="fas fa-heart"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+
     </main>
     <footer>
         <p>

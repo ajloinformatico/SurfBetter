@@ -25,6 +25,7 @@
     --color-yellow: #FFA62B;
     --color-blue-content: #3EFDF6;
     --color-back-beaches: #EFEDEC;
+    --color-background-beach-form: #6FE2DD;
 
 
      /*links transitions*/
@@ -511,17 +512,6 @@ ul li{
     align-content: center;
     align-items: center;
 }
-/*
-margin-top: 2em;
-display: flex;
-flex-direction: column;
-flex-wrap: wrap;
-align-content: space-around;
-align-items: baseline;
-*/
-
-
-/*vertical beaches*/
 
 /*
 first element and every fourth element. To select the beach that is horizontal
@@ -554,7 +544,7 @@ test selectors
 
 
 .beach-box>div:nth-child(2){
-    background-color: var(--color-blue-content);
+    background-color: var(--color-header);
 }
 
 /*Header of beach info
@@ -565,11 +555,9 @@ I could have called it with your class but I am testing selectors
     justify-content: space-between;
     align-items: baseline;
     background-color: var(--color-back-beaches);
+    padding-left: 2em; /*I adjust the title to the right*/
 }
-#special-beach>.beach-info>div:first-child>h2{
 
-    padding-left: 1em;
-}
 
 .beach-box>.beach-info>div:first-child>h2{
     font-family: var(--font-spacial);
@@ -619,6 +607,7 @@ I could have called it with your class but I am testing selectors
     bottom: -3px;
     /*argin-top: 1.5em;*/
     width: 100%;
+    color: white; /*todo ver si cambiar o no*/
 }
 .beach-box .beach-footer>span:last-child{
     margin-right: 2.7em;
@@ -738,19 +727,13 @@ I could have called it with your class but I am testing selectors
 .contact h2{
     font-family: var(--font-spacial);
 }
-
-
-/***************************************** Beaches Page ********************************************************/
-/*Beaches box from contact Contact*/
-/*form search from contact*/
-/* Search form | Mail form */
 .contact input{
     display: block;
     margin: 1em auto;
     text-align: center;
     padding: .5em;
     border: 10px solid;
-    border-color: var(--color-blue-content);
+    border-color: var(--color-background-beach-form);
 }
 
 .contact input::placeholder{
@@ -763,7 +746,7 @@ I could have called it with your class but I am testing selectors
     text-align: center;
     padding: .5em;
     border: 10px solid;
-    border-color: var(--color-blue-content);
+    border-color: var(--color-background-beach-form);
     color: black;
 }
 
@@ -771,7 +754,12 @@ I could have called it with your class but I am testing selectors
     margin-top: 1em;
     font-size: large;
 }
+/***************************************** Beaches Page ********************************************************/
+/*Beaches box from contact Contact*/
+/*form search from contact*/
+/* Search form | Mail form */
 
+/*TODO HACER BOTONES DE MODO CLARO Y MODO OSCURO*/
 
 
 
@@ -873,6 +861,8 @@ I could have called it with your class but I am testing selectors
         font-size: var(--size-common-table)
     }
 
+    
+
     main{
         width: 90%
     }
@@ -880,6 +870,18 @@ I could have called it with your class but I am testing selectors
     header>label{
         padding-top: 3em;
     }
+
+
+    /*Beach info padding*/
+    .beach-box>.beach-info>.beach-points{
+        padding-bottom: 2.5em;
+    }
+    /*Bech footer hart*/
+    .beach-footer>span>i{
+        font-size: 17pt;
+    }
+
+
 
     /*Profile*/
     .user-info{
@@ -890,6 +892,13 @@ I could have called it with your class but I am testing selectors
         font-size: var(--size-common-table);
         width: 100%;
     }
+
+    .contact button{
+        margin-top: 1em;
+        font-size: medium;
+    }
+
+
 
 }
 
@@ -907,6 +916,15 @@ I could have called it with your class but I am testing selectors
     .menu-mobile{
         display: block;
     }
+
+
+    /*Beach start*/
+    .beach-box>.beach-info>div:first-child>img{
+        width: 42px;
+        height: 42px;
+    }
+
+
 
     .infolojo figure{
         flex-flow: column;
@@ -947,6 +965,7 @@ I could have called it with your class but I am testing selectors
         flex-flow: column;
         align-items: center;
         padding-bottom: 1em;
+        padding-left: 0;
     }
     .menu-mobil ul li{
         margin: .5em;
@@ -967,6 +986,19 @@ I could have called it with your class but I am testing selectors
         height: 150px;
     }
 
+    /*Beach start*/
+    .beach-box>.beach-info>div:first-child>img{
+        width: 45px;
+        height: 45px;
+    }
+
+
+     /*Bech footer hart*/
+     .beach-footer>span>i{
+        font-size: 20pt;
+    }
+
+
     /*user photo at profile*/
     .user-info>figure>img{
         width: 213px;
@@ -982,4 +1014,12 @@ I could have called it with your class but I am testing selectors
         width: 90%;
         margin: 2em auto;
     }
+
+    .contact button{
+        margin-top: 1em;
+        font-size: small;
+    }
+
+
+
 }
