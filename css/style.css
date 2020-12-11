@@ -533,6 +533,17 @@ test selectors
 }
 
 
+/*horizontal beaches*/
+.beach-box{
+    margin-top: 5em;
+    margin-bottom: 4em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    align-items: baseline;
+}
+
 
 .special-beach>div{
     width: 500px; /*500/3 = 166 | 500-166 = 334*/
@@ -599,7 +610,6 @@ I could have called it with your class but I am testing selectors
 
 
 .beach-box .beach-footer{
-    /*TODO Preguntar porque se me va */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -607,7 +617,6 @@ I could have called it with your class but I am testing selectors
     align-content: flex-start;
     position: relative;
     bottom: -3px;
-    /*argin-top: 1.5em;*/
     width: 100%;
     color: white; /*todo ver si cambiar o no*/
 }
@@ -624,16 +633,6 @@ I could have called it with your class but I am testing selectors
     color: red;
 }
 
-/*horizontal beaches*/
-.beach-box{
-    margin-top: 5em;
-    margin-bottom: 4em;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: space-around;
-    align-items: baseline;
-}
 .beach-box>div{
     width: 500px; /*500/3 = 166 | 500-166 = 334*/
     height: 324px; /*324/3 = 108 | 324-108 = 216*/
@@ -757,11 +756,11 @@ I could have called it with your class but I am testing selectors
     font-size: large;
 }
 /***************************************** Beaches Page ********************************************************/
+/*T*/
 /*Beaches box from contact Contact*/
 /*form search from contact*/
 /* Search form | Mail form */
 
-/*TODO HACER BOTONES DE MODO CLARO Y MODO OSCURO*/
 
 
 
