@@ -56,9 +56,8 @@ function hiddeFooter(){
 }
 
 
+
 function changeToDark(){
-    debugger;
-    alert("Te voy a cambiar a oscuro");
     /*
     var cuerpo = document.getElementsByTagName('html');
     documnet.html.classList.toggle("darkmode");
