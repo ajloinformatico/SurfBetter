@@ -669,7 +669,7 @@ I could have called it with your class but I am testing selectors
     text-align: left;
     width: 50%;
     padding-left: 2em;
-    padding-right: -4em;
+    /*padding-right: -4em;*/
 }
 .infolojo figure>figcaption>a{
     display: block;
