@@ -5,10 +5,26 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
 .mySlides {
-  display:none
+  margin-top: -5;
+  display:none;
 }
-.w3-left, .w3-right, .w3-badge {cursor:pointer}
-.w3-badge {height:13px;width:13px;padding:0}
+
+/*Posición relatica para el texto con respecto al contenedor*/
+.mySlides p{
+  font-weight: bold;
+  font-size: large;
+  font-style: oblique;
+  position: relative;
+  top: 100px;
+  left: 30px;
+}
+
+.w3-left, .w3-right, .w3-badge {
+  cursor:pointer
+ }
+.w3-badge {
+  height:13px;width:13px;padding:0
+ }
 </style>
 <body>
 
@@ -18,9 +34,24 @@
 </div>
 
 <div class="w3-content w3-display-container" style="max-width:800px">
-  <img class="mySlides" src="img/slider/slider1.jpg" style="width:100%">
-  <img class="mySlides" src="img/slider/slider2.jpg" style="width:100%">
-  <img class="mySlides" src="img/slider/slider3.jpg" style="width:100%">
+  <!--Contenedores de cada imágen-->
+  <div class="mySlides">
+    <p>Una herramienta para el alma<br>
+      de cualquier surfero
+    </p>
+    <img src="img/slider/slider1.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <p>Encuentra las mejores olas<br>de nuestra bahía</p>
+    <img src="img/slider/slider2.jpg" style="width:100%">
+  </div>
+  
+  <div class="mySlides">
+    <p>Conoce, compite y conviertete<br>en el mejor surfista de tu zona</p>
+    <img src="img/slider/slider3.jpg" style="width:100%">
+  </div>
+
   <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
     <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
     <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
@@ -30,34 +61,9 @@
   </div>
 </div>
 
-<script>
-var slideIndex = 1;
-showDivs(slideIndex);
 
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function currentDiv(n) {
-  showDivs(slideIndex = n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" w3-white", "");
-  }
-  x[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " w3-white";
-}
-</script>
+<!--My scripts-->
+    <script type="text/javascript" src="js/scripts.js"></script>
 
 </body>
 </html> 

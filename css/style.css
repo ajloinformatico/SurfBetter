@@ -135,10 +135,11 @@ footer div>a{
 
 
 
-/*main loging*/
+/**********************************************************main loging*********************************************************/
 
 .logingmain{
     padding-top: 2.5em;
+    margin: 0 auto;
 }
 
 .logingmain>img{
@@ -197,6 +198,56 @@ footer div>a{
     margin-top: 0;
     padding-bottom: 1.5em; 
 }
+
+
+/********************************* Index sliders ****************************************/
+
+/*I use the section to format content*/
+
+.slide-bar{
+    margin-top: -5em;
+    margin-bottom: 2em;
+    width: 100%
+
+}
+.mySlides {
+  display:none;
+}
+
+/*Position relative respect to the container of each image*/
+.mySlides p{
+    font-family: var(--font-spacial);
+    font-weight: bold;
+    text-align: left;
+    font-size: xx-large;
+    font-style: oblique;
+    position: relative;
+    top: 130px;
+    left: 30px;
+}
+  
+/*trigers container*/
+.slide-bar>div:last-child{
+    margin-top: -.3em;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1em;
+    padding-right: 1em;
+    background-color: var(--color-blue-content);
+}
+
+/*triggers*/
+
+.slide-bar>div:last-child>a{
+    font-size: x-large;
+    cursor: pointer;
+}
+.slide-bar>div:last-child>a:hover{
+    color: white;
+}
+
+
+
 
 
 /**************************legal Notices*******************************/
@@ -838,6 +889,12 @@ I could have called it with your class but I am testing selectors
         width: 50%;
     }
 
+    /*slider font-size*/
+    .mySlides p{
+        top: 90px;
+        font-size: large;
+    }
+
 
     /*beaches*/
     /*BEACHES*/
@@ -890,6 +947,11 @@ I could have called it with your class but I am testing selectors
 
     header>label{
         padding-top: 3em;
+    }
+
+    /*slider font-size*/
+    .mySlides p{
+        font-size: medium;
     }
 
 
@@ -945,7 +1007,15 @@ I could have called it with your class but I am testing selectors
         height: 42px;
     }
 
+    /**********Change slider font-size*******************/
+    .mySlides p{
+        top: 70px;
+        font-size: small;
+    }
 
+    .slide-bar>div:last-child{
+        font-size: medium;
+    }
 
     .infolojo figure{
         flex-flow: column;
@@ -1006,6 +1076,15 @@ I could have called it with your class but I am testing selectors
         width: 220px;  /*o 300*/
         height: 150px;
     }
+
+
+    /*Slider dont-size*/
+    .mySlides p{
+        left: 5px;
+        
+    }
+
+
 
     /*Beach start*/
     .beach-box>.beach-info>div:first-child>img{

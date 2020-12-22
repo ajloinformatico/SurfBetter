@@ -71,6 +71,7 @@ function changeToDark(){
 }
 
 
+
 var showHidden = 0;
 function showHiddeMenu(){
     const menuDesktop = document.getElementById('menu-mobile');
@@ -87,4 +88,31 @@ function showHiddeMenu(){
             console.log(showHiddeMenu)
         }
     console.log(showHidden);
+}
+
+/*slideBar*/
+
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  
+  x[slideIndex-1].style.display = "block";  
+ 
 }

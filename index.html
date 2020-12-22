@@ -6,8 +6,9 @@
     <meta title="Surf Better login">
     <meta name="keyboard" content="Surf Better, Cádiz, Playas, Beaches, app">
     <meta name="author" content="Antonio José Lojo Ojeda">
+    
     <link href="css/style.css" rel="stylesheet" type="text/css">      
-    <script type="text/javascript" src="js/scripts.js"></script>
+    <!--css w3-->
     <title>Surf Better</title>
 </head>
 <body>
@@ -23,7 +24,40 @@
     </header>
 
     <main class="logingmain">
-        <img src="img/SurfBetter.png" alt="logo SurfBetter" title="logo surfbetter" width="400" height="300" />
+
+         <!-------------------------slidebar----------------------->
+         <div class="slide-bar">
+            
+            <!--Contenedores de cada imágen-->
+            <div class="mySlides">
+                <p>Una herramienta para el alma<br>
+                    de cualquier surfero
+                </p>
+                <img src="img/slider/slider1.jpg" style="width:100%">
+            </div>
+            
+            <div class="mySlides">
+                <p>Encuentra las mejores olas<br>de nuestra bahía</p>
+                <img src="img/slider/slider2.jpg" style="width:100%">
+            </div>
+                
+            <div class="mySlides">
+                <p>Conoce, compite y conviertete<br>en el mejor surfista de tu zona</p>
+                <img src="img/slider/slider3.jpg" style="width:100%">
+            </div>
+            
+            <div class="slider-buttons">
+                    <a style="color: black" onclick="plusDivs(-1)">&#10094;</a>
+                    <a style="color: black" onclick="plusDivs(1)">&#10095;</a>
+            </div>
+        </div>
+        
+
+        <!--logo
+        <img src="img/SurfBetter.png" alt="logo SurfBetter" title="logo surfbetter" width="200"/>
+
+
+        <!--App explain container-->
         <div class="content-main">
             <h2>Tired of not having a chance to enjoy your favorite sport?</h2>
             <p>
@@ -109,16 +143,16 @@
 
         
     </main>
-    <footer class="footerFixed"><!--Todo los footer son iguales-->
+    <footer>
         <p>
             At Surf-Better we use cookies and sessions to make your experience and browsing much better.
             If you agree with its use, click okey
         </p>
-        <div><!-- I use this container to format the block formatted links-->
-            <a class='button_yellow' href="javascript:hiddeFooter()" title="I accept all the terms" alt="Acepto los término de privacidad">I agree !</a>
-            <a class='button_yellow' href="javascript:openSecondWindow('legalnotices.html', 'Legal Notices', 'legalNoticesDesk');" title="Legal notices cookies sessions" alt="Legal notices cookies sessions">Show more</a>
-        </div>
+        <a class='button_yellow' href="javascript:hiddeFooter()" title="I accept all the terms" alt="Acepto los término de privacidad">I agree !</a>
+        <a class='button_yellow' href="javascript:openSecondWindow('legalnotices.html', 'Legal Notices', 'legalNoticesDesk');" title="Legal notices cookies sessions" alt="Legal notices cookies sessions">Show more</a>
     </footer>
+    <!--My scripts-->
+    <script type="text/javascript" src="js/scripts.js"></script>
     <!--Script font awesome-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
 </body>
