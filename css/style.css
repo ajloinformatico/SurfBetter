@@ -203,7 +203,6 @@ footer div>a{
 /********************************* Index sliders ****************************************/
 
 /*I use the section to format content*/
-
 .slide-bar{
     margin-top: -5em;
     margin-bottom: 2em;
@@ -237,7 +236,6 @@ footer div>a{
 }
 
 /*triggers*/
-
 .slide-bar>div:last-child>a{
     font-size: x-large;
     cursor: pointer;
@@ -245,10 +243,6 @@ footer div>a{
 .slide-bar>div:last-child>a:hover{
     color: white;
 }
-
-
-
-
 
 /**************************legal Notices*******************************/
 /*H1 de legalnotices*/
@@ -939,8 +933,6 @@ I could have called it with your class but I am testing selectors
         font-size: var(--size-common-table)
     }
 
-    
-
     main{
         width: 90%
     }
@@ -1050,7 +1042,6 @@ I could have called it with your class but I am testing selectors
 /*Smartphone*/
 @media screen and (max-width: 480px) {
 
-
     /*mobile menu*/
     .menu-mobile ul{
         flex-flow: column;
@@ -1061,7 +1052,6 @@ I could have called it with your class but I am testing selectors
     .menu-mobil ul li{
         margin: .5em;
     }
-
 
     /*For footer on loging*/
     header>label{
@@ -1077,8 +1067,7 @@ I could have called it with your class but I am testing selectors
         height: 150px;
     }
 
-
-    /*Slider dont-size*/
+    /*Slider font-size*/
     .mySlides p{
         left: 5px;
         
