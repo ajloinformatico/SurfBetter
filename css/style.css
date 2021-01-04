@@ -91,7 +91,7 @@ header>label>a:hover{
 
 main{
     margin-top: 1em;
-    width: 80%; /*TODO Ver si lo cambio por 90*/
+    width: 80%; /*on mediaQuerys to 90*/
     display: inline-block;/*Centra el contenido*/ /*TODO check if a should change it to margin-left margin-right*/
     
 }
@@ -804,6 +804,39 @@ I could have called it with your class but I am testing selectors
     margin-top: 1em;
     font-size: large;
 }
+
+
+
+/*****************************************OPTIONS**************************************************************/
+/*Use flex wrap space-betwwn for ALL */
+.options{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+}
+/* split content in half*/
+.options>div{
+    width: 50%;
+}
+
+.options h2{
+    font-family: var(--font-spacial);
+}
+/*margin to inputs*/
+.options input{
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+/*checkboxes */
+/*I suppress the edges*/
+.languaje-noti fieldset{
+    border: 0;
+}
+
+
+
 /***************************************** Beaches Page ********************************************************/
 /*T*/
 /*Beaches box from contact Contact*/
@@ -1032,6 +1065,13 @@ I could have called it with your class but I am testing selectors
         flex-flow: column;
         width: 250px;
         margin: 0 auto;
+    }
+
+
+    /************************** OPTIONS **************************/
+    /*When burger menu is ready options skip split of options forms*/
+    .options>div{
+        width: 100%;
     }
 
 }

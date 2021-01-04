@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta title="Surf Better Options">
+    <meta name="keyboard" content="Surf Better, Cádiz, Playas, Beaches, app">
+    <meta name="author" content="Antonio José Lojo Ojeda">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <title>Surf Better Options</title>
+</head>
+<body>
+    <header>
+        <img src="img/logoSurfBetterHeader.png" alt="surfbetter logo" title="surf better logo" width="330" height="120"/></li>
+        <ul class="nav-desk">
+            <li><a href="contact.html" title="go to Contact" alt="link to contact">Contact</a></li>
+            <li><a href="options.html" title="go to Options" alt="link to loging">Options</a></li>
+            <li><a href="beaches.html" title="go to Beaches" alt="link to beaches">Beaches</a></li>
+            <li><a href="profile.html" title="go to Profile" alt="link to profile">Profile</a></li>
+            <li><a onclick=" return changeToDark();" title="Dark Mode buttom"><i class="fas fa-moon fa-2x"></i></a></li>
+            <li><a id="exitButonHeader" href="index.html" title="Exit app" alt="link to loging"><i class="fas fa-door-open fa-2x"></i></a></li>
+        </ul>
+        <!--Trigger burger menu-->
+        <label><!--because the style is already done -->
+            <a class="trigger-mobile" href="javascript:showHiddeMenu()" title="Open menu" ><i class="fas fa-bars fa-2x"></i></a>
+        </label>
+    </header>
+    <nav id="menu-mobile" class="menu-empty">
+        <ul>
+            <li><a href="contact.html" title="go to Contact" alt="link to contact">Contact</a></li>
+            <li><a href="options.html" title="go to Options" alt="link to loging">Options</a></li>
+            <li><a href="beaches.html" title="go to Beaches" alt="link to beaches">Beaches</a></li>
+            <li><a href="profile.html" title="go to Profile" alt="link to profile">Profile</a></li>
+            <li><a onclick=" return changeToDark();" title="Dark Mode buttom"><i class="fas fa-moon fa-2x"></i></a></li>
+            <li><a id="exitButonHeader" href="index.html" title="Exit app" alt="link to loging"><i class="fas fa-door-open fa-2x"></i></a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="options">
+            
+            <div class="user-up-info">
+                <h2>User Update info</h2>
+                <form class="contact"><!--Reuse contact class style-->
+                    <input type="name" name="name" id="name" placeholder="Name" minlength="12" size="65" title="please input your new name">
+                    <textarea id="user-desc" name="user-desc"  rows="10" cols="54" style="resize: none" required>User Description
+                    </textarea>
+                    <button type="submit" value="enviar" class="button_yellow">Update</button>
+                </form>
+            </div>
+
+            <div class="languaje-noti">
+                <form>
+                    <fieldset title="choose a languaje">
+                        <!--I know it is advisable to use legend with fieldset but since they are really titles and it will make my work easier I use headings-->
+                        <h2>Languaje</h2>
+                        <!--
+                        <label for="english">English</label>
+                        <input type="checkbox" name="english" id="english" title="switch to english" checked>
+                        <label for="spanish">Spanish</label>
+                        <input type="checkbox" name="spanish" title="switch to spanish" id="spanish">
+                        -->
+                        <label for="english">English: </label>
+                        <input type="radio" name="lang" id="english" value="english" checked>
+                        <br>
+                        <label for="spanish">Spanish: </label>
+                        <input type="radio" name="lang" id="spanish" value="spanish"> 
+                    </fieldset>
+                    <fieldset>
+                        <h2>Notifications</h2>
+                        <label for="notifications">Send me please</label>
+                        <input type="checkbox" name="notifications" id="notifications" title="send me notifications">
+                    </fieldset>
+                </form>
+            </div>
+
+        </section>
+
+        <section class="option-images">
+            <h2>Some of our fantastic beaches <i class="fas fa-fire"></i></h2>
+            <!--responsive images tag-->
+            <!--CALA DE LOS ALEMANES-->
+            <picture title="Cala de los Alemanes">
+                <!--For each size you must place a source-->
+                <!--4 brecaouse i have 4 breakpoints-->
+                <!--break points must be from mobile to desk-->
+                <!--phone-->
+                <source
+                    srcset="img/playas/cala-de-los-alemanes-cadiz.jpg 1.4x" media="(max-width: 480px)"
+                />
+                <!--tablet-->
+                <source
+                    srcset="img/playas/cala-de-los-alemanes-cadiz.jpg 1.5x" media="(max-width: 880px)"
+                />
+                <!--small desktop big tablet-->
+                <source
+                    srcset="img/playas/cala-de-los-alemanes-cadiz.jpg 2x" media="(max-width: 1025px)"
+                />
+                <!--normal desktop-->
+                <source
+                    srcset="img/playas/cala-de-los-alemanes-cadiz.jpg 2x" media="(max-width: 1250px)"
+                />
+                <!--big desktop-->
+                <source
+                    srcset="img/playas/cala-de-los-alemanes-cadiz.jpg 1.2x" media="(min-width: 1250px)"
+                />
+                <!--old tag always!!! left to ensure compatibility -->
+                <!--also if it isn't, it doesn't work !!! -->
+                <img src="img/playas/cala-de-los-alemanes-cadiz.jpg" alt="cala de los alemanes"/>
+            </picture>
+            <!--LA CALITA-->
+            <picture title="La Calita">
+                <source
+                    srcset="img/playas/laCalita.jpg 1.4x" media="(max-width: 480px)"
+                />
+                <source
+                    srcset="img/playas/laCalita.jpg 1.5x" media="(max-width: 880px)"
+                />
+                <source
+                    srcset="img/playas/laCalita.jpg 2x" media="(max-width: 1025px)"
+                />
+                <source
+                    srcset="img/playas/laCalita.jpg 2x" media="(max-width: 1250px)"
+                />
+                <source
+                    srcset="img/playas/laCalita.jpg 1.2x" media="(min-width: 1250px)"
+                />
+                <img src="img/playas/laCalita.jpg" alt="La calita"/>
+            </picture>
+            <!--LAS REDEAS-->
+            <picture title="Las Redes">
+                <source
+                    srcset="img/playas/lasRedes.jpg 1.4x" media="(max-width: 480px)"
+                />
+                <source
+                    srcset="img/playas/lasRedes.jpg 1.5x" media="(max-width: 880px)"
+                />
+                <source
+                    srcset="img/playas/lasRedes.jpg 2x" media="(max-width: 1025px)"
+                />
+                <source
+                    srcset="img/playas/lasRedes.jpg 2x" media="(max-width: 1250px)"
+                />
+                <source
+                    srcset="img/playas/lasRedes.jpg 1.2x" media="(min-width: 1250px)"
+                />
+                <img src="img/playas/lasRedes.jpg" alt="Las redes"/>
+
+            </picture>
+            <!--PLAYA DE LAS TRES PIEDRAS-->
+            <picture title="Las tres piedras">
+                <source
+                    srcset="img/playas/Playade-Tres-Piedras.jpg 1.4x" media="(max-width: 480px)"
+                />
+                <source
+                    srcset="img/playas/Playade-Tres-Piedras.jpg 1.5x" media="(max-width: 880px)"
+                />
+                <source
+                    srcset="img/playas/Playade-Tres-Piedras.jpg 2x" media="(max-width: 1025px)"
+                />
+                <source
+                    srcset="img/playas/Playade-Tres-Piedras.jpg 2x" media="(max-width: 1250px)"
+                />
+                <source
+                    srcset="img/playas/Playade-Tres-Piedras.jpg 1.2x" media="(min-width: 1250px)"
+                />
+                <img src="img/playas/Playade-Tres-Piedras.jpg" alt="playa de las tres piedras"/>
+            </picture>
+            <!--SANTA CATALINA-->
+            <picture title="Santa Catalina">
+                <source
+                    srcset="img/playas/Santa_Cata_Lina.jpg 1.4x" media="(max-width: 480px)"
+                />
+                <source
+                    srcset="img/playas/Santa_Cata_Lina.jpg 1.5x" media="(max-width: 880px)"
+                />
+                <source
+                    srcset="img/playas/Santa_Cata_Lina.jpg 2x" media="(max-width: 1025px)"
+                />
+                <source
+                    srcset="img/playas/Santa_Cata_Lina.jpg 2x" media="(max-width: 1250px)"
+                />
+                <source
+                    srcset="img/playas/Santa_Cata_Lina.jpg 1.2x" media="(min-width: 1250px)"
+                />
+                <img src="img/playas/Santa_Cata_Lina.jpg" alt="playa de santa catalina"/>
+            </picture>
+            <!--VALDEVAQUEROS-->
+            <picture title="Valdevaqueros">
+                <source
+                    srcset="img/playas/valdevaqueros.jpg 1.4x" media="(max-width: 480px)"
+                />
+                <source
+                    srcset="img/playas/valdevaqueros.jpg 1.5x" media="(max-width: 880px)"
+                />
+                <source
+                    srcset="img/playas/valdevaqueros.jpg 2x" media="(max-width: 1025px)"
+                />
+                <source
+                    srcset="img/playas/valdevaqueros.jpg 2x" media="(max-width: 1250px)"
+                />
+                <source
+                    srcset="img/playas/valdevaqueros.jpg 1.2x" media="(min-width: 1250px)"
+                />
+                <img src="img/playas/valdevaqueros.jpg" alt="playa de valdevaqueros"/>
+            </picture>
+
+        </section>
+    </main>
+    <footer>
+        <p>
+            At Surf-Better we use cookies and sessions to make your experience and browsing much better.
+            If you agree with its use, click okey
+        </p>
+        <a class='button_yellow' href="javascript:hiddeFooter()" title="I accept all the terms" alt="Acepto los término de privacidad">I agree !</a>
+        <a class='button_yellow' href="javascript:openSecondWindow('legalnotices.html', 'Legal Notices', 'legalNoticesDesk');" title="Legal notices cookies sessions" alt="Legal notices cookies sessions">Show more</a>
+    </footer>
+    <!--My scripts-->
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <!--Script font awesome-->
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" data-auto-replace-svg="nest"></script>
+</body>
+</html>
