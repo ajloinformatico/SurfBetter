@@ -32,8 +32,9 @@
     /*menu*/
     --mouse-is-over-menu: linear 0.2s;
     --mouse-is-hover-menu:color  0.2s linear 0.2s;
+    /*1 TIME TRANSITION 2 DELEAY*/
 
-    /*elementos normales*/
+    /*normal elements*/
     --mouse-is-over-normal: linear 0.1s;
     --mouse-is-hover-mormal:color  0.1s linear 0.1s;
     
@@ -65,6 +66,10 @@ header{
     height: 100px;
     background-color: var(--color-header);
     overflow: hidden;
+}
+
+h1{
+    font-family: var(--font-spacial);
 }
 
 header>img{
@@ -813,7 +818,7 @@ I could have called it with your class but I am testing selectors
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
 }
 /* split content in half*/
 .options>div{

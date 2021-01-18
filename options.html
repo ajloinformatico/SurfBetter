@@ -17,6 +17,7 @@
             <li><a href="options.html" title="go to Options" alt="link to loging">Options</a></li>
             <li><a href="beaches.html" title="go to Beaches" alt="link to beaches">Beaches</a></li>
             <li><a href="profile.html" title="go to Profile" alt="link to profile">Profile</a></li>
+            <li><a href="resources.html" title="go to resources" alt="link to resources">Resources</a></li>
             <li><a onclick=" return changeToDark();" title="Dark Mode buttom"><i class="fas fa-moon fa-2x"></i></a></li>
             <li><a id="exitButonHeader" href="index.html" title="Exit app" alt="link to loging"><i class="fas fa-door-open fa-2x"></i></a></li>
         </ul>
@@ -31,6 +32,7 @@
             <li><a href="options.html" title="go to Options" alt="link to loging">Options</a></li>
             <li><a href="beaches.html" title="go to Beaches" alt="link to beaches">Beaches</a></li>
             <li><a href="profile.html" title="go to Profile" alt="link to profile">Profile</a></li>
+            <li><a href="resources.html" title="go to resources" alt="link to resources">Resources</a></li>
             <li><a onclick=" return changeToDark();" title="Dark Mode buttom"><i class="fas fa-moon fa-2x"></i></a></li>
             <li><a id="exitButonHeader" href="index.html" title="Exit app" alt="link to loging"><i class="fas fa-door-open fa-2x"></i></a></li>
         </ul>
@@ -76,138 +78,9 @@
 
         </section>
 
-        <section class="option-images">
-            <h2>Some of our fantastic beaches <i class="fas fa-fire"></i></h2>
-            <!--responsive images tag-->
-            <!--CALA DE LOS ALEMANES-->
-            <picture title="Cala de los Alemanes">
-                <!--For each size you must place a source-->
-                <!--4 brecaouse i have 4 breakpoints-->
-                <!--break points must be from mobile to desk-->
-                <!--phone-->
-                <source
-                    srcset="img/playas/cala-de-los-alemanes-cadiz.jpg 1.4x" media="(max-width: 480px)"
-                />
-                <!--tablet-->
-                <source
-                    srcset="img/playas/cala-de-los-alemanes-cadiz.jpg 1.5x" media="(max-width: 880px)"
-                />
-                <!--small desktop big tablet-->
-                <source
-                    srcset="img/playas/cala-de-los-alemanes-cadiz.jpg 2x" media="(max-width: 1025px)"
-                />
-                <!--normal desktop-->
-                <source
-                    srcset="img/playas/cala-de-los-alemanes-cadiz.jpg 2x" media="(max-width: 1250px)"
-                />
-                <!--big desktop-->
-                <source
-                    srcset="img/playas/cala-de-los-alemanes-cadiz.jpg 1.2x" media="(min-width: 1250px)"
-                />
-                <!--old tag always!!! left to ensure compatibility -->
-                <!--also if it isn't, it doesn't work !!! -->
-                <img src="img/playas/cala-de-los-alemanes-cadiz.jpg" alt="cala de los alemanes"/>
-            </picture>
-            <!--LA CALITA-->
-            <picture title="La Calita">
-                <source
-                    srcset="img/playas/laCalita.jpg 1.4x" media="(max-width: 480px)"
-                />
-                <source
-                    srcset="img/playas/laCalita.jpg 1.5x" media="(max-width: 880px)"
-                />
-                <source
-                    srcset="img/playas/laCalita.jpg 2x" media="(max-width: 1025px)"
-                />
-                <source
-                    srcset="img/playas/laCalita.jpg 2x" media="(max-width: 1250px)"
-                />
-                <source
-                    srcset="img/playas/laCalita.jpg 1.2x" media="(min-width: 1250px)"
-                />
-                <img src="img/playas/laCalita.jpg" alt="La calita"/>
-            </picture>
-            <!--LAS REDEAS-->
-            <picture title="Las Redes">
-                <source
-                    srcset="img/playas/lasRedes.jpg 1.4x" media="(max-width: 480px)"
-                />
-                <source
-                    srcset="img/playas/lasRedes.jpg 1.5x" media="(max-width: 880px)"
-                />
-                <source
-                    srcset="img/playas/lasRedes.jpg 2x" media="(max-width: 1025px)"
-                />
-                <source
-                    srcset="img/playas/lasRedes.jpg 2x" media="(max-width: 1250px)"
-                />
-                <source
-                    srcset="img/playas/lasRedes.jpg 1.2x" media="(min-width: 1250px)"
-                />
-                <img src="img/playas/lasRedes.jpg" alt="Las redes"/>
-
-            </picture>
-            <!--PLAYA DE LAS TRES PIEDRAS-->
-            <picture title="Las tres piedras">
-                <source
-                    srcset="img/playas/Playade-Tres-Piedras.jpg 1.4x" media="(max-width: 480px)"
-                />
-                <source
-                    srcset="img/playas/Playade-Tres-Piedras.jpg 1.5x" media="(max-width: 880px)"
-                />
-                <source
-                    srcset="img/playas/Playade-Tres-Piedras.jpg 2x" media="(max-width: 1025px)"
-                />
-                <source
-                    srcset="img/playas/Playade-Tres-Piedras.jpg 2x" media="(max-width: 1250px)"
-                />
-                <source
-                    srcset="img/playas/Playade-Tres-Piedras.jpg 1.2x" media="(min-width: 1250px)"
-                />
-                <img src="img/playas/Playade-Tres-Piedras.jpg" alt="playa de las tres piedras"/>
-            </picture>
-            <!--SANTA CATALINA-->
-            <picture title="Santa Catalina">
-                <source
-                    srcset="img/playas/Santa_Cata_Lina.jpg 1.4x" media="(max-width: 480px)"
-                />
-                <source
-                    srcset="img/playas/Santa_Cata_Lina.jpg 1.5x" media="(max-width: 880px)"
-                />
-                <source
-                    srcset="img/playas/Santa_Cata_Lina.jpg 2x" media="(max-width: 1025px)"
-                />
-                <source
-                    srcset="img/playas/Santa_Cata_Lina.jpg 2x" media="(max-width: 1250px)"
-                />
-                <source
-                    srcset="img/playas/Santa_Cata_Lina.jpg 1.2x" media="(min-width: 1250px)"
-                />
-                <img src="img/playas/Santa_Cata_Lina.jpg" alt="playa de santa catalina"/>
-            </picture>
-            <!--VALDEVAQUEROS-->
-            <picture title="Valdevaqueros">
-                <source
-                    srcset="img/playas/valdevaqueros.jpg 1.4x" media="(max-width: 480px)"
-                />
-                <source
-                    srcset="img/playas/valdevaqueros.jpg 1.5x" media="(max-width: 880px)"
-                />
-                <source
-                    srcset="img/playas/valdevaqueros.jpg 2x" media="(max-width: 1025px)"
-                />
-                <source
-                    srcset="img/playas/valdevaqueros.jpg 2x" media="(max-width: 1250px)"
-                />
-                <source
-                    srcset="img/playas/valdevaqueros.jpg 1.2x" media="(min-width: 1250px)"
-                />
-                <img src="img/playas/valdevaqueros.jpg" alt="playa de valdevaqueros"/>
-            </picture>
-
-        </section>
+       
     </main>
-    <footer>
+    <footer  class="footerFixed">
         <p>
             At Surf-Better we use cookies and sessions to make your experience and browsing much better.
             If you agree with its use, click okey
