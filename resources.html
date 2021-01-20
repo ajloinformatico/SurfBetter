@@ -169,7 +169,52 @@
                 />
                 <img src="img/playas/valdevaqueros.jpg" alt="playa de valdevaqueros"/>
             </picture>
-
+        </section>
+        <section class="videos">
+            <!--Videos from Evgenia Kirpichnikova en Pexels-->
+            <h2>Videos</h2>
+            <h3>Here you will wacth our best videos <i class="far fa-file-video"></i></h3>
+            <!-- I indicate the width and height that the video hides on the screen-->
+            <!--controls to show controls on video-->
+            <!--mdeiagroup to set group of video-->
+            <video class="video1" width="640" height="480" controls mediagroup="surfbetter">
+                <source src="videos/video1/video1.mp4" type="video/mp4" /><!--MP4-->
+                <source src="videos/video1/video1.webm" type="video/webm" /><!--WEBM-->
+                <source src="videos/video1/video1.hevc.mp4" type="video/hvec" /><!--HVCE-->
+                <source src="videos/video1/video1.avi" type="video/avi" /><!--AVI-->
+                <img alt="Video not suported" src="videos/video1/video1.jpg" /><!--An image is included in case the video does not load-->
+            </video>
+            
+            <video class="video2" width="640" height="480" controls mediagroup="surfbetter">
+                <source src="videos/video2/video2.mp4" type="video/mp4" /><!--MP4-->
+                <source src="videos/video2/video2.webm" type="video/webm" /><!--WEBM-->
+                <source src="videos/video2/video2.hevc.mp4" type="video/hvec" /><!--HVCE-->
+                <source src="videos/video2/video2.avi" type="video/avi" /><!--AVI-->
+                <!--<img alt="Video not suported" src="videos/video2/video2.jpg" />--><!--An image is included in case the video does not load-->
+                <!---->
+            </video>
+            <video class="video3" width="640" height="480" controls mediagroup="surfbetter">
+                <source src="videos/video3/video3.mp4" type="video/mp4" /><!--MP4-->
+                <source src="videos/video3/video3.webm" type="video/webm" /><!--WEBM-->
+                <source src="videos/video3/video3.hevc.mp4" type="video/hvce" /><!--HVCE-->
+                <source src="videos/video3/video3.avi" type="video/avi" /><!--AVI-->
+                <img alt="Video not suported" src="videos/video3/video3.jpg" /><!--An image is included in case the video does not load-->
+                <!---->
+            </video>
+          
+        </section>
+        <section class="audio">
+            <!--https://www.youtube.com/watch?v=I8_b6YNiyp4-->
+            <h2>Sounds</h2>
+            <h3>Here you will listen our best tracks <i class="fas fa-headphones-alt"></i></h3>
+            <!--Preload none -- so that it does not start alone -->
+            <!--expands compatibility. Try cascading one-->
+            <audio preload="none" controls>
+                <source src="sound/Surf.mp3" /><!--mp3-->
+                <source src="sound/Surf.ogg" /><!--OGG-->
+                <source src="sound/Surf.aac" /><!--ACC-->
+                <source src="sound/Surf.opus"/><!--OPUS-->
+            </audio>
         </section>
     </main>
     <footer>
