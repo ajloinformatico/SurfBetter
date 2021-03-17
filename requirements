@@ -1,0 +1,12 @@
+Back: 
+
+python3
+flask
+flask_restful
+flask_cors
+
+Front:
+sudo npx create-react-app .
+app.js -> app.jsx
+
+ls
