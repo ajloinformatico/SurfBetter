@@ -7,6 +7,8 @@ flask_cors
 
 Front:
 sudo npx create-react-app .
-app.js -> app.jsx
+app.js -> app.jsx and clean project
 
-ls
+api -> beaches
+https://es.magicseaweed.com/developer/forecast-api
+
