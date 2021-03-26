@@ -4,6 +4,8 @@ python3
 flask
 flask_restful
 flask_cors
+https://flask-sqlalchemy.palletsprojects.com/en/2.x/ -> module to work with orm sql
+
 
 Front:
 sudo npx create-react-app .
@@ -11,4 +13,14 @@ app.js -> app.jsx and clean project
 
 api -> beaches
 https://es.magicseaweed.com/developer/forecast-api
+waiting for mail
+
+
+
+Commands:
+Run flask server
+python3 -m flask run
+
+
+
 
