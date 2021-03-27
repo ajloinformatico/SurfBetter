@@ -2507,7 +2507,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bX/uhCb863E="
 							},
-							"name": "id"
+							"name": "id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2515,7 +2516,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bX/uhCb863E="
 							},
-							"name": "name"
+							"name": "name",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2523,7 +2525,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bX/uhCb863E="
 							},
-							"name": "surname"
+							"name": "surname",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2531,7 +2534,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bX/uhCb863E="
 							},
-							"name": "nick"
+							"name": "nick",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2539,7 +2543,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bX/uhCb863E="
 							},
-							"name": "email"
+							"name": "email",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2547,7 +2552,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bX/uhCb863E="
 							},
-							"name": "password"
+							"name": "password",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2555,7 +2561,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bX/uhCb863E="
 							},
-							"name": "descripction"
+							"name": "descripction",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2563,7 +2570,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bX/uhCb863E="
 							},
-							"name": "avatar"
+							"name": "avatar",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2571,7 +2579,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bX/uhCb863E="
 							},
-							"name": "created_at"
+							"name": "created_at",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2579,7 +2588,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bX/uhCb863E="
 							},
-							"name": "deleted_at"
+							"name": "deleted_at",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2587,7 +2597,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bX/uhCb863E="
 							},
-							"name": "token"
+							"name": "token",
+							"type": ""
 						}
 					]
 				},
@@ -2605,7 +2616,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYHW4ycoHrQ="
 							},
-							"name": "id"
+							"name": "id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2613,7 +2625,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYHW4ycoHrQ="
 							},
-							"name": "name"
+							"name": "name",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2621,7 +2634,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYHW4ycoHrQ="
 							},
-							"name": "flag"
+							"name": "flag",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2629,7 +2643,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYHW4ycoHrQ="
 							},
-							"name": "wave_sequence"
+							"name": "wave_sequence",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2637,7 +2652,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYHW4ycoHrQ="
 							},
-							"name": "wave_height"
+							"name": "wave_height",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2645,7 +2661,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYHW4ycoHrQ="
 							},
-							"name": "tidies"
+							"name": "tidies",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2653,7 +2670,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYHW4ycoHrQ="
 							},
-							"name": "weend_speed"
+							"name": "weend_speed",
+							"type": ""
 						}
 					]
 				},
@@ -2731,7 +2749,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYP9vidWnLM="
 							},
-							"name": "id"
+							"name": "id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2739,7 +2758,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYP9vidWnLM="
 							},
-							"name": "user_id"
+							"name": "user_id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2747,7 +2767,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYP9vidWnLM="
 							},
-							"name": "beach_id"
+							"name": "beach_id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2755,7 +2776,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYP9vidWnLM="
 							},
-							"name": "created_at"
+							"name": "created_at",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2763,7 +2785,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYP9vidWnLM="
 							},
-							"name": "updated_at"
+							"name": "updated_at",
+							"type": ""
 						}
 					]
 				},
@@ -2841,7 +2864,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYpkzyvpA5w="
 							},
-							"name": "id"
+							"name": "id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2849,7 +2873,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYpkzyvpA5w="
 							},
-							"name": "user_id"
+							"name": "user_id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2857,7 +2882,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYpkzyvpA5w="
 							},
-							"name": "beach_id"
+							"name": "beach_id",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2865,7 +2891,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYpkzyvpA5w="
 							},
-							"name": "comment"
+							"name": "comment",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2873,7 +2900,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYpkzyvpA5w="
 							},
-							"name": "created_at"
+							"name": "created_at",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2881,7 +2909,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF4bYpkzyvpA5w="
 							},
-							"name": "updated_at"
+							"name": "updated_at",
+							"type": ""
 						}
 					]
 				}

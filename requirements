@@ -5,11 +5,10 @@ flask
 flask_restful
 flask_cors
 https://flask-sqlalchemy.palletsprojects.com/en/2.x/ -> module to work with orm sql
+pip install Bcrypt-Flask --> to password
 
 
-Front:
-sudo npx create-react-app .
-app.js -> app.jsx and clean project
+
 
 api -> beaches
 https://es.magicseaweed.com/developer/forecast-api
@@ -20,6 +19,21 @@ waiting for mail
 Commands:
 Run flask server
 python3 -m flask run
+
+
+
+Librerías a ver
+Pandahttps://hackersandslackers.com/plotly-dash-with-flask/
+
+
+
+
+Front:
+sudo npx create-react-app .
+app.js -> app.jsx and clean project
+
+Post css ->  npm install node-sass --save
+react-route-dom -> npm install react-router-dom
 
 
 
