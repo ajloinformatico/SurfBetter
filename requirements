@@ -32,9 +32,13 @@ Front:
 sudo npx create-react-app .
 app.js -> app.jsx and clean project
 
+
+Modules:
 Post css ->  npm install node-sass --save
 react-route-dom -> npm install react-router-dom
-
+Font awesome:
+	-> npm install --save @fortawesome/fontawesome-free
+		https://www.youtube.com/watch?v=7e2-kBvD89Y continuer por aquí
 
 
 

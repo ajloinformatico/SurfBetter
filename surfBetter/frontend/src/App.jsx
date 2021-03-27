@@ -1,19 +1,21 @@
 import './css/style.scss';
+// Font awesome
 // routes import
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
 } from "react-router-dom";
 
 import LoginRegister from './componnets/LoginRegister.jsx'
 import Profile from './componnets/Profile.jsx'
 import Beaches from './componnets/Beaches.jsx'
-import Option from './componnets/Options.jsx'
+import Options from './componnets/Options.jsx'
 import Contact from './componnets/Contact.jsx'
 import Resources from './componnets/Resources.jsx'
 import LegalNotices from './componnets/LegalNotices.jsx'
+import HeaderMenu from "./componnets/HeaderMenu.jsx";
+import React from "react";
 
 
 function App() {
@@ -24,23 +26,36 @@ function App() {
                   /*App routes*/
                   /*Exact is not necessary but I use it just in case it fails*/
               }
-              <Router path="/" exact>
+              <Route path="/" exact>
+                  <HeaderMenu/>
                   <Beaches/>
-              </Router>
-              <Route path="/login" exact>
-                  <LoginRegister/>
               </Route>
+              <Route path="/beaches" exact>
+                  <HeaderMenu/>
+                  <Beaches/>
+              </Route>
+
               <Route path="/contact" exact>
+                  <HeaderMenu/>
                   <Contact/>
               </Route>
-              <Route path="/option" exact>
-                  <Option/>
+              <Route path="/options" exact>
+                  <HeaderMenu/>
+                  <Options/>
               </Route>
               <Route path="/profile" exact>
+                  <HeaderMenu/>
                   <Profile/>
               </Route>
               <Route path="/resources" exact>
+                  <HeaderMenu/>
                   <Resources/>
+              </Route>
+              <Route path="/legal" exact>
+                  <LegalNotices/>
+              </Route>
+              <Route path="/login" exact>
+                  <LoginRegister/>
               </Route>
           </Switch>
 
