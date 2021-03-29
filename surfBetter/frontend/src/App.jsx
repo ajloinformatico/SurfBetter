@@ -1,4 +1,4 @@
-import './css/style.scss';
+import './assets/css/style.scss';
 // Font awesome
 // routes import
 import {
@@ -7,7 +7,7 @@ import {
     Route,
 } from "react-router-dom";
 
-import LoginRegister from './componnets/LoginRegister.jsx'
+import LoginRegister from './componnets/loginsign/LoginRegister.jsx'
 import Profile from './componnets/Profile.jsx'
 import Beaches from './componnets/Beaches.jsx'
 import Options from './componnets/Options.jsx'
@@ -15,6 +15,7 @@ import Contact from './componnets/Contact.jsx'
 import Resources from './componnets/Resources.jsx'
 import LegalNotices from './componnets/LegalNotices.jsx'
 import HeaderMenu from "./componnets/HeaderMenu.jsx";
+import HeaderLoginRegister from "./componnets/loginsign/HeaderLoginRegister.jsx";
 import React from "react";
 
 
@@ -55,6 +56,7 @@ function App() {
                   <LegalNotices/>
               </Route>
               <Route path="/login" exact>
+                  <HeaderLoginRegister/>
                   <LoginRegister/>
               </Route>
           </Switch>

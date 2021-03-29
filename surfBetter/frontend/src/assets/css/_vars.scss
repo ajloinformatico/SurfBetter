@@ -1,0 +1,35 @@
+/*Style Vars file*/
+
+/*Imports*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap');
+
+@font-face{
+  font-family: krugthep;
+  src: url('../fonts/Krungthep.ttf');
+}
+
+/*Fonts*/
+$font-common : 'Noto Sans JP';
+$font-special : krugthep;
+$size-menu-desk: 14pt; /*fontsize menu desktop*/
+$size-modal-label: 10pt; /*font-size label*/
+$size-common-table: 10pt;
+$size-common-mobile: 8pt;
+$size-common-normal: 12pt;
+
+/*Colors*/
+$color-header: #16697A;
+$color-yellow: #FFA62B;
+$color-white: white;
+$color-black: black;
+$color-blue-content: #3EFDF6;
+$color-back-beaches: #EFEDEC;
+$color-background-beach-form: #6FE2DD;
+
+/*Transitions*/
+$mouse-is-over-menu: linear 0.2s;
+$mouse-is-hover-menu:color 0.2s linear 0.2s;
+
+/*BackGrounds*/
+$LightBack: url(../img/background/back.svg);
+$DarkBack: url(../img/background/backDark.svg);
