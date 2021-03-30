@@ -14,8 +14,8 @@ const SignInModal = () => {
     }
 
     return (
+        <div id={"btn_modal_sign_in"}>
         <div className={"container"}>
-
             <header>
                 <img srcSet={logoSurfBetterHeader} alt="logo SurfBetter"
                  title="logo surfBetter"/>
@@ -53,6 +53,7 @@ const SignInModal = () => {
                            title={"Log in"}/>
                 </form>
             </div>
+        </div>
         </div>
     )
 }
