@@ -25,10 +25,18 @@ $color-black: black;
 $color-blue-content: #3EFDF6;
 $color-back-beaches: #EFEDEC;
 $color-background-beach-form: #6FE2DD;
+$color-background-modal-opacity: RGBA(0,0,0,0.45);
+$color-background-button-modal: #633c05;
 
 /*Transitions*/
 $mouse-is-over-menu: linear 0.2s;
 $mouse-is-hover-menu:color 0.2s linear 0.2s;
+$modal-transition: all 500ms ease;
+
+$mouse-is-over-normal: linear 0.1s;
+$mouse-is-hover-normal:color  0.1s linear 0.1s;
+
+$normal-transition: all 500ms ease-in-out;
 
 /*BackGrounds*/
 $LightBack: url(../img/background/back.svg);

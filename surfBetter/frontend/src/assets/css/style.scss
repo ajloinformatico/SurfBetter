@@ -4,11 +4,105 @@
 
 
 
+
+
 /*Extends*/
 %common-transition-hover-menu {
   transition: $mouse-is-hover-menu;
   font-weight: bolder;
   text-decoration: none;
+}
+
+
+/*Extends for all kind of buttons*/
+%buttons {
+  font-weight: bolder;
+  padding: .5em;
+  transition: $mouse-is-over-menu;
+  width: 90px;
+  display: block;
+  border-style: solid;
+}
+
+/*Extends for all type of hover on buttons*/
+%hover-buttons{
+  transition: $mouse-is-hover-menu;
+}
+
+/*Extends to show modal*/
+%show-modal{
+  opacity: 1;
+  visibility: visible;
+}
+
+/*Extends for modals*/
+%common-modal-style{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $color-background-modal-opacity;
+  transition: $modal-transition;
+  opacity: 0;
+  visibility: hidden;
+  .container {
+    position: fixed;
+    top: 150px;
+    left: 0;
+    right: 0;
+    background-color: $color-white;
+
+    header > label {
+      display: block;
+      padding-right: 1.2em;
+    }
+
+    .contentModal {
+      margin-top: .5em;
+      margin-bottom: 2em;
+
+      form {
+        width: 70%;
+        margin: 0 auto;
+
+        .modalInputs {
+          border-color: transparent;
+          display: flex;
+          flex-flow: column;
+          justify-content: space-around;
+
+          legend {
+            font-size: x-large;
+            margin-bottom: .5em;
+          }
+
+          input {
+            margin-bottom: 1em;
+            background-color: $color-blue-content;
+            text-align: center;
+            padding: .5em;
+            color: black;
+            border-style: none;
+          }
+
+          input::placeholder {
+            color: black;
+            font-weight: bolder;
+          }
+        }
+
+        .modalButtons {
+          border-color: transparent;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
 }
 
 /*Mixing*/
@@ -22,18 +116,38 @@
   text-shadow: 1px 2px 3px $color-shadow;
 }
 
+/**
+ * Its uses to create buttons
+ */
+@mixin create-button($color, $back-color){
+  @extend %buttons;
+  color: $color;
+  background-color: $back-color;
+}
+
+@mixin create-hover-button($color, $back-color){
+  @extend  %hover-buttons;
+  display: block;
+  color: $color;
+  background-color: $back-color;
+}
+
+
+
 
 /*Common targets*/
 
 html {
   background-image: $LightBack;
+  //background-color: white;
   font-family: $font-common;
   font-size: $size-common-normal;
-  transition: 1s ease-in-out;
+  transition: all 500ms ease;
 }
 
 body {
   min-width: 350px;
+  box-sizing: border-box;
   margin:0;
   text-align: center;
 }
@@ -50,7 +164,7 @@ header{
   >label{
     float: right;
     padding-top: 2.4em;
-    padding-right: .2em;
+    padding-right: 0.29em;
     >a{
       color: $color-white;
     }
@@ -80,8 +194,17 @@ a{
 .logSignMain{
   margin: 0 auto;
   width: 90%;
+  #btn-modal-log-in{
+    display: none;
+  }
+  #btn-modal-sign-in{
+    display: none;
+  }
   /*Slider*/
   .slideBar{
+    transition: $normal-transition;
+    width: 300px;
+    margin: 0 auto;
     /*by default display none*/
     .slide{
       display: none;
@@ -93,9 +216,11 @@ a{
         font-weight: bold;
         text-align: left;
         font-style: oblique;
+        font-size: small;
         position: relative;
-        top: 145px;
+        top: 130px;
         left: 30px;
+        bottom: 0;
       }
     }
     .sliderButtons{
@@ -105,11 +230,38 @@ a{
       padding-left: 1em;
       padding-right: 1em;
       background-color: $color-blue-content;
+      cursor: pointer;
+    }
+    .sliderButtons:hover{
+      background-color: #16697A;
+      color: white;
+      transition: $mouse-is-hover-normal;
     }
   }
 }
 
 /*Modals*/
+
+.modalSignIn{
+  @extend %common-modal-style
+}
+.modalLogin{
+  @extend %common-modal-style
+}
+
+
+
+
+/*On clicks*/
+#btn-modal-sign-in:checked ~ .modalSignIn{
+  @extend %show-modal
+}
+#btn-modal-log-in:checked ~ .modalLogin{
+  @extend %show-modal
+}
+
+
+
 .container{
   .img{
     width: 400px;
@@ -117,18 +269,107 @@ a{
 }
 
 
+
+
+/**************************** VARS ********************/
+.buttonBlue{
+  @include create-button($color-white, $color-header)
+}
+
+.buttonBlue:hover{
+  @include create-hover-button($color-white, $color-background-button-modal)
+}
+
+.buttonYellow{
+  @include create-hover-button($color-black, $color-yellow)
+}
+
+.buttonYellow:hover{
+  @include create-hover-button($color-white, $color-background-button-modal)
+
+}
+
+
+
+
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  /*login*/
+  /*slider*/
+  .logSignMain {
+    .slideBar {
+
+      transition: all 500ms ease-in-out;
+      width: 500px;
+      .slide{
+        p{
+          top: 200px;
+          font-size: medium;
+        }
+      }
+    }
+  }
+  %common-modal-style{
+    .container{
+      margin: 0 auto;
+      width: 360px;
+    }
+  }
+  header{
+    >label{
+      a:last-child{
+        margin-left: 1em;
+        padding-right: 1em;
+      }
+    }
+  }
+
 
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+  /*login*/
+  /*slider*/
+  .logSignMain {
+    .slideBar {
 
+      width: 668px;
+      .slide{
+        p{
+          top: 260px
+        }
+      }
+    }
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  /*login*/
+  /*slider*/
+  .logSignMain {
+    .slideBar {
+
+      transition: all 500ms ease-in-out;
+      width: 982px;
+      .slide{
+        p{
+          top: 400px;
+          font-size: large;
+
+        }
+      }
+    }
+  }
+  header{
+    >label{
+      a:last-child{
+        margin-left: .5em;
+        padding-right: 1em;
+      }
+    }
+  }
 
 }
 

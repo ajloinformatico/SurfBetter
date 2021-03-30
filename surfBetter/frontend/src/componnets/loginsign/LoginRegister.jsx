@@ -1,13 +1,12 @@
 import  React, {useState, useEffect} from "react";
 //img must because import here
-import logoSurfBetterHeader from '../../assets/img/common/logoSurfBetterHeader.png'
 import slider1 from '../../assets/img/slider/slider1.jpg'
 import slider2 from '../../assets/img/slider/slider2.jpg'
 import slider3 from '../../assets/img/slider/slider3.jpg'
 
-//Sign in Modal
+//Sign in and Login Modals
 import SignInModal from "./SignInModal.jsx";
-
+import LoginModal from "./LoginModal.jsx";
 
 /**
  * Load login component
@@ -39,13 +38,9 @@ const LoginRegister = () => {
     const showSlide = (n) => {
         let index = slideBarState
         index += n
-        console.log(slideBarState)
-
         const x = document.getElementsByClassName('slide');
         // Note: if state of slide is bigger thant slides divs set one
         index > x.length?index = 1:console.log("go one")
-            // eslint-disable-next-line no-self-assign
-
         // Note: if the state of the slide is less than the number that 1 leaves
         // the state in the number of divs so that it jumps to the first
         index < 1?index = x.length:console.log("go last")
@@ -84,8 +79,8 @@ const LoginRegister = () => {
                 </div>
                 {/*syle in line to cover the design point*/}
                 <div className={"sliderButtons"}>
-                    <a href="" style={{color: 'black'}} onClick={e => showSlide(-1)}>&#10094;</a>
-                    <a href="" style={{color: 'black'}} onClick={e => showSlide(1)}>&#10095;</a>
+                    <a style={{color: 'black'}} onClick={e => showSlide(-1)}>&#10094;</a>
+                    <a style={{color: 'black'}} onClick={e => showSlide(1)}>&#10095;</a>
                 </div>
             </section>
             <section className={"containMain"}>
@@ -99,8 +94,10 @@ const LoginRegister = () => {
                 </p>
             </section>
             {/*Modal log in by label for on header*/}
-            <input type={"checkbox"} id={"btn_modal_sign_in"}/>
+            <input type={"checkbox"} id={"btn-modal-sign-in"}/>
             <SignInModal/>
+            <input type={"checkbox"} id={"btn-modal-log-in"}/>
+            <LoginModal/>
         </main>
     )
 }
