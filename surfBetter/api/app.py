@@ -1,32 +1,26 @@
 from flask import Flask, send_from_directory
-from flask_restful import Api, Resource, reqparse
+from flask_sqlalchemy import SQLAlchemy  # database
 from flask_cors import CORS  # it must be comment into deployment
-# first option
-from controllers import ExampleModel, UserController  # get and post requests
 
-# second option
-from routes.user_controller import user_routes
+# instance SQLALchemy for te models
+db = SQLAlchemy()
 
-from models import db
-
-# from database.MysqlLite import *
-
-# instance of Flask indicating with staic_url_path I spacefy a diferent path for the static file
-# with static folder indicate where is my client or "templates"
+# app with front
 app = Flask(__name__, static_url_path='', static_folder='../frontend/build')
+
+app.config['SECRET_KEY'] = 'secret key'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/surfbetter.db'
+
+# init SQLAlchemy
+db.init_app(app)
 
 # its use to disable error when we make an Api request to a diferent domain
 CORS(app)  # it must be comment into deployment
-api = Api(app)
-
-db.create_all()
 
 
-# Routes default
-# load "view"
 @app.route("/", defaults={'path': ''})
 def serve(path):
-    """ 
+    """
     with send_from_directory() allow flask to send index.html dorm static_file
     declare in app
     Returns:
@@ -35,16 +29,9 @@ def serve(path):
     return send_from_directory(app.static_folder, 'index.html')
 
 
-app.register_blueprint(user_routes)
-app.run()
-
-"""
-# URLS FOR API END POINTS -> (MODEL.VIEW,'URL')
-api.add_resource(ExampleModel.ExampleRoute, "/")
-api.add_resource(UserController, "/login")
-api.add_resource(UserController, "/singin")
-api.add_resource(UserController, "/logout")
-"""
+if __name__ == "__main__":
+    app.run()
 
 
 
+# TODO: Redoo all pages

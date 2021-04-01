@@ -7,6 +7,9 @@ flask_cors
 https://flask-sqlalchemy.palletsprojects.com/en/2.x/ -> module to work with orm sql
 pip install Bcrypt-Flask --> to password
 
+$ pip install flask-praetorian --> security
+API security should be strong, simple, and precise like a Roman Legionary. This package aims to provide that. Using JWT tokens as implemented by PyJWT, flask_praetorian uses a very simple interface to make sure that the users accessing your API’s endpoints are provisioned with the correct roles for access.
+
 
 
 

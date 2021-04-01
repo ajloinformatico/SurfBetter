@@ -3,14 +3,147 @@ import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.p
 
 const SignInModal = () => {
 
-    const [userNameValue, setUserNameValue] = useState("")
+    /*inputs states*/
+    const [name, setName] = useState("")
+    const [error, setError] = useState("")
+    const [surname, setSurname] = useState("")
+    const [nick, setNick] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [repeatPassword, setRepeatPassword] = useState("")
 
 
+    /**
+     * Check if string is correct by checking legth and not numbers
+     * @param cadena
+     * @param min
+     * @param max
+     * @returns {boolean}
+     */
+    const checkStrings = (cadena,min,max) => {
+        let flag = false
+        if (cadena.length > min && cadena.length < max){
+            cadena.split("").forEach(element => {
+                console.log(element);
+                if (!isNaN(element)) {
+                    console.log("i have found a number");
+                    flag = true;
+                }
+            })
+        } else {
+            flag = true
+        }
+        return !flag;
 
-    const checkInput = (e) => {
-        e.preventDefault()
-        const form = document.getElementById("sign-in-form")
-        alert(form['user_name'].value)
+    }
+
+
+    /**
+     * By checking target id check inputs
+     * @param {event} e: input event
+     */
+    const checkInputs = (e) => {
+        debugger;
+        const input = e.target
+        input.classList.remove("errors")
+        const mailReg = new RegExp(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i);
+
+        if(input.id === "name"){
+            if(!name.trim()){
+                input.classList.add("errors");
+                input.placeholder = input.id + " is empty";
+
+            } else if (!checkStrings(name, 2, 64)) {
+                input.classList.add("errors");
+                input.value = "";
+                input.placeholder = input.id + " isn't valid";
+                setName("");
+            }
+        }
+
+        if (input.id === "surname") {
+            if (!surname.trim()) {
+                input.classList.add("errors");
+                input.placeholder = input.id + " is empty";
+            } else if (!checkStrings(surname, 2, 64)) {
+                input.classList.add("errors");
+                input.value = "";
+                input.placeholder = input.id + " isn't valid";
+                setSurname("");
+            }
+        }
+
+        if (input.id === "nick") {
+            if (!nick.trim()) {
+                input.classList.add("errors");
+                input.value = "";
+                input.placeholder = input.id + " is empty";
+                setNick("");
+            } else if (!checkStrings(nick, 2, 30)){
+                input.classList.add("errors");
+                input.value = "";
+                input.placeholder = input.id + " isn't valid";
+                setNick("");
+            }
+        }
+
+        if (input.id === "email") {
+            if (!email.trim()) {
+                input.classList.add("errors");
+                input.value = "";
+                input.placeholder = input.id + " is empty";
+                setEmail("");
+            }
+            else if (email.length > 130 || email.length < 4 || !mailReg.test(email)) {
+                input.classList.add("errors");
+                input.value = "";
+                input.placeholder = input.id + " isn't valid";
+                setEmail("");
+            }
+        }
+
+        if (input.id === "password") {
+            if (!password.trim()) {
+                input.classList.add("errors");
+                input.value = "";
+                input.placeholder = input.id + " is empty";
+                setPassword("")
+            } else if ( password.length > 64 || password.length < 8){
+                input.classList.add("errors");
+                input.value = "";
+                input.placeholder = input.id + " isn't valid";
+                setPassword("")
+            }
+        }
+
+        if (input.id === "re-password") {
+            if (!repeatPassword.trim()) {
+                input.classList.add("errors");
+                input.value = "";
+                input.placeholder = input.id + " is empty";
+                setRepeatPassword("")
+            } else if (repeatPassword !== document.getElementById("password").value) {
+                input.classList.add("errors");
+                input.value = "";
+                input.placeholder = "Passwords do not match";
+                setRepeatPassword("")
+            }
+        }
+
+
+    }
+
+    const signUp = e => {
+        e.preventDefault();
+
+    }
+
+    /**
+     * Change to Log in form
+     */
+    const changeToLogin = () => {
+        document.querySelector('#btn-modal-sign-in').checked = false;
+        document.querySelector('#btn-modal-log-in').checked = true;
     }
 
     return (
@@ -29,25 +162,39 @@ const SignInModal = () => {
             <div className={"contentModal"}>
 
                 {/*TODO: ROUTE ON FLASK*/}
-                {/*All inputs are checked on input and on js*/}
-                <form id={"sign-in-form"} action={'.'} onSubmit={e => checkInput(e)} autoComplete={'on'}>
+                {/*All inputs are checked on js checkinputs()*/}
+                <form id={"sign-in-form"} action={'.'} onSubmit={e => signUp(e)} autoComplete={'on'}>
                     <fieldset className={"modalInputs"}>
                         <legend>Sign in</legend>
-                        <input type={"text"} id={"user_name"} name={"user_name"} minLength={2} maxLength={64}
-                           aria-label={"user_name"}
-                           size={30} title={"Please input your name"} placeholder={"User Name"} required={true}
-                           pattern={"[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,64}"}/>
+                        <input type={"text"} id={"name"} name={"name"} aria-label={"name"}
+                               onChange={e => setName(e.target.value)} onBlur={e => checkInputs(e)}
+                               size={30} title={"Please input a valid name"} placeholder={"User Name *"} required={true}/>
 
-                        <input type={"email"} id={"email"} name={"email"} title={"Please enter your email *"} maxLength={60}
-                           size={30} aria-label={"email"} placeholder={"Email *"} required={true}/>
+
+                        <input type={"text"} id={"surname"} name={"surname"} aria-label={"surname"}
+                               onChange={e => setSurname(e.target.value)} onBlur={e => checkInputs(e)}
+                               size={30} title={"Please input a valid surname"} placeholder={"User Surname"} required={true}/>
+
+                        <input type={"text"} id={"nick"} name={"nick"} aria-label={"nick"}
+                               onChange={e => setNick(e.target.value)} onBlur={e => checkInputs(e)}
+                               size={30} title={"Please input a valid nick"} placeholder={"User Nick *"} required={true}/>
+
+                        <input type={"email"} id={"email"} name={"email"} title={"Please enter a valid email *"}
+                               onChange={e => setEmail(e.target.value)} onBlur={e => checkInputs(e)}
+                               size={30} aria-label={"email"} placeholder={"Email *"} required={true}/>
 
                         <input type={"password"} id={"password"} name={"password"} title={"Please enter your password"}
-                           aria-label={"password"} size={30} minLength={8} maxLength={15} placeholder={"password *"}
-                           required={true}/>
+                               onChange={e => setPassword(e.target.value)} onBlur={e => checkInputs(e)}
+                               aria-label={"password"} size={30}  placeholder={"password *"} required={true}/>
 
                         <input type={"password"} id={"re-password"} name={"re-password"} title={"Please repeat your password"}
-                           aria-label={"re-password"} size={30} minLength={8} maxLength={15} placeholder={"repeat password *"}
-                           required={true}/>
+                               onChange={e => setRepeatPassword(e.target.value)} onBlur={e => checkInputs(e)}
+                               aria-label={"re-password"} size={30} placeholder={"repeat password *"} required={true}/>
+
+                        <label>
+                            <input type={"checkbox"} id={"check"} name={"check"} required={true}/>
+                            I allow the storage of my data
+                        </label>
 
                     </fieldset>
                     <fieldset className={"modalButtons"}>
@@ -55,7 +202,7 @@ const SignInModal = () => {
                                title={"Sign in"} value={"Sign in"}/>
 
                         <input type={"button"} className={"buttonBlue"} id={"go-to-log-in-button"} name={"go-to-log-in-button"}
-                               title={"Log in"} value={"Log in"}/>
+                               title={"Log in"} onClick={e => changeToLogin()} value={"Log in"}/>
                     </fieldset>
 
                 </form>

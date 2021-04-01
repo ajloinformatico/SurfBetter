@@ -1,22 +1,23 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from flask import Blueprint
+from app import db
 from flask_bcrypt import Bcrypt
 from werkzeug.security import safe_str_cmp
 
-app = Flask(__name__)
-bcrypt = Bcrypt(app)  # password
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/surfbetter.db'
-db = SQLAlchemy(app)
+app_models = Blueprint('app_models', __name__)
 
 
+# auth : https://yasoob.me/posts/how-to-setup-and-deploy-jwt-auth-using-react-and-flask/
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(30), nullable=False)
-    surname = db.Column(db.String(60), nullable=False)
+    name = db.Column(db.String(64), nullable=False)
+    surname = db.Column(db.String(64), nullable=False)
+    # roles = db.Column(db.String)
+    # is_active = is_active = db.Column(db.Boolean, default=True, server_default='true')
     nick = db.Column(db.String(30), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password_hash = db.Column(db.String(30), nullable=False)
+    email = db.Column(db.String(130), unique=True, nullable=False)
+    avatar = db.Column(db.String, unique=True, nullable=True)
+    password_hash = db.Column(db.String(64), nullable=False)
 
     def set_password(self, password):
         """
@@ -29,7 +30,7 @@ class User(db.Model):
         """
         if len(password) < 8:
             raise ValueError("Error : password must have almost 8 characters")
-        self.password_hash = bcrypt.generate_password_hash(password)
+        self.password_hash = Bcrypt.generate_password_hash(password)
 
     def check_password(self, password):
         """
@@ -40,8 +41,7 @@ class User(db.Model):
         Returns: {Bool} : password correct
 
         """
-        return bcrypt.check_password_hash(password, self.password_hash)
-
+        return Bcrypt.check_password_hash(password, self.password_hash)
 
     def __repr__(self):
         return self.username

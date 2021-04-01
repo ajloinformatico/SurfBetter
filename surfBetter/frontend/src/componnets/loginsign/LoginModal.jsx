@@ -8,8 +8,9 @@ const LoginModal = () => {
         alert("if all correct send to flask")
     }
 
-    const changeToSign = e => {
-        alert("change modal to Sign in")
+    const changeToSign = () => {
+        document.querySelector('#btn-modal-log-in').checked = false;
+        document.querySelector('#btn-modal-sign-in').checked = true;
     }
 
     return (

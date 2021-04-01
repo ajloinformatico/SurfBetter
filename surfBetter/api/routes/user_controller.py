@@ -12,15 +12,19 @@ def get_all_users():
     return jsonify({'status': '200', 'message': 'it will return all users'})
 
 
-@user_routes.route("/user/login", methods=['POST'])
+@user_routes.route("/login", methods=['POST'])
 def login():
     """
     check user
     Returns:
 
     """
-    data = request.get_json()
-    print(data)
-    return data
+    req = request.get_json(force="True")
+    name = req.get("name", None)
+    surname = req.get("surname", None)
+    nick = req.get("nick", None)
+    email = req.get("email", None)
+    password = req.get("password", None)
+    print(name, surname)
 
 
