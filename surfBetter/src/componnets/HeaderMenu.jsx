@@ -1,7 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {
     Link,
 } from 'react-router-dom'
+
+
+// Note: Just to check if i can do fetch
+useEffect(() => {
+    fetch("/api").then(resp => resp.json()).then(resp => console.log(resp))
+}, [])
+
+
 
 
 const changeToDark = () => {

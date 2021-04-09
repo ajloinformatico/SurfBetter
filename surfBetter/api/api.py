@@ -1,4 +1,4 @@
-import os
+import json
 import flask
 import flask_sqlalchemy
 import flask_praetorian
@@ -6,7 +6,7 @@ import flask_cors
 
 db = flask_sqlalchemy.SQLAlchemy() # ORM
 guard = flask_praetorian.Praetorian() # Auth JWT
-CORS = flask_cors.CORS() # allow requests (develop)
+cors = flask_cors.CORS() # allow requests (develop)
 
 # User Model
 class User(db.Model):
@@ -16,13 +16,22 @@ class User(db.Model):
         db (SQLAlchemy model): [SQLAlchemy ORM database]
     """
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text(64), unique=False, nullable=False)
-    surname = db.Column(db.Text(64), unique=False, nullable=False)
-    nick = db.Column(db.Text(30), unique=True, nullable=False)
-    password =  db.Column(db.Text(30), unique=False, nullable=False)
-    email = db.Column(db.Text(130), unique=True, nullable=False)
+    email = db.Column(db.Text, unique=True, nullable=False)
+    name = db.Column(db.String(63), unique=False, nullable=False)
+    surname = db.Column(db.String(63), unique=False, nullable=False)
+    nick = db.Column(db.Text, unique=True, nullable=False)
+    password =  db.Column(db.Text, unique=False, nullable=False)
     roles = db.Column(db.Text)
-    is_activate = db.Column(db.Boolean, default=True, server_default='True')
+    is_active= db.Column(db.Boolean, default=True, server_default='true')
+
+    @property
+    def identity(self):
+        """[Get user id]
+
+        Returns:
+            [int]: [User id]
+        """
+        return self.id
 
     @property
     def rolenames(self):
@@ -32,28 +41,24 @@ class User(db.Model):
             [List]: [User comma separated roles]
         """
         try:
-            return self.roles.split(',')
+            return self.roles.split(",")
         except Exception:
             return []
-    
+   
     @classmethod
-    def lookup(cls, type, param):
-        """[Get a player by nick or email] 
+    def lookup(cls, email):
+        """[Get a player by email] 
 
         Args:
-            type (str): 'email' or 'nick' to especify the attr to do lookup
-            param (str): [nick or email  to lookup]
+            email (str): [email  to lookup]
 
         Returns:
             [User]: [User lookup]
         """
-        if type == 'nick':
-            return cls.query.filter_by(nick=param).one_or_none()
-        else:
-            return cls.query.filter_by(email=param).one_or_none()
+        return cls.query.filter_by(email=email).one_or_none()
 
     @classmethod
-    def identity(cls, id):
+    def identify(cls, id):
         """[get user id]
 
         Returns:
@@ -61,55 +66,52 @@ class User(db.Model):
         """
         return cls.query.get(id)
 
-    @property
-    def identify(self):
-        """[Get user id]
-
-        Returns:
-            [int]: [User id]
-        """
-        return self.id
 
     def is_valid(self):
         """[Check if an user is active on the app]
         Returns:
             [bool]: [if user active]
         """
-        return self.is_activate
+        return self.is_active
     
 
 # intialize flask basic conf & basic conf
 app = flask.Flask(__name__)
 app.debug = True
-app.config['SECRET_KEY'] = 'LR7aiJZO$n@~Tfmts((W)_ncOg[okufXps8[|]3?BdmtjsIiB0qCTv]fMm]Dy'
+app.config['SECRET_KEY'] = 'top secret'
     
-app.config['JWT_ACCESS_LIFESPAN'] = {'hours' : 1}
-app.config['JWT_REFRESH_LIFESPAN'] = {'days' : 1}
+app.config['JWT_ACCESS_LIFESPAN'] = {'hours' : 24}
+app.config['JWT_REFRESH_LIFESPAN'] = {'days' : 30}
 
 # flask pretorian initialize (app, model)
 guard.init_app(app, User)
 
 # initialize sqlite database TODO IF FAILS CHANGE TO SIMETHINF LIKE THAT : app.config['SQLALCHEMY_DATABASE_URI'] = F"sqlite:///{os.path.join(os.getcwd(), 'database.db')}"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/surfBetter.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database/database.db"
 db.init_app(app)
 
 # initialize cors to debug
-CORS.init_app(app)
+cors.init_app(app)
 
 # SEEDER if not exists user admin create database and admin 
 with app.app_context():
     db.create_all()
-    if db.session.query(User).filter_by(nick='@infolojo').count() < 1:
-        db.session.add(User(
-            name='Infolojo',
-            surname='Infolojo',
-            nick="@infolojo",
-            password=guard.hash_password('pestillo01'),
-            email='ajloinformatico@gmail.com',
-            roles='admin'
-        
-        ))
-    db.session.commit()
+    if db.session.query(User).filter_by(email="ajloinformatico@gmail.com").count() < 1:
+        print("\n\ncreate user\n\n")
+        db.session.add(
+            User(
+                email="ajloinformatico@gmail.com",
+                name="Infolojo",
+                surname="Infolojo",
+                nick="@infolojo",
+                password=guard.hash_password("pestillo01"),
+                roles="admin",
+            )
+        )
+        db.session.commit()
+    print("user exists")
+
+
 
 # Example Routes
 @app.route('/api/')
@@ -127,16 +129,18 @@ def api_hello():
 def login():
     """Logs an user in by  parsing POST request contains user credentials and iussing a JWT token response"""
     req = flask.request.get_json(force=True)
-    email = req.get('email', None)
-    password = req.get('password', None)
-    if (db.session.query(User).filter_by(email=email).count() > 1):
+    email = req["email"]
+    password = req['password']
+
+    if db.session.query(User).filter_by(email=email).count() == 1:
         user = guard.authenticate(email, password)
-        res = {'access_token': guard.encode_jwt_token(user)}
-        return res, 200
-    
-    return {'ERROR': email}, 401
+        ret = {'access_token': guard.encode_jwt_token(user)}
+        return ret, 200
+    else:
+        return {'AutenticationError' : 'Email and/or password incorrect'}, 401
 
-
+# TODO: IF NOT FOUND send 401   
+# return {'ERROR': email}, 401
 @app.route('/api/refresh', methods=['POST'])
 def refresh():
     """Refresh token by copying all token]"""

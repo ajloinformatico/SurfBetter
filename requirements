@@ -1,4 +1,5 @@
 Back: 
+python3 -m venv env
 
 python3
 flask
@@ -8,6 +9,7 @@ pip install flask_cors
 pip install flask-praetorian --> security
 API security should be strong, simple, and precise like a Roman Legionary. This package aims to provide that. Using JWT tokens as implemented by PyJWT, flask_praetorian uses a very simple interface to make sure that the users accessing your API’s endpoints are provisioned with the correct roles for access.
 
+pip install python-dotenv
 
 
 
