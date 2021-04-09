@@ -3,9 +3,8 @@ import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.p
 
 const SignInModal = () => {
 
-    /*inputs states*/
+    //inputs states
     const [name, setName] = useState("")
-    const [error, setError] = useState("")
     const [surname, setSurname] = useState("")
     const [nick, setNick] = useState("")
     const [email, setEmail] = useState("")
@@ -39,98 +38,92 @@ const SignInModal = () => {
 
 
     /**
-     * By checking target id check inputs
+     * By checking target id check inputs. This function is executed with each onBlur listener
      * @param {event} e: input event
      */
     const checkInputs = (e) => {
-        debugger;
-        const input = e.target
-        input.classList.remove("errors")
+        const input = e.target;
+        input.classList.remove("errors");
         const mailReg = new RegExp(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i);
 
-        if(input.id === "name"){
-            if(!name.trim()){
-                input.classList.add("errors");
-                input.placeholder = input.id + " is empty";
+        switch (input.id) {
+            case ("name") : 
+                if(!name.trim()){
+                    input.classList.add("errors");
+                    input.placeholder = input.id + " is empty";
 
-            } else if (!checkStrings(name, 2, 64)) {
-                input.classList.add("errors");
-                input.value = "";
-                input.placeholder = input.id + " isn't valid";
-                setName("");
-            }
+                } else if (!checkStrings(name, 2, 64)) {
+                    input.classList.add("errors");
+                    input.value = "";
+                    input.placeholder = input.id + " isn't valid";
+                    setName("");
+                }
+                break;
+            case ("surname") :
+                if (!surname.trim()) {
+                    input.classList.add("errors");
+                    input.placeholder = input.id + " is empty";
+                } else if (!checkStrings(surname, 2, 64)) {
+                    input.classList.add("errors");
+                    input.value = "";
+                    input.placeholder = input.id + " isn't valid";
+                    setSurname("");
+                }
+                break;
+            case ("nick") :
+                if (!nick.trim()) {
+                    input.classList.add("errors");
+                    input.value = "";
+                    input.placeholder = input.id + " is empty";
+                    setNick("");
+                } else if (!checkStrings(nick, 2, 30)){
+                    input.classList.add("errors");
+                    input.value = "";
+                    input.placeholder = input.id + " isn't valid";
+                    setNick("");
+                }
+                break;
+            case ("email") :
+                if (!email.trim()) {
+                    input.classList.add("errors");
+                    input.value = "";
+                    input.placeholder = input.id + " is empty";
+                    setEmail("");
+                }
+                else if (email.length > 130 || email.length < 4 || !mailReg.test(email)) {
+                    input.classList.add("errors");
+                    input.value = "";
+                    input.placeholder = input.id + " isn't valid";
+                    setEmail("");
+                }
+                break;
+            case ("password") : 
+                if (!password.trim()) {
+                    input.classList.add("errors");
+                    input.value = "";
+                    input.placeholder = input.id + " is empty";
+                    setPassword("")
+                } else if ( password.length > 64 || password.length < 8){
+                    input.classList.add("errors");
+                    input.value = "";
+                    input.placeholder = input.id + " isn't valid";
+                    setPassword("")
+                }
+                break;
+            case ("re-password") : 
+                if (!repeatPassword.trim()) {
+                    input.classList.add("errors");
+                    input.value = "";
+                    input.placeholder = input.id + " is empty";
+                    setRepeatPassword("")
+                } else if (repeatPassword !== document.getElementById("password").value) {
+                    input.classList.add("errors");
+                    input.value = "";
+                    input.placeholder = "Passwords do not match";
+                    setRepeatPassword("")
+                }
+                break;
         }
-
-        if (input.id === "surname") {
-            if (!surname.trim()) {
-                input.classList.add("errors");
-                input.placeholder = input.id + " is empty";
-            } else if (!checkStrings(surname, 2, 64)) {
-                input.classList.add("errors");
-                input.value = "";
-                input.placeholder = input.id + " isn't valid";
-                setSurname("");
-            }
-        }
-
-        if (input.id === "nick") {
-            if (!nick.trim()) {
-                input.classList.add("errors");
-                input.value = "";
-                input.placeholder = input.id + " is empty";
-                setNick("");
-            } else if (!checkStrings(nick, 2, 30)){
-                input.classList.add("errors");
-                input.value = "";
-                input.placeholder = input.id + " isn't valid";
-                setNick("");
-            }
-        }
-
-        if (input.id === "email") {
-            if (!email.trim()) {
-                input.classList.add("errors");
-                input.value = "";
-                input.placeholder = input.id + " is empty";
-                setEmail("");
-            }
-            else if (email.length > 130 || email.length < 4 || !mailReg.test(email)) {
-                input.classList.add("errors");
-                input.value = "";
-                input.placeholder = input.id + " isn't valid";
-                setEmail("");
-            }
-        }
-
-        if (input.id === "password") {
-            if (!password.trim()) {
-                input.classList.add("errors");
-                input.value = "";
-                input.placeholder = input.id + " is empty";
-                setPassword("")
-            } else if ( password.length > 64 || password.length < 8){
-                input.classList.add("errors");
-                input.value = "";
-                input.placeholder = input.id + " isn't valid";
-                setPassword("")
-            }
-        }
-
-        if (input.id === "re-password") {
-            if (!repeatPassword.trim()) {
-                input.classList.add("errors");
-                input.value = "";
-                input.placeholder = input.id + " is empty";
-                setRepeatPassword("")
-            } else if (repeatPassword !== document.getElementById("password").value) {
-                input.classList.add("errors");
-                input.value = "";
-                input.placeholder = "Passwords do not match";
-                setRepeatPassword("")
-            }
-        }
-
-
     }
 
     const signUp = e => {

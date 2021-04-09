@@ -5,3 +5,5 @@
 *.pyc
 *.pyc
 surfBetter/api/__pycache__/app.cpython-39.pyc
+surfBetter/node_modules
+surfBetter/node_modules/.cache/.eslintcache

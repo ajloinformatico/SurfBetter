@@ -4,16 +4,22 @@ import slider1 from '../../assets/img/slider/slider1.jpg'
 import slider2 from '../../assets/img/slider/slider2.jpg'
 import slider3 from '../../assets/img/slider/slider3.jpg'
 
+import HeaderLoginRegister from "./HeaderLoginRegister.jsx"
+
 //Sign in and Login Modals
 import SignInModal from "./SignInModal.jsx";
 import LoginModal from "./LoginModal.jsx";
+
+
 
 /**
  * Load login component
  * @returns {JSX.Element}
  * @constructor
  */
-const LoginRegister = () => {
+const LoginRegister = (props) => {
+
+
 
     /**
      * Use state for snackbar state (img being show)
@@ -53,6 +59,8 @@ const LoginRegister = () => {
     }
 
     return (
+        <div>
+            <HeaderLoginRegister/>
         <main className={"logSignMain"}>
             {/*SlideBar*/}
             <section className={"slideBar"}>
@@ -99,6 +107,7 @@ const LoginRegister = () => {
             <input type={"checkbox"} id={"btn-modal-log-in"}/>
             <LoginModal/>
         </main>
+        </div>
     )
 }
 

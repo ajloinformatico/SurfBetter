@@ -1,13 +1,9 @@
-import React, {useEffect} from "react";
+import React, {useState} from "react";
 import {
     Link,
 } from 'react-router-dom'
 
 
-// Note: Just to check if i can do fetch
-useEffect(() => {
-    fetch("/api").then(resp => resp.json()).then(resp => console.log(resp))
-}, [])
 
 
 
@@ -29,6 +25,11 @@ const showHideMenu = () => {
  * @constructor
  */
 const HeaderMenu = () => {
+
+    
+
+
+
     return (
         <div>
             {/*div or section required because all must be under any parent target*/}
@@ -123,4 +124,6 @@ const HeaderMenu = () => {
         </div>
     );
 }
+
+
 export default HeaderMenu;
