@@ -130,7 +130,7 @@ def login():
     """Logs an user in by  parsing POST request contains user credentials and iussing a JWT token response"""
     req = flask.request.get_json(force=True)
     email = req["email"]
-    password = req['password']
+    password = req["password"]
 
     if db.session.query(User).filter_by(email=email).count() == 1:
         user = guard.authenticate(email, password)
@@ -138,6 +138,41 @@ def login():
         return ret, 200
     else:
         return {'AutenticationError' : 'Email and/or password incorrect'}, 401
+
+@app.route('/api/signin', methods=['POST'])
+def signin():
+
+    req = flask.request.get_json(force=True)
+    name = req["name"]
+    surname = req["surname"]
+    nick = req["nick"]
+    email = req["email"]
+    password = req["password"]
+
+    if(name[0] != "@"):
+        name = "@"+name
+    
+
+    if db.session.query(User).filter_by(email=email).count() < 1 and \
+        db.session.query(User).filter_by(nick=nick).count() < 1:
+        db.session.add(
+            User(
+                email=email,
+                name=name,
+                surname=surname,
+                nick=nick,
+                password=guard.hash_password(password),
+                roles="user",
+            )
+        )
+        db.session.commit()
+        user = guard.authenticate(email, password)
+        ret = {'access_token':guard.encode_jwt_token(user)}
+        return ret, 200
+    
+    return {'signin_error' : 'Email or nick is currently in the system'}, 401
+
+
 
 # TODO: IF NOT FOUND send 401   
 # return {'ERROR': email}, 401

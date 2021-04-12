@@ -1,5 +1,6 @@
 import React ,{useState} from 'react'
 import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.png";
+import { login } from '../auth/auth';
 
 const SignInModal = () => {
 
@@ -126,8 +127,40 @@ const SignInModal = () => {
         }
     }
 
+    /**
+     * Send flask server new user data only if the before function pass
+     * If response.token exists save token
+     * @param {event} e 
+     */
     const signUp = e => {
         e.preventDefault();
+        const errorSpan = document.querySelector('.errorForms')
+        errorSpan.innerHTML = ""
+        //get values from useStates
+        const opts = {
+            'email' : email,
+            'name' : name,
+            'surname' : surname,
+            'email' : email,
+            'nick' : nick,
+            'password' : password
+        }
+        console.log(opts)
+        //execute fetch to flask server
+        fetch('/api/signin', {
+            method: 'POST',
+            body: JSON.stringify(opts)
+        }).then(response => response.json())
+        .then(token => {
+            if (token.access_token) {
+                login(token)
+                console.log(token)
+            } else {
+                console.log(token.signin_error)
+                errorSpan.innerHTML = token.signin_error
+            }
+        })
+
 
     }
 
@@ -188,6 +221,8 @@ const SignInModal = () => {
                             <input type={"checkbox"} id={"check"} name={"check"} required={true}/>
                             I allow the storage of my data
                         </label>
+                        
+                        <span className="errorForms"></span>
 
                     </fieldset>
                     <fieldset className={"modalButtons"}>

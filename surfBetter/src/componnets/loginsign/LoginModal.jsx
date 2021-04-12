@@ -78,7 +78,6 @@ const LoginModal = (props) => {
             'email' : email,
             'password' : password
         }
-        console.log(opts)
         //execute fetch to flask server
         fetch ('/api/login', {
             method: 'POST',
@@ -141,7 +140,7 @@ const LoginModal = (props) => {
                                onChange={e => setPassword(e.target.value)} onBlur={e => checkInputs(e)}
                                aria-label={"password"} size={30}  placeholder={"password *"} required={true}/>
 
-                            <span class="errorForms" ></span>
+                            <span className="errorForms" ></span>
 
                         </fieldset>
                         <fieldset className={"modalButtons"}>
