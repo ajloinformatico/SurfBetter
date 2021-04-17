@@ -17,7 +17,7 @@ import LoginModal from "./LoginModal.jsx";
  * @returns {JSX.Element}
  * @constructor
  */
-const LoginRegister = (props) => {
+const LoginRegister = () => {
 
 
 

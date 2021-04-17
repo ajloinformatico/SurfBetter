@@ -8,7 +8,7 @@ import {login, useAuth} from "../auth/auth.jsx"
 import App from "../../App.jsx"
 
 
-const LoginModal = (props) => {
+const LoginModal = () => {
 
 
     //inputsd sataes

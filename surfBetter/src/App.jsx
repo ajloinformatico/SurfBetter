@@ -20,7 +20,7 @@ import LegalNotices from './componnets/LegalNotices.jsx'
 import HeaderMenu from "./componnets/HeaderMenu.jsx";
 
 //Auth
-import {authFetch, login, useAuth} from "./componnets/auth/auth.jsx"
+import {authFetch,  useAuth} from "./componnets/auth/auth.jsx"
 
 // Note: Just to check if i can do fetch
 
@@ -47,7 +47,7 @@ function App() {
          */
         useEffect(() => {
                 //fetch("/api").then(resp => resp.json()).then(resp => console.log(resp))
-        authFetch("/api/profile").then(response => {
+        authFetch("/api/protected").then(response => {
             (response.status === 401)&&setMessage("You are not logged")
             return response.json()    
             }).then(response => {
@@ -55,50 +55,48 @@ function App() {
             })
         }, [])
 
-  return (
-      <Router history>
-          {console.log(message)}
-          <Switch>
-            <Route path="/login" exact>
-                <LoginRegister/>
-            </Route>
-            
-            { //Check if user is loged to redirect or stay here
-                !logged&&<Redirect to="login"/>
-            }
-            
-            {/*Protected royetes*/}
-            <HeaderMenu/>
 
-            <Route path="/" exact>      
-                  <Beaches/>
-              </Route>
-              <Route path="/beaches" exact>
-                  <Beaches/>
-              </Route>
-
-              <Route path="/contact" exact>
-                  <Contact/>
-              </Route>
-              <Route path="/options" exact>
-                  <Options/>
-              </Route>
-              <Route path="/profile" exact>
-                  <Profile/>
-              </Route>
-              <Route path="/resources" exact>
-                  <Resources/>
-              </Route>
+    return (
+        <Router history>
+            {console.log(message)}
+            <Switch>
+                <Route path="/login" exact>
+                    <LoginRegister/>
+                </Route>
+                { //Check if user is loged to redirect or stay here
+                    !logged&&<Redirect to="login"/>
+                }
+                
+                {/*Protected royetes*/}
+                <HeaderMenu/>
+                <Route path="/" exact>      
+                    <Beaches/>
+                </Route>
+                <Route path="/beaches" exact>
+                    <Beaches/>
+                </Route>
+                <Route path="/contact" exact>
+                    <Contact/>
+                </Route>
+                <Route path="/options" exact>
+                    <Options/>
+                </Route>
+                <Route path="/profile" exact>
+                    <Profile/>
+                </Route>
+                <Route path="/resources" exact>
+                    <Resources/>
+                </Route>
              
                 <Route path="/legal" exact>
                     <LegalNotices/>        
-              </Route>
-              <Route path="/*">
-                  <h1>ERROR 404: NOT FOUND</h1>
-              </Route>
-          </Switch>
-      </Router>
-  );
+                </Route>
+                <Route path="/*">
+                    <h1>ERROR 404: NOT FOUND</h1>
+                </Route>
+            </Switch>
+        </Router>
+    );
 }
 
 

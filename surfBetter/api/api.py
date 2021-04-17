@@ -122,7 +122,7 @@ def api_hello():
         [Json]: [hello message]
         [Request Code]: [200 = OK]
     """
-    return {"HELLO": "SURFBETTER API RUNING"}, 200
+    return {"HELLO": "OLA SURFISTA OLA"}, 200
 
 
 @app.route('/api/login', methods=['POST'])
@@ -187,7 +187,7 @@ def refresh():
         return {'ERROR', 'Internal server error'}, 500
 
 
-@app.route('/api/profile')
+@app.route('/api/protected')
 @flask_praetorian.auth_required
 def ptotected():
     """[Simulation of auth_rqeuired. Basicly it eill required a header containing a valid JWT]"""
