@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {
     Link,
 } from 'react-router-dom'
@@ -25,11 +25,6 @@ const showHideMenu = () => {
  * @constructor
  */
 const HeaderMenu = () => {
-
-    
-
-
-
     return (
         <div>
             {/*div or section required because all must be under any parent target*/}

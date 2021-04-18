@@ -47,6 +47,7 @@ const SignInModal = () => {
         input.classList.remove("errors");
         const mailReg = new RegExp(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i);
 
+        // eslint-disable-next-line default-case
         switch (input.id) {
             case ("name") : 
                 if(!name.trim()){
@@ -187,7 +188,6 @@ const SignInModal = () => {
 
             <div className={"contentModal"}>
 
-                {/*TODO: ROUTE ON FLASK*/}
                 {/*All inputs are checked on js checkinputs()*/}
                 <form id={"sign-in-form"} action={'.'} onSubmit={e => signUp(e)} autoComplete={'on'}>
                     <fieldset className={"modalInputs"}>
