@@ -1,7 +1,9 @@
 import React ,{useState} from 'react'
 import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.png"
 
-import {Link, Redirect, withRouter} from 'react-router-dom'
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useHistory, useLocation, Redirect } from "react-router";
 
 //login
 import {login, useAuth} from "../auth/auth.jsx"
@@ -14,6 +16,9 @@ const LoginModal = () => {
     //inputsd sataes
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const history =  useHistory()
+
+    
 
 
 
@@ -31,6 +36,7 @@ const LoginModal = () => {
         input.classList.remove("errors");
         const mailReg = new RegExp(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i);
 
+        // eslint-disable-next-line default-case
         switch(input.id) {
             case ("email") :
                 if (!email.trim()) {
@@ -70,8 +76,10 @@ const LoginModal = () => {
      */
     const logIng = e => {
         e.preventDefault()
+        
+        
         //error
-        const errorSpan = document.querySelector('.errorForms')
+        const errorSpan = document.querySelector('.loginError')
         errorSpan.innerHTML = ""
         //get values from useStates
         const opts = {
@@ -86,10 +94,14 @@ const LoginModal = () => {
         .then(token => {
             if (token.access_token){
                 login(token)
+                alert ("You are logged")
                 console.log(token)
+                //Load /
+                history.replace("/")
             }else {
-                console.log("Email or password incorrect")
-                errorSpan.innerHTML = "Email or password incorrect"
+                alert("Autentication Error:\nMail or password not correct")
+                console.log("Autentication Error:\nMail or password not correct")
+                errorSpan.innerHTML = "Mail or password not correct"
             }
         })
         /*
@@ -140,7 +152,7 @@ const LoginModal = () => {
                                onChange={e => setPassword(e.target.value)} onBlur={e => checkInputs(e)}
                                aria-label={"password"} size={30}  placeholder={"password *"} required={true}/>
 
-                            <span className="errorForms" ></span>
+                            <span className="loginError" ></span>
 
                         </fieldset>
                         <fieldset className={"modalButtons"}>

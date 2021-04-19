@@ -73,6 +73,12 @@ class User(db.Model):
             [bool]: [if user active]
         """
         return self.is_active
+
+    def __repr__(self):
+        """
+        Not neceesary i use it for sqlite console
+        """
+        return '<User %r>' % self.username
     
 
 # intialize flask basic conf & basic conf
@@ -131,7 +137,7 @@ def login():
     req = flask.request.get_json(force=True)
     email = req["email"]
     password = req["password"]
-
+    print("hello")
     if db.session.query(User).filter_by(email=email).count() == 1:
         user = guard.authenticate(email, password)
         ret = {'access_token': guard.encode_jwt_token(user)}
