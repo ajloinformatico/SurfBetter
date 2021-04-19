@@ -1,31 +1,18 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React ,{useState} from 'react'
 import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.png"
 
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { useHistory, useLocation, Redirect } from "react-router";
+import { useHistory} from "react-router";
 
 //login
-import {login, useAuth} from "../auth/auth.jsx"
-import App from "../../App.jsx"
+import {login} from "../auth/auth.jsx"
 
 
 const LoginModal = () => {
-
-
     //inputsd sataes
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const history =  useHistory()
-
-    
-
-
-
-    
-
-
-
 
     /**
      * check inputs by onBlur() event
@@ -94,31 +81,15 @@ const LoginModal = () => {
         .then(token => {
             if (token.access_token){
                 login(token)
-                alert ("You are logged")
                 console.log(token)
-                //Load /
-                history.replace("/")
+                //Note load profile
+                history.replace("/profile")
             }else {
-                alert("Autentication Error:\nMail or password not correct")
                 console.log("Autentication Error:\nMail or password not correct")
                 errorSpan.innerHTML = "Mail or password not correct"
             }
         })
-        /*
-        {
-            //First check if response is okey
-            if (response.status == '200') {
-               console.log("loged")
-            }else {
-                console.log("no entra")
-                errorSpan.innerHTML = "Email or password incorrect"
-                return 
-            }
-            //Get the token
-        })*/
-
     }
-
 
     const changeToSign = () => {
         document.querySelector('#btn-modal-log-in').checked = false;
@@ -131,8 +102,8 @@ const LoginModal = () => {
             <div className={"container"}>
                 <header>
                     <img srcSet={logoSurfBetterHeader} alt={"logo SurfBetter"} title={"SurfBetter logo"}/>
-                    <label htmlFor={"btn-modal-log-in"}>
-                        <a title="exit modal">
+                    <label title="exit" htmlFor={"btn-modal-log-in"}>
+                        <a title="exit">
                             <i className={"fas fa-arrow-left fa-2x"}></i>
                         </a>
                     </label>

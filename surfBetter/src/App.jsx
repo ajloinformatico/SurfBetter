@@ -35,13 +35,12 @@ import {authFetch,  useAuth} from "./componnets/auth/auth.jsx"
  */
 function App() {
 
-
+    //TODO: Maybe i might need it
+    // eslint-disable-next-line no-unused-vars
     const [message, setMessage] = useState("")
     
     //LOVE REACT RETURNS AUTH USER
     const [logged] = useAuth()
-
-
         /**
          * UsseEfect to get User Name
          */
@@ -54,11 +53,9 @@ function App() {
                     (response&&response.message)&&setMessage(response.message)
             })
         }, [])
-
-
+        
     return (
         <Router history>
-            {console.log(message)}
             <Switch>
                 <Route path="/login" exact>
                     <LoginRegister/>

@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React ,{useState} from 'react'
 import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.png";
 import { login } from '../auth/auth';
 
-const SignInModal = () => {
+const SignInModal = (props) => {
 
-    //inputs states
+    //Note: inputs states
     const [name, setName] = useState("")
     const [surname, setSurname] = useState("")
     const [nick, setNick] = useState("")
@@ -12,6 +13,8 @@ const SignInModal = () => {
     const [password, setPassword] = useState("")
     const [repeatPassword, setRepeatPassword] = useState("")
 
+    //Note: history get history by the props
+    const history = props.history
 
     /**
      * Check if string is correct by checking legth and not numbers
@@ -24,7 +27,6 @@ const SignInModal = () => {
         let flag = false
         if (cadena.length > min && cadena.length < max){
             cadena.split("").forEach(element => {
-                console.log(element);
                 if (!isNaN(element)) {
                     console.log("i have found a number");
                     flag = true;
@@ -34,20 +36,16 @@ const SignInModal = () => {
             flag = true
         }
         return !flag;
-
     }
-
-
     /**
-     * By checking target id check inputs. This function is executed with each onBlur listener
+     * By getting event in each onBlur event checks that the inputs are ok
      * @param {event} e: input event
      */
     const checkInputs = (e) => {
         const input = e.target;
         input.classList.remove("errors");
         const mailReg = new RegExp(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i);
-
-        // eslint-disable-next-line default-case
+        
         switch (input.id) {
             case ("name") : 
                 if(!name.trim()){
@@ -85,7 +83,7 @@ const SignInModal = () => {
                     setNick("");
                 }
                 break;
-            case ("email") :
+            case ("email_login") :
                 if (!email.trim()) {
                     input.classList.add("errors");
                     input.value = "";
@@ -99,7 +97,7 @@ const SignInModal = () => {
                     setEmail("");
                 }
                 break;
-            case ("password") : 
+            case ("password_login") : 
                 if (!password.trim()) {
                     input.classList.add("errors");
                     input.value = "";
@@ -118,12 +116,14 @@ const SignInModal = () => {
                     input.value = "";
                     input.placeholder = input.id + " is empty";
                     setRepeatPassword("")
-                } else if (repeatPassword !== document.getElementById("password").value) {
+                } else if (repeatPassword !== document.getElementById("password_login").value) {
                     input.classList.add("errors");
                     input.value = "";
                     input.placeholder = "Passwords do not match";
                     setRepeatPassword("")
                 }
+                break;
+            default :
                 break;
         }
     }
@@ -142,6 +142,8 @@ const SignInModal = () => {
             'email' : email,
             'name' : name,
             'surname' : surname,
+            // Need eslint-disabled because need key for login and register
+            // eslint-disable-next-line no-dupe-keys
             'email' : email,
             'nick' : nick,
             'password' : password
@@ -155,14 +157,12 @@ const SignInModal = () => {
         .then(token => {
             if (token.access_token) {
                 login(token)
-                console.log(token)
+                history.replace("/profile")
             } else {
                 console.log(token.signin_error)
                 errorSpan.innerHTML = token.signin_error
             }
         })
-
-
     }
 
     /**
@@ -180,14 +180,13 @@ const SignInModal = () => {
                 <img srcSet={logoSurfBetterHeader} alt="logo SurfBetter"
                  title="SurfBetter logo"/>
                 <label htmlFor={"btn-modal-sign-in"}>
-                    <a title="exit modal">
+                    <a title="exit">
                         <i className={"fas fa-arrow-left fa-2x"}></i>
                     </a>
                 </label>
             </header>
 
             <div className={"contentModal"}>
-
                 {/*All inputs are checked on js checkinputs()*/}
                 <form id={"sign-in-form"} action={'.'} onSubmit={e => signUp(e)} autoComplete={'on'}>
                     <fieldset className={"modalInputs"}>
@@ -195,7 +194,6 @@ const SignInModal = () => {
                         <input type={"text"} id={"name"} name={"name"} aria-label={"name"}
                                onChange={e => setName(e.target.value)} onBlur={e => checkInputs(e)}
                                size={30} title={"Please input a valid name"} placeholder={"User Name *"} required={true}/>
-
 
                         <input type={"text"} id={"surname"} name={"surname"} aria-label={"surname"}
                                onChange={e => setSurname(e.target.value)} onBlur={e => checkInputs(e)}
@@ -205,11 +203,11 @@ const SignInModal = () => {
                                onChange={e => setNick(e.target.value)} onBlur={e => checkInputs(e)}
                                size={30} title={"Please input a valid nick"} placeholder={"User Nick *"} required={true}/>
 
-                        <input type={"email"} id={"email"} name={"email"} title={"Please enter a valid email *"}
+                        <input type={"email"} id={"email_login"} name={"email"} title={"Please enter a valid email *"}
                                onChange={e => setEmail(e.target.value)} onBlur={e => checkInputs(e)}
                                size={30} aria-label={"email"} placeholder={"Email *"} required={true}/>
 
-                        <input type={"password"} id={"password"} name={"password"} title={"Please enter your password"}
+                        <input type={"password"} id={"password_login"} name={"password"} title={"Please enter your password"}
                                onChange={e => setPassword(e.target.value)} onBlur={e => checkInputs(e)}
                                aria-label={"password"} size={30}  placeholder={"password *"} required={true}/>
 
