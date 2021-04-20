@@ -3,6 +3,11 @@ import React ,{useState} from 'react'
 import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.png";
 import { login } from '../auth/auth';
 
+/**
+ * 
+ * @param {props} props: pass history by props to do redirect after signin
+ * @returns {JSX.Element}; signin modal
+ */
 const SignInModal = (props) => {
 
     //Note: inputs states

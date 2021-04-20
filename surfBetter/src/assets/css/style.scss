@@ -125,15 +125,15 @@
   background-color: $back-color;
 }
 
+/**
+ * create hover on buttons
+ */
 @mixin create-hover-button($color, $back-color){
   @extend  %hover-buttons;
   display: block;
   color: $color;
   background-color: $back-color;
 }
-
-
-
 
 /*Common targets*/
 
@@ -152,6 +152,7 @@ body {
   text-align: center;
 }
 
+/*Header*/
 header{
   width: 100%;
   height: 100px;
@@ -298,6 +299,11 @@ a{
   color: $color-red !important;
 }
 
+/*Header nav dissabled by default*/
+.navDesk{
+  display: none;
+}
+
 
 
 
@@ -324,6 +330,8 @@ a{
       width: 360px;
     }
   }
+
+  /*Header login*/
   header{
     >label{
       a:last-child{
@@ -333,6 +341,7 @@ a{
     }
   }
 
+  
 
 }
 
@@ -378,6 +387,13 @@ a{
         padding-right: 1em;
       }
     }
+  }
+  /*Dissable nav menu*/
+  .navDesk {
+    display: flex;
+  }
+  .menuMobile {
+    display: none;
   }
 
 }

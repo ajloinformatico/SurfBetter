@@ -19,8 +19,7 @@ import {useHistory} from "react-router";
 
 /**
  * Load login component
- * @returns {JSX.Element}
- * @constructor
+ * @returns {JSX.Element}: return login component
  */
 const LoginRegister = () => {
 

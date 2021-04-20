@@ -2,17 +2,19 @@
 import React ,{useState} from 'react'
 import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.png"
 
-import { useHistory} from "react-router";
-
 //login
 import {login} from "../auth/auth.jsx"
 
 
-const LoginModal = () => {
+/**
+ * Subcomponent of login
+ * @param {props} props: pass history by props to do redirect after login
+ * @returns {JSX.Element}: return login modal component
+ */
+const LoginModal = (props) => {
     //inputsd sataes
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const history =  useHistory()
 
     /**
      * check inputs by onBlur() event
@@ -83,7 +85,7 @@ const LoginModal = () => {
                 login(token)
                 console.log(token)
                 //Note load profile
-                history.replace("/profile")
+                props.history.push("/profile")
             }else {
                 console.log("Autentication Error:\nMail or password not correct")
                 errorSpan.innerHTML = "Mail or password not correct"

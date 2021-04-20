@@ -2,7 +2,10 @@
 import React from 'react'
 import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.png";
 
-
+/**
+ * Load Header Component only for login and signin
+ * @returns {JSX.Element}
+ */
 const HeaderLoginRegister = () => {
 
     return(
