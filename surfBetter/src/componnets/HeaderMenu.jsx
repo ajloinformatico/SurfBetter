@@ -14,7 +14,7 @@ import {
 const HeaderMenu = () => {
 
     //Note: State used to display and hidde menu 
-    const [menuNavState, setMenuNavState] = useState(true)
+    const [menuNavState, setMenuNavState] = useState(false)
 
 
     const changeToDark = () => {
@@ -27,9 +27,15 @@ const HeaderMenu = () => {
      */
     const showHideMenu = (e) => {
         const navMobileMenu = document.querySelector('#menu-mobile')
-            menuNavState?
-                navMobileMenu.style.display = "none":navMobileMenu.style.display = "block"
-    
+            if (!menuNavState) {
+                navMobileMenu.classList.remove('menuMobileHidden')
+                navMobileMenu.classList.add('menuMobileVisible')
+                console.log('Show menu')
+            } else {
+                navMobileMenu.classList.remove('menuMobileVisible')
+                navMobileMenu.classList.add('menuMobileHidden')
+                console.log('Hidde menu')
+            }
             //Note finally change state
             setMenuNavState(!menuNavState)
     }
@@ -38,7 +44,7 @@ const HeaderMenu = () => {
     return (
         <div>
             {/*div or section required because all must be under any parent target*/}
-        <header>
+        <header id="header-common-app">
             <img src={logoSurfBetterHeader} alt="surfbetter logo" title="surf better logo" width="330" height="120"/>
             <nav className="navDesk">
                 <ul>
@@ -68,9 +74,9 @@ const HeaderMenu = () => {
                         </Link>
                     </li>
                     <li>
-                        <button onClick={changeToDark()} title="Dark Mode bottom">
-                            <i className="fas fa-moon fa-2x"></i>
-                        </button>
+                        <a onClick={changeToDark()} title="Dark Mode bottom">
+                            <i id="darkModeButton" className="fas fa-moon fa-2x"></i>
+                        </a>
                     </li>
                     <li>
                         {/*TODO: FUNCTION TO DROP TOKEN AND THEN BACK MAIN*/}
@@ -83,12 +89,12 @@ const HeaderMenu = () => {
 
             {/*Trigger burger menu by sass*/}
             <label>
-                <button className="trigger-mobile" onClick={e => showHideMenu(e)}  title="Open menu" >
+                <a className="trigger-mobile" onClick={e => showHideMenu(e)}  title="Open menu" >
                     <i class="fas fa-bars fa-2x"></i>
-                </button>
+                </a>
             </label>
         </header>
-        <nav id="menu-mobile" className="menuMobile">
+        <nav id="menu-mobile" className="menuMobileHidden">
             <ul>
                 <li>
                     <Link to="/contact" alt="link to contact" title="go to Contact">
@@ -117,14 +123,14 @@ const HeaderMenu = () => {
                 </li>
 
                 <li>
-                    <button onClick={changeToDark()} title="Dark Mode bottom">
-                        <i class="fas fa-moon fa-2x"></i>
-                    </button>
+                    <a onClick={changeToDark()} title="Dark Mode bottom">
+                        <i id="darkModeButton" class="fas fa-moon fa-2x"></i>
+                    </a>
                 </li>
                 <li>
                     {/*TODO: FUNCTION TO DROP TOKEN AND THEN BACK MAIN*/}
-                    <Link id="exitButtonHeader" to="/login" title="Exit app" alt="link to login">
-                        <i class="fas fa-door-open fa-2x"></i>
+                    <Link  to="/login" title="Exit app" alt="link to login">
+                        <i id="exitButtonHeader" class="fas fa-door-open fa-2x"></i>
                     </Link>
                 </li>
             </ul>

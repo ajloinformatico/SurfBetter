@@ -184,11 +184,14 @@ const SignInModal = (props) => {
             <header>
                 <img srcSet={logoSurfBetterHeader} alt="logo SurfBetter"
                  title="SurfBetter logo"/>
-                <label htmlFor={"btn-modal-sign-in"}>
-                    <a title="exit">
-                        <i className={"fas fa-arrow-left fa-2x"}></i>
-                    </a>
-                </label>
+                <div role="button">
+                    <label  htmlFor={"btn-modal-sign-in"}>
+                        <a title="exit">
+                            <i className={"fas fa-arrow-left fa-2x"}></i>
+                        </a>
+                    </label>
+                </div>
+                
             </header>
 
             <div className={"contentModal"}>

@@ -13,7 +13,6 @@
   text-decoration: none;
 }
 
-
 /*Extends for all kind of buttons*/
 %buttons {
   font-weight: bolder;
@@ -27,6 +26,16 @@
 /*Extends for all type of hover on buttons*/
 %hover-buttons{
   transition: $mouse-is-hover-menu;
+}
+
+%over-buttons{
+  transition: $mouse-is-over-menu;
+}
+
+/*Extends for header font-awesome buttons*/
+%header-font-awesome-buttons{
+  @extend %over-buttons;
+  margin-top: .2em;
 }
 
 /*Extends to show modal*/
@@ -113,8 +122,9 @@
 @mixin do-transition-hover-menu($color, $color-shadow){
   @extend %common-transition-hover-menu;
   color : $color;
-  text-shadow: 1px 2px 3px $color-shadow;
+  text-shadow: 1px 2px 2px $color-shadow;
 }
+
 
 /**
  * Its uses to create buttons
@@ -135,7 +145,23 @@
   background-color: $back-color;
 }
 
-/*Common targets*/
+/**
+ * Create header button by extend hoverButtons
+ */
+@mixin create-header-font-awesome-button($color, $back-color){
+  @extend %header-font-awesome-buttons;
+  color: $color;
+  background-color: $back-color;
+}
+
+@mixin do-transition-hover-font-awesome-button($color, $back-color){
+  @extend %common-transition-hover-menu;
+  color: $color;
+  background-color: $back-color;
+}
+
+
+/**********************************Common targets*****************************/
 
 html {
   background-image: $LightBack;
@@ -152,30 +178,7 @@ body {
   text-align: center;
 }
 
-/*Header*/
-header{
-  width: 100%;
-  height: 100px;
-  background-color: $color-header;
-  overflow: hidden;
-  >img{
-    width: 270px;
-    float: left;
-  }
-  >label{
-    float: right;
-    padding-top: 2.4em;
-    padding-right: 0.29em;
-    >a{
-      color: $color-white;
-    }
-    >a:hover{
-      @include do-transition-hover-menu(
-        $color-white, $color-black
-      )
-    }
-  }
-}
+
 
 main{
   width: 90%;
@@ -186,6 +189,95 @@ main{
 a{
   text-decoration: none;
 }
+
+/*header-common*/
+header{
+  background-color: $color-header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+
+  a{
+    color: $color-white;
+  }
+
+  a:hover{
+    @include do-transition-hover-menu(
+      $color-white, $color-black
+    )
+  }
+  /*Surf Better logo*/
+  >img {
+    width: 270px;
+    height: 100px;
+  }
+  
+  /*trigger button*/
+  >label>a{
+    @include create-header-font-awesome-button($color-white, $color-header);
+    margin-right: .6em;
+    color: $color-white;
+    cursor: pointer
+  }
+  >label>a:hover{
+    @include do-transition-hover-font-awesome-button($color-black, $color-header)
+  }
+  
+  
+  /*for login register*/
+  div>label{
+    padding-top: 2.4em;
+    padding-right: 0.29em;
+    margin-right: .6em;
+  }
+
+  
+
+}
+
+
+/*Menu mobile*/
+#menu-mobile{
+  background-color: $color-black;
+  width: 100%;
+  ul {
+    display: flex;
+    flex-flow: column;
+    list-style: none;
+    margin: 0,0,2em,2em;
+    padding: 0;
+    li{
+      a{
+        @extend %over-buttons;
+        color: white;
+      } 
+      a:hover{
+        @include do-transition-hover-menu(
+        $color-black, $color-white
+      )
+      }
+    }
+  }
+}
+
+#darkModeButton{
+  @include create-header-font-awesome-button($color-white, $color-black)
+}
+
+#darkModeButton:hover{
+  @include do-transition-hover-font-awesome-button($color-yellow, $color-black)
+
+}
+
+#exitButtonHeader{
+  @include create-header-font-awesome-button($color-yellow, $color-black)
+}
+
+#exitButtonHeader:hover{
+  @include do-transition-hover-font-awesome-button($color-white, $color-black)
+}
+
 
 
 
@@ -242,16 +334,12 @@ a{
 }
 
 /*Modals*/
-
 .modalSignIn{
   @extend %common-modal-style
 }
 .modalLogin{
   @extend %common-modal-style
 }
-
-
-
 
 /*On clicks*/
 #btn-modal-sign-in:checked ~ .modalSignIn{
@@ -261,16 +349,11 @@ a{
   @extend %show-modal
 }
 
-
-
 .container{
   .img{
     width: 400px;
   }
 }
-
-
-
 
 /**************************** VARS ********************/
 .buttonBlue{
@@ -299,10 +382,19 @@ a{
   color: $color-red !important;
 }
 
-/*Header nav dissabled by default*/
+/*Header desk nav dissabled by default*/
 .navDesk{
   display: none;
 }
+/*var to hidde menu*/
+.menuMobileHidden{
+  display: none;
+}
+/*var to show menu*/
+.menuMobileVisible{
+  display: inline-block;
+}
+
 
 
 
@@ -341,7 +433,20 @@ a{
     }
   }
 
-  
+  /*Nav changes*/
+  /*Menu mobile*/
+  #menu-mobile{
+    ul{
+
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center;
+    }
+  }
+  //TODO: DELETE IS ONLY TO SHOW THE CHANGE
+  html{
+    background-color: #00333d;
+  }
 
 }
 
@@ -359,6 +464,17 @@ a{
         }
       }
     }
+  }
+  /*hidde trigger menu*/
+  .trigger-menu {
+    display: none;
+  }
+  /*Dissable nav menu*/
+  .navDesk {
+    display: flex;
+  }
+  #menu-mobile {
+    display: none;
   }
 }
 
@@ -388,17 +504,9 @@ a{
       }
     }
   }
-  /*Dissable nav menu*/
-  .navDesk {
-    display: flex;
-  }
-  .menuMobile {
-    display: none;
-  }
-
+  
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
 }
-

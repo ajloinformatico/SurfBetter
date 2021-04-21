@@ -104,11 +104,14 @@ const LoginModal = (props) => {
             <div className={"container"}>
                 <header>
                     <img srcSet={logoSurfBetterHeader} alt={"logo SurfBetter"} title={"SurfBetter logo"}/>
-                    <label title="exit" htmlFor={"btn-modal-log-in"}>
-                        <a title="exit">
-                            <i className={"fas fa-arrow-left fa-2x"}></i>
-                        </a>
-                    </label>
+                    {/*Used for simple style*/ }
+                    <div role="button">
+                        <label title="exit" htmlFor={"btn-modal-log-in"}>
+                            <a title="exit">
+                                <i className={"fas fa-arrow-left fa-2x"}></i>
+                            </a>
+                        </label>
+                    </div>
                 </header>
 
                 <div className={"contentModal"}>
