@@ -231,9 +231,6 @@ header{
     padding-right: 0.29em;
     margin-right: .6em;
   }
-
-  
-
 }
 
 
@@ -396,6 +393,9 @@ header{
 }
 
 
+.trigger-nmobile{
+  display: block;
+}
 
 
 
@@ -465,17 +465,52 @@ header{
       }
     }
   }
-  /*hidde trigger menu*/
-  .trigger-menu {
-    display: none;
-  }
+
+  /*Header menus*/
   /*Dissable nav menu*/
-  .navDesk {
-    display: flex;
-  }
   #menu-mobile {
     display: none;
   }
+  /*hidde trigger menu*/
+  #trigger-mobile {
+    display: none ;
+    visibility: 0 ;
+  }
+
+  /*header desktop*/
+  header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    img {
+      float: none;
+    }
+    .navDesk {
+      margin: 0;
+      padding: 0;
+      width: 90%;
+      display: block;
+      float: none;
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-flow: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        
+        li{
+          margin: 0;
+          padding:0;
+        }
+      }
+    }
+  }
+
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */

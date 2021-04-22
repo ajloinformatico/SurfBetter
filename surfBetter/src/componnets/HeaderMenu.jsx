@@ -88,8 +88,8 @@ const HeaderMenu = () => {
             </nav>
 
             {/*Trigger burger menu by sass*/}
-            <label>
-                <a className="trigger-mobile" onClick={e => showHideMenu(e)}  title="Open menu" >
+            <label id="trigger-mobile" className="trigger-mobile">
+                <a  onClick={e => showHideMenu(e)}  title="Open menu" >
                     <i class="fas fa-bars fa-2x"></i>
                 </a>
             </label>
