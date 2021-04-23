@@ -2,10 +2,6 @@
 @import "vars";
 @import "~@fortawesome/fontawesome-free/css/all.css";
 
-
-
-
-
 /*Extends*/
 %common-transition-hover-menu {
   transition: $mouse-is-hover-menu;
@@ -150,12 +146,14 @@
  */
 @mixin create-header-font-awesome-button($color, $back-color){
   @extend %header-font-awesome-buttons;
+  cursor: pointer;
   color: $color;
   background-color: $back-color;
 }
 
 @mixin do-transition-hover-font-awesome-button($color, $back-color){
   @extend %common-transition-hover-menu;
+  cursor: pointer;
   color: $color;
   background-color: $back-color;
 }
@@ -167,7 +165,7 @@ html {
   background-image: $LightBack;
   //background-color: white;
   font-family: $font-common;
-  font-size: $size-common-normal;
+  font-size: $size-common-mobile;
   transition: all 500ms ease;
 }
 
@@ -178,13 +176,18 @@ body {
   text-align: center;
 }
 
-
-
 main{
   width: 90%;
   display: inline-block;
 }
 
+h2 {
+  font-size: $size-common-mobile-title;
+}
+
+p {
+  font-size: $size-common-mobile;
+}
 
 a{
   text-decoration: none;
@@ -196,6 +199,7 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
   height: 100px;
 
   a{
@@ -209,31 +213,28 @@ header{
   }
   /*Surf Better logo*/
   >img {
-    width: 270px;
-    height: 100px;
+    width: 200px;
+    height: 68.7667px;
   }
-  
-  /*trigger button*/
-  >label>a{
-    @include create-header-font-awesome-button($color-white, $color-header);
-    margin-right: .6em;
-    color: $color-white;
-    cursor: pointer
+
+  #trigger-mobile{
+    margin-right: 14px;
   }
-  >label>a:hover{
-    @include do-transition-hover-font-awesome-button($color-black, $color-header)
-  }
-  
-  
-  /*for login register*/
+
+  /*login header*/
   div>label{
+    @include create-header-font-awesome-button($color-white, $color-header);
     padding-top: 2.4em;
-    padding-right: 0.29em;
-    margin-right: .6em;
-  }
+    margin-right: 0.8em;
+    cursor: pointer;
+    >a {
+      color: $color-white;
+    }
+    >a:hover{
+      @include do-transition-hover-font-awesome-button($color-black, $color-header)
+    }
+  }  
 }
-
-
 /*Menu mobile*/
 #menu-mobile{
   background-color: $color-black;
@@ -242,37 +243,53 @@ header{
     display: flex;
     flex-flow: column;
     list-style: none;
-    margin: 0,0,2em,2em;
+    margin: 0;
     padding: 0;
+    
+    /*Extra padding only for first and last*/
+    li:first-child{
+      padding-top: 1em;
+    }
+    li:last-child{
+      padding-bottom: 1em;
+    }
+    
     li{
+      padding-top: .4em;
+      padding-bottom: .4em;
       a{
         @extend %over-buttons;
         color: white;
+        cursor: pointer;
       } 
       a:hover{
         @include do-transition-hover-menu(
         $color-black, $color-white
-      )
+        );
       }
     }
+    li:hover{
+      width: 100%;
+      background-color: #16697A;
+    }
+
   }
 }
 
 #darkModeButton{
-  @include create-header-font-awesome-button($color-white, $color-black)
+  @include create-header-font-awesome-button($color-white, transparent);
 }
 
 #darkModeButton:hover{
-  @include do-transition-hover-font-awesome-button($color-yellow, $color-black)
-
+  @include do-transition-hover-font-awesome-button($color-yellow, transparent)
 }
 
 #exitButtonHeader{
-  @include create-header-font-awesome-button($color-yellow, $color-black)
+  @include create-header-font-awesome-button($color-yellow, transparent)
 }
 
 #exitButtonHeader:hover{
-  @include do-transition-hover-font-awesome-button($color-white, $color-black)
+  @include do-transition-hover-font-awesome-button($color-white, transparent)
 }
 
 
@@ -283,7 +300,7 @@ header{
 /*Main login*/
 .logSignMain{
   margin: 0 auto;
-  width: 90%;
+  width: 100%;
   #btn-modal-log-in{
     display: none;
   }
@@ -293,7 +310,7 @@ header{
   /*Slider*/
   .slideBar{
     transition: $normal-transition;
-    width: 300px;
+    width: 350px;
     margin: 0 auto;
     /*by default display none*/
     .slide{
@@ -327,6 +344,18 @@ header{
       color: white;
       transition: $mouse-is-hover-normal;
     }
+  }
+  .containMain{
+    margin: 0 auto;
+    width: 70%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .containMain p{
+    text-align: left;
   }
 }
 
@@ -375,6 +404,7 @@ header{
   border: solid 1px red !important;
   box-shadow: 1px 1px gray !important;
 }
+/*input errors placeholder*/
 .errors::placeholder{
   color: $color-red !important;
 }
@@ -392,17 +422,12 @@ header{
   display: inline-block;
 }
 
-
 .trigger-nmobile{
   display: block;
 }
 
-
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  /*login*/
-  /*slider*/
+@media only screen and (min-width: 520px) {
+  /*login and slider*/
   .logSignMain {
     .slideBar {
 
@@ -422,7 +447,11 @@ header{
       width: 360px;
     }
   }
+}
 
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  
   /*Header login*/
   header{
     >label{
@@ -437,21 +466,37 @@ header{
   /*Menu mobile*/
   #menu-mobile{
     ul{
-
-    flex-flow: row;
-    justify-content: space-around;
-    align-items: center;
+      flex-flow: row;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: .6em;
+      margin-bottom: .6em;
+      li:first-child {
+        padding: 0;
+      }
+      li:last-child {
+        padding: 0;
+      }
+      li {
+        margin: 0;
+        padding: 0;
+      }
+      li:hover{
+        background-color: none;
+        width: auto;
+      }
     }
   }
-  //TODO: DELETE IS ONLY TO SHOW THE CHANGE
-  html{
-    background-color: #00333d;
-  }
-
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+  html{
+    font-size: $size-common-desk;
+  }
+  h2{
+    font-size: $size-common-desk-title;
+  }
   /*login*/
   /*slider*/
   .logSignMain {
@@ -462,6 +507,13 @@ header{
         p{
           top: 260px
         }
+      }
+    }
+    .containMain{
+      width: 60%;
+      p{
+
+        margin-left: 2em;
       }
     }
   }
@@ -480,15 +532,13 @@ header{
   /*header desktop*/
   header {
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
-    img {
-      float: none;
-    }
     .navDesk {
-      margin: 0;
-      padding: 0;
+      margin-top: .4em;
+      margin-left: 2em;
+      margin-right: 2em;
       width: 90%;
       display: block;
       float: none;
@@ -500,21 +550,34 @@ header{
         flex-flow: row;
         flex-wrap: nowrap;
         justify-content: space-between;
-        align-items: center;
-        
-        li{
-          margin: 0;
-          padding:0;
-        }
+        align-items: center;  
       }
     }
   }
 
-
+  /*heder font-awesome-icons icons*/
+  #darkModeButton{
+    background-color: $color-header;
+  }
+  #darkModeButton:hover{
+    background-color: $color-header;
+  }
+  #exitButtonHeader{
+    background-color: $color-header;
+  }
+  #exitButtonHeader:hover{
+    background-color: $color-header;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  header{
+    img{
+      width: 300px;
+      height: 100px;
+    }
+  }
   /*login*/
   /*slider*/
   .logSignMain {
@@ -530,7 +593,11 @@ header{
         }
       }
     }
+    .containMain{
+      width: 50%;
+    }
   }
+  
   header{
     >label{
       a:last-child{
@@ -544,4 +611,13 @@ header{
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+
+  /*login*/
+  /*slider*/
+  .logSignMain {
+    
+    .containMain{
+      width: 40%;
+    }
+  }
 }

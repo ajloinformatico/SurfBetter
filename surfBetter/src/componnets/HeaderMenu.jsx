@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import logoSurfBetterHeader from "../assets/img/common/logoSurfBetterHeader.png";
 import {
-    Link,
+    Link, useHistory,
 } from 'react-router-dom'
 
 
@@ -15,10 +16,20 @@ const HeaderMenu = () => {
 
     //Note: State used to display and hidde menu 
     const [menuNavState, setMenuNavState] = useState(false)
+    //Note: DarkMode val TODO: SAVE ON MY API SERVICE
+    const [darkModeState, setDarkModeState] = useState(false)
 
+    const history = useHistory()
 
-    const changeToDark = () => {
-        //TODO: MAKE FUNCTION
+    /**
+     * Change between darkMode and light mode
+     * @param {event} e: Event
+     */
+    const changeToDark = (e) => {
+        const htmlTarget = document.querySelector('html')
+        darkModeState?htmlTarget.style.backgroundColor = '#00333d'
+        :htmlTarget.style.backgroundColor = "white"
+        setDarkModeState(!darkModeState)
     }
     
     /**
@@ -39,6 +50,17 @@ const HeaderMenu = () => {
             //Note finally change state
             setMenuNavState(!menuNavState)
     }
+
+    /**
+     * search token on localstorage. Delete it and push history to home
+     */
+    const logOut = (e) => {
+        localStorage.removeItem('REACT_TOKEN_AUTH_KEY');
+        history.push("login");
+    }
+
+
+
 
 
     return (
@@ -74,15 +96,15 @@ const HeaderMenu = () => {
                         </Link>
                     </li>
                     <li>
-                        <a onClick={changeToDark()} title="Dark Mode bottom">
+                        <a  onClick={e => changeToDark(e)} title="Dark Mode bottom">
                             <i id="darkModeButton" className="fas fa-moon fa-2x"></i>
                         </a>
                     </li>
                     <li>
                         {/*TODO: FUNCTION TO DROP TOKEN AND THEN BACK MAIN*/}
-                        <Link id="exitButtonHeader" to="/login" title="Exit app" alt="link to login">
-                            <i class="fas fa-door-open fa-2x"></i>
-                        </Link>
+                        <a onClick={e => logOut(e)}  title="Exit app" alt="link to login">
+                            <i id="exitButtonHeader" className="fas fa-door-open fa-2x"></i>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -90,7 +112,7 @@ const HeaderMenu = () => {
             {/*Trigger burger menu by sass*/}
             <label id="trigger-mobile" className="trigger-mobile">
                 <a  onClick={e => showHideMenu(e)}  title="Open menu" >
-                    <i class="fas fa-bars fa-2x"></i>
+                    <i className="fas fa-bars fa-2x"></i>
                 </a>
             </label>
         </header>
@@ -123,15 +145,15 @@ const HeaderMenu = () => {
                 </li>
 
                 <li>
-                    <a onClick={changeToDark()} title="Dark Mode bottom">
-                        <i id="darkModeButton" class="fas fa-moon fa-2x"></i>
+                    <a onClick={e => changeToDark(e)} title="Dark Mode bottom">
+                        Dark mode  <i id="darkModeButton" className="fas fa-moon"></i>
                     </a>
                 </li>
                 <li>
                     {/*TODO: FUNCTION TO DROP TOKEN AND THEN BACK MAIN*/}
-                    <Link  to="/login" title="Exit app" alt="link to login">
-                        <i id="exitButtonHeader" class="fas fa-door-open fa-2x"></i>
-                    </Link>
+                    <a onClick={e => logOut(e)} title="Exit app" alt="link to login">
+                        Log out  <i id="exitButtonHeader" className="fas fa-door-open"></i>
+                    </a>
                 </li>
             </ul>
         </nav>

@@ -13,7 +13,7 @@ import LoginModal from "./LoginModal.jsx";
 import {useHistory} from "react-router";
 
 
-
+//TODO: CHANGE HISTORY TO HISTORY PROPS
 
 
 
@@ -21,7 +21,7 @@ import {useHistory} from "react-router";
  * Load login component
  * @returns {JSX.Element}: return login component
  */
-const LoginRegister = () => {
+const LoginRegister = (props) => {
 
     //Use state for snackbar state (img being show)
     const [slideBarState, setSlideBarState] = useState(1)
@@ -34,7 +34,7 @@ const LoginRegister = () => {
      */
     useEffect(() => {
         //check auth by checking te token
-        (localStorage.getItem("REACT_TOKEN_AUTH_KEY"))&&(history.push("profile"))//Note: The same that call to react component
+        (localStorage.getItem("REACT_TOKEN_AUTH_KEY"))&&(history.replace("profile"))//Note: The same that call to react component
         //load slide
         showSlide(0)
     })

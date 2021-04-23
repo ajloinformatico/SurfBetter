@@ -21,7 +21,6 @@ import HeaderMenu from "./componnets/HeaderMenu.jsx";
 
 //Auth
 import {authFetch,  useAuth} from "./componnets/auth/auth.jsx"
-
 // Note: Just to check if i can do fetch
 
 
@@ -41,6 +40,7 @@ function App() {
     
     //LOVE REACT RETURNS AUTH USER
     const [logged] = useAuth()
+
         /**
          * UsseEfect to get User Name
          */
