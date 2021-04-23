@@ -36,7 +36,7 @@ function App() {
 
     //TODO: Maybe i might need it
     // eslint-disable-next-line no-unused-vars
-    const [message, setMessage] = useState("")
+    const [user, setUser] = useState(null)
     
     //LOVE REACT RETURNS AUTH USER
     const [logged] = useAuth()
@@ -47,10 +47,13 @@ function App() {
         useEffect(() => {
                 //fetch("/api").then(resp => resp.json()).then(resp => console.log(resp))
         authFetch("/api/protected").then(response => {
-            (response.status === 401)&&setMessage("You are not logged")
-            return response.json()    
+            if (response.status !== 401){
+                setUser(response.user)
+                console.log(response)
+                console.log(user)
+            }
             }).then(response => {
-                    (response&&response.message)&&setMessage(response.message)
+                    (response&&response.user)&&setUser(response.user)
             })
         }, [])
         

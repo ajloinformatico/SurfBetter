@@ -77,8 +77,9 @@ class User(db.Model):
     def __repr__(self):
         """
         Not neceesary i use it for sqlite console
+        TODO: CONTINUE HERE AND SET ON PROFILE
         """
-        return '<User %r>' % self.username
+        return '<User %r,%r>' % (self.email, self.name)
     
 
 # intialize flask basic conf & basic conf
@@ -179,7 +180,6 @@ def signin():
     return {'signin_error' : 'Email or nick is currently in the system'}, 401
 
 
-
 # TODO: IF NOT FOUND send 401   
 # return {'ERROR': email}, 401
 @app.route('/api/refresh', methods=['POST'])
@@ -197,7 +197,11 @@ def refresh():
 @flask_praetorian.auth_required
 def ptotected():
     """[Simulation of auth_rqeuired. Basicly it eill required a header containing a valid JWT]"""
-    return {"message":f"protected endpoint (allowed user {flask_praetorian.current_user().nick})"}
+    # current_user = db.session.query(User).filter_by(nick=f'{flask_praetorian.current_user().nick}').first()
+    # print(current_user)
+    user = flask_praetorian.current_user()
+    print(user)
+    return {"message":f"yeu"}
 
     
 
