@@ -3,6 +3,7 @@ import flask
 import flask_sqlalchemy
 import flask_praetorian
 import flask_cors
+from flask import jsonify
 
 db = flask_sqlalchemy.SQLAlchemy() # ORM
 guard = flask_praetorian.Praetorian() # Auth JWT
@@ -15,14 +16,19 @@ class User(db.Model):
     Args:
         db (SQLAlchemy model): [SQLAlchemy ORM database]
     """
+
+    __tablename__ = "User"
+
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.Text, unique=True, nullable=False)
     name = db.Column(db.String(63), unique=False, nullable=False)
     surname = db.Column(db.String(63), unique=False, nullable=False)
-    nick = db.Column(db.Text, unique=True, nullable=False)
-    password =  db.Column(db.Text, unique=False, nullable=False)
-    roles = db.Column(db.Text)
+    avatar = db.Column(db.Text, unique=True, nullable=False, server_default='statics/default/avatar_light.png')
+    nick = db.Column(db.String(30), unique=True, nullable=False)
+    password =  db.Column(db.String(63), unique=False, nullable=False)
+    roles = db.Column(db.String(10))
     is_active= db.Column(db.Boolean, default=True, server_default='true')
+
 
     @property
     def identity(self):
@@ -66,6 +72,18 @@ class User(db.Model):
         """
         return cls.query.get(id)
 
+    def convert_to_json(self):
+        """
+        Returns: [dic]: User json
+        """
+        return jsonify(
+            id=self.id,
+            name=self.name,
+            surname=self.surname,
+            avatar=self.avatar,
+            nick=self.nick
+        )
+
 
     def is_valid(self):
         """[Check if an user is active on the app]
@@ -79,7 +97,7 @@ class User(db.Model):
         Not neceesary i use it for sqlite console
         TODO: CONTINUE HERE AND SET ON PROFILE
         """
-        return '<User %r,%r>' % (self.email, self.name)
+        return '<User %r,%r,%r,%r,%r,%r>' % (self.email, self.name, self.surname, self.nick, self.password, self.roles)
     
 
 # intialize flask basic conf & basic conf
@@ -200,8 +218,7 @@ def ptotected():
     # current_user = db.session.query(User).filter_by(nick=f'{flask_praetorian.current_user().nick}').first()
     # print(current_user)
     user = flask_praetorian.current_user()
-    print(user)
-    return {"message":f"yeu"}
+    return user.convert_to_json(), 200
 
     
 
