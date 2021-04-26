@@ -1,8 +1,12 @@
 import React from "react";
+import HeaderMenu from './HeaderMenu.jsx'
 
-const Resources = () => {
+const Resources = (props) => {
     return (
-        <h1>Resources</h1>
+        <div>
+            <HeaderMenu/>
+            <h1>Resources</h1>
+        </div>
     )
 }
 export default Resources

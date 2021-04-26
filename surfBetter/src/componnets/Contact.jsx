@@ -1,8 +1,11 @@
 import React from "react";
-
-const Contact = () => {
+import HeaderMenu from "./HeaderMenu.jsx"
+const Contact = (props) => {
     return (
-        <h1>Contact</h1>
+        <div>
+            <HeaderMenu/>
+            <h1>Contact</h1>
+        </div>
     )
 }
 export default Contact

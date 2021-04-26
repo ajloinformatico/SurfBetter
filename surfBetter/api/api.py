@@ -23,9 +23,10 @@ class User(db.Model):
     email = db.Column(db.Text, unique=True, nullable=False)
     name = db.Column(db.String(63), unique=False, nullable=False)
     surname = db.Column(db.String(63), unique=False, nullable=False)
-    avatar = db.Column(db.Text, unique=True, nullable=False, server_default='statics/default/avatar_light.png')
+    avatar = db.Column(db.Text, unique=False, nullable=True, server_default='statics/default/avatar_light.png')
     nick = db.Column(db.String(30), unique=True, nullable=False)
     password =  db.Column(db.String(63), unique=False, nullable=False)
+    description = db.Column(db.Text, unique=False, nullable=True, server_default='Hello there ! I`m using SurfBetter')
     roles = db.Column(db.String(10))
     is_active= db.Column(db.Boolean, default=True, server_default='true')
 
@@ -81,7 +82,8 @@ class User(db.Model):
             name=self.name,
             surname=self.surname,
             avatar=self.avatar,
-            nick=self.nick
+            nick=self.nick,
+            description=self.description
         )
 
 
@@ -122,7 +124,6 @@ cors.init_app(app)
 with app.app_context():
     db.create_all()
     if db.session.query(User).filter_by(email="ajloinformatico@gmail.com").count() < 1:
-        print("\n\ncreate user\n\n")
         db.session.add(
             User(
                 email="ajloinformatico@gmail.com",
@@ -168,6 +169,7 @@ def login():
 def signin():
 
     req = flask.request.get_json(force=True)
+    print(req)
     name = req["name"]
     surname = req["surname"]
     nick = req["nick"]
@@ -217,9 +219,16 @@ def ptotected():
     """[Simulation of auth_rqeuired. Basicly it eill required a header containing a valid JWT]"""
     # current_user = db.session.query(User).filter_by(nick=f'{flask_praetorian.current_user().nick}').first()
     # print(current_user)
+    return "protected example", 200
+
+@app.route('/api/current_user')
+@flask_praetorian.auth_required
+def current_user():
+    """
+    Get current loged user
+    """
     user = flask_praetorian.current_user()
     return user.convert_to_json(), 200
-
     
 
 if __name__ == '__main__':

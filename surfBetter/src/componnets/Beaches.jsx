@@ -1,8 +1,12 @@
 import React from "react";
+import HeaderMenu from "./HeaderMenu.jsx";
 
-const Beaches = () => {
+const Beaches = (props) => {
     return (
-       <h1>Beaches</h1>
+        <div>
+            <HeaderMenu/>
+            <h1>Beaches</h1>
+        </div>
 
     )
 }

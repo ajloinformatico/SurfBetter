@@ -34,10 +34,11 @@ import {authFetch,  useAuth} from "./componnets/auth/auth.jsx"
  */
 function App() {
 
+
     //TODO: Maybe i might need it
     // eslint-disable-next-line no-unused-vars
-    const [user, setUser] = useState(null)
-    
+    const [user, setUser] = useState({})
+     
     //LOVE REACT RETURNS AUTH USER
     const [logged] = useAuth()
 
@@ -46,15 +47,10 @@ function App() {
          */
         useEffect(() => {
                 //fetch("/api").then(resp => resp.json()).then(resp => console.log(resp))
-        authFetch("/api/protected").then(response => {
-            if (response.status !== 401){
-                setUser(response.user)
-                console.log(response)
-                console.log(user)
-            }
-            }).then(response => {
-                    (response&&response.user)&&setUser(response.user)
-            })
+            authFetch("/api/current_user")
+                .then(response => response.json())
+                .catch(error => console.log(error))
+                .then(userInfo => setUser(userInfo))
         }, [])
         
     return (
@@ -68,7 +64,6 @@ function App() {
                 }
                 
                 {/*Protected royetes*/}
-                <HeaderMenu/>
                 <Route path="/" exact>      
                     <Beaches/>
                 </Route>
@@ -82,7 +77,7 @@ function App() {
                     <Options/>
                 </Route>
                 <Route path="/profile" exact>
-                    <Profile/>
+                    <Profile user={user}/>
                 </Route>
                 <Route path="/resources" exact>
                     <Resources/>

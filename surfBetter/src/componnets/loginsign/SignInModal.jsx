@@ -148,8 +148,6 @@ const SignInModal = (props) => {
             'name' : name,
             'surname' : surname,
             // Need eslint-disabled because need key for login and register
-            // eslint-disable-next-line no-dupe-keys
-            'email' : email,
             'nick' : nick,
             'password' : password
         }
@@ -162,7 +160,7 @@ const SignInModal = (props) => {
         .then(token => {
             if (token.access_token) {
                 login(token)
-                history.replace("/profile")
+                history.push("/profile")
             } else {
                 console.log(token.signin_error)
                 errorSpan.innerHTML = token.signin_error

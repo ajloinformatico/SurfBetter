@@ -1,8 +1,13 @@
 import React from "react";
+import HeaderMenu from "./HeaderMenu.jsx"
 
-const Options = () => {
+
+const Options = (props) => {
     return (
-        <h1>Options</h1>
+        <div>
+            <HeaderMenu/>
+            <h1>Options</h1>
+        </div>
     )
 }
 export default Options
