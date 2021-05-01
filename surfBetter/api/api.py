@@ -5,14 +5,14 @@ import flask_praetorian
 import flask_cors
 from flask import jsonify
 
-db = flask_sqlalchemy.SQLAlchemy() # ORM
-guard = flask_praetorian.Praetorian() # Auth JWT
-cors = flask_cors.CORS() # allow requests (develop)
+db = flask_sqlalchemy.SQLAlchemy()  # ORM
+guard = flask_praetorian.Praetorian()  # Auth JWT
+cors = flask_cors.CORS()  # allow requests (develop)
+
 
 # User Model
 class User(db.Model):
     """User model
-
     Args:
         db (SQLAlchemy model): [SQLAlchemy ORM database]
     """
@@ -25,16 +25,14 @@ class User(db.Model):
     surname = db.Column(db.String(63), unique=False, nullable=False)
     avatar = db.Column(db.Text, unique=False, nullable=True, server_default='statics/default/avatar_light.png')
     nick = db.Column(db.String(30), unique=True, nullable=False)
-    password =  db.Column(db.String(63), unique=False, nullable=False)
+    password = db.Column(db.String(63), unique=False, nullable=False)
     description = db.Column(db.Text, unique=False, nullable=True, server_default='Hello there ! I`m using SurfBetter')
     roles = db.Column(db.String(10))
-    is_active= db.Column(db.Boolean, default=True, server_default='true')
-
+    is_active = db.Column(db.Boolean, default=True, server_default='true')
 
     @property
     def identity(self):
         """[Get user id]
-
         Returns:
             [int]: [User id]
         """
@@ -42,8 +40,7 @@ class User(db.Model):
 
     @property
     def rolenames(self):
-        """[Generate property to return the roles of a user separated by commas] 
-
+        """[Generate property to return the roles of a user separated by commas]
         Returns:
             [List]: [User comma separated roles]
         """
@@ -51,14 +48,12 @@ class User(db.Model):
             return self.roles.split(",")
         except Exception:
             return []
-   
+
     @classmethod
     def lookup(cls, email):
-        """[Get a player by email] 
-
+        """[Get a player by email]
         Args:
             email (str): [email  to lookup]
-
         Returns:
             [User]: [User lookup]
         """
@@ -67,7 +62,6 @@ class User(db.Model):
     @classmethod
     def identify(cls, id):
         """[get user id]
-
         Returns:
             [int]: [User id]
         """
@@ -86,7 +80,6 @@ class User(db.Model):
             description=self.description
         )
 
-
     def is_valid(self):
         """[Check if an user is active on the app]
         Returns:
@@ -100,15 +93,15 @@ class User(db.Model):
         TODO: CONTINUE HERE AND SET ON PROFILE
         """
         return '<User %r,%r,%r,%r,%r,%r>' % (self.email, self.name, self.surname, self.nick, self.password, self.roles)
-    
+
 
 # intialize flask basic conf & basic conf
 app = flask.Flask(__name__)
 app.debug = True
 app.config['SECRET_KEY'] = 'top secret'
-    
-app.config['JWT_ACCESS_LIFESPAN'] = {'hours' : 24}
-app.config['JWT_REFRESH_LIFESPAN'] = {'days' : 30}
+
+app.config['JWT_ACCESS_LIFESPAN'] = {'hours': 24}
+app.config['JWT_REFRESH_LIFESPAN'] = {'days': 30}
 
 # flask pretorian initialize (app, model)
 guard.init_app(app, User)
@@ -120,7 +113,7 @@ db.init_app(app)
 # initialize cors to debug
 cors.init_app(app)
 
-# SEEDER if not exists user admin create database and admin 
+# SEEDER if not exists user admin create database and admin
 with app.app_context():
     db.create_all()
     if db.session.query(User).filter_by(email="ajloinformatico@gmail.com").count() < 1:
@@ -138,12 +131,10 @@ with app.app_context():
     print("user exists")
 
 
-
 # Example Routes
 @app.route('/api/')
 def api_hello():
     """[Default hello Api route]
-
     Returns:
         [Json]: [hello message]
         [Request Code]: [200 = OK]
@@ -163,11 +154,11 @@ def login():
         ret = {'access_token': guard.encode_jwt_token(user)}
         return ret, 200
     else:
-        return {'AutenticationError' : 'Email and/or password incorrect'}, 401
+        return {'AutenticationError': 'Email and/or password incorrect'}, 401
+
 
 @app.route('/api/signin', methods=['POST'])
 def signin():
-
     req = flask.request.get_json(force=True)
     print(req)
     name = req["name"]
@@ -176,12 +167,11 @@ def signin():
     email = req["email"]
     password = req["password"]
 
-    if(name[0] != "@"):
-        name = "@"+name
-    
+    if (name[0] != "@"):
+        name = "@" + name
 
     if db.session.query(User).filter_by(email=email).count() < 1 and \
-        db.session.query(User).filter_by(nick=nick).count() < 1:
+            db.session.query(User).filter_by(nick=nick).count() < 1:
         db.session.add(
             User(
                 email=email,
@@ -194,20 +184,20 @@ def signin():
         )
         db.session.commit()
         user = guard.authenticate(email, password)
-        ret = {'access_token':guard.encode_jwt_token(user)}
+        ret = {'access_token': guard.encode_jwt_token(user)}
         return ret, 200
-    
-    return {'signin_error' : 'Email or nick is currently in the system'}, 401
+
+    return {'signin_error': 'Email or nick is currently in the system'}, 401
 
 
-# TODO: IF NOT FOUND send 401   
+# TODO: IF NOT FOUND send 401
 # return {'ERROR': email}, 401
 @app.route('/api/refresh', methods=['POST'])
 def refresh():
     """Refresh token by copying all token]"""
     try:
         print("refresh request")
-        new_token = guard.refresh_jwt_token(flask.request.get_data()) # instance new token by copy old token
+        new_token = guard.refresh_jwt_token(flask.request.get_data())  # instance new token by copy old token
         return {'access_token': new_token}, 200
     except Exception:
         return {'ERROR', 'Internal server error'}, 500
@@ -221,6 +211,7 @@ def ptotected():
     # print(current_user)
     return "protected example", 200
 
+
 @app.route('/api/current_user')
 @flask_praetorian.auth_required
 def current_user():
@@ -229,8 +220,7 @@ def current_user():
     """
     user = flask_praetorian.current_user()
     return user.convert_to_json(), 200
-    
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-
