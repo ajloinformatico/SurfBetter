@@ -76,11 +76,6 @@ const HeaderMenu = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/options" title="go to Options" alt="link to login">
-                            Options
-                        </Link>
-                    </li>
-                    <li>
                         <Link to="/" title="go to Beaches" alt="link to beaches">
                             Beaches
                         </Link>
@@ -121,11 +116,6 @@ const HeaderMenu = () => {
                 <li>
                     <Link to="/contact" alt="link to contact" title="go to Contact">
                         Contact
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/options" title="go to Options" alt="link to login">
-                        Options
                     </Link>
                 </li>
                 <li>

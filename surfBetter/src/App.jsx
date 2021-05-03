@@ -13,12 +13,9 @@ import {
 import LoginRegister from './componnets/loginsign/LoginRegister.jsx'
 import Profile from './componnets/Profile.jsx'
 import Beaches from './componnets/Beaches.jsx'
-import Options from './componnets/Options.jsx'
 import Contact from './componnets/Contact.jsx'
 import Resources from './componnets/Resources.jsx'
 import LegalNotices from './componnets/LegalNotices.jsx'
-import HeaderMenu from "./componnets/HeaderMenu.jsx";
-
 //Auth
 import {authFetch,  useAuth} from "./componnets/auth/auth.jsx"
 // Note: Just to check if i can do fetch
@@ -72,9 +69,6 @@ function App() {
                 </Route>
                 <Route path="/contact" exact>
                     <Contact/>
-                </Route>
-                <Route path="/options" exact>
-                    <Options/>
                 </Route>
                 <Route path="/profile" exact>
                     <Profile user={user}/>

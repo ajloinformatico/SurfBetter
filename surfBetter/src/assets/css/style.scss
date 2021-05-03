@@ -181,6 +181,10 @@ main{
   display: inline-block;
 }
 
+h1 {
+  font-size: $font-special;
+}
+
 h2 {
   font-size: $size-common-mobile-title;
 }
@@ -381,6 +385,40 @@ header{
   }
 }
 
+/*********************** PROFILE *******************/
+.avatarImage {
+  width: 200px;
+  height: 200px;
+  border: 2pt solid black;
+  border-radius: 50%;
+}
+
+.headerProfile{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  label {
+    width: 90px;
+  }
+}
+
+.profilesUserDescription{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  div {
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
 /**************************** VARS ********************/
 .buttonBlue{
   @include create-button($color-white, $color-header)
@@ -487,6 +525,17 @@ header{
       }
     }
   }
+
+
+  .profilesUserDescription{
+    div {
+      width: 50%;
+    }
+    div:last-child{
+      margin-top:2em;
+    }
+  }
+
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -606,7 +655,6 @@ header{
       }
     }
   }
-  
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
