@@ -68,6 +68,12 @@ class User(db.Model):
             nick=self.nick,
             description=self.description
         )
+    
+    def get_avatar_route(self):
+        """[return avatar image name and route ]
+        """
+        avatar_route = self.avatar.split("/")
+        return (avatar_route.pop(-1), "/"+"/".join(avatar_route)+"/")
 
     def is_valid(self):
         """[Check if an user is active on the app]

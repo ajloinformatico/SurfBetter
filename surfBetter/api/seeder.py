@@ -1,5 +1,5 @@
 from models import User
-from extensions import db
+from extensions import db, guard
 
 
 def seed(app):

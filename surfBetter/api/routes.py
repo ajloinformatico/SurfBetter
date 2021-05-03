@@ -3,6 +3,7 @@ from flask_praetorian import auth_required, current_user
 import flask_praetorian
 from extensions import guard, db
 from models import User
+import os
 
 routes = Blueprint('routes',__name__)
 
@@ -18,7 +19,7 @@ def api_hello():
     print("hello")
     return {"HELLO": "OLA SURFISTA OLA"}, 200
 
-@routes.route("/api/login/", methods=['GET', 'POST'])
+@routes.route("/api/login", methods=['GET', 'POST'])
 def login():
     """Logs an user in by  parsing POST request contains user credentials and iussing a JWT token response"""
     req = request.get_json(force=True)
@@ -36,15 +37,14 @@ def login():
 @routes.route('/api/signin', methods=['POST'])
 def signin():
     req = request.get_json(force=True)
-    print(req)
     name = req["name"]
     surname = req["surname"]
     nick = req["nick"]
     email = req["email"]
     password = req["password"]
 
-    if (name[0] != "@"):
-        name = "@" + name
+    if (nick[0] != "@"):
+        nick = "@" + nick
 
     if db.session.query(User).filter_by(email=email).count() < 1 and \
             db.session.query(User).filter_by(nick=nick).count() < 1:
@@ -60,6 +60,10 @@ def signin():
         )
         db.session.commit()
         user = guard.authenticate(email, password)
+
+        # Create user directory
+        os.makedirs("statics/user/"+nick)
+
         ret = {'access_token': guard.encode_jwt_token(user)}
         return ret, 200
 
