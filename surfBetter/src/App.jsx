@@ -16,6 +16,8 @@ import Beaches from './componnets/Beaches.jsx'
 import Contact from './componnets/Contact.jsx'
 import Resources from './componnets/Resources.jsx'
 import LegalNotices from './componnets/LegalNotices.jsx'
+import ServerError from './componnets/ServerError.jsx'
+
 //Auth
 import {authFetch,  useAuth} from "./componnets/auth/auth.jsx"
 // Note: Just to check if i can do fetch
@@ -39,6 +41,13 @@ function App() {
     //LOVE REACT RETURNS AUTH USER
     const [logged] = useAuth()
 
+    const [serverStatus, setServerStatus] = useState(true)
+
+        useEffect(() => {
+            fetch("/api/")
+            .catch(setServerStatus(false))
+        })
+
         /**
          * UsseEfect to get User Name
          */
@@ -53,6 +62,14 @@ function App() {
     return (
         <Router history>
             <Switch>
+                {/*Route for not runing server*/}
+                <Route path="/server_error" exact>
+                    <ServerError serverStatus={serverStatus}/>
+                </Route>
+                {
+                    !serverStatus&&<Redirect to="server_error"/>
+                }
+
                 <Route path="/login" exact>
                     <LoginRegister/>
                 </Route>

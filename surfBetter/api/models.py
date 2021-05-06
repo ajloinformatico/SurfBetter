@@ -62,7 +62,7 @@ class User(db.Model):
         """
         return jsonify(
             id=self.id,
-            email=self.email
+            email=self.email,
             name=self.name,
             surname=self.surname,
             avatar=self.avatar,

@@ -25,24 +25,18 @@ const Profile = (props) => {
     const [password, setPassword] = useState("")
     const [description, setDescription] = useState("")
 
-
+    
     //Set user image by useEffect abd authFetc
     useEffect(() => {
-        update()
-    })
+        getAvatar()
+    },[])
 
-    /**
-     * set and update src user image
-     */
-    const update = () => {
+
+    const getAvatar = () => {
         authFetch("/api/avatar")
-        .then(
-            document.querySelector(".avatarImage")
-            .setAttribute("src","/api/avatar")
-        )
+        .then(setAvatar('')).then(setAvatar('/api/avatar'))
     }
-
-   
+    
     /**
      * Put update user avatar
      * @param {event} e 
@@ -54,13 +48,12 @@ const Profile = (props) => {
         authFetch('/api/avatar',{
             method: 'PUT',
             body: formData
-        })
-        //TODO REPLACE WITH ASYNC
-        window.location.replace('/profile')
+        }).then(getAvatar())
     }
     
     return (
         <div>
+            <script language="JavaScript" src="js/myscript.js?n=1"></script>
         <HeaderMenu/>
         <main>
             <div className={"headerProfile"}>
@@ -72,7 +65,7 @@ const Profile = (props) => {
             <section className="profilesUserDescription">
             {console.log(props.user)}            
                 <div>
-                    <img className={"avatarImage"} alt="user Avatar"/>
+                    <img className={"avatarImage"} alt="userIcon" src={avatar}/>
                     <p>{props.user.nick}</p>
                     
                     <p>{props.user.name} {props.user.surname}</p>
