@@ -10,15 +10,15 @@ import {
 } from "react-router-dom";
 
 //Componnets
-import LoginRegister from './componnets/loginsign/LoginRegister.jsx'
-import Profile from './componnets/Profile.jsx'
-import Beaches from './componnets/Beaches.jsx'
-import Contact from './componnets/Contact.jsx'
-import Resources from './componnets/Resources.jsx'
-import LegalNotices from './componnets/LegalNotices.jsx'
+import LoginRegister from './componets/loginsign/LoginRegister.jsx.js'
+import Profile from './componets/profile/Profile.jsx'
+import Beaches from './componets/Beaches.jsx.js'
+import Contact from './componets/Contact.jsx'
+import Resources from './componets/Resources.jsx.js'
+import LegalNotices from './componets/LegalNotices.jsx.js'
 
 //Auth
-import {authFetch,  useAuth} from "./componnets/auth/auth.jsx"
+import {authFetch,  useAuth} from "./componets/auth/auth.jsx"
 // Note: Just to check if i can do fetch
 
 /**
