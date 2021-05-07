@@ -4,10 +4,8 @@ import React, {useEffect, useState} from "react";
 
 //Auth
 import {authFetch} from "./auth/auth.jsx"
-
 import HeaderMenu from "./HeaderMenu.jsx";
 import logoSurfBetterHeader from "../assets/img/common/logoSurfBetterHeader.png";
-
 /**
  * 
  * @param {Props} props:props.user => User Object 
@@ -25,22 +23,17 @@ const Profile = (props) => {
     const [password, setPassword] = useState("")
     const [description, setDescription] = useState("")
 
+    
 
      //Set user image by useEffect abd authFetc
      useEffect(() => {
-         getAvatar()
+        authFetch("/api/avatar").then(setAvatar("/api/avatar"))
     },[])
     
     
-    
-
 
     const getAvatar = async () => {
-        debugger
-        authFetch("/api/avatar")
-        .then(
-            setAvatar('/api/avatar')
-        )
+        authFetch("/api/avatar").then(setAvatar("/api/avatar"))
     }
    
     /**
@@ -54,7 +47,7 @@ const Profile = (props) => {
         authFetch('/api/avatar',{
             method: 'PUT',
             body: formData
-        }).then(getAvatar())
+        }).then(e => getAvatar(e))
     }
     
     return (
