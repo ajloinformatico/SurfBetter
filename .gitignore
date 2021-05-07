@@ -4,6 +4,7 @@
 *.iml
 *.pyc
 *.pyc
+*.idea
 surfBetter/api/__pycache__/app.cpython-39.pyc
 surfBetter/node_modules/
 surfBetter/api/env
