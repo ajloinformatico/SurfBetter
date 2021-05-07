@@ -25,26 +25,29 @@ const Profile = (props) => {
     const [password, setPassword] = useState("")
     const [description, setDescription] = useState("")
 
-    
-    //Set user image by useEffect abd authFetc
-    useEffect(() => {
-        getAvatar()
+
+     //Set user image by useEffect abd authFetc
+     useEffect(() => {
+         getAvatar()
     },[])
+    
+    
+    
 
 
-    const getAvatar = () => {
+    const getAvatar = async () => {
         debugger
         authFetch("/api/avatar")
         .then(
             setAvatar('/api/avatar')
         )
     }
-    
+   
     /**
      * Put update user avatar
      * @param {event} e 
      */
-    const updateAvatar = e => {
+    const updateAvatar = async e => {
         e.preventDefault()
         const formData = new FormData();
         formData.append("file", document.getElementById("file").files[0])  
@@ -56,7 +59,6 @@ const Profile = (props) => {
     
     return (
         <div>
-            <script language="JavaScript" src="js/myscript.js?n=1"></script>
         <HeaderMenu/>
         <main>
             <div className={"headerProfile"}>
@@ -68,7 +70,11 @@ const Profile = (props) => {
             <section className="profilesUserDescription">
             {console.log(props.user)}            
                 <div>
-                    <img className={"avatarImage"} alt="userIcon" src={avatar}/>
+                    {/*Upload avatar image*/}
+                    <label class={"profileAvatarImage"}htmlFor={"file"}>
+                        <img className={"avatarImage"} alt="userIcon" src={avatar}/>
+                        <input onChange={e => updateAvatar(e)} type={"file"} name="file" id="file" required={true}/>
+                    </label>
                     <p>{props.user.nick}</p>
                     
                     <p>{props.user.name} {props.user.surname}</p>
@@ -108,8 +114,8 @@ const Profile = (props) => {
                         onSubmit={e => updateAvatar(e)}
                         encType={"multipart/formdata"}>
 
-                        <label htmlFor={"file"}>Avatar</label>
-                        <input type={"file"} name="file" id="file" required={true}/>
+                        
+                       
                     
                         <input type={"submit"} value="update"/>
                     </form>

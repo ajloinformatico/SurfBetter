@@ -386,11 +386,26 @@ header{
 }
 
 /*********************** PROFILE *******************/
-.avatarImage {
-  width: 200px;
-  height: 200px;
-  border: 2pt solid black;
-  border-radius: 50%;
+.profileAvatarImage{
+  .avatarImage{
+    @extend %over-buttons;
+    width: 200px;
+    height: 200px;
+    border: 2pt solid black;
+    border-radius: 50%;
+    opacity: 1;
+    cursor:pointer;
+    
+  }
+  .avatarImage:hover{
+
+    @extend %hover-buttons;
+    opacity: 0.5;
+  }
+  input {
+    visibility: hidden;
+    display: none;
+  }
 }
 
 .headerProfile{
@@ -406,9 +421,8 @@ header{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  div {
-    width: 100%;
-  }
+  width: 100%;
+  
 }
 
 
