@@ -10,12 +10,12 @@ import {
 } from "react-router-dom";
 
 //Componnets
-import LoginRegister from './componets/loginsign/LoginRegister.jsx.js'
+import LoginRegister from './componets/loginsign/LoginRegister.jsx'
 import Profile from './componets/profile/Profile.jsx'
-import Beaches from './componets/Beaches.jsx.js'
+import Beaches from './componets/Beaches.jsx'
 import Contact from './componets/Contact.jsx'
-import Resources from './componets/Resources.jsx.js'
-import LegalNotices from './componets/LegalNotices.jsx.js'
+import Resources from './componets/Resources.jsx'
+import LegalNotices from './componets/LegalNotices.jsx'
 
 //Auth
 import {authFetch,  useAuth} from "./componets/auth/auth.jsx"
