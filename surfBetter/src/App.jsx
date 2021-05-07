@@ -16,16 +16,10 @@ import Beaches from './componnets/Beaches.jsx'
 import Contact from './componnets/Contact.jsx'
 import Resources from './componnets/Resources.jsx'
 import LegalNotices from './componnets/LegalNotices.jsx'
-import ServerError from './componnets/ServerError.jsx'
 
 //Auth
 import {authFetch,  useAuth} from "./componnets/auth/auth.jsx"
 // Note: Just to check if i can do fetch
-
-
-
-
-
 
 /**
  * 
@@ -41,43 +35,31 @@ function App() {
     //LOVE REACT RETURNS AUTH USER
     const [logged] = useAuth()
 
-    const [serverStatus, setServerStatus] = useState(true)
-
-        useEffect(() => {
-            fetch("/api/")
-            .catch(setServerStatus(false))
-        })
+    //const [serverStatus, setServerStatus] = useState(null)
 
         /**
          * UsseEfect to get User Name
          */
         useEffect(() => {
-                //fetch("/api").then(resp => resp.json()).then(resp => console.log(resp))
             authFetch("/api/current_user")
                 .then(response => response.json())
                 .catch(error => console.log(error))
                 .then(userInfo => setUser(userInfo))
         }, [])
+
         
     return (
         <Router history>
             <Switch>
-                {/*Route for not runing server*/}
-                <Route path="/server_error" exact>
-                    <ServerError serverStatus={serverStatus}/>
-                </Route>
-                {
-                    !serverStatus&&<Redirect to="server_error"/>
-                }
-
+                {/*Public route*/}
                 <Route path="/login" exact>
                     <LoginRegister/>
                 </Route>
-                { //Check if user is loged to redirect or stay here
-                    !logged&&<Redirect to="login"/>
+                {
+                    !logged&&
+                        <Redirect to="login"/>
                 }
-                
-                {/*Protected royetes*/}
+                {/*Protected rouetes*/}
                 <Route path="/" exact>      
                     <Beaches/>
                 </Route>
@@ -93,7 +75,6 @@ function App() {
                 <Route path="/resources" exact>
                     <Resources/>
                 </Route>
-             
                 <Route path="/legal" exact>
                     <LegalNotices/>        
                 </Route>

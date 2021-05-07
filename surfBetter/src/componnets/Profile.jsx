@@ -33,8 +33,11 @@ const Profile = (props) => {
 
 
     const getAvatar = () => {
+        debugger
         authFetch("/api/avatar")
-        .then(setAvatar('')).then(setAvatar('/api/avatar'))
+        .then(
+            setAvatar('/api/avatar')
+        )
     }
     
     /**
@@ -101,8 +104,8 @@ const Profile = (props) => {
                 </header>
                 
                 <div className={"contentModal"}>
-                    <form id={"update-avatar"}  action={"/api/avatar"} 
-                        method={"PUT"} onSubmit={e => updateAvatar(e)}
+                    <form id={"update-avatar"} 
+                        onSubmit={e => updateAvatar(e)}
                         encType={"multipart/formdata"}>
 
                         <label htmlFor={"file"}>Avatar</label>

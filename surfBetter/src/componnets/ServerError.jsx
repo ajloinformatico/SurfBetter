@@ -9,7 +9,8 @@ const ServerError = (props) => {
 
 
     useEffect(() => {
-        props.ServerError&&history.push('/')
+        props.serverStatus&&history.push('/')
+        console.log(props.serverStatus)
     });
     
     return (
