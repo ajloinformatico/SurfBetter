@@ -33,7 +33,6 @@ def login():
     else:
         return {'AutenticationError': 'Email and/or password incorrect'}, 401
 
-
 @routes.route('/api/signin', methods=['POST'])
 def signin():
     req = request.get_json(force=True)
@@ -89,9 +88,26 @@ def current_user():
     return user.convert_to_json(), 200
 
 
+@routes.route('/api/passwordreset', methods=['PUT'])
+@auth_required
+def passwordreset():
+    req = request.get_json(force=True)
+    user = flask_praetorian.current_user()
+    # First check if old user password is correct
+    print(guard.hash_password(req["old-password"]))
+    print(user.password)
+    if guard.hash_password(req["old-password"]) != guard.get_password(user):
+        return "Is this your old password ??", 428
+    else:
+        user.password = guard.hash_password(req["new-password"])
+        db.session.commit()
+        return "Password updated", 200
+
+
+
 @routes.route('/api/userupdate', methods=['PUT'])
 @auth_required
-def updatePassword():
+def updateUserProfile():
     """[Update user information]
 
     Returns:
@@ -99,11 +115,8 @@ def updatePassword():
         [httpResponse Json Object, 200]: ["User object"]
     """
     req = request.get_json(force=True)
-    name = req["name"].capitalize()
-    surname = req["surname"].capitalize()
     nick = req["nick"]
     email = req["email"]
-    description = req["description"]
 
     if nick[0] != "@":
         nick = "@" + nick
@@ -111,19 +124,23 @@ def updatePassword():
     user = flask_praetorian.current_user()
     print(user)
 
+    # First check email and nick
     if email != user.email or nick != user.nick :
         if db.session.query(User).filter_by(email=email).count() >= 1 and \
             db.session.query(User).filter_by(nick=nick).count() >= 1:
             return f"{email} or {nick} all already in use", 409
 
 
-    user.name = name
-    user.surname = surname
+    user.name = req["name"].capitalize()
+    user.surname = req["surname"].capitalize()
+    user.description = req["description"].capitalize()
     user.nick = nick
-    user.description = description
     user.email = email
     db.session.commit()
     return user.convert_to_json(), 200
+
+
+
 
 
 
