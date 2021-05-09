@@ -176,27 +176,28 @@ const SignInModal = (props) => {
         document.querySelector('#btn-modal-log-in').checked = true;
     }
 
+    /**
+     * Close Sign in modal
+     */
+    const closeSignInModal = () => {
+        document.querySelector('#btn-modal-sign-in').checked = false;
+    }
+
     return (
         <section className={"modalSignIn"}>
         <div className={"container"}>
             <header>
                 <img srcSet={logoSurfBetterHeader} alt="logo SurfBetter"
                  title="SurfBetter logo"/>
-                <div role="button">
-                    <label  htmlFor={"btn-modal-sign-in"}>
-                        <a title="exit">
-                            <i className={"fas fa-arrow-left fa-2x"}></i>
-                        </a>
-                    </label>
-                </div>
-                
+                {/*eslint-disable-next-line jsx-a11y/anchor-has-content*/}
+                <a title={"exit"} onClick={() => closeSignInModal()} className={"fas fa-arrow-left fa-2x"}/>    
             </header>
 
             <div className={"contentModal"}>
                 {/*All inputs are checked on js checkinputs()*/}
                 <form id={"sign-in-form"} action={'.'} onSubmit={e => signUp(e)} autoComplete={'on'}>
+                    <h2>Sign in</h2>
                     <fieldset className={"modalInputs"}>
-                        <legend>Sign in</legend>
                         <input type={"text"} id={"name"} name={"name"} aria-label={"name"}
                                onChange={e => setName(e.target.value)} onBlur={e => checkInputs(e)}
                                size={30} title={"Please input a valid name"} placeholder={"User Name *"} required={true}/>

@@ -61,16 +61,15 @@
     right: 0;
     background-color: $color-white;
 
-    header > label {
+    header > a {
       display: block;
-      padding-right: 1.2em;
-      padding-top: 2em;
+      margin-right: .3em;
     }
 
     .contentModal {
       margin-top: .5em;
       margin-bottom: 2em;
-
+      
       form {
         width: 70%;
         margin: 0 auto;
@@ -105,6 +104,22 @@
           border-color: transparent;
           display: flex;
           justify-content: space-between;
+        }
+        .modalButtonSingle {
+          display: flex;
+          flex-flow: column;
+          justify-content: center;
+          align-items: center;
+          border: none;
+          margin: 0;
+          padding: 0;
+        }
+      }
+      >.modalOptionsButtons{
+        display: flex;
+        justify-content: space-around;
+        a{
+          cursor: pointer;
         }
       }
     }
@@ -364,21 +379,51 @@ header{
   }
 }
 
-/*Modals*/
+/********************* Modals ************************/
+/*Sign in*/
 .modalSignIn{
   @extend %common-modal-style
 }
+/*Login*/
 .modalLogin{
   @extend %common-modal-style
 }
+/*Options*/
+.optionsModal{
+  @extend %common-modal-style
+}
+/*Recover password*/
+.modalPassword{
+  @extend %common-modal-style
+}
+/*Update user info*/
+.modalUserInfoUpdate{
+  @extend %common-modal-style
+}
+
+
 
 /*On clicks*/
+/*sign in modal*/
 #btn-modal-sign-in:checked ~ .modalSignIn{
   @extend %show-modal
 }
+/*log in modal*/
 #btn-modal-log-in:checked ~ .modalLogin{
   @extend %show-modal
 }
+/*options modal*/
+#user-options-modal:checked ~ .optionsModal{
+  @extend %show-modal
+}
+/*Password modal*/
+#password-update-modal:checked ~ .modalPassword{
+  @extend %show-modal
+}
+#user-info-option-modal:checked ~ .modalUserInfoUpdate{
+  @extend %show-modal
+}
+
 
 .container{
   .img{
@@ -387,6 +432,8 @@ header{
 }
 
 /*********************** PROFILE *******************/
+
+/*Image update user hidden*/
 .profileAvatarImage{
   .avatarImage{
     @extend %over-buttons;
@@ -423,7 +470,11 @@ header{
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
-  
+}
+
+/*Options labels*/
+#user-options-modal , #user-info-option-modal, #password-update-modal{
+  display: none;
 }
 
 
@@ -636,6 +687,14 @@ header{
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+
+  html {
+   font-size: $font-comon-big-desk;
+  }
+  h2 {
+    font-size: $font-comon-big-title-desk;
+  }
+
   header{
     img{
       width: 300px;

@@ -93,10 +93,19 @@ const LoginModal = (props) => {
         })
     }
 
+    /**
+     * Change to sign in modal
+     */
     const changeToSign = () => {
         document.querySelector('#btn-modal-log-in').checked = false;
         document.querySelector('#btn-modal-sign-in').checked = true;
     }
+
+    const closeLoginModal = () => {
+        document.querySelector('#btn-modal-log-in').checked = false;
+    }
+
+
 
     return (
         <section className={"modalLogin"}>
@@ -105,21 +114,15 @@ const LoginModal = (props) => {
                 <header>
                     <img srcSet={logoSurfBetterHeader} alt={"logo SurfBetter"} title={"SurfBetter logo"}/>
                     {/*Used for simple style*/ }
-                    <div role="button">
-                        <label title="exit" htmlFor={"btn-modal-log-in"}>
-                            <a title="exit">
-                                <i className={"fas fa-arrow-left fa-2x"}></i>
-                            </a>
-                        </label>
-                    </div>
+                    {/*eslint-disable-next-line jsx-a11y/anchor-has-content*/}
+                    <a title="exit" onClick={() => closeLoginModal()} className={"fas fa-arrow-left fa-2x"}/>      
                 </header>
 
                 <div className={"contentModal"}>
 
                     <form id={"log-in-form"} action={'.'} onSubmit={e => logIng(e)}>
+                        <h2>Log in</h2>
                         <fieldset className={"modalInputs"}>
-                            <legend>Log in</legend>
-
                             <input type={"email"} id={"email"} name={"email"} title={"Please enter a valid email *"}
                                onChange={e => setEmail(e.target.value)} onBlur={e => checkInputs(e)}
                                size={30} aria-label={"email"} placeholder={"Email *"} required={true}/>
