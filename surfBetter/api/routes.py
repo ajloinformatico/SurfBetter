@@ -37,8 +37,8 @@ def login():
 @routes.route('/api/signin', methods=['POST'])
 def signin():
     req = request.get_json(force=True)
-    name = req["name"]
-    surname = req["surname"]
+    name = req["name"].capitalize()
+    surname = req["surname"].capitalize()
     nick = req["nick"]
     email = req["email"]
     password = req["password"]
@@ -74,7 +74,7 @@ def refresh():
     """Refresh token by copying all token]"""
     try:
         print("refresh request")
-        new_token = guard.refresh_jwt_token(flask.request.get_data())  # instance new token by copy old token
+        new_token = guard.refresh_jwt_token(request.get_data())  # instance new token by copy old token
         return {'access_token': new_token}, 200
     except Exception:
         return {'ERROR', 'Internal server error'}, 500
@@ -89,6 +89,44 @@ def current_user():
     return user.convert_to_json(), 200
 
 
+@routes.route('/api/userupdate', methods=['PUT'])
+@auth_required
+def updatePassword():
+    """[Update user information]
+
+    Returns:
+        [httpRseponse, 409]: ["email or nick is already in use"]
+        [httpResponse Json Object, 200]: ["User object"]
+    """
+    req = request.get_json(force=True)
+    name = req["name"].capitalize()
+    surname = req["surname"].capitalize()
+    nick = req["nick"]
+    email = req["email"]
+    description = req["description"]
+
+    if nick[0] != "@":
+        nick = "@" + nick
+
+    user = flask_praetorian.current_user()
+    print(user)
+
+    if email != user.email or nick != user.nick :
+        if db.session.query(User).filter_by(email=email).count() >= 1 and \
+            db.session.query(User).filter_by(nick=nick).count() >= 1:
+            return f"{email} or {nick} all already in use", 409
+
+
+    user.name = name
+    user.surname = surname
+    user.nick = nick
+    user.description = description
+    user.email = email
+    db.session.commit()
+    return user.convert_to_json(), 200
+
+
+
 @routes.route('/api/protected')
 @auth_required
 def ptotected():
@@ -96,3 +134,4 @@ def ptotected():
     current_user = db.session.query(User).filter_by(nick=f'{flask_praetorian.current_user().nick}').first()
     print(current_user)
     return "protected example", 200
+
