@@ -20,19 +20,14 @@ const Profile = (props) => {
 
     //States for modal 
     const [avatar, setAvatar] = useState("")
-    const [nick, setNick] = useState("")
-    const [oldPassword, setOldPassword] = useState("")
-    const [newPassword, setNewPassword] = useState("")
-    const [description, setDescription] = useState("")
-
     
-
+    let user = props.user
      //Set user image by useEffect abd authFetc
-     useEffect(() => {
+    useEffect(() => {
         authFetch("/api/avatar").then(setAvatar("/api/avatar"))
     },[])
     
-    
+
 
     const getAvatar = async () => {
         authFetch("/api/avatar").then(setAvatar("/api/avatar"))

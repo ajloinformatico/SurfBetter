@@ -21,34 +21,55 @@ const PasswordModal = (props) => {
     const [oldPassword, setOldPassword] = useState("")
     const [newPasword, setNewPassword] = useState("")
 
+    /**
+     * Check password inputs
+     * @param {State} state 
+     * @param {target} input 
+     * @returns 
+     */
+    const checkCommonsPassword = (state, input) =>{
+        let errors = false
+        if (!state.trim()) {
+            input.placeholder = input.id + " is empty"
+            errors = true
+        } else if (state.length > 64 || state.length < 8){
+            input.placeholder = input.id + " is not valid"
+            errors = true
+        }
+        if (!errors) 
+            return false
 
-    const checkCommonsPassword = (input, state) =>{
-        
-
+        input.classList.add("erros")
+        input.value = ""
+        return true
     }
-
     /**
      * 
      * @param {Event} e: todo refator 
      */
     const checkInputs = (e) => {
-        let input = e.target;
+        const input = e.target;
+        console.log(input)
         input.classList.remove("errors");
-        
-        if (input.id === "old-password") {
-            checkCommonsPassword(input, oldPassword)
-        } else if (input.id === "new-password") {
-            checkInputs(input, newPasword)
+        switch (input.id){
+            case  "old-password":
+                checkCommonsPassword(oldPassword, input)&&setOldPassword("")
+                return;
+            case "new-password":
+                checkInputs(newPasword, input)&&setNewPassword("")
+                return;
+            default :
+                break;
         }
-
-        if (oldPassword === newPasword){
-            input = e.target;
-            input.classList.add("errors")
-            input.value = ""
-            input.placeholder = "Passwords cannot be the same"
-            setOldPassword("") 
-        }
-
+        if (oldPassword !== newPasword)
+                return;
+                
+        input.classList.add("errors")
+        input.value = ""
+        input.placeholder = "Passwords can not be the same"
+        setOldPassword("")
+        setNewPassword("")
+        return;
     }
 
 
@@ -69,6 +90,7 @@ const PasswordModal = (props) => {
     const closePasswordResset = () => {
         document.getElementById('password-update-modal').checked = false
         document.getElementById('user-options-modal').checked = true    
+    
     }
 
     return (
@@ -80,24 +102,22 @@ const PasswordModal = (props) => {
                 </header>
                 <div className={"contentModal"}>
                     <h2>Update password</h2>
-                    <form id="updatePassword" onSubmit={e => updatePassword(e)} autoComplete={"on"}>
+                    <form id="updatePassword" action={"."} onSubmit={e => updatePassword(e)} autoComplete={"on"}>
                         <fieldset className={"modalInputs"}>
                             <input type={"password"} id={"old-password"} name={"old-password"} title={"Please enter your old password"}
-                                    onChange={e => setOldPassword(e.target.value)} onBlur={e => checkInputs(e)}
-                                    aria-label={"old-password"} size={30}  placeholder={"Old password *"} required={true}/>
+                                onChange={e => setOldPassword(e.target.value)} onBlur={e => checkInputs(e)}
+                                aria-label={"old-password"} size={30}  placeholder={"Old password *"} required={true}/>
 
                             <input type={"password"} id={"new-password"} name={"new-password"} title={"Please enter your new password"}
                                 onChange={e => setNewPassword(e.target.value)} onBlur={e => checkInputs(e)}
                                 aria-label={"new-password"} size={30} placeholder={"New password *"} required={true}/>
                         </fieldset>
                         <fieldset className={"modalButtonSingle"}>
-                            <input className={"buttonBlue"} type={"submit"} value="Update"/>
+                            <input className={"buttonBlue"} type={"submit"} value={"Update"}/>
                         </fieldset>
                     </form>
-
                 </div>
             </div>
-            
         </section>
     )
 }

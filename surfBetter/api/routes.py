@@ -93,10 +93,7 @@ def current_user():
 def passwordreset():
     req = request.get_json(force=True)
     user = flask_praetorian.current_user()
-    # First check if old user password is correct
-    print(guard.hash_password(req["old-password"]))
-    print(user.password)
-    if guard.hash_password(req["old-password"]) != guard.get_password(user):
+    if  not guard.authenticate(user.email, req["old-password"]):
         return "Is this your old password ??", 428
     else:
         user.password = guard.hash_password(req["new-password"])
@@ -117,9 +114,13 @@ def updateUserProfile():
     req = request.get_json(force=True)
     nick = req["nick"]
     email = req["email"]
+    description = req["description"].capitalize()
 
     if nick[0] != "@":
         nick = "@" + nick
+
+    if description == "":
+        description = "I dont like descriptions"
 
     user = flask_praetorian.current_user()
     print(user)
@@ -133,7 +134,7 @@ def updateUserProfile():
 
     user.name = req["name"].capitalize()
     user.surname = req["surname"].capitalize()
-    user.description = req["description"].capitalize()
+    user.description = description
     user.nick = nick
     user.email = email
     db.session.commit()

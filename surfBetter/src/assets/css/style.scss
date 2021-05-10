@@ -85,7 +85,7 @@
             margin-bottom: .5em;
           }
 
-          input {
+          input, textarea {
             margin-bottom: 1em;
             background-color: $color-blue-content;
             text-align: center;
@@ -94,7 +94,7 @@
             border-style: none;
           }
 
-          input::placeholder {
+          input::placeholder, textarea::placeholder {
             color: black;
             font-weight: bolder;
           }

@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import {useHistory} from "react-router";
 import './assets/css/style.scss';
 // Font awesome
 // routes import
@@ -35,17 +36,19 @@ function App() {
     //LOVE REACT RETURNS AUTH USER
     const [logged] = useAuth()
 
-    //const [serverStatus, setServerStatus] = useState(null)
-
-        /**
-         * UsseEfect to get User Name
-         */
-        useEffect(() => {
-            authFetch("/api/current_user")
-                .then(response => response.json())
-                .catch(error => console.log(error))
-                .then(userInfo => setUser(userInfo))
-        }, [])
+    //History
+        //Note: React route const to change page
+    const history = useHistory()
+    
+    /**
+     * UsseEfect to get User Name
+     */
+    useEffect(() => {
+        authFetch("/api/current_user")
+            .then(response => response.json())
+            .catch(error => console.log(error))
+            .then(userInfo => setUser(userInfo))
+    }, [])
 
         
     return (
@@ -53,7 +56,7 @@ function App() {
             <Switch>
                 {/*Public route*/}
                 <Route path="/login" exact>
-                    <LoginRegister/>
+                    <LoginRegister history={history} />
                 </Route>
                 {
                     !logged&&

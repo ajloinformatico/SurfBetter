@@ -11,6 +11,7 @@ import HeaderLoginRegister from "./HeaderLoginRegister.jsx"
 import SignInModal from "./SignInModal.jsx";
 import LoginModal from "./LoginModal.jsx";
 import {useHistory} from "react-router";
+import { authFetch, useAuth } from "../auth/auth";
 
 
 //TODO: CHANGE HISTORY TO HISTORY PROPS
@@ -29,13 +30,13 @@ const LoginRegister = (props) => {
     //Note: React route const to change page
     const history = useHistory()
     
+    const [logged] = useAuth()
+
     /**
      * Check if user exist
      */
     useEffect(() => {
-        //check auth by checking te token
-        (localStorage.getItem("REACT_TOKEN_AUTH_KEY"))&&(history.replace("profile"))//Note: The same that call to react component
-        //load slide
+        logged&&history.push("/profile")
         showSlide(0)
     })
 

@@ -42,6 +42,32 @@ const SignInModal = (props) => {
         }
         return !flag;
     }
+
+    /**
+     * set the error
+     * @param {useState} state 
+     * @param {target} input 
+     * @param {min_max} min and max
+     */
+     const setError = (state, input, min_max) => {
+        let error = false
+        if (!state.trim()) {
+            input.placeholder = input.id + " is empty";
+            error = true
+        } else if (!checkStrings(state, min_max[0], min_max[1])) {
+            input.placeholder = input.id + " is not valid"
+            error = true            
+        }
+        if (error) {
+            input.classList.add("errors")
+            input.value = ""
+            return true
+        } else {
+            return false
+        }
+    }
+
+
     /**
      * By getting event in each onBlur event checks that the inputs are ok
      * @param {event} e: input event
@@ -53,40 +79,13 @@ const SignInModal = (props) => {
         
         switch (input.id) {
             case ("name") : 
-                if(!name.trim()){
-                    input.classList.add("errors");
-                    input.placeholder = input.id + " is empty";
-
-                } else if (!checkStrings(name, 2, 64)) {
-                    input.classList.add("errors");
-                    input.value = "";
-                    input.placeholder = input.id + " isn't valid";
-                    setName("");
-                }
+                setError(name, input, [2, 64])&&setName("")
                 break;
             case ("surname") :
-                if (!surname.trim()) {
-                    input.classList.add("errors");
-                    input.placeholder = input.id + " is empty";
-                } else if (!checkStrings(surname, 2, 64)) {
-                    input.classList.add("errors");
-                    input.value = "";
-                    input.placeholder = input.id + " isn't valid";
-                    setSurname("");
-                }
+                setSurname(surname, input, [2, 64])&&setSurname("")
                 break;
             case ("nick") :
-                if (!nick.trim()) {
-                    input.classList.add("errors");
-                    input.value = "";
-                    input.placeholder = input.id + " is empty";
-                    setNick("");
-                } else if (!checkStrings(nick, 2, 30)){
-                    input.classList.add("errors");
-                    input.value = "";
-                    input.placeholder = input.id + " isn't valid";
-                    setNick("");
-                }
+                setNick(nick, input, [2, 30])&&setNick("")
                 break;
             case ("email_login") :
                 if (!email.trim()) {
@@ -151,7 +150,6 @@ const SignInModal = (props) => {
             'nick' : nick,
             'password' : password
         }
-        console.log(opts)
         //execute fetch to flask server
         fetch('/api/signin', {
             method: 'POST',
