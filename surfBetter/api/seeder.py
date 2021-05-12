@@ -1,6 +1,6 @@
 from models import User
 from extensions import db, guard
-
+import os
 
 def seed(app):
     """
@@ -20,4 +20,7 @@ def seed(app):
                 )
             )
             db.session.commit()
-        print("user exists")
+            # Create user directory
+            os.makedirs("statics/user/@infolojo")
+
+

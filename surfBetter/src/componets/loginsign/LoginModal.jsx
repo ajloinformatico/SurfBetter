@@ -85,7 +85,7 @@ const LoginModal = (props) => {
                 login(token)
                 console.log(token)
                 //Note load profile
-                props.history.push("/profile")
+                props.history.push("/beaches")
             }else {
                 console.log("Autentication Error:\nMail or password not correct")
                 errorSpan.innerHTML = "Mail or password not correct"

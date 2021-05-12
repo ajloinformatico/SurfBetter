@@ -54,22 +54,22 @@ const PasswordModal = (props) => {
         switch (input.id){
             case  "old-password":
                 checkCommonsPassword(oldPassword, input)&&setOldPassword("")
-                return;
+                return true;
             case "new-password":
                 checkInputs(newPasword, input)&&setNewPassword("")
-                return;
+                return true;
             default :
                 break;
         }
         if (oldPassword !== newPasword)
-                return;
+                return true;
                 
         input.classList.add("errors")
         input.value = ""
         input.placeholder = "Passwords can not be the same"
         setOldPassword("")
         setNewPassword("")
-        return;
+        return true;
     }
 
 

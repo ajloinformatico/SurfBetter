@@ -13,3 +13,4 @@ surfBetter/build/
 surfBetter/node_modules/
 imagesServer/img/deletingcomment.png
 .vscode/settings.json
+surfBetter/api/database/*

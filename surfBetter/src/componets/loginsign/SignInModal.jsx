@@ -158,7 +158,7 @@ const SignInModal = (props) => {
         .then(token => {
             if (token.access_token) {
                 login(token)
-                history.push("/profile")
+                history.push("/beaches")
             } else {
                 console.log(token.signin_error)
                 errorSpan.innerHTML = token.signin_error
