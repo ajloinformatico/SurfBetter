@@ -2,7 +2,9 @@
 /* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useState} from 'react'
+import swal from 'sweetalert'
 import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.png"
+import { authFetch, login } from '../auth/auth'
 
 
 
@@ -47,7 +49,7 @@ const PasswordModal = (props) => {
      * 
      * @param {Event} e: todo refator 
      */
-    const checkInputs = (e) => {
+    const checkInputs = async (e) => {
         const input = e.target;
         console.log(input)
         input.classList.remove("errors");
@@ -56,7 +58,7 @@ const PasswordModal = (props) => {
                 checkCommonsPassword(oldPassword, input)&&setOldPassword("")
                 return true;
             case "new-password":
-                checkInputs(newPasword, input)&&setNewPassword("")
+                checkCommonsPassword(newPasword, input)&&setNewPassword("")
                 return true;
             default :
                 break;
@@ -77,15 +79,25 @@ const PasswordModal = (props) => {
     * Execute update
     * @param {evenet} e 
     */
-    const putUpdatePassword = async e => {
-        alert("update")
+    const updatePassword = e => {
+        e.preventDefault()
+        const opts = {
+            "old-password":oldPassword,
+            "new-password":newPasword
+        }
+        authFetch('/api/passwordreset',{
+            method: 'PUT',
+            body: JSON.stringify(opts)
+        }).then(response => response.json())
+        .catch(swal("Error","Is it your old password ?"), {icon: "error"})
+        .then(() => {
+            swal("Your password has been updated",{icon:"success"})
+            .then(async () => {
+                window.location.reload()
+            })
+        })
     }
 
-    const updatePassword = (e) => {
-        e.preventDefault()
-        window.confirm("Are yo shure you want update\nYour current password")&&
-        putUpdatePassword(e)
-    }
 
     const closePasswordResset = () => {
         document.getElementById('password-update-modal').checked = false

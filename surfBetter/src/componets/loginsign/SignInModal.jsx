@@ -2,6 +2,8 @@
 import React ,{useState} from 'react'
 import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.png";
 import { login } from '../auth/auth';
+//sweet alert
+import swal from 'sweetalert';
 
 /**
  * 
@@ -139,8 +141,6 @@ const SignInModal = (props) => {
      */
     const signUp = e => {
         e.preventDefault();
-        const errorSpan = document.querySelector('.errorForms')
-        errorSpan.innerHTML = ""
         //get values from useStates
         const opts = {
             'email' : email,
@@ -157,13 +157,32 @@ const SignInModal = (props) => {
         }).then(response => response.json())
         .then(token => {
             if (token.access_token) {
-                login(token)
-                history.push("/beaches")
+                swal({
+                    title: "Welcome",
+                    text: "Welcome to our community",
+                    icon: "success",
+                    button: "Okey"
+                })
+                .then(async () => {
+                    login(token)
+                    window.location.replace("/profile")
+                })
             } else {
-                console.log(token.signin_error)
-                errorSpan.innerHTML = token.signin_error
+                swal({
+                    title: "Error Login",
+                    text: "Mail or nick not correct",
+                    icon: "error",
+                    button: "Okey"
+                });
             }
         })
+    }
+
+    /**
+     * Make the login and repleace to auths routes
+     */
+    const makeLoging = async () => {
+
     }
 
     /**

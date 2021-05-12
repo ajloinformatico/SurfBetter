@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, {useEffect, useState} from "react";
+import swal from "sweetalert";
 
 //Auth
 import {authFetch} from "../auth/auth.jsx"
@@ -27,11 +28,6 @@ const Profile = (props) => {
         authFetch("/api/avatar").then(setAvatar("/api/avatar"))
     },[])
     
-
-
-    const getAvatar = async () => {
-        authFetch("/api/avatar").then(setAvatar("/api/avatar"))
-    }
    
     /**
      * Put update user avatar
@@ -44,7 +40,14 @@ const Profile = (props) => {
         authFetch('/api/avatar',{
             method: 'PUT',
             body: formData
-        }).then(e => getAvatar(e))
+        }).then(response => response.json())
+        .catch(swal("Error, Something was wrong",{icon:"error"}))
+        .then(swal("Your image has been updated success",{icon:"success"})
+            .then(async () => {
+                authFetch("/api/avatar").then(setAvatar("/api/avatar"))
+                window.location.reload()
+            })
+        );
     }
 
 

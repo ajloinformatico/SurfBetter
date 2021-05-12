@@ -1,9 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import logoSurfBetterHeader from "../assets/img/common/logoSurfBetterHeader.png";
-import {
-    Link, useHistory,
-} from 'react-router-dom'
+
+//Link for menu
+import {Link} from 'react-router-dom'
+
+//Sweet Alert to custom alert
+import swal from 'sweetalert';
 
 
 
@@ -19,7 +22,6 @@ const HeaderMenu = () => {
     //Note: DarkMode val TODO: SAVE ON MY API SERVICE
     const [darkModeState, setDarkModeState] = useState(false)
 
-    const history = useHistory()
 
     /**
      * Change between darkMode and light mode
@@ -55,8 +57,29 @@ const HeaderMenu = () => {
      * search token on localstorage. Delete it and push history to home
      */
     const logOut = (e) => {
-        localStorage.removeItem('REACT_TOKEN_AUTH_KEY');
-        history.push("login");
+        
+        swal({
+            title: "Log out",
+            text: "Are you shure you want to log out?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((logout) => {
+            if (logout) {
+                swal("See you next time surfer",{
+                        icon: "success",
+                })
+                .then( async () => {
+                    localStorage.removeItem('REACT_TOKEN_AUTH_KEY')
+                    window.location.replace("/login")
+                })
+            } else  {
+                swal("You will not regret 😄")
+            }
+        })
+        
+        
     }
 
 

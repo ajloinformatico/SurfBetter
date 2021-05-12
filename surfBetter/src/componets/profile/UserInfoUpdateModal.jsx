@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React,{useState} from 'react'
+import swal from 'sweetalert'
 import logoSurfBetterHeader from '../../assets/img/common/logoSurfBetterHeader.png'
 import { authFetch } from '../auth/auth'
 
@@ -112,8 +113,6 @@ const UserCurrentInfoModal = (props) => {
 
     const updateUser =  async e => {
         e.preventDefault()
-        const errorSpan = document.querySelector('.errorForms')
-        errorSpan.innerHTML = " "
         
         const opts = {
             "name" : name,
@@ -127,12 +126,13 @@ const UserCurrentInfoModal = (props) => {
             body: JSON.stringify(opts)
         }).then(response => response.json())
             //TODO: MODAL TO SHOW INFO
-        .catch(errorSpan.innerHTML = "user or password is allready in use")
-        .then(response => {
-            console.log(response)
-                alert("Your data has been updated succsses") 
-                window.location.reload()
-        })
+        .catch(swal("Error","user or password is allready in use", {icon: "error"}))
+        .then( () => {
+            swal("your data has been updated",{icon: "success"})
+            .then(async () =>{
+                window.location.reload() 
+            });
+        });
     }
 
     const closeUserInfoOptions = () => {

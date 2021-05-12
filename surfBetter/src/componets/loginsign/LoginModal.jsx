@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React ,{useState} from 'react'
 import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.png"
+//Custom alert
+import swal from 'sweetalert';
 
 //login
-import {login} from "../auth/auth.jsx"
+import {login, useAuth} from "../auth/auth.jsx"
 
 
 /**
@@ -65,11 +67,6 @@ const LoginModal = (props) => {
      */
     const logIng = e => {
         e.preventDefault()
-        
-        
-        //error
-        const errorSpan = document.querySelector('.loginError')
-        errorSpan.innerHTML = ""
         //get values from useStates
         const opts = {
             'email' : email,
@@ -83,12 +80,15 @@ const LoginModal = (props) => {
         .then(token => {
             if (token.access_token){
                 login(token)
-                console.log(token)
-                //Note load profile
-                props.history.push("/beaches")
+                window.location.replace("/profile")
             }else {
                 console.log("Autentication Error:\nMail or password not correct")
-                errorSpan.innerHTML = "Mail or password not correct"
+                swal({
+                    title: "Error Login",
+                    text: "Mail or password not correct",
+                    icon: "error",
+                    button: "Okey"
+                });
             }
         })
     }

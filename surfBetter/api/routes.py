@@ -94,12 +94,11 @@ def passwordreset():
     req = request.get_json(force=True)
     user = flask_praetorian.current_user()
     if  not guard.authenticate(user.email, req["old-password"]):
-        return "Is this your old password ??", 428
+        return "Is this your old password ?", 428
     else:
         user.password = guard.hash_password(req["new-password"])
-        db.session.commit()
-        return "Password updated", 200
-
+        return "password has been updated", 200
+        
 
 
 @routes.route('/api/userupdate', methods=['PUT'])
@@ -124,6 +123,15 @@ def updateUserProfile():
 
     user = flask_praetorian.current_user()
     print(user)
+
+    if nick != user.nick:
+        newUserRoute = "statics/user/"+nick
+        os.rename("statics/user/"+user.nick, newUserRoute)
+        if user.avatar != "statics/default/avatar_light.png":
+            newFileRoute = newUserRoute + user.get_avatar_route()[0]
+            user.avatar = newFileRoute
+
+
 
     # First check email and nick
     if email != user.email or nick != user.nick :
