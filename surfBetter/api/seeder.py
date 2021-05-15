@@ -1,4 +1,4 @@
-from models import User
+from models import User, Beach
 from extensions import db, guard
 import os
 
@@ -20,7 +20,15 @@ def seed(app):
                 )
             )
             db.session.commit()
+
             # Create user directory
-            os.makedirs("statics/user/@infolojo")
+            if not os.path.isdir("statics/user/@infolojo"):
+                os.makedirs("statics/user/@infolojo")
 
+        # Beaches seeder
+        if db.session.query(Beach).count() < 1:
+            # check directory
+            if not os.path.isdir("statics/beaches/la_muralla"):
+                os.makedirs("/statics/beaches/la_muralla")
 
+                # insert beach

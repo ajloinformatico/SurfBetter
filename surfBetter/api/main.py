@@ -28,6 +28,9 @@ def create_app():
 
     # initialize sqlite database TODO IF FAILS CHANGE TO SIMETHINF LIKE THAT : app.config['SQLALCHEMY_DATABASE_URI'] = F"sqlite:///{os.path.join(os.getcwd(), 'database.db')}"
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database/database.db"
+
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
     db.init_app(app)
 
     # initialize cors to debug

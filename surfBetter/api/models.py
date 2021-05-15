@@ -27,11 +27,11 @@ class User(db.Model):
     is_active = db.Column(db.Boolean, default=True, server_default='true')
     #RelationShips
     #1:1 likesOfComment
-    likes_on_comments = db.relationship("LikesOfComment", uselist=False, back_populates="user")
+    likes_on_comments = db.relationship("LikesOfComment", uselist=False, backref='user')
     #1:M Comments
-    comments = db.relationships("Comments", backref='user', lazy=True)
+    comments = db.relationship("Comments", backref='user', lazy=True)
     #1:M Likes
-    likes = db.relationships("Likes", backref='user', lazy=True)
+    likes = db.relationship("Likes", backref='user', lazy=True)
 
 
 
@@ -115,6 +115,8 @@ class beach(db.Model):
         1:M With Comments
         1:M With Likes
 
+        flags = 0 : red | 1: orange | 2: yellow | 3: green
+
     Args:
         db ([sqlAlchemy]): [sqlAlchemy instance]
     """
@@ -123,7 +125,9 @@ class beach(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True, nullable=False)
     image = db.Column(db.String, unique=True, nullable=False)
+    description = db.Column(db.Text)
     type = db.Column(db.String, nullable=False)
+    flag = db.Column(db.Integer, nullable=False)
     #Foreign keys
     comments = db.relationship("Comments", backref='beach', lazy=True)
     likes = db.relationship("Likes", backref='beach', lazy=True)
@@ -156,7 +160,7 @@ class Comments(db.Model):
 
     #RelationShips
     #(in 1: m relations it is not necessary to make the relation to others one's own foreign)
-    Likes_of_comment = db.relationship("LikesOfComment", back_populates="comments")
+    likes_of_comment = db.relationship("LikesOfComment", backref="comments", lazy = True)
 
 
 
@@ -177,7 +181,7 @@ class Likes(db.Model):
     """
     __tablename__ = "likes"
 
-    id = db.Column(db.Integer, ptimary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     created_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     beach_id = db.Column(db.Integer, db.ForeignKey("beach.id"), nullable=False)
@@ -200,10 +204,10 @@ class LikesOfComment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    comment_id = db.Column(db.Integer, db.ForeignKey('comment.id'), nullable=False)
+    comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'), nullable=False)
     #RelationShips (1:m no need relation atribute)
     #1:1 With User
-    user = db.relationship("User", back_populates="likes_of_comment")
+    #user = db.relationship("User", back_populates="likes_of_comment")
 
     def __repr__(self):
         return "<Likes %r,%r" % (self.id, self.created_date)
