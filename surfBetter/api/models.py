@@ -109,13 +109,19 @@ class User(db.Model):
 
 
 # TODO: if i get it from api set flag by enum type
-class beach(db.Model):
+class Beach(db.Model):
     """[Beach model]
         Relationships:
         1:M With Comments
         1:M With Likes
 
         flags = 0 : red | 1: orange | 2: yellow | 3: green
+        wave_secuence, wave_height, tidies, weend_speed | 1, 2, 3, 4, 5
+
+        onCardView: quality_when_it_works, wave_Consistency, difficulty, windsurf_y_kitesurf
+                    people_to_Water, general and user_rating check it on the client
+
+
 
     Args:
         db ([sqlAlchemy]): [sqlAlchemy instance]
@@ -128,15 +134,54 @@ class beach(db.Model):
     description = db.Column(db.Text)
     type = db.Column(db.String, nullable=False)
     flag = db.Column(db.Integer, nullable=False)
+    quality_when_it_works = db.Column(db.Integer, nullable=False)
+    wave_consistency = db.Column(db.Integer, nullable=False)
+    difficulty = db.Column(db.Integer, nullable=False)
+    windsurf_y_kitesurf = db.Column(db.Integer, nullable=False)
+    people_to_Water = db.Column(db.Integer, nullable=False)
+
+    # Other points on the detail view
+    sea_weends = db.Column(db.String, nullable=False)
+    other_options = db.Column(db.Integer, nullable=False)
+    water_quality = db.Column(db.Integer, nullable=False)
+    access = db.Column(db.Integer, nullable=False)
+    scenery = db.Column(db.Integer, nullable=False)
+    local_attitude = db.Column(db.Integer, nullable=False)
+    accommodation = db.Column(db.Integer, nullable=False)
+    camping = db.Column(db.Integer, nullable=False)
+    entertainment = db.Column(db.Integer, nullable=False)
+    equipment_and_repairs = db.Column(db.Integer, nullable=False)
+    restaurants = db.Column(db.Integer, nullable=False)
+    pubs = db.Column(db.Integer, nullable=False)
+
+
+
+
+
     #Foreign keys
     comments = db.relationship("Comments", backref='beach', lazy=True)
     likes = db.relationship("Likes", backref='beach', lazy=True)
-
+    
 
 
     def __repr__(self):
         return "<Beach %r,%r,%r>" % (self.id, self.name, self.image, self.type)
     
+
+class DesciptionPoints(db.Model):
+    """[Beaches description model]
+
+    Args:
+        db (database): [mysqlAlchemy instance]
+    """
+    __tablename__ = "description_points"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, unique=True, nullable=False)
+    point_info = db.Column(db.Text)
+    
+
+
 
 class Comments(db.Model):
     """[Comments]
