@@ -139,24 +139,21 @@ class Beach(db.Model):
     difficulty = db.Column(db.Integer, nullable=False)
     windsurf_y_kitesurf = db.Column(db.Integer, nullable=False)
     people_to_Water = db.Column(db.Integer, nullable=False)
-
     # Other points on the detail view
-    sea_weends = db.Column(db.String, nullable=False)
-    other_options = db.Column(db.Integer, nullable=False)
-    water_quality = db.Column(db.Integer, nullable=False)
-    access = db.Column(db.Integer, nullable=False)
-    scenery = db.Column(db.Integer, nullable=False)
-    local_attitude = db.Column(db.Integer, nullable=False)
-    accommodation = db.Column(db.Integer, nullable=False)
-    camping = db.Column(db.Integer, nullable=False)
-    entertainment = db.Column(db.Integer, nullable=False)
-    equipment_and_repairs = db.Column(db.Integer, nullable=False)
-    restaurants = db.Column(db.Integer, nullable=False)
-    pubs = db.Column(db.Integer, nullable=False)
-
-
-
-
+    sea_weends = db.Column(db.String, nullable=True)
+    other_options = db.Column(db.Integer, nullable=True)
+    water_quality = db.Column(db.Integer, nullable=True)
+    access = db.Column(db.Integer, nullable=True)
+    scenery = db.Column(db.Integer, nullable=True)
+    local_attitude = db.Column(db.Integer, nullable=True)
+    accommodation = db.Column(db.Integer, nullable=True)
+    camping = db.Column(db.Integer, nullable=True)
+    entertainment = db.Column(db.Integer, nullable=True)
+    equipment_and_repairs = db.Column(db.Integer, nullable=True)
+    restaurants = db.Column(db.Integer, nullable=True)
+    pubs = db.Column(db.Integer, nullable=True)
+    # surfForescastLink
+    surf_fore_cast_link = db.Column(db.String, nullable=False)
 
     #Foreign keys
     comments = db.relationship("Comments", backref='beach', lazy=True)
