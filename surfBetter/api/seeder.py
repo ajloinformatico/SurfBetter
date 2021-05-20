@@ -917,24 +917,188 @@ def seed(app):
                     surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Picodelas-Cocheras/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
                     latitude = 36.74467175133951, 
                     longitude = -2.1174040371064256
+                ),
+                Beach(
+                    name = "Playa central",
+                    image = "statics/beaches/playa_central/playa_central_1.jpg",
+                    description = "Playa Central in Andalucia is a reasonably exposed beach break that has fairly consistent surf. Winter and spring are the optimum times of year to visit. Works best in offshore winds from the north northwest. Most of the surf here comes from groundswells and the best swell direction is from the south southeast. The beach break offers both left and right hand waves. When it's working here, it can get crowded. Take care of Pollution.",
+                    type = "Beach",
+                    flag = 2,
+                    quality_when_it_works = 1,
+                    wave_consistency = 1,
+                    difficulty = 2,
+                    windsurf_y_kitesurf = 2,
+                    people_to_Water = 4,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Isla-Cristina/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 37.19557111601737, 
+                    longitude = -7.304793462359088
+                ),
+                Beach(
+                    name = "Playa de la carchuna",
+                    image = "statics/beaches/playa_de_la_carchuna/playa_de_la_carchuna_1.jpg",
+                    description = "Playa de Carchuna(Calahonda) in Andalucia is an exposed beach break. Summer offers the best conditions for surfing. Works best in offshore winds from the north. Short period wind swells are the rule and the optimum wave angle is from the southwest. The beach breaks offers right-handers. Best around low tide. Relatively few surfers here, even on good days. Watch out for rocks.",
+                    type = "Beach",
+                    flag = 3,
+                    quality_when_it_works = 3,
+                    wave_consistency = 2,
+                    difficulty = 4,
+                    windsurf_y_kitesurf = 3,
+                    people_to_Water = 4,
+                    other_options = 3,
+                    water_quality = 3,
+                    access = 4,
+                    scenery = 3,
+                    local_attitude = 3,
+                    accommodation = 3,
+                    camping = 3,
+                    entertainment = 3,
+                    equipment_and_repairs = 2,
+                    restaurants = 3,
+                    pubs = 3,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Isla-Cristina/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.69512890441411, 
+                    longitude = -3.457206445803679
+                ),
+                Beach(
+                    name = "Playa de la Canaleta",
+                    image = "statics/beaches/playa_de_la_canaleta/playa_de_la_canaleta_1.jpg",
+                    description = "Playa de la Canaleta in Andalucia is an exposed beach break that has pretty consitent surf. Winter and spring are the optimum times of year to visit. Offshore winds blow from the northeast. Tends to receive a mix of groundswells and windswells and the ideal swell direction is from the southwest. Waves at the beach break both left and right. Sometimes crowded. Dangerous rips are a hazard of surfing here.",
+                    type = "Beach",
+                    flag = 3,
+                    quality_when_it_works = 3,
+                    wave_consistency = 3,
+                    difficulty = 2,
+                    windsurf_y_kitesurf = 3,
+                    people_to_Water = 4,
+                    sea_weends = 3,
+                    other_options = 5,
+                    water_quality = 3,
+                    access = 5,
+                    scenery = 3,
+                    local_attitude = 5,
+                    accommodation = 2,
+                    camping = 3,
+                    entertainment = 3,
+                    equipment_and_repairs = 2,
+                    restaurants = 2,
+                    pubs = 4,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/La-Canaleta/forecasts/widget/m" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 37.173765347014374, 
+                    longitude = -6.949949449584676
+                ),
+                Beach(
+                    name = "Playa de Regla",
+                    image = "statics/beaches/playa_de_regla/playa_de_regla_1.jpg",
+                    description = "Playa de Regla in Andalucia is an exposed beach break that usually has waves. Winter and spring are the optimum times of year to visit. Offshore winds are from the east. Windswells and groundswells in equal measure and the ideal swell direction is from the west southwest. The beach break provides left and right handers. Often Crowded.",
+                    type = "Beach",
+                    flag = 2,
+                    quality_when_it_works = 4,
+                    wave_consistency = 3,
+                    difficulty = 3,
+                    windsurf_y_kitesurf = 4,
+                    people_to_Water = 3,
+                    sea_weends = 3,
+                    other_options = 5,
+                    water_quality = 3,
+                    access = 5,
+                    scenery = 4,
+                    local_attitude = 2,
+                    accommodation = 5,
+                    camping = 2,
+                    entertainment = 3,
+                    equipment_and_repairs = 1,
+                    restaurants = 3,
+                    pubs = 3,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Playade-Regla/forecasts/widget/m" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.72594424375206, 
+                    longitude = -6.4398987214667525
+                ),
+                Beach(
+                    name = "Playa de las tres piedras",
+                    image = "statics/beaches/playa_de_las_tres_piedras/playa_de_las_tres_piedras_1.jpg"
+                    description = "Playa de Tres Piedras in Andalucia is an exposed beach break that has dependable surf. Winter and spring are the optimum times of year to visit. Offshore winds blow from the east northeast. Tends to receive a mix of groundswells and windswells and the best swell direction is from the west southwest. The beach breaks offer lefts and rights. When the surf is up, crowds are likely Take care of rocks in the line up.",
+                    type = "Beach",
+                    flag = 2,
+                    quality_when_it_works = 3,
+                    wave_consistency = 3,
+                    difficulty = 2,
+                    windsurf_y_kitesurf = 4,
+                    people_to_Water = 3,
+                    sea_weends = 3,
+                    other_options = 3,
+                    water_quality = 4,
+                    access = 5,
+                    scenery = 4,
+                    local_attitude = 4,
+                    accommodation = 3,
+                    camping = 4,
+                    entertainment = 3,
+                    equipment_and_repairs = 2,
+                    restaurants = 4,
+                    pubs = 4,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Playade-Tres-Piedras/forecasts/widget/m" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.702412289228704, 
+                    longitude = -6.429632493696671
+                ),
+                Beach(
+                    name = "Playa del Bombo",
+                    image = "statics/beaches/playa_del_bombo/playa_del_bombo_1.jpg",
+                    description = "Playa el Bombo in Andalucia is an exposed beach break that has unreliable waves with no particular seasonal pattern. Works best in offshore winds from the northwest. The short fetch makes for windswells rather than groundswells and the optimum wave angle is from the east southeast. The beach break offers both left and right hand waves. Good surf at all stages of the tide. Sometimes crowded. Rocks are a hazard",
+                    type = "Beach",
+                    flag = 3,
+                    quality_when_it_works = 3,
+                    wave_consistency = 2,
+                    difficulty = 4,
+                    windsurf_y_kitesurf = 3,
+                    people_to_Water = 3,
+                    sea_weends = 3,
+                    other_options = 3,
+                    water_quality = 4,
+                    access = 5,
+                    scenery = 3,
+                    local_attitude = 5,
+                    accommodation = 5,
+                    camping = 2,
+                    equipment_and_repairs = 1,
+                    restaurants = 5,
+                    pubs = 2,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Playa-El-Bombo/forecasts/widget/m" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.49524585538715, 
+                    longitude = -4.688538239814334
+                ),
+                Beach(
+                    name = "Playa la Carihuela",
+                    image = "statics/beaches/playa_la_carihuela/playa_la_carihuela_1.jpg",
+                    description = "Playa la Carihuela in Andalucia is an exposed beach break that has inconsistent surf. Winter is the favoured time of year for surfing here. The best wind direction is from the northwest. There is too little fetch for groundswells to form and the best wave direction is from the southeast. The beach break provides left and right handers. Best around mid tide. Even when there are waves, it's not likley to be crowded. Watch out for dangerous rips.",
+                    type = "Beach",
+                    flag = 2,
+                    quality_when_it_works = 3,
+                    wave_consistency = 3,
+                    difficulty = 2,
+                    windsurf_y_kitesurf = 2,
+                    people_to_Water = 3,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Playala-Carihuela/forecasts/widget/m" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.60801350151034, 
+                    longitude = -4.50465180832617
+                ),
+                """
+                Beach(
+                    name = "Puerto Cabopino",
+                    image ="statics/beaches/puerto_de_combo/puerto_de_combo_1.jpg",
+                    description = "Puerto Cabopino in Andalucia is an exposed sandbar break that has reasonably consistent surf and can work at any time of the year. Offshore winds are from the north. Most of the surf comes fis in the form of windswells and the best wave direction is from the east southeast. The sandbar breaks offer lefts and rights. When the surf is up, it can get quite busy in the water. Rocks are a hazard.",
+                    type = "Sandbar",
+                    flag = 3,
+                    quality_when_it_works = 3,
+                    wave_consistency = 3,
+                    difficulty = 2,
+                    windsurf_y_kitesurf = 5,
+                    people_to_Water = 2,
+                    sea_weends = 4,
+                    other_options = 3,
+                    water_quality = 4,
+                    access = 5,
                 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
+                """
             )
             db.session.commit()
 

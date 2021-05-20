@@ -155,8 +155,8 @@ class Beach(db.Model):
     # surfForescastLink
     surf_fore_cast_link = db.Column(db.String, nullable=False)
     # map locations
-    latitude = db.Column(db.Float, nulable = False)
-    longitude = db.Column(db.Float, nulable = False)
+    latitude = db.Column(db.Float, nullable = False)
+    longitude = db.Column(db.Float, nullable = False)
     #Foreign keys
     comments = db.relationship("Comments", backref='beach', lazy=True)
     likes = db.relationship("Likes", backref='beach', lazy=True)

@@ -39,7 +39,7 @@ def create_app():
     # flask pretorian initialize (app, model)
     guard.init_app(app, User)
 
-    seed(app)
+    # seed(app)
 
     # Load api routes 
     app.register_blueprint(routes)
