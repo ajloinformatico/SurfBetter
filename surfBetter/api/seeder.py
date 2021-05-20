@@ -2,6 +2,8 @@ from models import User, Beach, DesciptionPoints
 from extensions import db, guard
 import os
 
+
+
 def seed(app):
     """
     Make seeder if it is necessary
@@ -29,7 +31,7 @@ def seed(app):
         if db.session.query(Beach).count() < 1:
             db.session.add(
                 Beach(
-                    name = "La muralla",
+                    name = "La Muralla",
                     image = "/statics/beaches/la_muralla/playa_de_la_muralla_1.jpg",
                     description = "La Muralla in Andalucia is a quite exposed reef break " 
                         +"that has fairly consistent surf. Winter and spring are the optimum " 
@@ -56,7 +58,9 @@ def seed(app):
                     equipment_and_repairs = 2, 
                     restaurants = 5,
                     pubs = 5,
-                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/La-Muralla/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/La-Muralla/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    longitude = 36.58007651382025, 
+                    latitude = -6.265659586583074
                 ),
                 Beach(
                     name = "Las Redes",
@@ -87,7 +91,9 @@ def seed(app):
                     equipment_and_repairs = 5,
                     restaurants = 4,
                     pubs = 5,
-                    surf_fore_cast_link='<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Las-Redes/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link='<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Las-Redes/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    longitude = 36.60087430725243, 
+                    latitude = -6.27760624484712
                 ),
                 Beach(
                     name = "La Playita",
@@ -115,7 +121,9 @@ def seed(app):
                     equipment_and_repairs = 4,
                     restaurants = 3,
                     pubs = 3,
-                    surf_fore_cast_link='<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Las-Caracolas/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link='<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Las-Caracolas/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    longitude = 36.817668803925, 
+                    latitude = -5.375303773894092
                 ),
                 Beach(
                     name = "Las Caracolas",
@@ -133,7 +141,9 @@ def seed(app):
                     difficulty = 2,
                     windsurf_y_kitesurf = 5,
                     people_to_Water = 3,
-                    surf_fore_cast_link='<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Las-Caracolas/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe><div class="footer"><a class="logo" href="//www.surf-forecast.com/"><img src="//www.surf-forecast.com/images/widget.png" alt="Widget" width="1" height="1" /></a><div class="about" id="cmt">More <a href="//www.surf-forecast.com/breaks/Las-Caracolas">Detailed Surf Conditions &amp; Webcams for&nbsp;Las Caracolas</a> <nobr>at&nbsp;<a href="//www.surf-forecast.com/">surf-forecast.com</a></nobr>.</div></div></div></div></div>'
+                    surf_fore_cast_link='<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Las-Caracolas/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe><div class="footer"><a class="logo" href="//www.surf-forecast.com/"><img src="//www.surf-forecast.com/images/widget.png" alt="Widget" width="1" height="1" /></a><div class="about" id="cmt">More <a href="//www.surf-forecast.com/breaks/Las-Caracolas">Detailed Surf Conditions &amp; Webcams for&nbsp;Las Caracolas</a> <nobr>at&nbsp;<a href="//www.surf-forecast.com/">surf-forecast.com</a></nobr>.</div></div></div></div></div>',
+                    latitude = 37.191849213692905, 
+                    longitude = -1.8146496019467826
                 ),
                 Beach(
                     name = "la Cabanita",
@@ -164,7 +174,9 @@ def seed(app):
                     equipment_and_repairs = 3,
                     restaurants = 4,
                     pubs = 3,
-                    surf_fore_cast_link='<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/La-Cabanita/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link='<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/La-Cabanita/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.50593527086339,
+                    longitude = -4.910418991198296
                 ),
                 Beach(
                     name="Torre Gorda",
@@ -181,7 +193,9 @@ def seed(app):
                     difficulty = 4,
                     windsurf_y_kitesurf = 3,
                     people_to_Water = 4,
-                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Torre-Gorda/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Torre-Gorda/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.45654187290273, 
+                    longitude =-6.251923015154041
                 ),
                 Beach(
                     name = "Playa de Camposoto",
@@ -211,6 +225,8 @@ def seed(app):
                     restaurants = 3,
                     pubs = 2,
                     surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Playa-Campo-Sota/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.426356570332956, 
+                    longitude = -6.229675819031719
                 ),
                 Beach(
                     name = "Chiclana de la frontera",
@@ -229,7 +245,9 @@ def seed(app):
                     windsurf_y_kitesurf = 1,
                     people_to_Water = 3,
                     water_quality = 3,
-                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Chiclanadela-Frontera/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Chiclanadela-Frontera/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.3364347559575,
+                    longitude = -6.163902414699233
                 ),
                 Beach(
                     name = "El Castillo",
@@ -258,7 +276,9 @@ def seed(app):
                     equipment_and_repairs = 2,
                     restaurants = 4,
                     pubs = 1,
-                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/El-Castillo/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/El-Castillo/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.372473575190526,
+                    longitude =  -6.18680955163413
                 ),
                 Beach(
                     name = "La Barrosa",
@@ -291,6 +311,8 @@ def seed(app):
                     restaurants = 5,
                     pubs = 5,
                     surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/La-Barossa/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.3441416209236,
+                    longitude = -6.1667648648905855
                 ),
                 Beach(
                     name = "Cabo Roche",
@@ -307,7 +329,9 @@ def seed(app):
                     dificult = 4,
                     windsurf_y_kitesurf = 2,
                     people_to_Water = 3,
-                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Cabo-Roche/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Cabo-Roche/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.29386174696467, 
+                    longitude = -6.137035829557673
                 ),
                 Beach(
                     name = "Barbate",
@@ -337,7 +361,9 @@ def seed(app):
                     equipment_and_repairs = 3,
                     restaurants = 5,
                     pubs = 5,
-                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Barbate-River/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div</div></div>'
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Barbate-River/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div</div></div>',
+                    latitude = 36.1860400852292, 
+                    longitude = -5.918425296832528
                 ),
                 Beach(
                     name = "Bolonia",
@@ -353,7 +379,10 @@ def seed(app):
                     difficulty = 1,
                     windsurf_y_kitesurf = 2,
                     people_to_Water = 4,
-                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Barbate-River/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Barbate-River/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.08790770253498, 
+                    longitude = -5.774991450446252
+
                 ),
                 Beach(
                     name = "Zahara de los atunes",
@@ -371,11 +400,13 @@ def seed(app):
                     difficulty = 2,
                     windsurf_y_kitesurf = 5,
                     people_to_Water = 5,
-                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Zaharadelos-Atunes/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Zaharadelos-Atunes/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.15450537923463,
+                    longitude = -5.870086550235356
                 ),
                 Beach(
-                    name = "Canos de meca",
-                    image = "statics/beaches/canos_de_meca/canos_de_meca_1.jpg",
+                    name = "Caños de meca",
+                    image = "statics/beaches/caños_de_meca/caños_de_meca_1.jpg",
                     description = "Canos de Meca in Andalucia is an exposed reef break that has quite "
                     +"reliable surf. Winter and spring are the best times of year to visit. The best "
                     +"wind direction is from the northeast with some shelter here from west winds. Poor "
@@ -389,7 +420,9 @@ def seed(app):
                     difficulty = 4,
                     windsurf_y_kitesurf = 4,
                     people_to_Water = 2,
-                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Canosde-Meca/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Canosde-Meca/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.18671205191269,
+                    longitude= -6.026231000333102
                 ),
                 Beach(
                     name = "Faro de trafalgar",
@@ -407,7 +440,9 @@ def seed(app):
                     difficulty = 4,
                     windsurf_y_kitesurf = 2,
                     people_to_Water = 3,
-                    surf_fore_cast_link  = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Faro-de-Trafalgar/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link  = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Faro-de-Trafalgar/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.184740503406545, 
+                    longitude = -6.036062645294939
                 ),
                 Beach(
                     name = "El Palmar",
@@ -425,7 +460,9 @@ def seed(app):
                     windsurf_y_kitesurf = 2,
                     people_to_Water = 4,
                     local_attitude = 1,
-                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Playa-El-Palmar/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Playa-El-Palmar/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.24080882886089, 
+                    longitude = -6.0771007126081535
                 ),
                 Beach(
                     name = "Conil de la frontera",
@@ -454,7 +491,9 @@ def seed(app):
                     equipment_and_repairs = 2,
                     restaurants = 3,
                     pubs = 2,
-                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Conildela-Frontera/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Conildela-Frontera/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.28103417470304, 
+                    longitude = -6.0995557786390595
                 ),
                 Beach(
                     name = "El balneario",
@@ -473,7 +512,9 @@ def seed(app):
                     difficulty = 2,
                     windsurf_y_kitesurf = 3,
                     people_to_Water = 3,
-                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/El-Balneario/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/El-Balneario/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.00990303504987, 
+                    longitude = -5.605775818641811
                 ),
                 Beach(
                     name = "Los lances",
@@ -502,7 +543,9 @@ def seed(app):
                     equipment_and_repairs = 5,
                     restaurants = 5,
                     pubs = 5,
-                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Los-Lances/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Los-Lances/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.045447338604276, 
+                    longitude = -5.6397192448350335
                 ),
                 Beach(
                     name = "Getares",
@@ -532,11 +575,352 @@ def seed(app):
                     equipment_and_repairs = 2,
                     restaurants = 5,
                     pubs = 4,
-                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Getares/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>'
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Getares/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    longitude = 36.096727264019016, 
+                    latitude = -5.44314921083719
                 ),
                 Beach(
-                    
+                    name = "El caño de la culata",
+                    image = "statics/beaches/el_caño_de_la_culata/el_caño_de_la_culata_1.jpg",
+                    description = "El Caño de la Culata in Andalucia is a sheltered beach break that has "
+                    +"fairly consistent surf. Winter and spring are the best times of year to visit. Offshore "
+                    +"winds are from the north northeast. Waves just as likely from local windswells as from "
+                    +"distant groundswells and the ideal swell direction is from the south. The beach break "
+                    +"offers both left and right hand waves. When it's working here, it can get crowded. "
+                    +"Take care of the strong rips here.",
+                    type = "Beach",
+                    flag = 3,
+                    quality_when_it_works = 1,
+                    wave_consistency = 1,
+                    difficulty = 3,
+                    windsurf_y_kitesurf = 2,
+                    people_to_Water = 4,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/El-Cano-de-la-Culata/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 37.227747896715556, 
+                    longitude = -7.080683179906148
+                ),
+                Beach (
+                    name = "El Chanquete",
+                    image = "statics/beaches/el_chanquete/el_chanquete_1.jpg",
+                    description = "El Chanquete in Andalucia is an exposed beach and reef break that "
+                    +"has quite consistent surf, although summer tends to be mostly flat. Offshore "
+                    +"winds blow from the north northeast. Windswells are much more typical than "
+                    +"groudswells and the optimum wave angle is from the southeast. The beach break "
+                    +"offers both left and right hand waves. Good surf at all stages of the tide. When "
+                    +"the surf is up, it can get quite busy in the water. Submerged rocks are a hazard.",
+                    type = "Beach abd Reef",
+                    flag = 3,
+                    quality_when_it_works = 2,
+                    wave_consistency = 2,
+                    difficulty = 2,
+                    windsurf_y_kitesurf = 2,
+                    people_to_Water = 2,
+                    sea_weends = 5,
+                    other_options = 2,
+                    water_quality = 4,
+                    access = 5,
+                    scenery = 3,
+                    local_attitude = 1,
+                    accommodation = 5,
+                    camping = 3,
+                    entertainment = 4,
+                    equipment_and_repairs = 2,
+                    restaurants = 5,
+                    pubs = 5,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/El-Chanquete/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.716624771783444, 
+                    longitude = -4.348392220767674
+  
+                ),
+                Beach(
+                    name = "El Sanset",
+                    image = "statics/beaches/el_sanset/el_sanset_1.jpg",
+                    description = "El Sunset (Benalmádena) in Andalucia "
+                    +"is an exposed beach break that has inconsistent surf. "
+                    +"Autumn and winter are the optimum times of year for waves. "
+                    +"Offshore winds are from the northwest. Windswells are much "
+                    +"more typical than groudswells and the ideal wave direction is "
+                    +"from the southeast. The beach break provides left and right "
+                    +"handers. Good surf at all stages of the tide. A popular wave "
+                    +"that can get growded.",
+                    type = "Beach",
+                    flag = 3,
+                    quality_when_it_works = 4,
+                    wave_consistency = 4,
+                    difficulty = 3,
+                    windsurf_y_kitesurf = 1,
+                    people_to_Water = 2,
+                    sea_weends = 1,
+                    other_options = 5,
+                    water_quality = 5,
+                    access = 3,
+                    scenery = 5,
+                    local_attitude = 1,
+                    accommodation = 5,
+                    camping = 1,
+                    entertainment = 1,
+                    equipment_and_repairs = 1,
+                    restaurants = 5,
+                    pubs = 5,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/El-Sunset-Benalmadena/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.73481350957522,
+                    longitude = -6.441177912387428
+    
+                ),
+                Beach(
+                    name = "Fuengirola",
+                    image = "statics/beaches/fuengirola/fuengirola_1.jpg",
+                    description = "Fuengirola in Andalucia is an exposed beach break that has "
+                    +"quite reliable surf, although summer tends to be mostly flat. Offshore "
+                    +"winds blow from the west northwest and there is no shelter here from cross "
+                    +"shore breezes. The location means that groundswells are unknown and the best "
+                    +"wave direction is from the east southeast. The beach break offers both left and right "
+                    +"hand waves. Surfable at all stages of the tide. It's sometimes crowded here. Watch out "
+                    +"for rips and rocks.",
+                    type = "Beach",
+                    flag = 2,
+                    quality_when_it_works = 3,
+                    difficulty= 3,
+                    windsurf_y_kitesurf = 4,
+                    people_to_Water = 3,
+                    sea_weends = 3,
+                    other_options = 4,
+                    water_quality = 4,
+                    access = 5,
+                    scenery = 4,
+                    local_attitude = 4,
+                    accommodation = 5,
+                    camping = 4,
+                    entertainment = 5,
+                    equipment_and_repairs = 5,
+                    restaurants = 5,
+                    pubs = 5,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Fuengirola/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.54421890358208,
+                    longitude = -4.617685381429646
+                ),
+                Beach(
+                    name = "La Chucha",
+                    image = "statics/beaches/la_chucha/la_chucha_1.jpg",
+                    description = "La Chucha in Andalucia is a fairly exposed reef break that does not work very often. Summer in particular tends to be flat. The best wind direction is from the north. Windswells are much more typical than groudswells and the best wave direction is from the southeast. There is no reef break. Good surf at all stages of the tide. When the surf is up, it can get quite busy in the water. Beware of rocks, rips.",
+                    type = "Beach",
+                    flag = 1,
+                    quality_when_it_works = 4,
+                    wave_consistency = 3,
+                    difficulty = 3,
+                    windsurf_y_kitesurf = 2,
+                    people_to_Water = 4,
+                    sea_weends = 5,
+                    other_options = 1,
+                    water_quality = 4,
+                    access = 5,
+                    scenery = 4,
+                    local_attitude = 4,
+                    camping = 2,
+                    equipment_and_repairs = 2,
+                    restaurants = 5,
+                    pubs = 3,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/La-Chucha/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.696499053509584, 
+                    longitude = -3.4572400332622837
+                ),
+                Beach(
+                    name = "La herradura",
+                    image = "statics/beaches/la_herradura/la_herradura_1.jpg",
+                    description = "La Herradura in Andalucia is an exposed beach break that does not work very often. Summer in particular tends to be flat. Offshore winds blow from the northeast. Usually gets local windswells, but groundswells do happen and the best wave direction is from the southwest. Waves at the beach break both left and right. Good surf at all stages of the tide. A fairly popluar wave that can sometimes get crowded Submerged rocks are a hazard.",
+                    type = "Beach",
+                    flag = 2,
+                    quality_when_it_works = 2,
+                    wave_consistency = 2,
+                    difficulty = 3,
+                    windsurf_y_kitesurf = 3,
+                    people_to_Water = 2,
+                    sea_weends = 3,
+                    other_options = 3,
+                    water_quality = 3,
+                    access = 3,
+                    scenery = 2,
+                    local_attitude = 1,
+                    accommodation = 3,
+                    camping = 5,
+                    entertainment = 3,
+                    equipment_and_repairs = 3,
+                    restaurants = 3,
+                    pubs = 3,
+                    surf_fore_cast_link = '<link href="//es.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//es.surf-forecast.com/breaks/La-Herradura-Andalucia/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    location = 36.73189781748929, 
+                    latitude = -3.7394453148970017
+                ),
+                Beach(
+                    name = "La yerbabuena",
+                    image = "statics/beaches/la_yerbabuena/la_yerbabuena_1.jpg",
+                    description = "La Yerbabuena in Andalucia is a fairly exposed point/rivermouth break that has unreliable waves. Summer in particular tends to be flat. The best wind direction is from the northeast. Most of the surf here comes from groundswells and the ideal swell angle is from the southwest. Often Crowded. Take special care here if it gets very crowded.",
+                    type = "Point/Rivermouth",
+                    flag = 3,
+                    quality_when_it_works = 4,
+                    wave_consistency = 3,
+                    difficulty = 4,
+                    windsurf_y_kitesurf = 1,
+                    people_to_Water = 3,
+                    sea_weends = 2,
+                    other_options = 4,
+                    water_quality = 5,
+                    access = 3,
+                    scenery = 5,
+                    local_attitude = 2,
+                    accommodation = 2,
+                    camping = 2,
+                    entertainment = 4,
+                    equipment_and_repairs = 1,
+                    restaurants = 5,
+                    pubs = 2,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/La-Yerbabuena/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.185640196516985, 
+                    longitude = -5.939918955975553
+                ),
+                Beach(
+                    name = "Largos",
+                    image = "statics/beaches/largos/largos_1.jpg",
+                    type = "Reef",
+                    quality_when_it_works = 3,
+                    wave_consistency = 2,
+                    difficulty = 1,
+                    windsurf_y_kitesurf = 1,
+                    people_to_Water = 2,
+                    access = 5,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Largos/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    longitude = 36.47316902844002, 
+                    latitude = -4.985158927836281,
+                ),
+                Beach(
+                    name = "Marbella Playa del Cable",
+                    image = "statics/beaches/marbella_playa_del_cable/marbella_playa_del_cable_1.jpp",
+                    description = "Marbella - Playa del Cable in Andalucia is an exposed beach break that does not work very often. Summer in particular tends to be flat. Works best in offshore winds from the north with some shelter here from west winds. The location means that groundswells are unknown and the best wave direction is from the east southeast. The beach break offers both left and right hand waves. The quality of the surf isn't affected by the tide. Likely to be crowded if working. Take special care here if it gets very crowded.",
+                    type = "Beach", 
+                    falg = 3,
+                    quality_when_it_works = 3,
+                    wave_consistency = 3,
+                    difficulty = 3,
+                    windsurf_y_kitesurf = 3,
+                    people_to_Water = 3,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Marbella-Playa-del-Cable/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.50775553142923, 
+                    longitude = -4.869637833619527
+                ),
+                Beach(
+                    name = "Matalascaña",
+                    image = "statcis/beaches/matalascañas/matalascañas_1.jpg",
+                    description = "Matalascañas in Andalucia is an exposed beach break that has quite reliable surf. Winter and spring are the best times of year to visit. The best wind direction is from the northeast. Windswells and groundswells in equal measure and the best swell direction is from the southwest. Waves at the beach break both left and right. Sometimes crowded. Surfing here means negotiating dangerous rips.",
+                    type = "Beach",
+                    flag = 2,
+                    quality_when_it_works = 3,
+                    wave_consistency = 2,
+                    difficulty = 3,
+                    windsurf_y_kitesurf = 5,
+                    people_to_Water = 4,
+                    sea_weends = 2,
+                    other_options = 2,
+                    water_quality = 3,
+                    access = 5,
+                    scenery = 4,
+                    local_attitude = 5,
+                    accommodation = 4,
+                    camping = 2,
+                    entertainment = 4,
+                    equipment_and_repairs = 2,
+                    restaurants = 5,
+                    pubs = 4,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Matalascanas/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.992949608974236, 
+                    longitude = -6.547407797587745
+                ),
+                Beach(
+                    name = "Mazagon",
+                    image = "statics/beaches/mazagon/mazagon_1.jpg",
+                    description = "Mazagon in Andalucia is an exposed sandbar break that does not work very often. Winter and spring are the optimum times of year to visit. Offshore winds blow from the north northeast. Most of the surf here comes from groundswells and the ideal swell direction is from the southwest. Waves at the sandbar break both left and right. Best around low tide. Even when there are waves, it's not likley to be crowded.",
+                    type = "Sandbar",
+                    flag = 3,
+                    quality_when_it_works = 2,
+                    wave_consistency = 2,
+                    difficulty = 3,
+                    windsurf_y_kitesurf = 2,
+                    people_to_Water = 2,
+                    access = 4,
+                    scenery = 3,
+                    local_attitude = 2,
+                    accommodation = 3,
+                    camping = 3,
+                    entertainment = 3,
+                    equipment_and_repairs = 2,
+                    restaurants = 3,
+                    pubs = 3,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Mazagon/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 37.127473269562145, 
+                    longitude = -6.816251775345296
+                ),
+                Beach(
+                    name = "Mojacar",
+                    image = "statics/beaches/mojacar/mojacar_1.jpg",
+                    description = "Mojacar in Andalucia is a reasonably exposed river break that only works once in a while. The best wind direction is from the northwest. The best swell direction is from the northwest. The river breaks offer lefts and rights. Good surf at all stages of the tide. A remote wave spot that never gets crowded. Beware of - Rocks - Man-made danger (buoys etc.).",
+                    type = "River",
+                    flag = 2,
+                    quality_when_it_works = 2,
+                    wave_consistency = 2,
+                    difficulty = 2,
+                    windsurf_y_kitesurf = 2,
+                    people_to_Water = 5,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Mojacar-Beach-Pier/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 37.11610341497867, 
+                    longitude = -1.838788552679577
+                ),
+                Beach(
+                    name = "Molino de papel",
+                    image = "statics/beaches/molino_de_papel/molino_de_papel_1.jpg",
+                    description = "Molino de Papel in Andalucia is an exposed reef break that only works when conditions are just right. Summer in particular tends to be flat. Offshore winds blow from the north northeast. Short period wind swells are the rule and the ideal wave direction is from the south southwest. Good surf at all stages of the tide. When the surf is up, it can get quite busy in the water. Beware of - Urchins - Rocks - Localism - Pollution.",
+                    type = "Reef",
+                    quality_when_it_works = 2,
+                    wave_consistency = 2,
+                    difficulty = 2,
+                    windsurf_y_kitesurf = 4,
+                    people_to_Water = 5,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Molino-de-Papel/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.751252508263065, 
+                    longitude = -3.816039514352716,
+                ),
+                Beach(
+                    name = "Playa pico de el puerto",
+                    image = "statics/beaches/playa_pico_de_el_puerto/playa_pico_del_puerto_1.jpg",
+                    description = "Pico de el Puerto in Andalucia is a fairly exposed reef break that only works when conditions are just right. Summer offers the best conditions for surfing. Offshore winds are from the west. The location means that groundswells are unknown and the optimum wave angle is from the east. There is a left breaking reef. Best around low tide. Relatively few surfers here, even on good days. Take care of rocks in the line up.",
+                    type = "Reef",
+                    flag = 3,
+                    quality_when_it_works = 1,
+                    wave_consistency = 2,
+                    difficulty = 3,
+                    windsurf_y_kitesurf = 2,
+                    people_to_Water = 4,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Picodeel-Puerto/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 37.10026218786577, 
+                    longitude = -1.8321801291547135
+                ),
+                Beach(
+                    name = "Pico de las cocheras",
+                    image = "statics/beaches/pico_de_las_cocheras/pico_de_de_las_cocheras_1.jpg",
+                    description = "Pico de las Cocheras in Andalucia is a reasonably exposed beach break that has inconsistent surf. Summer offers the best conditions for surfing. The best wind direction is from the west. Windswells provide any waves and the best wave direction is from the east. The beach break offers both left and right hand waves. Best around low tide. Relatively few surfers here, even on good days. Submerged rocks are a hazard.",
+                    type = "Beach",
+                    flag = 3,
+                    quality_when_it_works = 1,
+                    wave_consistency = 2,
+                    difficulty = 1,
+                    windsurf_y_kitesurf = 2,
+                    people_to_Water = 4,
+                    water_quality = 4,
+                    surf_fore_cast_link = '<link href="//www.surf-forecast.com/stylesheets/widget.css" media="screen" rel="stylesheet" type="text/css" /><div class="wf-width-cont surf-fc-widget"><div class="widget-container"><div class="external-cont"><iframe class="surf-fc-i" allowtransparency="true" src="//www.surf-forecast.com/breaks/Picodelas-Cocheras/forecasts/widget/a" scrolling="no" frameborder="0" marginwidth="0" marginheight="0"></iframe></div></div></div>',
+                    latitude = 36.74467175133951, 
+                    longitude = -2.1174040371064256
                 )
+
+
+
 
 
 
