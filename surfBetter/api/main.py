@@ -24,7 +24,8 @@ def create_app():
     app.config['JWT_ACCESS_LIFESPAN'] = {'hours': 24}
     app.config['JWT_REFRESH_LIFESPAN'] = {'days': 30}
 
-    # initialize sqlite database TODO IF FAILS CHANGE TO SIMETHINF LIKE THAT : app.config['SQLALCHEMY_DATABASE_URI'] = F"sqlite:///{os.path.join(os.getcwd(), 'database.db')}"
+    # initialize sqlite database TODO IF FAILS CHANGE TO SIMETHINF LIKE THAT : app.config['SQLALCHEMY_DATABASE_URI']
+    #  = F"sqlite:///{os.path.join(os.getcwd(), 'database.db')}"
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database/database.db"
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
