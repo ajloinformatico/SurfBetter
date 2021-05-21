@@ -1,10 +1,11 @@
 from flask import Flask
-import flask_cors 
+import flask_cors
 from extensions import db, guard
 from models import User
 from routes import routes
 from image_service import api_images
-from seeders.seed_user import seedUser
+from seed_user import seed_user
+from seed_beach import seed_beaches, seed_description_points
 
 # TODO MAYBE I WILL DELETE IT
 
@@ -15,8 +16,8 @@ def create_app():
     """
 
     # initialize cors to allow requests (develop)
-    cors = flask_cors.CORS()  
-    
+    cors = flask_cors.CORS()
+
     # intialize flask basic conf & basic conf
     app = Flask(__name__)
     app.debug = True
@@ -39,7 +40,9 @@ def create_app():
     guard.init_app(app, User)
 
     # Seeders
-    seedUser(app)
+    seed_user(app)
+    seed_description_points(app),
+    seed_beaches(app)
 
     # Load api routes blueprint module
     app.register_blueprint(routes)

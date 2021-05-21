@@ -1,16 +1,15 @@
-from models import User, Beach, DesciptionPoints
+from models import User, Beach, DescriptionPoints
 from extensions import db, guard
 import os
 
 
-def createUserDirectory(nicks: list):
+def create_user_directory(nicks: list):
     for nick in nicks:
-        print(nick)
         if not os.path.isdir(f"statics/user/{nick}"):
             os.makedirs(f"statics/user/{nick}")
 
 
-def seedUser(app):
+def seed_user(app):
     """
     Make seeder if it is necessary
     """
@@ -64,6 +63,6 @@ def seedUser(app):
 
             db.session.commit()
 
-            createUserDirectory(nicks=["@javier","@javier2","@marina","@alicia"])
+            create_user_directory(nicks=["@javier", "@javier2", "@marina", "@alicia"])
 
 

@@ -2,11 +2,10 @@ from flask import Blueprint, jsonify, request
 from flask_praetorian import auth_required, current_user
 import flask_praetorian
 from extensions import guard, db
-from models import User
+from models import User, Beach, DescriptionPoints
 import os
 
-routes = Blueprint('routes',__name__)
-
+routes = Blueprint('routes', __name__)
 
 
 @routes.route('/api/')
@@ -18,6 +17,7 @@ def api_hello():
     """
     print("hello")
     return {"HELLO": "OLA SURFISTA OLA"}, 200
+
 
 @routes.route("/api/login", methods=['GET', 'POST'])
 def login():
@@ -32,6 +32,7 @@ def login():
         return ret, 200
     else:
         return {'AutenticationError': 'Email and/or password incorrect'}, 401
+
 
 @routes.route('/api/signin', methods=['POST'])
 def signin():
@@ -61,12 +62,13 @@ def signin():
         user = guard.authenticate(email, password)
 
         # Create user directory
-        os.makedirs("statics/user/"+nick)
+        os.makedirs("statics/user/" + nick)
 
         ret = {'access_token': guard.encode_jwt_token(user)}
         return ret, 200
 
     return {'signin_error': 'Email or nick is currently in the system'}, 401
+
 
 @routes.route('/api/refresh', methods=['POST'])
 def refresh():
@@ -77,6 +79,7 @@ def refresh():
         return {'access_token': new_token}, 200
     except Exception:
         return {'ERROR', 'Internal server error'}, 500
+
 
 @routes.route('/api/current_user')
 @auth_required
@@ -93,12 +96,11 @@ def current_user():
 def passwordreset():
     req = request.get_json(force=True)
     user = flask_praetorian.current_user()
-    if  not guard.authenticate(user.email, req["old-password"]):
+    if not guard.authenticate(user.email, req["old-password"]):
         return "Is this your old password ?", 428
     else:
         user.password = guard.hash_password(req["new-password"])
         return "password has been updated", 200
-        
 
 
 @routes.route('/api/userupdate', methods=['PUT'])
@@ -125,20 +127,17 @@ def updateUserProfile():
     print(user)
 
     if nick != user.nick:
-        newUserRoute = "statics/user/"+nick
-        os.rename("statics/user/"+user.nick, newUserRoute)
+        newUserRoute = "statics/user/" + nick
+        os.rename("statics/user/" + user.nick, newUserRoute)
         if user.avatar != "statics/default/avatar_light.png":
             newFileRoute = newUserRoute + user.get_avatar_route()[0]
             user.avatar = newFileRoute
 
-
-
     # First check email and nick
-    if email != user.email or nick != user.nick :
+    if email != user.email or nick != user.nick:
         if db.session.query(User).filter_by(email=email).count() >= 1 and \
-            db.session.query(User).filter_by(nick=nick).count() >= 1:
+                db.session.query(User).filter_by(nick=nick).count() >= 1:
             return f"{email} or {nick} all already in use", 409
-
 
     user.name = req["name"].capitalize()
     user.surname = req["surname"].capitalize()
@@ -149,10 +148,6 @@ def updateUserProfile():
     return user.convert_to_json(), 200
 
 
-
-
-
-
 @routes.route('/api/protected')
 @auth_required
 def ptotected():
@@ -160,4 +155,3 @@ def ptotected():
     current_user = db.session.query(User).filter_by(nick=f'{flask_praetorian.current_user().nick}').first()
     print(current_user)
     return "protected example", 200
-

@@ -10,10 +10,11 @@ class User(db.Model):
             1:M with Comments
             1:M With Likes
     Args:
-        db (SQLAlchemy model): [SQLAlchemy ORM database]
+        db.Model (SQLAlchemy model): [SQLAlchemy ORM database]
     """
 
     __tablename__ = "user"
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.Text, unique=True, nullable=False)
@@ -89,7 +90,8 @@ class User(db.Model):
         """[return avatar image name and route ]
         """
         avatar_route = self.avatar.split("/")
-        return (avatar_route.pop(-1), "/" + "/".join(avatar_route) + "/")
+        # TODO CHECK WITHOUT ONE /
+        return avatar_route.pop(-1), "/" + "/".join(avatar_route) + "/"
 
     def is_valid(self):
         """[Check if an user is active on the app]
@@ -99,14 +101,9 @@ class User(db.Model):
         return self.is_active
 
     def __repr__(self):
-        """
-        Not neceesary i use it for sqlite console
-        TODO: CONTINUE HERE AND SET ON PROFILE
-        """
         return '<User %r,%r,%r,%r,%r,%r>' % (self.email, self.name, self.surname, self.nick, self.password, self.roles)
 
 
-# TODO: if i get it from api set flag by enum type
 class Beach(db.Model):
     """[Beach model]
         Relationships:
@@ -122,15 +119,16 @@ class Beach(db.Model):
 
 
     Args:
-        db ([sqlAlchemy]): [sqlAlchemy instance]
+        db.Model ([sqlAlchemy]): [sqlAlchemy instance]
     """
-    __tablename__: "beach"
+    __tablename__ = "beach"
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True, nullable=False)
     image = db.Column(db.String, unique=True, nullable=False)
     description = db.Column(db.Text)
-    type = db.Column(db.String, nullable=False)
+    type_beach = db.Column(db.String, nullable=False)
     flag = db.Column(db.Integer, nullable=False)
     quality_when_it_works = db.Column(db.Integer, nullable=False)
     wave_consistency = db.Column(db.Integer, nullable=False)
@@ -138,42 +136,90 @@ class Beach(db.Model):
     windsurf_y_kitesurf = db.Column(db.Integer, nullable=False)
     people_to_water = db.Column(db.Integer, nullable=False)
     # Other points on the detail view
-    sea_weends = db.Column(db.String, nullable=True)
-    other_options = db.Column(db.Integer, nullable=True)
-    water_quality = db.Column(db.Integer, nullable=True)
-    access = db.Column(db.Integer, nullable=True)
-    scenery = db.Column(db.Integer, nullable=True)
-    local_attitude = db.Column(db.Integer, nullable=True)
-    accommodation = db.Column(db.Integer, nullable=True)
-    camping = db.Column(db.Integer, nullable=True)
-    entertainment = db.Column(db.Integer, nullable=True)
-    equipment_and_repairs = db.Column(db.Integer, nullable=True)
-    restaurants = db.Column(db.Integer, nullable=True)
-    pubs = db.Column(db.Integer, nullable=True)
+    sea_weends = db.Column(db.String, nullable=True, server_default=None)
+    other_options = db.Column(db.Integer, nullable=True, server_default=None)
+    water_quality = db.Column(db.Integer, nullable=True, server_default=None)
+    access = db.Column(db.Integer, nullable=True, server_default=None)
+    scenery = db.Column(db.Integer, nullable=True, server_default=None)
+    local_attitude = db.Column(db.Integer, nullable=True, server_default=None)
+    accommodation = db.Column(db.Integer, nullable=True, server_default=None)
+    camping = db.Column(db.Integer, nullable=True, server_default=None)
+    entertainment = db.Column(db.Integer, nullable=True, server_default=None)
+    equipment_and_repairs = db.Column(db.Integer, nullable=True, server_default=None)
+    restaurants = db.Column(db.Integer, nullable=True, server_default=None)
+    pubs = db.Column(db.Integer, nullable=True, server_default=None)
     # surfForescastLink
     surf_fore_cast_link = db.Column(db.String, nullable=False)
-    # map locations
+    # map location
     latitude = db.Column(db.Float, nullable=False)
     longitude = db.Column(db.Float, nullable=False)
     # Foreign keys
     comments = db.relationship("Comments", backref='beach', lazy=True)
     likes = db.relationship("Likes", backref='beach', lazy=True)
 
+    def convert_to_json(self):
+        """
+        Return Json of the object
+        """
+        return jsonify(
+            id=self.id, name=self.name, image=self.image, description=self.description, type_beach=self.type_beach,
+            falg=self.flag, quality_when_it_works=self.quality_when_it_works, wave_consistency=self.wave_consistency,
+            difficulty=self.difficulty, windsurf_y_kitesurf=self.windsurf_y_kitesurf,
+            people_to_water=self.people_to_water, sea_weends=self.sea_weends, other_options=self.other_options,
+            water_quality=self.water_quality, access=self.access, scenery=self.scenery,
+            local_attitude=self.local_attitude, accommodation=self.accommodation, camping=self.camping,
+            entertainment=self.entertainment, equipment_and_repairs=self.equipment_and_repairs,
+            restaurants=self.restaurants, pubs=self.pubs, surf_fore_cast_link=self.surf_fore_cast_link,
+            latitude=self.latitude, longitud=self.longitude, comments=self.comments, likes=self.likes
+        )
+
+    def get_map_info(self):
+        """
+        Return map data
+        """
+        return jsonify(
+            id=self.id,
+            name=self.name,
+            latitude=self.latitude,
+            longitude=self.longitude
+        )
+
     def __repr__(self):
-        return "<Beach %r,%r,%r>" % (self.id, self.name, self.image, self.type)
+        return "<Beach %r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r>" % \
+               (
+                   self.id, self.name, self.image, self.description, self.type_beach, self.flag,
+                   self.quality_when_it_works,
+                   self.wave_consistency, self.difficulty, self.windsurf_y_kitesurf, self.people_to_water,
+                   self.sea_weends,
+                   self.other_options, self.water_quality, self.access, self.scenery, self.local_attitude,
+                   self.accommodation,
+                   self.camping, self.entertainment, self.equipment_and_repairs, self.restaurants,
+                   self.pubs, self.surf_fore_cast_link, self.latitude, self.longitude, self.comments, self.likes
+               )
 
 
-class DesciptionPoints(db.Model):
+class DescriptionPoints(db.Model):
     """[Beaches description model]
 
     Args:
-        db (database): [mysqlAlchemy instance]
+        db.Model (database): [mysqlAlchemy instance]
     """
     __tablename__ = "description_points"
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True, nullable=False)
     point_info = db.Column(db.Text)
+
+    def convert_to_json(self):
+        return jsonify(
+            id=self.id,
+            name=self.name,
+            point_info=self.point_info
+        )
+
+    def __repr__(self):
+        return "<Description Points %r,%r,%r>" % (self.id, self.name, self.point_info)
 
 
 class Comments(db.Model):
@@ -185,9 +231,10 @@ class Comments(db.Model):
 
 
     Args:
-        db ([sqlAlchemy]): [sqlAlchemy instance]
+        db.Model ([sqlAlchemy]): [sqlAlchemy instance]
     """
     __tablename__ = "comments"
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.Integer, nullable=False)
@@ -200,8 +247,16 @@ class Comments(db.Model):
     # (in 1: m relations it is not necessary to make the relation to others one's own foreign)
     likes_of_comment = db.relationship("LikesOfComment", backref="comments", lazy=True)
 
+    def convert_to_json(self):
+        return jsonify(
+            id=self.id,
+            comment=self.comment,
+            created_date=self.created_date,
+            likes_of_comment=self.likes_of_comment
+        )
+
     def __repr__(self):
-        return "<Comment %r,%r,%r>" % (self.id, self.comment, self.created_date)
+        return "<Comment %r,%r,%r,%r>" % (self.id, self.comment, self.created_date, self.likes_of_comment)
 
 
 class Likes(db.Model):
@@ -212,14 +267,21 @@ class Likes(db.Model):
         
 
     Args:
-        db ([sqlAlchemy]): [sqlAlchemy instance]
+        db.Model ([sqlAlchemy]): [sqlAlchemy instance]
     """
     __tablename__ = "likes"
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
     created_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     beach_id = db.Column(db.Integer, db.ForeignKey("beach.id"), nullable=False)
+
+    def convert_to_json(self):
+        return jsonify(
+            id=self.id,
+            created_date=self.created_date
+        )
 
     def __repr__(self):
         return "<Likes %r,%r>" % (self.id, self.created_date)
@@ -232,18 +294,21 @@ class LikesOfComment(db.Model):
         1:M With Comments
 
     Args:
-        db ([sqlAlchemy]): [sqlALCHEMY]
+        db.Model ([sqlAlchemy]): [sqlALCHEMY]
     """
     __tablename__ = "likes_of_comment"
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
     created_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'), nullable=False)
 
-    # RelationShips (1:m no need relation atribute)
-    # 1:1 With User
-    # user = db.relationship("User", back_populates="likes_of_comment")
+    def convert_to_json(self):
+        return jsonify(
+            id=self.id,
+            created_date=self.created_date
+        )
 
     def __repr__(self):
         return "<Likes %r,%r" % (self.id, self.created_date)
