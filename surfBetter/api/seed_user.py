@@ -19,6 +19,7 @@ def seed_user(app):
             db.session.add_all(
                 [
                     User(
+                        id=1,
                         email="ajloinformatico@gmail.com",
                         name="Infolojo",
                         surname="Infolojo",
@@ -27,6 +28,7 @@ def seed_user(app):
                         roles="admin",
                     ),
                     User(
+                        id=2,
                         email="javierortegans@gmail.com",
                         name="Javier",
                         surname = "Ortega",
@@ -35,6 +37,7 @@ def seed_user(app):
                         roles="user",
                     ),
                     User(
+                        id=3,
                         email="javiergonzalez@gmail.com",
                         name="Javier",
                         surname = "Gonzalez",
@@ -43,6 +46,7 @@ def seed_user(app):
                         roles="user",
                     ),
                     User(
+                        id=4,
                         email="marina@gmail.com",
                         name="Marina",
                         surname = "Miriam",
@@ -51,6 +55,7 @@ def seed_user(app):
                         roles="user",
                     ),
                     User(
+                        id=5,
                         email="aliciamaria@hotmail.com",
                         name="alicia",
                         surname = "Lojo",
