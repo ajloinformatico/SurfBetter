@@ -3,12 +3,10 @@ import flask_cors
 from extensions import db, guard
 from models import User
 from routes import routes
-from seeder import seed
 from image_service import api_images
+from seeders.seed_user import seedUser
 
 # TODO MAYBE I WILL DELETE IT
-from flask import jsonify
-
 
 
 def create_app():
@@ -39,12 +37,13 @@ def create_app():
     # flask pretorian initialize (app, model)
     guard.init_app(app, User)
 
-    # seed(app)
+    # Seeders
+    seedUser(app)
 
-    # Load api routes 
+    # Load api routes blueprint module
     app.register_blueprint(routes)
 
-    # Load api images routes
+    # Load api images routes blueprint module
     app.register_blueprint(api_images)
 
     return app

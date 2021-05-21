@@ -25,15 +25,13 @@ class User(db.Model):
     description = db.Column(db.Text, unique=False, nullable=True, server_default='Hello there ! I`m using SurfBetter')
     roles = db.Column(db.String(10))
     is_active = db.Column(db.Boolean, default=True, server_default='true')
-    #RelationShips
-    #1:1 likesOfComment
+    # RelationShips
+    # 1:1 likesOfComment
     likes_on_comments = db.relationship("LikesOfComment", uselist=False, backref='user')
-    #1:M Comments
+    # 1:M Comments
     comments = db.relationship("Comments", backref='user', lazy=True)
-    #1:M Likes
+    # 1:M Likes
     likes = db.relationship("Likes", backref='user', lazy=True)
-
-
 
     @property
     def identity(self):
@@ -86,12 +84,12 @@ class User(db.Model):
             password=self.password,
             description=self.description
         )
-    
+
     def get_avatar_route(self):
         """[return avatar image name and route ]
         """
         avatar_route = self.avatar.split("/")
-        return (avatar_route.pop(-1), "/"+"/".join(avatar_route)+"/")
+        return (avatar_route.pop(-1), "/" + "/".join(avatar_route) + "/")
 
     def is_valid(self):
         """[Check if an user is active on the app]
@@ -119,14 +117,14 @@ class Beach(db.Model):
         wave_secuence, wave_height, tidies, weend_speed | 1, 2, 3, 4, 5
 
         onCardView: quality_when_it_works, wave_Consistency, difficulty, windsurf_y_kitesurf
-                    people_to_Water, general and user_rating check it on the client
+                    people_to_water, general and user_rating check it on the client
 
 
 
     Args:
         db ([sqlAlchemy]): [sqlAlchemy instance]
     """
-    __tablename__ : "beach"
+    __tablename__: "beach"
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True, nullable=False)
@@ -138,7 +136,7 @@ class Beach(db.Model):
     wave_consistency = db.Column(db.Integer, nullable=False)
     difficulty = db.Column(db.Integer, nullable=False)
     windsurf_y_kitesurf = db.Column(db.Integer, nullable=False)
-    people_to_Water = db.Column(db.Integer, nullable=False)
+    people_to_water = db.Column(db.Integer, nullable=False)
     # Other points on the detail view
     sea_weends = db.Column(db.String, nullable=True)
     other_options = db.Column(db.Integer, nullable=True)
@@ -155,17 +153,15 @@ class Beach(db.Model):
     # surfForescastLink
     surf_fore_cast_link = db.Column(db.String, nullable=False)
     # map locations
-    latitude = db.Column(db.Float, nullable = False)
-    longitude = db.Column(db.Float, nullable = False)
-    #Foreign keys
+    latitude = db.Column(db.Float, nullable=False)
+    longitude = db.Column(db.Float, nullable=False)
+    # Foreign keys
     comments = db.relationship("Comments", backref='beach', lazy=True)
     likes = db.relationship("Likes", backref='beach', lazy=True)
-    
-
 
     def __repr__(self):
         return "<Beach %r,%r,%r>" % (self.id, self.name, self.image, self.type)
-    
+
 
 class DesciptionPoints(db.Model):
     """[Beaches description model]
@@ -178,8 +174,6 @@ class DesciptionPoints(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, unique=True, nullable=False)
     point_info = db.Column(db.Text)
-    
-
 
 
 class Comments(db.Model):
@@ -202,15 +196,12 @@ class Comments(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     beach_id = db.Column(db.Integer, db.ForeignKey("beach.id"), nullable=False)
 
-    #RelationShips
-    #(in 1: m relations it is not necessary to make the relation to others one's own foreign)
-    likes_of_comment = db.relationship("LikesOfComment", backref="comments", lazy = True)
-
-
+    # RelationShips
+    # (in 1: m relations it is not necessary to make the relation to others one's own foreign)
+    likes_of_comment = db.relationship("LikesOfComment", backref="comments", lazy=True)
 
     def __repr__(self):
         return "<Comment %r,%r,%r>" % (self.id, self.comment, self.created_date)
-
 
 
 class Likes(db.Model):
@@ -231,8 +222,8 @@ class Likes(db.Model):
     beach_id = db.Column(db.Integer, db.ForeignKey("beach.id"), nullable=False)
 
     def __repr__(self):
-        return "<Likes %r,%r>" % (self.id, self.created_date)        
-    
+        return "<Likes %r,%r>" % (self.id, self.created_date)
+
 
 class LikesOfComment(db.Model):
     """[Class for the likes on the coments]
@@ -249,9 +240,10 @@ class LikesOfComment(db.Model):
     created_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'), nullable=False)
-    #RelationShips (1:m no need relation atribute)
-    #1:1 With User
-    #user = db.relationship("User", back_populates="likes_of_comment")
+
+    # RelationShips (1:m no need relation atribute)
+    # 1:1 With User
+    # user = db.relationship("User", back_populates="likes_of_comment")
 
     def __repr__(self):
         return "<Likes %r,%r" % (self.id, self.created_date)
