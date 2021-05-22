@@ -3,9 +3,9 @@ from extensions import db
 
 
 def seed_likes(app):
-    with app.app_contex():
+    with app.app_context():
         if db.session.query(Likes).count() < 1:
-            db.session.add.all(
+            db.session.add_all(
                 [
                     Likes(
                         id=1,
@@ -20,7 +20,7 @@ def seed_likes(app):
                     Likes(
                         id=3,
                         user_id=1,
-                        beach=2
+                        beach_id=2
                     ),
                     Likes(
                         id=4,
@@ -88,7 +88,7 @@ def seed_likes(app):
 
 
 def seed_comments(app):
-    with app.app_contex():
+    with app.app_context():
         if db.session.query(Comments).count() < 1:
             db.session.add_all(
                 [
@@ -176,14 +176,70 @@ def seed_comments(app):
 
 
 def seed_likes_of_comment(app):
-    with app.app_contex(LikesOfComment):
+    with app.app_context():
         if db.session.query(LikesOfComment).count() < 1:
             db.session.add_all(
                 [
                     # todo seeder likes of comments
                     LikesOfComment(
                         user_id=1,
-                        commment_id=5
+                        comment_id=5
+                    ),
+                    LikesOfComment(
+                        user_id=1,
+                        comment_id=10
+                    ),
+                    LikesOfComment(
+                        user_id=1,
+                        comment_id=3
+                    ),
+                    LikesOfComment(
+                        user_id=2,
+                        comment_id=12,
+                    ),
+                    LikesOfComment(
+                        user_id=2,
+                        comment_id=3
+                    ),
+                    LikesOfComment(
+                        user_id=2,
+                        comment_id=1
+                    ),
+                    LikesOfComment(
+                        user_id=3,
+                        comment_id=11,
+                    ),
+                    LikesOfComment(
+                        user_id=3,
+                        comment_id=9
+                    ),
+                    LikesOfComment(
+                        user_id=3,
+                        comment_id=4
+                    ),
+                    LikesOfComment(
+                        user_id=4,
+                        comment_id=10
+                    ),
+                    LikesOfComment(
+                        user_id=4,
+                        comment_id=5,
+                    ),
+                    LikesOfComment(
+                        user_id=4,
+                        comment_id=1
+                    ),
+                    LikesOfComment(
+                        user_id=5,
+                        comment_id=12
+                    ),
+                    LikesOfComment(
+                        user_id=5,
+                        comment_id=13
+                    ),
+                    LikesOfComment(
+                        user_id=5,
+                        comment_id=2
                     )
                 ]
             )

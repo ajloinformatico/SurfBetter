@@ -104,6 +104,14 @@ class User(db.Model):
         return '<User %r,%r,%r,%r,%r,%r>' % (self.email, self.name, self.surname, self.nick, self.password, self.roles)
 
 
+def get_comments_from_beach(beach_id: int):
+    list_of_comment = []
+    comments = db.session.query(Comments).filter_by(beach_id=beach_id).all()
+    for comment in comments:
+        list_of_comment.append(comment.convert_to_json())
+    return {"comments": comments}
+
+
 class Beach(db.Model):
     """[Beach model]
         Relationships:
@@ -161,28 +169,29 @@ class Beach(db.Model):
         """
         Return Json of the object
         """
-        return jsonify(
-            id=self.id, name=self.name, image=self.image, description=self.description, type_beach=self.type_beach,
-            falg=self.flag, quality_when_it_works=self.quality_when_it_works, wave_consistency=self.wave_consistency,
-            difficulty=self.difficulty, windsurf_y_kitesurf=self.windsurf_y_kitesurf,
-            people_to_water=self.people_to_water, sea_weends=self.sea_weends, other_options=self.other_options,
-            water_quality=self.water_quality, access=self.access, scenery=self.scenery,
-            local_attitude=self.local_attitude, accommodation=self.accommodation, camping=self.camping,
-            entertainment=self.entertainment, equipment_and_repairs=self.equipment_and_repairs,
-            restaurants=self.restaurants, pubs=self.pubs, surf_fore_cast_link=self.surf_fore_cast_link,
-            latitude=self.latitude, longitud=self.longitude, comments=self.comments, likes=self.likes
-        )
+        return {"id": self.id, "name": self.name, "image": self.image, "description": self.description,
+                "type_beach": self.type_beach, "falg": self.flag, "quality_when_it_works": self.quality_when_it_works,
+                "wave_consistency": self.wave_consistency, "difficulty": self.difficulty,
+                "windsurf_y_kitesurf": self.windsurf_y_kitesurf, "people_to_water": self.people_to_water,
+                "sea_weends": self.sea_weends, "other_options": self.other_options, "water_quality": self.water_quality,
+                "access": self.access, "scenery": self.scenery, "local_attitude": self.local_attitude,
+                "accommodation": self.accommodation, "camping": self.camping, "entertainment": self.entertainment,
+                "equipment_and_repairs": self.equipment_and_repairs, "restaurants": self.restaurants, "pubs": self.pubs,
+                "surf_fore_cast_link": self.surf_fore_cast_link, "latitude": self.latitude, "longitud": self.longitude,
+                "comments": [comment.convert_to_json() for comment in self.comments],
+                "likes": [likes.convert_to_json() for likes in self.likes]
+                }
 
     def get_map_info(self):
         """
         Return map data
         """
-        return jsonify(
-            id=self.id,
-            name=self.name,
-            latitude=self.latitude,
-            longitude=self.longitude
-        )
+        return {
+            "id": self.id,
+            "name": self.name,
+            "latitude": self.latitude,
+            "longitude": self.longitude
+        }
 
     def __repr__(self):
         return "<Beach %r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r>" % \
@@ -194,7 +203,8 @@ class Beach(db.Model):
                    self.other_options, self.water_quality, self.access, self.scenery, self.local_attitude,
                    self.accommodation,
                    self.camping, self.entertainment, self.equipment_and_repairs, self.restaurants,
-                   self.pubs, self.surf_fore_cast_link, self.latitude, self.longitude, self.comments, self.likes
+                   self.pubs, self.surf_fore_cast_link, self.latitude, self.longitude, self.comments,
+                   self.likes
                )
 
 
@@ -212,11 +222,11 @@ class DescriptionPoints(db.Model):
     point_info = db.Column(db.Text)
 
     def convert_to_json(self):
-        return jsonify(
-            id=self.id,
-            name=self.name,
-            point_info=self.point_info
-        )
+        return {
+            "id": self.id,
+            "name": self.name,
+            "point_info": self.point_info
+        }
 
     def __repr__(self):
         return "<Description Points %r,%r,%r>" % (self.id, self.name, self.point_info)
@@ -247,16 +257,12 @@ class Comments(db.Model):
     # (in 1: m relations it is not necessary to make the relation to others one's own foreign)
     likes_of_comment = db.relationship("LikesOfComment", backref="comments", lazy=True)
 
-    def convert_to_json(self):
-        return jsonify(
-            id=self.id,
-            comment=self.comment,
-            created_date=self.created_date,
-            likes_of_comment=self.likes_of_comment
-        )
-
     def __repr__(self):
         return "<Comment %r,%r,%r,%r>" % (self.id, self.comment, self.created_date, self.likes_of_comment)
+
+    def convert_to_json(self):
+        return {"id": self.id, "comment": self.comment, "created_date": self.created_date,
+                "likes_of_comments": [likes_of_c.convert_to_json() for likes_of_c in self.likes_of_comment]}
 
 
 class Likes(db.Model):
@@ -278,10 +284,10 @@ class Likes(db.Model):
     beach_id = db.Column(db.Integer, db.ForeignKey("beach.id"), nullable=False)
 
     def convert_to_json(self):
-        return jsonify(
-            id=self.id,
-            created_date=self.created_date
-        )
+        return {
+            "id": self.id,
+            "created_date": self.created_date
+        }
 
     def __repr__(self):
         return "<Likes %r,%r>" % (self.id, self.created_date)
@@ -305,10 +311,10 @@ class LikesOfComment(db.Model):
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'), nullable=False)
 
     def convert_to_json(self):
-        return jsonify(
-            id=self.id,
-            created_date=self.created_date
-        )
+        return {
+            "id": self.id,
+            "created_date": self.created_date
+        }
 
     def __repr__(self):
         return "<Likes %r,%r" % (self.id, self.created_date)

@@ -6,6 +6,7 @@ from routes import routes
 from image_service import api_images
 from seed_user import seed_user
 from seed_beach import seed_beaches, seed_description_points
+from seed_comments_likes import seed_likes, seed_comments, seed_likes_of_comment
 
 # TODO MAYBE I WILL DELETE IT
 
@@ -43,6 +44,9 @@ def create_app():
     seed_user(app)
     seed_description_points(app),
     seed_beaches(app)
+    seed_likes(app)
+    seed_comments(app)
+    seed_likes_of_comment(app)
 
     # Load api routes blueprint module
     app.register_blueprint(routes)
