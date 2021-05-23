@@ -21,8 +21,19 @@ const Profile = (props) => {
 
     //States for modal 
     const [avatar, setAvatar] = useState("")
-    
-    let user = props.user
+
+    const [user, setUser] = useState({})
+    /**
+     * UsseEfect to get User Name
+     */
+    useEffect(() => {
+        authFetch("/api/current_user")
+            .then(response => response.json())
+            .catch(error => console.log(error))
+            .then(userInfo => setUser(userInfo))
+    }, [])
+
+
      //Set user image by useEffect abd authFetc
     useEffect(() => {
         authFetch("/api/avatar").then(setAvatar("/api/avatar"))
@@ -50,11 +61,6 @@ const Profile = (props) => {
         );
     }
 
-
-  
-
-
-
     return (
         <div>
         <HeaderMenu/>
@@ -68,20 +74,19 @@ const Profile = (props) => {
                 {/*Secret flag checkbox input to open options*/}
             </div>    
             <section className="profilesUserDescription">
-            {console.log(props.user)}            
                 <div>
                     {/*Upload avatar image*/}
                     <label className={"profileAvatarImage"}htmlFor={"file"}>
                         <img className={"avatarImage"} alt="userIcon" src={avatar}/>
                         <input onChange={e => updateAvatar(e)} type={"file"} name="file" id="file" required={true}/>
                     </label>
-                    <p>{props.user.nick}</p>
+                    <p>{user.nick}</p>
                     
-                    <p>{props.user.name} {props.user.surname}</p>
+                    <p>{user.name} {user.surname}</p>
                 </div>
                 <div>
                     <h2>User Description</h2>
-                    <p>{props.user.description}</p>
+                    <p>{user.description}</p>
                 </div>
             </section>
             <section className="ProfileBeaches">
@@ -94,16 +99,16 @@ const Profile = (props) => {
             </section>
             {/*Options modal componnent*/}
             <input type={"checkbox"} id={"user-options-modal"}/>
-            <OptionsModal user={props.user}/>
+            <OptionsModal user={user}/>
             {/*Password update modal*/}
             <input type={"checkbox"} id={"password-update-modal"}/>
-            <PasswordModal user={props.user}/>
+            <PasswordModal user={user}/>
             {/*User info update modal*/}
             <input type={"checkbox"} id={"user-info-option-modal"}/>
-            <UserInfoUpdateModal user={props.user}/>
+            <UserInfoUpdateModal user={user}/>
         </main>
         </div>
-        
+
     )
 }
 export default Profile;

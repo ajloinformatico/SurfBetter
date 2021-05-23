@@ -28,11 +28,6 @@ import {authFetch,  useAuth} from "./componets/auth/auth.jsx"
  */
 function App() {
 
-
-    //TODO: Maybe i might need it
-    // eslint-disable-next-line no-unused-vars
-    const [user, setUser] = useState({})
-     
     //LOVE REACT RETURNS AUTH USER
     const [logged] = useAuth()
 
@@ -40,15 +35,7 @@ function App() {
         //Note: React route const to change page
     const history = useHistory()
     
-    /**
-     * UsseEfect to get User Name
-     */
-    useEffect(() => {
-        authFetch("/api/current_user")
-            .then(response => response.json())
-            .catch(error => console.log(error))
-            .then(userInfo => setUser(userInfo))
-    }, [])
+
 
         
     return (
@@ -73,7 +60,7 @@ function App() {
                     <Contact/>
                 </Route>
                 <Route path="/profile" exact>
-                    <Profile user={user}/>
+                    <Profile/>
                 </Route>
                 <Route path="/resources" exact>
                     <Resources/>

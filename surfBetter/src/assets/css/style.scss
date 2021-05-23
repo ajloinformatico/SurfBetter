@@ -477,7 +477,22 @@ header{
   display: none;
 }
 
+/************************** BEACHES *****************/
 
+.contentBeaches{
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+
+.beach-box{
+
+  background: darkseagreen;
+
+}
 
 
 
@@ -501,6 +516,23 @@ header{
 .buttonYellow:hover{
   @include create-hover-button($color-white, $color-background-button-modal)
 }
+
+.red-flag {
+  color: red;
+}
+
+.orange-flag {
+  color: orange;
+}
+
+.yellow-flag {
+  color: yellow;
+}
+
+.green-flag {
+  color: green;
+}
+
 
 
 /*inputs errors*/
