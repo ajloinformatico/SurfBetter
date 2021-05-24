@@ -481,18 +481,29 @@ header{
 
 .contentBeaches{
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-content: center;
   align-items: center;
 }
 
-.beach-box{
-
+.beachBox{
+  margin-top: 2em;
+  margin-bottom: 2em;
   background: darkseagreen;
+  width: 340px;
 
 }
+
+.beachHeader{
+  width: 340px;
+  height: 200px;
+}
+.beachInfo{
+
+}
+
 
 
 
@@ -533,7 +544,9 @@ header{
   color: green;
 }
 
-
+.seeMore{
+  color: blue;
+}
 
 /*inputs errors*/
 .errors{

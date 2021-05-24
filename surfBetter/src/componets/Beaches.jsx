@@ -11,7 +11,7 @@ const Beaches = () => {
 
     const [user, setUser] = useState({})
     const [beaches, setBeaches] = useState([])
-    const [beach, setBeach] = useState({})
+    const [counter, setCounter] = useState(0)
 
     /**
      * UsseEfect to get User Name
@@ -58,7 +58,6 @@ const Beaches = () => {
         let len = 0
         for (const property in it) {
             if (it[property] in [0,1,2,3,4,5] && it[property].toString.length === 1){
-                console.log(it[property])
                 sum += it[property]
                 len++
             }
@@ -67,7 +66,6 @@ const Beaches = () => {
     }
 
     const setMedia = (media) => {
-        console.log(media)
         if (media >= 0 && media < 1.5) {
             return OneStar
         } else if (media >= 1.5 && media < 2.5) {
@@ -88,22 +86,45 @@ const Beaches = () => {
             <section className={"contentBeaches"}>
                 { /*Loop by map to set beaches*/
                     beaches.map(it => {
-                        const image = it.image
                         return(
                             <section id={it.id} className={"beachBox"}>
                                 {/*TODO check why dont load image*/}
-                                <div className={"header"} style={{backgroundImage : it.image}}>
+                                <div className={"beachHeader"} style={{backgroundImage : 'url(api/beach/image/'+it.id+')'}}>
                                     <span className={setFlag(it.falg)}>
                                         <i className={"fas fa-flag fa-2x"}/>
                                     </span>
                                 </div>
-                                <div className={"beachIngo"}>
-                                    <h2>{it.name}</h2>
-                                    <img className={"star"} src={calculateMedia(it)}  width={"30"} height={"30"} title={"Total Points"} alt={"points"}/>
-                                </div>
                                 <div className={"beachInfo"}>
-                                    {it.description}
+                                    <div className={"beachInfoHeader"}>
+                                        <h2>{it.name}</h2>
+                                        <img className={"star"} src={calculateMedia(it)}  width={"30"} height={"30"} title={"Total Points"} alt={"points"}/>
+                                    </div>
+                                    <div className={"beachInfoBody"}>
+                                        <div>
+                                            {it.description.slice(0,90) + " ..."}
+                                        </div>
+                                        <span className={"seeMore"}>
+                                            <i className="fas fa-info-circle fa-2x"></i>
+                                        </span>
+                                        <div className={"comments"}>
+                                            {setCounter(0)}
+                                            {
+                                                it.comments.map(comment => {
+                                                    {{setCounter(counter+1)}}
+                                                    return (
+                                                        <div id={comment.id} className={"comment"}>
+                                                            <p>{comment.comment}</p>
+                                                            <span>
+                                                                <i className={"far fa-heart"}/>
+                                                                {/*TODO MAKE METHOD FOR LIKES*/}
+                                                            </span>
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
 
+                                    </div>
                                 </div>
                             </section>
                         )
@@ -113,7 +134,6 @@ const Beaches = () => {
 
 
         </div>
-
     )
 }
-export default Beaches
+export default Beaches;

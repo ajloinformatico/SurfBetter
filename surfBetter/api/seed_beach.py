@@ -220,7 +220,7 @@ def seed_beaches(app):
                     Beach(
                         id=4,
                         name="Las Caracolas",
-                        image="/statics/beaches/la_playita/las_caracolas_1.jpg",
+                        image="/statics/beaches/las_caracolas/las_caracolas_1.jpg",
                         description="Las Caracolas in Andalucia is an exposed beach "
                                     + "and reef break that has fairly consistent surf. Winter and spring "
                                     + "are the best times of year to visit. The best wind direction is "
@@ -381,7 +381,7 @@ def seed_beaches(app):
                     Beach(
                         id=8,
                         name="Chiclana de la frontera",
-                        image="/statics/beaches/chiclana_de_la_fromtera/chiclana_de_la_frontera_1.jpg",
+                        image="/statics/beaches/chiclana_de_frontera/chiclana_de_la_frontera_1.jpg",
                         description="Chiclana de la Frontera in Andalucia is an "
                                     + "exposed beach break that has inconsistent surf. Summer in "
                                     + "particular tends to be flat. The best wind direction is from "
@@ -645,7 +645,7 @@ def seed_beaches(app):
                     Beach(
                         id=15,
                         name="Caños de meca",
-                        image="statics/beaches/caños_de_meca/caños_de_meca_1.jpg",
+                        image="/statics/beaches/canos_de_meca/canos_de_meca_1.jpg",
                         description="Canos de Meca in Andalucia is an exposed reef break that has quite "
                                     + "reliable surf. Winter and spring are the best times of year to visit. The best "
                                     + "wind direction is from the northeast with some shelter here from west winds. "
@@ -678,7 +678,7 @@ def seed_beaches(app):
                     Beach(
                         id=16,
                         name="Faro de trafalgar",
-                        image="statics/beaches/faro_de_trafalgar/faro_de_trafalgar_1.jpg",
+                        image="/statics/beaches/faro_de_trafalgar/faro_de_trafalgar_1.jpg",
                         description='Faro de Trafalgar in Andalucia is an exposed beach break that has quite'
                                     + 'reliable surf, although summer tends to be mostly flat. The best wind '
                                       'direction is '
@@ -713,7 +713,7 @@ def seed_beaches(app):
                     Beach(
                         id=17,
                         name="El Palmar",
-                        image="statics/beaches/el_palmar/el_palmar_1.jpg",
+                        image="/statics/beaches/el_palmar/el_palmar_1.jpg",
                         description="Playa El Palmar in Andalucia is a fairly exposed beach break that has reasonably "
                                     + "consistent surf. Winter and spring are the best times of year to visit. Works "
                                       "best "
@@ -746,7 +746,7 @@ def seed_beaches(app):
                     Beach(
                         id=18,
                         name="Conil de la frontera",
-                        image="statics/beaches/conil_de_la_frontera/conil_de_la_frontera_1.jpg",
+                        image="/statics/beaches/conil_de_la_frontera/conil_de_la_frontera_1.jpg",
                         description="Conil de la Frontera in Andalucia is a quite exposed beach "
                                     + "break that has inconsistent surf. Summer in particular tends to be flat. "
                                     + "Offshore winds are from the east. Groundswells and windswells are equally "
@@ -786,7 +786,7 @@ def seed_beaches(app):
                     Beach(
                         id=19,
                         name="El balneario",
-                        image="statics/beaches/el_balneario/el_balneario_1.jpg",
+                        image="/statics/beaches/el_balneario/el_balneario_1.jpeg",
                         description="El Balneario in Andalucia is an exposed beach break "
                                     + "that has fairly consistent surf, although summer tends to be mostly flat. "
                                     + "The best wind direction is from the east northeast. Tends to receive a mix "
@@ -819,7 +819,7 @@ def seed_beaches(app):
                     Beach(
                         id=20,
                         name="Los lances",
-                        image="statics/beaches/los_lances/los_lances_1.jpg",
+                        image="/statics/beaches/los_lances/los_lances_1.jpeg",
                         description="Los Lances in Andalucia is an exposed beach break that does not work "
                                     + "very often. Winter and spring are the optimum times of year to visit. The best "
                                       "wind "
@@ -864,7 +864,7 @@ def seed_beaches(app):
                     Beach(
                         id=21,
                         name="Getares",
-                        image="statics/beaches/getares/getares_1.jpg",
+                        image="/statics/beaches/getares/getares_1.jpg",
                         description="Getares in Andalucia is an exposed beach and reef break that has "
                                     + "unreliable waves. Summer offers the optimum conditions for surfing. Works best "
                                       "in "
@@ -910,7 +910,7 @@ def seed_beaches(app):
                     Beach(
                         id=22,
                         name="El caño de la culata",
-                        image="statics/beaches/el_caño_de_la_culata/el_caño_de_la_culata_1.jpg",
+                        image="/statics/beaches/el_caño_de_la_culata/el_caño_de_la_culata_1.jpg",
                         description="El Caño de la Culata in Andalucia is a sheltered beach break that has "
                                     + "fairly consistent surf. Winter and spring are the best times of year to visit. "
                                       "Offshore "
@@ -944,7 +944,7 @@ def seed_beaches(app):
                     Beach(
                         id=23,
                         name="El Chanquete",
-                        image="statics/beaches/el_chanquete/el_chanquete_1.jpg",
+                        image="/statics/beaches/el_chanquete/el_chanquete_1.jpg",
                         description="El Chanquete in Andalucia is an exposed beach and reef break that "
                                     + "has quite consistent surf, although summer tends to be mostly flat. Offshore "
                                     + "winds blow from the north northeast. Windswells are much more typical than "
@@ -987,7 +987,7 @@ def seed_beaches(app):
                     Beach(
                         id=24,
                         name="El Sanset",
-                        image="statics/beaches/el_sanset/el_sanset_1.jpg",
+                        image="/statics/beaches/el_sanset/el_sanset_1.jpg",
                         description="El Sunset (Benalmádena) in Andalucia "
                                     + "is an exposed beach break that has inconsistent surf. "
                                     + "Autumn and winter are the optimum times of year for waves. "
@@ -1031,7 +1031,7 @@ def seed_beaches(app):
                     Beach(
                         id=25,
                         name="Fuengirola",
-                        image="statics/beaches/fuengirola/fuengirola_1.jpg",
+                        image="/statics/beaches/fuengirola/fuengirola_1.jpg",
                         description="Fuengirola in Andalucia is an exposed beach break that has "
                                     + "quite reliable surf, although summer tends to be mostly flat. Offshore "
                                     + "winds blow from the west northwest and there is no shelter here from cross "
@@ -1075,7 +1075,7 @@ def seed_beaches(app):
                     Beach(
                         id=26,
                         name="La Chucha",
-                        image="statics/beaches/la_chucha/la_chucha_1.jpg",
+                        image="/statics/beaches/la_chucha/la_chucha_1.jpeg",
                         description="La Chucha in Andalucia is a fairly exposed reef break that does not work very "
                                     "often. "
                                     "Summer in particular tends to be flat. The best wind direction is from the north. "
@@ -1113,7 +1113,7 @@ def seed_beaches(app):
                     Beach(
                         id=27,
                         name="La herradura",
-                        image="statics/beaches/la_herradura/la_herradura_1.jpg",
+                        image="/statics/beaches/la_herradura/la_herradura_1.jpg",
                         description="La Herradura in Andalucia is an exposed beach break that does not work very "
                                     "often. "
                                     "Summer in particular tends to be flat. Offshore winds blow from the northeast. "
@@ -1156,7 +1156,7 @@ def seed_beaches(app):
                     Beach(
                         id=28,
                         name="La yerbabuena",
-                        image="statics/beaches/la_yerbabuena/la_yerbabuena_1.jpg",
+                        image="/statics/beaches/la_yerbabuena/la_yerbabuena_1.jpg",
                         description="La Yerbabuena in Andalucia is a fairly exposed point/rivermouth break that has "
                                     "unreliable waves. Summer in particular tends to be flat. The best wind direction "
                                     "is "
@@ -1197,7 +1197,13 @@ def seed_beaches(app):
                     Beach(
                         id=29,
                         name="Largos",
-                        image="statics/beaches/largos/largos_1.jpg",
+                        image="/statics/beaches/largos/largos_1.jpg",
+                        description="Largos in Andalucia is an exposed reef break that only works when conditions are "
+                                    "just right. Summer in particular tends to be flat. The best wind direction is "
+                                    "from the "
+                        "northwest with some shelter here from northeast winds. Short period wind swells are the rule "
+                        "and the optimum wave angle is from the east southeast. No reef break here. Surfable at all "
+                                    "stages of the tide. It's often crowded here. Watch out for rocks, urchins.",
                         type_beach="Reef",
                         flag=1,
                         quality_when_it_works=3,
@@ -1220,7 +1226,7 @@ def seed_beaches(app):
                     Beach(
                         id=30,
                         name="Marbella Playa del Cable",
-                        image="statics/beaches/marbella_playa_del_cable/marbella_playa_del_cable_1.jpp",
+                        image="/statics/beaches/marbella_playa_del_cable/marbella_playa_de_cable_1.jpg",
                         description="Marbella - Playa del Cable in Andalucia is an exposed beach break that does not "
                                     "work "
                                     "very often. Summer in particular tends to be flat. Works best in offshore winds "
@@ -1253,7 +1259,7 @@ def seed_beaches(app):
                     Beach(
                         id=31,
                         name="Matalascaña",
-                        image="statcis/beaches/matalascañas/matalascañas_1.jpg",
+                        image="/statics/beaches/matalascañas/matalascañas_1.jpg",
                         description="Matalascañas in Andalucia is an exposed beach break that has quite reliable surf. "
                                     "Winter and spring are the best times of year to visit. The best wind direction is "
                                     "from the northeast. Windswells and groundswells in equal measure and the best "
@@ -1293,7 +1299,7 @@ def seed_beaches(app):
                     Beach(
                         id=32,
                         name="Mazagon",
-                        image="statics/beaches/mazagon/mazagon_1.jpg",
+                        image="/statics/beaches/mazagon/mazagon.jpg",
                         description="Mazagon in Andalucia is an exposed sandbar break that does not work very often. "
                                     "Winter and spring are the optimum times of year to visit. Offshore winds blow "
                                     "from "
@@ -1331,7 +1337,7 @@ def seed_beaches(app):
                     Beach(
                         id=33,
                         name="Mojacar",
-                        image="statics/beaches/mojacar/mojacar_1.jpg",
+                        image="/statics/beaches/moajacar/mojacar_1.jpg",
                         description="Mojacar in Andalucia is a reasonably exposed river break that only works once in "
                                     "a "
                                     "while. The best wind direction is from the northwest. The best swell direction is "
@@ -1361,7 +1367,7 @@ def seed_beaches(app):
                     Beach(
                         id=34,
                         name="Molino de papel",
-                        image="statics/beaches/molino_de_papel/molino_de_papel_1.jpg",
+                        image="/statics/beaches/molino_de_papel/molino_de_papel_1.jpg",
                         description="Molino de Papel in Andalucia is an exposed reef break that only works when "
                                     "conditions are just right. Summer in particular tends to be flat. Offshore winds "
                                     "blow from the north northeast. Short period wind swells are the rule and the "
@@ -1391,7 +1397,7 @@ def seed_beaches(app):
                     Beach(
                         id=35,
                         name="Playa pico de el puerto",
-                        image="statics/beaches/playa_pico_de_el_puerto/playa_pico_del_puerto_1.jpg",
+                        image="/statics/beaches/playa_pico_del_puerto/playa_pico_del_puerto_1.jpg",
                         description="Pico de el Puerto in Andalucia is a fairly exposed reef break that only works "
                                     "when "
                                     "conditions are just right. Summer offers the best conditions for surfing. "
@@ -1423,7 +1429,7 @@ def seed_beaches(app):
                     Beach(
                         id=36,
                         name="Pico de las cocheras",
-                        image="statics/beaches/pico_de_las_cocheras/pico_de_de_las_cocheras_1.jpg",
+                        image="/statics/beaches/pico_de_las_cocheras/pico_de_las_cocheras_1.jpg",
                         description="Pico de las Cocheras in Andalucia is a reasonably exposed beach break that has "
                                     "inconsistent surf. Summer offers the best conditions for surfing. The best wind "
                                     "direction is from the west. Windswells provide any waves and the best wave "
@@ -1455,7 +1461,7 @@ def seed_beaches(app):
                     Beach(
                         id=37,
                         name="Playa central",
-                        image="statics/beaches/playa_central/playa_central_1.jpg",
+                        image="/statics/beaches/playa_central/playa_central_1.jpg",
                         description="Playa Central in Andalucia is a reasonably exposed beach break that has fairly "
                                     "consistent surf. Winter and spring are the optimum times of year to visit. Works "
                                     "best in offshore winds from the north northwest. Most of the surf here comes from "
@@ -1483,7 +1489,7 @@ def seed_beaches(app):
                     Beach(
                         id=38,
                         name="Playa de la carchuna",
-                        image="statics/beaches/playa_de_la_carchuna/playa_de_la_carchuna_1.jpg",
+                        image="/statics/beaches/playa_de_la_carchuna/playa_de_la_carchuna_1.jpg",
                         description="Playa de Carchuna(Calahonda) in Andalucia is an exposed beach break. Summer "
                                     "offers "
                                     "the best conditions for surfing. Works best in offshore winds from the north. "
@@ -1524,7 +1530,7 @@ def seed_beaches(app):
                     Beach(
                         id=39,
                         name="Playa de la Canaleta",
-                        image="statics/beaches/playa_de_la_canaleta/playa_de_la_canaleta_1.jpg",
+                        image="/statics/beaches/playa_de_la_canaleta/playa_de_la_canaleta_1.jpg",
                         description="Playa de la Canaleta in Andalucia is an exposed beach break that has pretty "
                                     "consitent surf. Winter and spring are the optimum times of year to visit. "
                                     "Offshore "
@@ -1566,7 +1572,7 @@ def seed_beaches(app):
                     Beach(
                         id=40,
                         name="Playa de Regla",
-                        image="statics/beaches/playa_de_regla/playa_de_regla_1.jpg",
+                        image="/statics/beaches/playa_de_regla/playa_de_regla_1.jpg",
                         description="Playa de Regla in Andalucia is an exposed beach break that usually has waves. "
                                     "Winter "
                                     "and spring are the optimum times of year to visit. Offshore winds are from the "
@@ -1608,7 +1614,7 @@ def seed_beaches(app):
                     Beach(
                         id=41,
                         name="Playa de las tres piedras",
-                        image="statics/beaches/playa_de_las_tres_piedras/playa_de_las_tres_piedras_1.jpg",
+                        image="/statics/beaches/playa_de_las_tres_piedras/playa_de_las_tres_piedras_1.jpg",
                         description="Playa de Tres Piedras in Andalucia is an exposed beach break that has dependable "
                                     "surf. Winter and spring are the optimum times of year to visit. Offshore winds "
                                     "blow "
@@ -1652,7 +1658,7 @@ def seed_beaches(app):
                     Beach(
                         id=42,
                         name="Playa del Bombo",
-                        image="statics/beaches/playa_del_bombo/playa_del_bombo_1.jpg",
+                        image="/statics/beaches/playa_del_bombo/playa_del_bombo_1.jpg",
                         description="Playa el Bombo in Andalucia is an exposed beach break that has unreliable waves "
                                     "with "
                                     "no particular seasonal pattern. Works best in offshore winds from the northwest. "
@@ -1694,7 +1700,7 @@ def seed_beaches(app):
                     Beach(
                         id=43,
                         name="Playa la Carihuela",
-                        image="statics/beaches/playa_la_carihuela/playa_la_carihuela_1.jpg",
+                        image="/statics/beaches/playa_la_carihuela/playa_la_carihuela_1.jpg",
                         description="Playa la Carihuela in Andalucia is an exposed beach break that has inconsistent "
                                     "surf. Winter is the favoured time of year for surfing here. The best wind "
                                     "direction "
@@ -1724,7 +1730,7 @@ def seed_beaches(app):
                     Beach(
                         id=44,
                         name="Puerto Cabopino",
-                        image="statics/beaches/puerto_de_combo/puerto_de_combo_1.jpg",
+                        image="/statics/beaches/puerto_cabopino/puerto_cabopino_1.jpg",
                         description="Puerto Cabopino in Andalucia is an exposed sandbar break that has reasonably "
                                     "consistent surf and can work at any time of the year. Offshore winds are from the "
                                     "north. Most of the surf comes fis in the form of windswells and the best wave "
@@ -1763,7 +1769,7 @@ def seed_beaches(app):
                     Beach(
                         id=45,
                         name="Puerto Marina",
-                        image="statics/beaches/puerto_marina/puerto_marina_1.jpg",
+                        image="/statics/beaches/puerto_marina/puerto_marina_1.jpg",
                         description="Puerto Marina in Andalucia is a fairly exposed sandbar break that has "
                                     "inconsistent "
                                     "surf. Autumn and winter are the optimum times of year for waves. Works best in "
@@ -1807,7 +1813,7 @@ def seed_beaches(app):
                     Beach(
                         id=46,
                         name="Punta del Moral",
-                        image="statics/beaches/punta_del_moral/punta_del_moral_1.jpg",
+                        image="/statics/beaches/punta_del_moral/punta_del_moral_1.jpg",
                         description="Punta del Moral in Andalucia is a quite exposed beach and breakwater break that "
                                     "has "
                                     "fairly consistent surf. Winter and spring are the favoured times of year to "
@@ -1838,7 +1844,7 @@ def seed_beaches(app):
                     Beach(
                         id=47,
                         name="Playa Umbria",
-                        image="statics/beaches/playa_umbria/playa_umbria_1.jpg",
+                        image="/statics/beaches/playa_umbria/playa_umbria_1.jpg",
                         description="Punta Umbria (Playa Camarón) in Andalucia is an exposed beach break that has "
                                     "fairly consistent surf. Winter and spring are the favoured times of year to "
                                     "visit. Works "
