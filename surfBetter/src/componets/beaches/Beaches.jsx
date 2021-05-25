@@ -1,17 +1,22 @@
-import React, {useEffect, useState} from "react";
-import HeaderMenu from "./HeaderMenu.jsx";
-import {authFetch} from "./auth/auth";
-import OneStar from '../assets/img/stars/1star.png'
-import TwoStar from '../assets/img/stars/2star.png'
-import ThreeStar from '../assets/img/stars/3star.png'
-import FourStar from '../assets/img/stars/4star.png'
-import FiveStar from '../assets/img/stars/5star.png'
+import React, {useEffect, useState, Suspense, lazy} from "react";
+import {useHistory} from "react-router";
+import {authFetch} from "../auth/auth";
+import OneStar from '../../assets/img/stars/1star.png'
+import TwoStar from '../../assets/img/stars/2star.png'
+import ThreeStar from '../../assets/img/stars/3star.png'
+import FourStar from '../../assets/img/stars/4star.png'
+import FiveStar from '../../assets/img/stars/5star.png'
+import Contact from "../Contact";
+import {Redirect} from "react-router-dom";
+import BeachesHost from "./BeachesHost";
+
+
 
 const Beaches = () => {
 
     const [user, setUser] = useState({})
     const [beaches, setBeaches] = useState([])
-    const [counter, setCounter] = useState(0)
+    const history = useHistory()
 
     /**
      * UsseEfect to get User Name
@@ -79,9 +84,21 @@ const Beaches = () => {
         }
     }
 
+    const calculateLikes = (likes) => {
+        let counter = 0
+        likes.forEach( it => {
+            counter++;
+        })
+        return counter
+    }
+
+    const openBeachInfo = (id) => {
+        history.push("/beach/"+id)
+    }
+
+
     return (
         <div>
-            <HeaderMenu/>
             <h1>Beaches</h1>
             <section className={"contentBeaches"}>
                 { /*Loop by map to set beaches*/
@@ -98,19 +115,25 @@ const Beaches = () => {
                                     <div className={"beachInfoHeader"}>
                                         <h2>{it.name}</h2>
                                         <img className={"star"} src={calculateMedia(it)}  width={"30"} height={"30"} title={"Total Points"} alt={"points"}/>
+                                        <div>
+                                            <span className={(calculateLikes(it.likes)>0)?"red-flag":""}>
+                                                <i className="fas fa-heart"/>
+                                            </span>
+                                            <p>{(it.likes)?calculateLikes(it.likes):0}</p>
+                                        </div>
                                     </div>
                                     <div className={"beachInfoBody"}>
                                         <div>
                                             {it.description.slice(0,90) + " ..."}
                                         </div>
-                                        <span className={"seeMore"}>
-                                            <i className="fas fa-info-circle fa-2x"></i>
-                                        </span>
+                                        <a className={"seeMore"} onClick={() => openBeachInfo(it.id)}>
+                                            <i className="fas fa-info-circle fa-2x"/>
+                                        </a>
                                         <div className={"comments"}>
-                                            {setCounter(0)}
+
                                             {
-                                                it.comments.map(comment => {
-                                                    {{setCounter(counter+1)}}
+                                                //If comments is > 2 only show 2 else show all
+                                                (it.comments>=2)?it.comments.splice(0,2).map:it.comments.map(comment => {
                                                     return (
                                                         <div id={comment.id} className={"comment"}>
                                                             <p>{comment.comment}</p>
@@ -131,8 +154,6 @@ const Beaches = () => {
                     },[])
                 }
             </section>
-
-
         </div>
     )
 }

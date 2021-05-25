@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {lazy, Suspense} from "react";
 import {useHistory} from "react-router";
 import './assets/css/style.scss';
 // Font awesome
@@ -13,21 +13,27 @@ import {
 //Componnets
 import LoginRegister from './componets/loginsign/LoginRegister.jsx'
 import Profile from './componets/profile/Profile.jsx'
-import Beaches from './componets/Beaches.jsx'
+import BeachesHost from "./componets/beaches/BeachesHost";
 import Contact from './componets/Contact.jsx'
 import Resources from './componets/Resources.jsx'
 import LegalNotices from './componets/LegalNotices.jsx'
+import BeachInfo from "./componets/beaches/BeachInfo";
+
+
 
 //Auth
-import {authFetch,  useAuth} from "./componets/auth/auth.jsx"
+import {useAuth} from "./componets/auth/auth.jsx"
 // Note: Just to check if i can do fetch
+
+
+
+
 
 /**
  * 
  * @returns {jsx commponent with routes and user}
  */
 function App() {
-
     //LOVE REACT RETURNS AUTH USER
     const [logged] = useAuth()
 
@@ -50,11 +56,11 @@ function App() {
                         <Redirect to="login"/>
                 }
                 {/*Protected rouetes*/}
-                <Route path="/" exact>      
-                    <Beaches/>
+                <Route path="/" exact>
+                    <BeachesHost/>
                 </Route>
                 <Route path="/beaches" exact>
-                    <Beaches/>
+                    <BeachesHost/>
                 </Route>
                 <Route path="/contact" exact>
                     <Contact/>
@@ -66,7 +72,10 @@ function App() {
                     <Resources/>
                 </Route>
                 <Route path="/legal" exact>
-                    <LegalNotices/>        
+                    <LegalNotices/>
+                </Route>
+                <Route path="/beach/:id" exact>
+                    <BeachInfo/>
                 </Route>
                 <Route path="/*">
                     <h1>ERROR 404: NOT FOUND</h1>
