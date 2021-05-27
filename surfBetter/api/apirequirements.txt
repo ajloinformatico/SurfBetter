@@ -1,4 +1,0 @@
-flask
-flask_sqlAlchemy
-flask_cors
-flask-praetorian
