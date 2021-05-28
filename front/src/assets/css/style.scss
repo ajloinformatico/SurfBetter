@@ -69,7 +69,7 @@
     .contentModal {
       margin-top: .5em;
       margin-bottom: 2em;
-      
+
       form {
         width: 70%;
         margin: 0 auto;
@@ -228,7 +228,7 @@ header{
 
   a:hover{
     @include do-transition-hover-menu(
-      $color-white, $color-black
+                    $color-white, $color-black
     )
   }
   /*Surf Better logo*/
@@ -253,7 +253,7 @@ header{
     >a:hover{
       @include do-transition-hover-font-awesome-button($color-black, $color-header)
     }
-  }  
+  }
 }
 /*Menu mobile*/
 #menu-mobile{
@@ -265,7 +265,7 @@ header{
     list-style: none;
     margin: 0;
     padding: 0;
-    
+
     /*Extra padding only for first and last*/
     li:first-child{
       padding-top: 1em;
@@ -273,7 +273,7 @@ header{
     li:last-child{
       padding-bottom: 1em;
     }
-    
+
     li{
       padding-top: .4em;
       padding-bottom: .4em;
@@ -281,10 +281,10 @@ header{
         @extend %over-buttons;
         color: white;
         cursor: pointer;
-      } 
+      }
       a:hover{
         @include do-transition-hover-menu(
-        $color-black, $color-white
+                        $color-black, $color-white
         );
       }
     }
@@ -443,7 +443,7 @@ header{
     border-radius: 50%;
     opacity: 1;
     cursor:pointer;
-    
+
   }
   .avatarImage:hover{
 
@@ -488,17 +488,109 @@ header{
 
 .beachBox{
   margin-top: 2em;
+  box-shadow: black 2px 3px 3px;
   margin-bottom: 2em;
-  background: darkseagreen;
   width: 340px;
-
+  background-color: $color-back-beaches;
 }
 
-.beachHeader{
+.beachImage{
   width: 340px;
   height: 200px;
+  span {
+    float: right;
+
+  }
 }
+
 .beachInfo{
+  .beachHeader{
+    padding-left: 1em;
+    padding-right: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    /*Icons*/
+    h2{
+      font-size: x-large;
+    }
+    >div{
+      width: 25%;
+      display: flex;
+      justify-content: space-between;
+      /*info button*/
+      a {
+        cursor:pointer;
+        color: #16697A;
+        transition: $mouse-is-over-normal
+      }
+      a:hover{
+        color: $color-black;
+        transition: $mouse-is-hover-normal;
+      }
+    }
+  }
+  .beachPoints {
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-bottom: 2em;
+    ul {
+      display: block;
+      padding: 0;
+      margin: 0;
+      li {
+        margin-top: -1em;
+        margin-bottom: -1em;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+  .beachFooter{
+    background-color: $color-header;
+    color: $color-white;
+    padding-right: 1em;
+    display: flex;
+    justify-content: space-between;
+    /** Comments */
+    >span{
+      padding-left: 1em;
+      cursor:pointer;
+      display: block;
+      transition: $mouse-is-over-normal;
+      width: 85%;
+    }
+    >span:hover {
+      color: $color-black;
+      background-color: $color-back-beaches;
+      transition: $mouse-is-hover-normal;
+    }
+    /** Likes*/
+    >div{
+      width: 15%;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+      align-self: center;
+      >*{
+        display: block;
+      }
+      span{
+        position: relative;
+        top:10px;
+        z-index: 0;
+      }
+      p{
+        position: relative;
+        bottom: 5px;
+        z-index: 1;
+      }
+    }
+  }
 
 }
 /********************* BEACH DETAIL ******************/
@@ -507,7 +599,7 @@ header{
 }
 
 .beachDetail{
-    margin-top: 5em;
+  margin-top: 5em;
   .beachDescription {
     display: flex;
     flex-flow: row;
@@ -626,7 +718,7 @@ header{
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  
+
   /*Header login*/
   header{
     >label{
@@ -657,7 +749,7 @@ header{
         padding: 0;
       }
       li:hover{
-        background-color: none;
+        background-color: transparent;
         width: auto;
       }
     }
@@ -736,7 +828,7 @@ header{
         flex-flow: row;
         flex-wrap: nowrap;
         justify-content: space-between;
-        align-items: center;  
+        align-items: center;
       }
     }
   }
@@ -760,7 +852,7 @@ header{
 @media only screen and (min-width: 992px) {
 
   html {
-   font-size: $font-comon-big-desk;
+    font-size: $font-comon-big-desk;
   }
   h2 {
     font-size: $font-comon-big-title-desk;
@@ -791,7 +883,7 @@ header{
       width: 50%;
     }
   }
-  
+
   header{
     >label{
       a:last-child{
@@ -808,7 +900,7 @@ header{
   /*login*/
   /*slider*/
   .logSignMain {
-    
+
     .containMain{
       width: 40%;
     }

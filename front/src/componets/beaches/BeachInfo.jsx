@@ -37,6 +37,21 @@ const BeachInfo = () => {
         history.push("/")
     }
 
+    /** Set beach stars */
+    const setStar = (points) => {
+        debugger
+        let html = ""
+        let i = 0
+        do{
+            if (i < points){
+                html += <i id={"fav"} className={"fas fa-star"}/>
+            } else {
+                html += <i id={"notfav"} className={"fas fa-star"}/>
+            }
+        }while (i < 5)
+        return parse(html)
+    }
+
     return (
         <div>
             <HeaderMenu/>
@@ -51,6 +66,15 @@ const BeachInfo = () => {
                         <h1>{beach.name}</h1>
                         <p>{beach.description}</p>
                     </div>
+                </section>
+                <section className={"beachDetailPoints"}>
+                    <dt>
+                        <dl>
+                            <p>Quality when it works</p>
+                            <div>{() => setStar(beach.quality_when_it_works)}</div>
+                        </dl>
+                    </dt>
+
                 </section>
                 <section className={"beachWaves"}>
                     {parse(""+beach.surf_fore_cast_link)}

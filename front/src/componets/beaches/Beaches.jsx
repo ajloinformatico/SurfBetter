@@ -96,6 +96,13 @@ const Beaches = () => {
         history.push("/beach/"+id)
     }
 
+    const setOrDeleteFav = (id) => {
+        alert("FAV")
+    }
+
+    const openCommentsOnTarget = () => {
+        alert ("open buttons")
+    }
 
     return (
         <div>
@@ -105,47 +112,91 @@ const Beaches = () => {
                     beaches.map(it => {
                         return(
                             <section id={it.id} className={"beachBox"}>
-                                {/*TODO check why dont load image*/}
-                                <div className={"beachHeader"} style={{backgroundImage : 'url(api/beach/image/'+it.id+')'}}>
+                                <div className={"beachImage"} style={{backgroundImage : 'url(api/beach/image/'+it.id+')'}}>
                                     <span className={setFlag(it.falg)}>
                                         <i className={"fas fa-flag fa-2x"}/>
                                     </span>
                                 </div>
                                 <div className={"beachInfo"}>
-                                    <div className={"beachInfoHeader"}>
+                                    <div className={"beachHeader"}>
                                         <h2>{it.name}</h2>
-                                        <img className={"star"} src={calculateMedia(it)}  width={"30"} height={"30"} title={"Total Points"} alt={"points"}/>
                                         <div>
-                                            <span className={(calculateLikes(it.likes)>0)?"red-flag":""}>
+                                            <img className={"star"} src={calculateMedia(it)}  width={"30"} height={"30"} title={"Total Points"} alt={"points"}/>
+                                            <a className={"seeMore"} onClick={() => openBeachInfo(it.id)}>
+                                                <i className="fas fa-info-circle fa-2x"/>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div className={"beachPoints"}>
+                                        {/**
+                                         * Icons by font awesome
+                                         * here only not nullable icons
+                                         */
+                                        }
+                                        <ul>
+                                            <li>
+                                                <img srcSet={"https://img.icons8.com/ios-filled/30/000000/warranty-card.png"}
+                                                     alt={"Quality when it works"} title={"Quality when it works"}/>
+                                                <p>Quality when it work</p>
+                                                <span>{it.quality_when_it_works}</span>
+                                            </li>
+                                            <li>
+                                                <img srcSet={"https://img.icons8.com/ios-filled/30/000000/wave-lines.png"}
+                                                     alt={"Wave consistency"} title={"Wave consistency"}/>
+                                                <p>Wave Consistency</p>
+                                                <span>{it.wave_consistency}</span>
+                                            </li>
+                                            <li>
+                                                <img srcSet={"https://img.icons8.com/ios-filled/30/000000/surfing.png"}
+                                                     alt={"Difficulty"} title={"Difficulty"}/>
+                                                <p>Difficulty</p>
+                                                <span>{it.difficulty}</span>
+                                            </li>
+                                            <li>
+                                                <img srcSet={"https://img.icons8.com/ios-filled/30/000000/windsurfing--v1.png"}/>
+                                                <p>Windsurf and kitesurf</p>
+                                                <span>{it.windsurf_y_kitesurf}</span>
+                                            </li>
+                                            <li>
+                                                <img srcSet={"https://img.icons8.com/ios-glyphs/30/000000/beach-volleyball.png"}
+                                                     alt={"people to water"} title={"people to water"}/>
+                                                <p>People to water</p>
+                                                <span>{it.people_to_water}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className={"beachFooter"}>
+                                        <span onClick={() => openCommentsOnTarget()}>
+                                            <h3>Comments</h3>
+                                        </span>
+                                        <div className={"beachLikes"}>
+                                            <span onClick={() => setOrDeleteFav()} className={(calculateLikes(it.likes)>0)?"red-flag":""}>
                                                 <i className="fas fa-heart"/>
                                             </span>
                                             <p>{(it.likes)?calculateLikes(it.likes):0}</p>
                                         </div>
-                                    </div>
-                                    <div className={"beachInfoBody"}>
-                                        <div>
-                                            {it.description.slice(0,90) + " ..."}
-                                        </div>
-                                        <a className={"seeMore"} onClick={() => openBeachInfo(it.id)}>
-                                            <i className="fas fa-info-circle fa-2x"/>
-                                        </a>
-                                        <div className={"comments"}>
 
-                                            {
-                                                //If comments is > 2 only show 2 else show all
-                                                (it.comments>=2)?it.comments.splice(0,2).map:it.comments.map(comment => {
-                                                    return (
-                                                        <div id={comment.id} className={"comment"}>
-                                                            <p>{comment.comment}</p>
-                                                            <span>
-                                                                <i className={"far fa-heart"}/>
-                                                                {/*TODO MAKE METHOD FOR LIKES*/}
-                                                            </span>
-                                                        </div>
-                                                    )
-                                                })
-                                            }
-                                        </div>
+
+                                        {/*it will be spand when button cliks*/}
+                                        {/*<div className={"comments"}>*/}
+                                        {/*    {*/}
+                                        {/*        //If comments is > 2 only show 2 else show all*/}
+                                        {/*        (it.comments>=2)?it.comments.splice(0,2).map:it.comments.map(comment => {*/}
+                                        {/*            return (*/}
+                                        {/*                <div id={comment.id} className={"comment"}>*/}
+                                        {/*                    <p>{comment.comment}</p>*/}
+                                        {/*                    <span>*/}
+                                        {/*                    <i className={"far fa-heart"}/>*/}
+                                        {/*                        /!*TODO MAKE METHOD FOR LIKES*!/*/}
+                                        {/*                </span>*/}
+                                        {/*                </div>*/}
+                                        {/*            )*/}
+                                        {/*        })*/}
+                                        {/*    }*/}
+                                        {/*</div>*/}
+
+
 
                                     </div>
                                 </div>
@@ -158,3 +209,7 @@ const Beaches = () => {
     )
 }
 export default Beaches;
+//
+// <div>
+//     {it.description.slice(0,90) + " ..."}
+// </div>
