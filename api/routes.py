@@ -166,6 +166,15 @@ def get_beaches():
     return jsonify(beaches_list), 200
 
 
+@routes.route('/api/beaches/points')
+def get_description_points():
+    """
+    Get points info
+    """
+    beach_points = db.session.query(DescriptionPoints).all()
+    beach_points_list = [point.convert_to_json() for point in beach_points]
+    return jsonify(beach_points_list), 200
+
 
 @routes.route("/api/beach/<beach_id>")
 def get_one_beach_info(beach_id: int):
@@ -215,7 +224,7 @@ def get_most_likes(name: str):
 
 @routes.route("/api/user/fav_comments_beches/<type>")
 @auth_required
-def get_profile_favorites_beaches(type:int):
+def get_profile_favorites_beaches(type: int):
     """
     Get user likes beaches
     if type == 0 return favorite beaches else most comments beaches

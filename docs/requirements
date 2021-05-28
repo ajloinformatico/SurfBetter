@@ -44,6 +44,9 @@ Font awesome:
 	-> npm install --save @fortawesome/fontawesome-free
 		https://www.youtube.com/watch?v=7e2-kBvD89Y continuer por aquí
 
+rating stars
+react-star-ratings
+npm install --save react-star-ratings
 
 
 react-alert -> npm install --save sweetalert

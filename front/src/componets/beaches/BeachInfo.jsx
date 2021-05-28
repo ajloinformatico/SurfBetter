@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router";
 import HeaderMenu from "../HeaderMenu.jsx";
 import {authFetch} from "../auth/auth.jsx";
 import parse from 'html-react-parser';
+import StarComponent from "./StarComponent.jsx";
 
 /**
  * Beaches Host
@@ -15,41 +16,31 @@ const BeachInfo = () => {
     const params = useParams();
     const [user, setUser] = useState({})
     const [beach, setBeach] = useState({})
+    const [pDescription, setPDescription] = useState([])
     const history = useHistory()
 
     /**
      * UsseEfect to get User Name
      */
     useEffect(() => {
+        //Note: Get user by auth
         authFetch("/api/current_user")
             .then(response => response.json())
             .catch(error => console.log(error))
             .then(userInfo => setUser(userInfo))
+        //Note: Get beach by id url param
         fetch("/api/beach/"+params.id)
             .then(response => response.json())
             .catch(error => console.log(error))
             .then(beachInfo => setBeach(beachInfo))
+        //Note: Get beach info
+        fetch("/api/beaches/points")
+            .then(response => response.json())
+            .catch(error => console.log(error))
+            .then(pointsDescription => setPDescription(pointsDescription))
     }, [])
-
-
-
     const back = () => {
         history.push("/")
-    }
-
-    /** Set beach stars */
-    const setStar = (points) => {
-        debugger
-        let html = ""
-        let i = 0
-        do{
-            if (i < points){
-                html += <i id={"fav"} className={"fas fa-star"}/>
-            } else {
-                html += <i id={"notfav"} className={"fas fa-star"}/>
-            }
-        }while (i < 5)
-        return parse(html)
     }
 
     return (
@@ -68,16 +59,25 @@ const BeachInfo = () => {
                     </div>
                 </section>
                 <section className={"beachDetailPoints"}>
-                    <dt>
-                        <dl>
-                            <p>Quality when it works</p>
-                            <div>{() => setStar(beach.quality_when_it_works)}</div>
-                        </dl>
-                    </dt>
+                { /** Ask why*/
+                pDescription[0]!==undefined&&(
+                    <dl>
+                        <dt>
+                            <h3>{pDescription[0].name}</h3>
+                            <StarComponent rating={beach.quality_when_it_works}/>
+                        </dt>
+                        <dd>
+                            <p>{pDescription[0].point_info}</p>
+                        </dd>
 
+                    </dl>
+                )}
                 </section>
-                <section className={"beachWaves"}>
-                    {parse(""+beach.surf_fore_cast_link)}
+                <section>
+                    <h2>Waves</h2>
+                    <div className={"beachWaves"}>
+                        {parse(""+beach.surf_fore_cast_link)}
+                    </div>
                 </section>
             </main>
         </div>
