@@ -240,3 +240,35 @@ def get_profile_favorites_beaches(type: int):
     ids = [row[0] for row in beaches_id]
     beaches = db.session.query(Beach).filter(Beach.id.in_(ids)).all()
     return jsonify([beach.convert_to_json() for beach in beaches]), 200
+
+
+@routes.route("/api/beach/comment", methods=['POST'])
+@auth_required
+def send_commentary():
+    req = request.get_json(force=True)
+    beach_id = req["beach_id"]
+    comment = req["comment"]
+    user_id = flask_praetorian.current_user_id()
+    try:
+        db.session.add(
+            Comments(
+                comment=comment,
+                user_id=user_id,
+                beach_id=beach_id
+            )
+        )
+        db.session.commit()
+    except:
+        return "error", 501
+
+    return get_one_beach_info(beach_id), 200
+
+
+@routes.route("/api/beach/comment/delete", methods=["DELETE"])
+@auth_required
+def delete_comment():
+
+    req = request.get_json(force=True)
+    db.session.query(Comments).filter_by(id=req["comment_id"]).delete()
+    db.session.commit()
+    return f"comment with id {req['comment_id']} has been deleted", 200

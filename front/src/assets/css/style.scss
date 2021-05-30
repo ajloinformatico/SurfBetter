@@ -40,6 +40,38 @@
   visibility: visible;
 }
 
+
+%forms-common{
+  width: 70%;
+  margin: 0 auto;
+
+  .modalInputs {
+    border-color: transparent;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+
+    legend {
+      font-size: x-large;
+      margin-bottom: .5em;
+    }
+
+    input, textarea {
+      margin-bottom: 1em;
+      background-color: $color-blue-content;
+      text-align: center;
+      padding: .5em;
+      color: black;
+      border-style: none;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: gray;
+    }
+  }
+}
+
+
 /*Extends for modals*/
 %common-modal-style{
   width: 100%;
@@ -71,35 +103,7 @@
       margin-bottom: 2em;
 
       form {
-        width: 70%;
-        margin: 0 auto;
-
-        .modalInputs {
-          border-color: transparent;
-          display: flex;
-          flex-flow: column;
-          justify-content: space-around;
-
-          legend {
-            font-size: x-large;
-            margin-bottom: .5em;
-          }
-
-          input, textarea {
-            margin-bottom: 1em;
-            background-color: $color-blue-content;
-            text-align: center;
-            padding: .5em;
-            color: black;
-            border-style: none;
-          }
-
-          input::placeholder, textarea::placeholder {
-            color: black;
-            font-weight: bolder;
-          }
-        }
-
+        @extend %forms-common;
         .modalButtons {
           border-color: transparent;
           display: flex;
@@ -367,7 +371,8 @@ header{
   }
   .containMain{
     margin: 0 auto;
-    width: 70%;
+    padding-right: .5em;
+    padding-left: .5em;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -446,7 +451,6 @@ header{
 
   }
   .avatarImage:hover{
-
     @extend %hover-buttons;
     opacity: 0.5;
   }
@@ -469,7 +473,10 @@ header{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 100%;
+  >*{
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 /*Options labels*/
@@ -594,35 +601,94 @@ header{
 
 }
 /********************* BEACH DETAIL ******************/
-.beachDetailBack{
-  float:right;
-}
 
 .beachDetail{
-  margin-top: 5em;
+  margin-top: 1em;
+  .beachInfoHeader{
+    margin-bottom: 1em;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    a {
+      cursor:pointer;
+      transition: $mouse-is-over-normal;
+    }
+    a:hover {
+      color: $color-header;
+      transition: $mouse-is-hover-normal;
+    }
+
+  }
+  /** Beach image and text*/
   .beachDescription {
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    justify-content: space-around;
-    align-self: flex-start;
+    justify-content: space-between;
+    align-items: center;
     >*{
       display: block;
     }
     img {
-      border: 4px solid $color-black
-    }
-    div{
-      width: 60vh;
+      box-shadow: black 2px 3px 3px;
     }
   }
-  section:last-of-type{
-    margin-top: 3em;
+
+  /** Beach waves by forecast widget*/
+  .foreCastInfo{
     .beachWaves {
       display: flex;
       justify-content: center;
     }
   }
+
+  /*TODO LIKE BUTTON*/
+  .beachDetailPoints {
+  /*List of definition for the beach poitns list*/
+    dl {
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+      dd {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+
+  /*TODO COMMENTS*/
+  .beachComments {
+    background-color: $color-back-beaches;
+    box-shadow: black 2px 3px 3px;
+    padding-bottom: .5em;
+    padding-top: .5em;
+    margin-bottom: 2em;
+
+    form {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: space-between ;
+      margin: 1em;
+
+      textarea {
+        background-color: $color-gray-comment-form;
+        padding: .5em;
+        color: black;
+        border: 1px solid gray ;
+        margin-bottom: 1em;
+        width: 100%;
+        textarea::placeholder {
+          color: gray;
+        }
+      }
+
+    }
+  }
+
+
 }
 
 
@@ -834,6 +900,8 @@ header{
       }
     }
   }
+
+
 
   /*heder font-awesome-icons icons*/
   #darkModeButton{

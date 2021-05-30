@@ -14,65 +14,85 @@ def seed_description_points(app):
                     ),
                     DescriptionPoints(
                         name="Wave consistency",
-                        point_info="(1: La Muralla is a fickle surf spot that only works a few times a year. 5: "
+                        point_info="(1: It is a fickle surf spot that only works a few times a year. 5: "
                                    "Reliable "
                                    "year-round spot). "
                     ),
                     DescriptionPoints(
                         name="Difficulty",
-                        point_info="(1: Bien para principiantes. 3: Intermedios. 5: Sólo Surfistas Expertos)."
+                        point_info="(1: Good for beginners. 3: Intermediate. 5: Expert Surfers only)."
                     ),
                     DescriptionPoints(
                         name="Windsurf y kitesurf",
-                        point_info="(1: An unsuitable location. 5: The wind and swell at La Muralla are often "
+                        point_info="(1: An unsuitable location. 5: The wind and swell at the beach are often "
                                    "excellent). "
                     ),
                     DescriptionPoints(
+                        name="People to water",
+                        point_info="(1: There are many people frequently. 5: the beach is an easy place for our "
+                                   "surfers). "
+                    ),
+                    DescriptionPoints(
+                        name="Sea Weends",
+                        point_info="(1: Even a light sea wind ruins the water plane. 5: The beach can offer "
+                                   "better waves with a little sea wind). "
+                    ),
+                    DescriptionPoints(
+                        name="Other options",
+                        point_info="(1: If wind or tidal conditions are not good for the beach, they will also "
+                                   "not be good for other nearby spots. 5: Other nearby spots offer a rich variety of "
+                                   "wind and "
+                                   "wave exposures) "
+                    ),
+                    DescriptionPoints(
+                        name="Water Quality",
+                        point_info="1: Health risks due to contamination. 5: There is never pollution)."
+                    ),
+                    DescriptionPoints(
                         name="Access",
-                        point_info="(1: Llegar a La Muralla requiere una expedición por tierra o alquiler un barco. 3: "
-                                   "Una caminata de 30 minutos desde el aparcamiento más cercano. 5: Aparcamiento en "
-                                   "frente del Spot). "
+                        point_info="(1: Requires an overland expedition or boat rental. 3: A 30-minute walk from the "
+                                   "nearest parking lot. 5: Parking in front of the Spot). "
                     ),
                     DescriptionPoints(
                         name="Scenery",
-                        point_info="(1: Un paisaje industrial horrible. 5: Un paisaje espectacular)."
+                        point_info="(1: A horrible industrial landscape. 5: A spectacular natural landscape)."
                     ),
                     DescriptionPoints(
                         name="Local attitude",
-                        point_info="(1: Surfistas locales no les gustan visitantes. 5: No hay surfistas locales, "
-                                   "o si hay, son hospitalarios y amables). "
+                        point_info="(1: Local surfers don't like visitors. 5: There are no local surfers, or if there "
+                                   "are, they are hospitable and friendly). "
                     ),
                     DescriptionPoints(
                         name="Accommodation",
-                        point_info="(1: No accommodation. 5: Many accommodation options near La Muralla for all "
+                        point_info="(1: No accommodation. 5: Many accommodation options near the beach for all "
                                    "budgets "
                                    "from hostels to luxury hotels). "
                     ),
                     DescriptionPoints(
                         name="Camping",
-                        point_info="(1: No es posible acampar en La Muralla. 3: Es posible acampar, pero no hay "
-                                   "instalaciones. 5: Una campismo cercana que cuenta con excelentes instalaciones y "
-                                   "buena onda). "
+                        point_info="(1: It is not possible to camp at the beach. 3: It is possible to camp, but there "
+                                   "are no facilities. 5: A nearby campsite that has excellent facilities and good "
+                                   "vibes). "
                     ),
                     DescriptionPoints(
                         name="Entertainment",
-                        point_info="(1: Aparte del surf y la soledad no hay nada que hacer cuando no hay olas. 5: La "
-                                   "Muralla es localizado una región muy interesante, surfear allí es un bono). "
+                        point_info="(1: Besides surfing and solitude there is nothing to do when there are no waves. "
+                                   "5: The beach is in such an interesting area, surfing there is a bonus). "
                     ),
                     DescriptionPoints(
                         name="Equipment and repairs",
-                        point_info="(1: No se puede comprar nada, ni siquiera wax. 5: Equipamiento de surf de calidad "
-                                   "para compra o alquiler con reparaciones disponibles). "
+                        point_info="(1: You can't buy anything, not even wax. 5: Quality surf gear for purchase or "
+                                   "rental with repairs available). "
                     ),
                     DescriptionPoints(
                         name="Restaurants",
-                        point_info="(1: Traer su propia comida, ni siquiera hay una tienda. 5: Muchos distintos "
-                                   "restaurantes y bares en La Muralla, desde comida rápida a restaurantes de lujo). "
+                        point_info="(1: Bring your own food, there isn't even a store. 5: Many different "
+                                   "restaurants and bars in the beach, from fast food to fancy restaurants)."
                     ),
                     DescriptionPoints(
                         name="Pubs",
-                        point_info="(1: El alcohol está prohibido en el país. 5: Hay un bar excelente, cerca de La "
-                                   "Muralla donde puedes aparcar la furgoneta para la noche). "
+                        point_info="(1: Alcohol is prohibited in the country. 5: There is an excellent bar, near the "
+                                   "beach where you can park the van for the night). "
                     )
                 ]
             )

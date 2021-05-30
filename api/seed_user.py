@@ -68,6 +68,6 @@ def seed_user(app):
 
             db.session.commit()
 
-            create_user_directory(nicks=["@javier", "@javier2", "@marina", "@alicia"])
+            create_user_directory(nicks=['@infolojo', "@javier", "@javier2", "@marina", "@alicia"])
 
 

@@ -56,8 +56,7 @@ const HeaderMenu = () => {
     /**
      * search token on localstorage. Delete it and push history to home
      */
-    const logOut = (e) => {
-        
+    const logOut = () => {
         swal({
             title: "Log out",
             text: "Are you shure you want to log out?",
@@ -78,13 +77,7 @@ const HeaderMenu = () => {
                 swal("You will not regret 😄")
             }
         })
-        
-        
     }
-
-
-
-
 
     return (
         <div>
@@ -120,7 +113,7 @@ const HeaderMenu = () => {
                     </li>
                     <li>
                         {/*TODO: FUNCTION TO DROP TOKEN AND THEN BACK MAIN*/}
-                        <a onClick={e => logOut(e)}  title="Exit app" alt="link to login">
+                        <a onClick={() => logOut()}  title="Exit app" alt="link to login">
                             <i id="exitButtonHeader" className="fas fa-door-open fa-2x"></i>
                         </a>
                     </li>

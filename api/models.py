@@ -247,7 +247,7 @@ class Comments(db.Model):
     __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True)
-    comment = db.Column(db.Integer, nullable=False)
+    comment = db.Column(db.String(300), nullable=False)
     created_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     # Foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
@@ -261,7 +261,7 @@ class Comments(db.Model):
         return "<Comment %r,%r,%r,%r>" % (self.id, self.comment, self.created_date, self.likes_of_comment)
 
     def convert_to_json(self):
-        return {"id": self.id, "comment": self.comment, "created_date": self.created_date,
+        return {"id": self.id, "comment": self.comment, "created_date": self.created_date, "user_id": self.user_id, "beach_id": self.beach_id,
                 "likes_of_comments": [likes_of_c.convert_to_json() for likes_of_c in self.likes_of_comment]}
 
 
@@ -286,7 +286,9 @@ class Likes(db.Model):
     def convert_to_json(self):
         return {
             "id": self.id,
-            "created_date": self.created_date
+            "user_id": self.user_id,
+            "created_date": self.created_date,
+            "beach_id": self.beach_id
         }
 
     def __repr__(self):
@@ -313,6 +315,8 @@ class LikesOfComment(db.Model):
     def convert_to_json(self):
         return {
             "id": self.id,
+            "user_id": self.user_id,
+            "comment_id": self.comment_id,
             "created_date": self.created_date
         }
 

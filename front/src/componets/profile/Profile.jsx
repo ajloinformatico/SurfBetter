@@ -11,54 +11,76 @@ import HeaderMenu from "../HeaderMenu.jsx";
 import OptionsModal from "./OptionsModal.jsx";
 import PasswordModal from './PasswordModal.jsx';
 import UserInfoUpdateModal from './UserInfoUpdateModal.jsx';
+import BeachBox from "../beaches/BeachCard";
 /**
- * 
- * @param {Props} props:props.user => User Object 
+ *
  * @returns {JSXElement}: jsx react componnent
  */
-const Profile = (props) => {
+const Profile = () => {
 
 
     //States for modal 
     const [avatar, setAvatar] = useState("")
-
     const [user, setUser] = useState({})
-    /**
-     * UsseEfect to get User Name
-     */
-    useEffect(() => {
+    const [favorites, setFavorites] = useState([])
+    const [beachComments, setBeachComments] = useState([])
+
+    const getUser = async () => {
         authFetch("/api/current_user")
             .then(response => response.json())
             .catch(error => console.log(error))
             .then(userInfo => setUser(userInfo))
-    }, [])
+    }
+
+    const getFavoritesAndComments = async () => {
+        authFetch("/api/user/fav_comments_beches/0")
+            .then(response => response.json())
+            .catch(error => console.log(error))
+            .then(favoritesInfo => setFavorites(favoritesInfo))
+
+        authFetch("/api/user/fav_comments_beches/1")
+            .then(response => response.json())
+            .catch(error => console.log(error))
+            .then(beachesCommentsInfo => setBeachComments(beachesCommentsInfo))
 
 
-     //Set user image by useEffect abd authFetc
-    useEffect(() => {
-        authFetch("/api/avatar").then(setAvatar("/api/avatar"))
+    }
+
+    const getAvatar = async () => {
+        authFetch("/api/avatar")
+            .then(response => setAvatar(response.url))
+
+    }
+    const setEmptyAvatar = async () => {
+        setAvatar("")
+    }
+
+    /**
+     * UsseEfect to get User Name
+     */
+    useEffect(async () => {
+        await getUser()
+        await getAvatar()
+        await getFavoritesAndComments()
     },[])
     
    
     /**
      * Put update user avatar
-     * @param {event} e 
      */
-    const updateAvatar = async e => {
-        e.preventDefault()
+    const updateAvatar = async () => {
         const formData = new FormData();
         formData.append("file", document.getElementById("file").files[0])  
         authFetch('/api/avatar',{
             method: 'PUT',
             body: formData
-        }).then(response => response.json())
+        })
         .catch(swal("Error, Something was wrong",{icon:"error"}))
         .then(swal("Your image has been updated success",{icon:"success"})
             .then(async () => {
-                authFetch("/api/avatar").then(setAvatar("/api/avatar"))
-                window.location.reload()
-            })
-        );
+                await setEmptyAvatar()
+                await getAvatar()
+            }))
     }
 
     return (
@@ -77,8 +99,8 @@ const Profile = (props) => {
                 <div>
                     {/*Upload avatar image*/}
                     <label className={"profileAvatarImage"}htmlFor={"file"}>
-                        <img className={"avatarImage"} alt="userIcon" src={avatar}/>
-                        <input onChange={e => updateAvatar(e)} type={"file"} name="file" id="file" required={true}/>
+                        <img className={"avatarImage"} alt="user avatar" srcSet={avatar}/>
+                        <input onChange={async () => await updateAvatar()} type={"file"} name="file" id="file" required={true}/>
                     </label>
                     <p>{user.nick}</p>
                     
@@ -90,12 +112,29 @@ const Profile = (props) => {
                 </div>
             </section>
             <section className="ProfileBeaches">
-                <div>
                     <h2>Favorite Beaches</h2>
-                </div>
-                <div>
+                    <section className={"contentBeaches"}>
+                        { /*Loop by map to set beaches*/
+                            favorites!==undefined&&(
+                                favorites.map(it => {
+                                    return(
+                                        <BeachBox beach={it}/>
+                                    )
+                                }))
+                        }
+                    </section>
                     <h2>Commented Beaches</h2>
-                </div>
+                    <section className={"contentBeaches"}>
+                    {
+                        beachComments!==undefined&&(
+                            beachComments.map(it => {
+                                return (
+                                    <BeachBox beach={it}/>
+                                )
+                            })
+                        )
+                    }
+                    </section>
             </section>
             {/*Options modal componnent*/}
             <input type={"checkbox"} id={"user-options-modal"}/>

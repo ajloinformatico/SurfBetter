@@ -4,11 +4,11 @@ import React,{useState} from 'react'
 import swal from 'sweetalert'
 import logoSurfBetterHeader from '../../assets/img/common/logoSurfBetterHeader.png'
 import { authFetch } from '../auth/auth'
+import { setError } from "../../Utils";
 
 
 
-//TODO: USER CURRENT INFO CHANGE
-/* *
+/*
  * 
  * @param props: user state
  * @returns {JSX.Component}
@@ -21,50 +21,6 @@ const UserCurrentInfoModal = (props) => {
     const [surname, setSurname] = useState("")
     const [description, setDescription] = useState("")
 
-    /* *
-     * Check if string is correct by checking legth and not numbers
-     * @param cadena
-     * @param min
-     * @param max
-     * @returns {boolean}
-     */
-       const checkStrings = (cadena,min,max) => {
-        let flag = false
-        if (cadena.length > min && cadena.length < max){
-            cadena.split("").forEach(element => {
-                if (!isNaN(element)) {
-                    console.log("i have found a number");
-                    flag = true;
-                }
-            })
-        } else {
-            flag = true
-        }
-        return !flag;
-    }
-
-    /**
-     * set the error
-     * @param {useState} state 
-     * @param {target} input 
-     * @param {min_max} min and max
-     */
-    const setError = (state, input, min_max) => {
-        let error = false
-        if (!state.trim()) {
-            input.placeholder = input.id + " is empty";
-            error = true
-        } else if (!checkStrings(state, min_max[0], min_max[1])) {
-            input.placeholder = input.id + " is not valid"
-            error = true            
-        }
-        if (!error) 
-            return false
-        
-        input.classList.add("errors")
-        input.value = ""
-        return true
-    }
 
     /**
      * Client check user update modal
@@ -113,7 +69,7 @@ const UserCurrentInfoModal = (props) => {
 
     const updateUser =  async e => {
         e.preventDefault()
-        
+
         const opts = {
             "name" : name,
             "surname" : surname,
@@ -130,7 +86,7 @@ const UserCurrentInfoModal = (props) => {
         .then( () => {
             swal("your data has been updated",{icon: "success"})
             .then(async () =>{
-                window.location.reload() 
+
             });
         });
     }

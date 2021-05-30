@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import StarRatings from "react-star-ratings";
 
 /**
@@ -7,6 +7,7 @@ import StarRatings from "react-star-ratings";
  * @constructor
  */
 const StarComponent = (props) => {
+
     return (
         <div>
             <StarRatings

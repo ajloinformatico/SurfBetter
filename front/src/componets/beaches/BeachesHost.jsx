@@ -1,7 +1,7 @@
 import React, {Suspense, lazy} from "react";
-import Beaches from "./Beaches";
+//import Beaches from "./Beaches";
 const HeaderMenu = lazy(() => import("../HeaderMenu.jsx"))
-const AllBeaches = lazy(() => import("./Beaches"))
+const Beaches = lazy(() => import("./Beaches"))
 
 
 
@@ -15,7 +15,7 @@ const BeachesHost = () => {
         <div>
             <Suspense fallback={<i className="fas fa-spinner fa-4x fa-rotate-90"/>}>
                 <HeaderMenu/>
-                <AllBeaches/>
+                <Beaches/>
             </Suspense>
         </div>
     )
