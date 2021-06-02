@@ -312,6 +312,7 @@ class LikesOfComment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'), nullable=False)
 
+
     def convert_to_json(self):
         return {
             "id": self.id,

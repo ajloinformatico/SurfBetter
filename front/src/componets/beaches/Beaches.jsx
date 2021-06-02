@@ -1,33 +1,35 @@
 import React, {useEffect, useState} from "react";
 import BeachBox from "./BeachCard";
+import swal from "sweetalert";
 
 
 
 const Beaches = () => {
     const [beaches, setBeaches] = useState([])
 
+    /**
+     * UsseEfect to get User Name
+     */
+    useEffect(() => {
+        getBeaches()
+        console.log(beaches)
+    }, [])
 
     const getBeaches = async () => {
         fetch("/api/beaches")
             .then(response => response.json())
-            .catch(error => console.log(error))
-            .then(beacheInfo => setBeaches(beacheInfo))
+            .catch(error => async () => {
+                await swal("Error", "Something was wrong",{icon:"warning"}).then(/*NO-LOOP*/)
+            })
+            .then(beachesInfo => setBeaches(beachesInfo))
     }
-
-
-    /**
-     * UsseEfect to get User Name
-     */
-    useEffect(async () => {
-        await getBeaches()
-    }, [])
 
     return (
         <div>
             <h1>Beaches</h1>
             <section className={"contentBeaches"}>
                 { /*Loop by map to set beaches*/
-                    beaches!==undefined&&(
+                    (beaches[0]!==undefined&&beaches[0]!==null)&&(
                         beaches.map(it => {
                             return(
                                 <BeachBox beach={it}/>
@@ -40,7 +42,3 @@ const Beaches = () => {
     )
 }
 export default Beaches;
-//
-// <div>
-//     {it.description.slice(0,90) + " ..."}
-// </div>

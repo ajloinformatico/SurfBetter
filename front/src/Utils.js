@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {authFetch} from "./componets/auth/auth";
+import swal from "sweetalert";
 
 /**
  * Get user
@@ -38,10 +39,17 @@ export const checkStrings = (cadena, min, max) => {
     return !flag;
 }
 
+export const isLikeFromUser = (likes, user_id) => {
+    let result = ""
+    likes.forEach(it => {
+        (it.user_id===user_id)&&(result = "red-flag")
+    })
+    return result
+}
 
 /**
  * set the error
- * @param {useState} state
+ * @param {string} state
  * @param {target} input
  * @param {min_max} min and max
  */
@@ -75,3 +83,5 @@ export const calculateLikes = (likes) => {
     })
     return counter
 }
+
+

@@ -1,120 +1,102 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable react/jsx-no-duplicate-props */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useState} from 'react'
-import swal from 'sweetalert'
-import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.png"
-import { authFetch, login } from '../auth/auth'
+import React, {useState} from 'react';
+import swal from 'sweetalert';
+import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.png";
+import { authFetch, login } from '../auth/auth';
 
-
-
-//TODO MODAL TO CHANGE PASSWORD
-/* *
- * 
- * @param props: user state
- * @returns {JSX.Component}
+/**
+ * Password modal component
+ * @returns {JSX.Element}
  */
-const PasswordModal = (props) => {
+const PasswordModal = () => {
 
+    const [oldPassword, setOldPassword] = useState("");
+    const [newPassword, setNewPassword] = useState("");
 
-
-
-    /*Fields states*/
-    const [oldPassword, setOldPassword] = useState("")
-    const [newPasword, setNewPassword] = useState("")
-
-    /**
-     * Check password inputs
-     * @param {State} state 
-     * @param {target} input 
-     * @returns 
-     */
+    /** Check password valid*/
     const checkCommonsPassword = (state, input) =>{
-        let errors = false
+        let errors = false;
         if (!state.trim()) {
-            input.placeholder = input.id + " is empty"
-            errors = true
+            input.placeholder = `${input.id} is empty`;
+            errors = true;
         } else if (state.length > 64 || state.length < 8){
-            input.placeholder = input.id + " is not valid"
-            errors = true
+            input.placeholder = `${input.id} is not valid`;
+            errors = true;
         }
         if (!errors) 
-            return false
+            return false;
 
-        input.classList.add("erros")
-        input.value = ""
-        return true
+        input.classList.add("erros");
+        input.value = "";
+        return true;
     }
-    /**
-     * 
-     * @param {Event} e: todo refator 
-     */
-    const checkInputs = async (e) => {
+
+    /** Check forms inputs*/
+    const checkInputs = (e) => {
         const input = e.target;
-        console.log(input)
         input.classList.remove("errors");
         switch (input.id){
             case  "old-password":
                 checkCommonsPassword(oldPassword, input)&&setOldPassword("")
                 return true;
             case "new-password":
-                checkCommonsPassword(newPasword, input)&&setNewPassword("")
+                checkCommonsPassword(newPassword, input)&&setNewPassword("")
                 return true;
             default :
                 break;
         }
-        if (oldPassword !== newPasword)
+        if (oldPassword !== newPassword)
                 return true;
                 
         input.classList.add("errors")
-        input.value = ""
-        input.placeholder = "Passwords can not be the same"
-        setOldPassword("")
-        setNewPassword("")
+        input.value = "";
+        input.placeholder = "Passwords can not be the same";
+        setOldPassword("");
+        setNewPassword("");
         return true;
     }
 
+    /** Close password modal*/
+    const closePasswordModal = () => {
+        document.getElementById('password-update-modal').checked = false;
+    };
 
-    /**
-    * Execute update
-    * @param {evenet} e 
-    */
-    const updatePassword = e => {
-        e.preventDefault()
+    /** fetch update password*/
+    const updatePassword = (e) => {
+        e.preventDefault();
         const opts = {
             "old-password":oldPassword,
-            "new-password":newPasword
+            "new-password":newPassword,
         }
         authFetch('/api/passwordreset',{
             method: 'PUT',
             body: JSON.stringify(opts)
         }).then(response => response.json())
         .catch(swal("Error","Is it your old password ?"), {icon: "error"})
-        .then(() => {
-            swal("Your password has been updated",{icon:"success"})
+        .then(async () => await swal("Your password has been updated",{icon:"success"}))
             .then(async () => {
-                window.location.reload()
-            })
-        })
-    }
+                await closePasswordModal();
+       });
+    };
 
-
-    const closePasswordResset = () => {
-        document.getElementById('password-update-modal').checked = false
-        document.getElementById('user-options-modal').checked = true    
-    
-    }
+    /** Close password modal and open user optional modal*/
+    const closePasswordReset = () => {
+        closePasswordModal();
+        document.getElementById('user-options-modal').checked = true;
+    };
 
     return (
         <section className={"modalPassword"}>
             <div className={"container"}>
                 <header>
                     <img srcSet={logoSurfBetterHeader} alt={"surfbetter logo"}/>
-                    <a onClick={() => closePasswordResset()} title="exit" className={"fas fa-arrow-left fa-2x"} alt="exit" title="exit"/>        
+                    <a onClick={() => closePasswordReset()} title="exit" className={"fas fa-arrow-left fa-2x"} alt="exit"/>
                 </header>
                 <div className={"contentModal"}>
                     <h2>Update password</h2>
-                    <form id="updatePassword" action={"."} onSubmit={e => updatePassword(e)} autoComplete={"on"}>
+                    <form id="updatePassword" action={"."} onSubmit={async (e) => {await updatePassword(e)}} autoComplete={"on"}>
                         <fieldset className={"modalInputs"}>
                             <input type={"password"} id={"old-password"} name={"old-password"} title={"Please enter your old password"}
                                 onChange={e => setOldPassword(e.target.value)} onBlur={e => checkInputs(e)}
@@ -131,7 +113,7 @@ const PasswordModal = (props) => {
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default PasswordModal
+export default PasswordModal;

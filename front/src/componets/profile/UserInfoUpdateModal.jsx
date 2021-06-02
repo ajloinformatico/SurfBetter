@@ -1,44 +1,43 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React,{useState} from 'react'
-import swal from 'sweetalert'
-import logoSurfBetterHeader from '../../assets/img/common/logoSurfBetterHeader.png'
-import { authFetch } from '../auth/auth'
+import React,{useState} from 'react';
+import swal from 'sweetalert';
+import logoSurfBetterHeader from '../../assets/img/common/logoSurfBetterHeader.png';
+import { authFetch } from '../auth/auth';
 import { setError } from "../../Utils";
 
 
 
-/*
+/**
  * 
  * @param props: user state
- * @returns {JSX.Component}
+ * @returns {JSX.Element}
  */
 const UserCurrentInfoModal = (props) => {
 
-    const [email, setEmail] = useState("")
-    const [name, setName] = useState("")
-    const [nick, setNick] = useState("")
-    const [surname, setSurname] = useState("")
-    const [description, setDescription] = useState("")
-
+    const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
+    const [nick, setNick] = useState("");
+    const [surname, setSurname] = useState("");
+    const [description, setDescription] = useState("");
 
     /**
      * Client check user update modal
      * @param {event} e 
      */
     const checkInputs = (e) => {
-        const input = e.target;
+        const input = e.target; //Note: react say that its an error but its okey
         input.classList.remove("errors");
         const mailReg = new RegExp(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i);
         switch (input.id) {
             case ("name") :
-                setError(name, input, [2, 64])&&setName("")
+                setError(name, input, [2, 64])&&setName("");
                 break;
             case ("surname") :
-                setError(surname, input, [2,64])&&setSurname("")
+                setError(surname, input, [2,64])&&setSurname("");
                 break;
             case ("nick") :
-                setError(nick, input, [2, 30])&&setNick("")
+                setError(nick, input, [2, 30])&&setNick("");
                 break;
             case ("email") :
                 if (!email.trim()) {
@@ -65,36 +64,37 @@ const UserCurrentInfoModal = (props) => {
             default :
                 break;
         }
-    }
+    };
 
-    const updateUser =  async e => {
-        e.preventDefault()
-
+    /** Update user*/
+    const updateUser = e => {
+        e.preventDefault();
         const opts = {
             "name" : name,
             "surname" : surname,
             "nick" : nick,
             "email" : email,
             "description" : description
-        }
+        };
         authFetch('/api/userupdate', {
             method: 'PUT',
             body: JSON.stringify(opts)
         }).then(response => response.json())
-            //TODO: MODAL TO SHOW INFO
         .catch(swal("Error","user or password is allready in use", {icon: "error"}))
         .then( () => {
             swal("your data has been updated",{icon: "success"})
             .then(async () =>{
-
+                await window.location.reload();
             });
         });
-    }
+    };
 
+    /** get user info options */
     const closeUserInfoOptions = () => {
         document.getElementById('user-info-option-modal').checked = false 
         document.getElementById('user-options-modal').checked = true
-    }
+    };
+
 
     return (
         <section className={"modalUserInfoUpdate"}>
@@ -109,11 +109,11 @@ const UserCurrentInfoModal = (props) => {
                 <div className={"contentModal"}>
                     <form id={"update-form"} 
                         action={'.'}
-                        onSubmit={e => updateUser(e)}>
+                        onSubmit={async (e) => {await updateUser(e)}}>
                         <h2>Update user info</h2>
                         <fieldset className={"modalInputs"}>
                             {/* eslint-disable-next-line jsx-a11y/aria-props*/}
-                            <input type={"text"} id={"name"} name={"name"} aria-labe={"name"}
+                            <input type={"text"} id={"name"} name={"name"} aria-label={"name"}
                                 onChange={e => setName(e.target.value)} onBlur={e => checkInputs(e)}
                                 size={30} title={"Please input a valid name"} placeholder={props.user.name}
                                 required={true}/>
@@ -136,7 +136,7 @@ const UserCurrentInfoModal = (props) => {
                             <textarea name="description" id="description" title="new description" placeholder={props.user.description}
                                 onChange={e => setDescription(e.target.value)} onBlur={e => checkInputs(e)}
                             />
-                            <span className="errorForms"></span>
+                            <span className="errorForms"/>
 
                         </fieldset>
                         <fieldset className={"modalButtonSingle"}>
@@ -149,4 +149,4 @@ const UserCurrentInfoModal = (props) => {
     )
 }
 
-export default UserCurrentInfoModal
+export default UserCurrentInfoModal;

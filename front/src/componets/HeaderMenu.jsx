@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import logoSurfBetterHeader from "../assets/img/common/logoSurfBetterHeader.png";
 
 //Link for menu
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 //Sweet Alert to custom alert
 import swal from 'sweetalert';
@@ -13,14 +13,13 @@ import swal from 'sweetalert';
 /**
  * returns the common menu of the rest of the pages as a component
  * @returns {JSX.Element}: Main header of the app componnent
- * @constructor
  */
 const HeaderMenu = () => {
 
     //Note: State used to display and hidde menu 
-    const [menuNavState, setMenuNavState] = useState(false)
+    const [menuNavState, setMenuNavState] = useState(false);
     //Note: DarkMode val TODO: SAVE ON MY API SERVICE
-    const [darkModeState, setDarkModeState] = useState(false)
+    const [darkModeState, setDarkModeState] = useState(false);
 
 
     /**
@@ -28,10 +27,10 @@ const HeaderMenu = () => {
      * @param {event} e: Event
      */
     const changeToDark = (e) => {
-        const htmlTarget = document.querySelector('html')
+        const htmlTarget = document.querySelector('html');
         darkModeState?htmlTarget.style.backgroundColor = '#00333d'
-        :htmlTarget.style.backgroundColor = "white"
-        setDarkModeState(!darkModeState)
+        :htmlTarget.style.backgroundColor = "white";
+        setDarkModeState(!darkModeState);
     }
     
     /**
@@ -41,9 +40,9 @@ const HeaderMenu = () => {
     const showHideMenu = (e) => {
         const navMobileMenu = document.querySelector('#menu-mobile')
             if (!menuNavState) {
-                navMobileMenu.classList.remove('menuMobileHidden')
-                navMobileMenu.classList.add('menuMobileVisible')
-                console.log('Show menu')
+                navMobileMenu.classList.remove('menuMobileHidden');
+                navMobileMenu.classList.add('menuMobileVisible');
+                console.log('Show menu');
             } else {
                 navMobileMenu.classList.remove('menuMobileVisible')
                 navMobileMenu.classList.add('menuMobileHidden')
@@ -53,9 +52,7 @@ const HeaderMenu = () => {
             setMenuNavState(!menuNavState)
     }
 
-    /**
-     * search token on localstorage. Delete it and push history to home
-     */
+    /** search token on localstorage. Delete it and push history to home */
     const logOut = () => {
         swal({
             title: "Log out",
@@ -102,19 +99,19 @@ const HeaderMenu = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/resources" title="go to resources" alt="link to resources">
-                            Resources
+                        <Link to="/map" title="go to resources" alt="link to resources">
+                            Map
                         </Link>
                     </li>
                     <li>
                         <a  onClick={e => changeToDark(e)} title="Dark Mode bottom">
-                            <i id="darkModeButton" className="fas fa-moon fa-2x"></i>
+                            <i id="darkModeButton" className="fas fa-moon fa-2x"/>
                         </a>
                     </li>
                     <li>
                         {/*TODO: FUNCTION TO DROP TOKEN AND THEN BACK MAIN*/}
                         <a onClick={() => logOut()}  title="Exit app" alt="link to login">
-                            <i id="exitButtonHeader" className="fas fa-door-open fa-2x"></i>
+                            <i id="exitButtonHeader" className="fas fa-door-open fa-2x"/>
                         </a>
                     </li>
                 </ul>
@@ -123,7 +120,7 @@ const HeaderMenu = () => {
             {/*Trigger burger menu by sass*/}
             <label id="trigger-mobile" className="trigger-mobile">
                 <a  onClick={e => showHideMenu(e)}  title="Open menu" >
-                    <i className="fas fa-bars fa-2x"></i>
+                    <i className="fas fa-bars fa-2x"/>
                 </a>
             </label>
         </header>
@@ -145,20 +142,20 @@ const HeaderMenu = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/resources" title="go to resources" alt="link to resources">
-                        Resources
+                    <Link to="/map" title="go to resources" alt="link to resources">
+                        Maps
                     </Link>
                 </li>
 
                 <li>
                     <a onClick={e => changeToDark(e)} title="Dark Mode bottom">
-                        Dark mode  <i id="darkModeButton" className="fas fa-moon"></i>
+                        Dark mode  <i id="darkModeButton" className="fas fa-moon"/>
                     </a>
                 </li>
                 <li>
                     {/*TODO: FUNCTION TO DROP TOKEN AND THEN BACK MAIN*/}
                     <a onClick={e => logOut(e)} title="Exit app" alt="link to login">
-                        Log out  <i id="exitButtonHeader" className="fas fa-door-open"></i>
+                        Log out  <i id="exitButtonHeader" className="fas fa-door-open"/>
                     </a>
                 </li>
             </ul>

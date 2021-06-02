@@ -1,11 +1,11 @@
-import React, {Suspense, useEffect, useState} from "react";
-import { useParams, useHistory } from "react-router";
+import React, {useEffect, useState} from "react";
+import { useParams, useHistory } from "react-router-dom";
 import HeaderMenu from "../HeaderMenu.jsx";
 import {authFetch} from "../auth/auth.jsx";
 import parse from 'html-react-parser';
 import StarComponent from "./StarComponent.jsx";
 import swal from 'sweetalert'
-import {calculateLikes, setError} from "../../Utils";
+import {calculateLikes, isLikeFromUser, setError} from "../../Utils";
 
 /**
  * Beaches Host
@@ -63,8 +63,7 @@ const BeachInfo = () => {
      * @param comments : comments
      */
     const checkCommentsEmpty = (comments) => {
-        console.log(comments)
-        return comments !== undefined && comments !== []
+        return comments !== undefined
     }
 
     /**
@@ -97,17 +96,11 @@ const BeachInfo = () => {
                 await getBeachData()
             })
         } else {
-            swal("Error check your input", {icon: "success"})
+            swal("Error check your input", {icon: "success"}).then(/*NO-LOOP*/)
         }
     }
 
-    const isLikeFromUser = (likes_of_comments) => {
-        let result = ""
-        likes_of_comments.forEach(it => {
-           (it.user_id===user.id)&&(result = "red-flag")
-        })
-        return result
-    }
+
 
     const deleteComment = (comment_id) => {
         swal({
@@ -128,16 +121,45 @@ const BeachInfo = () => {
                     await getBeachData()
                 })
                     .catch(() => {
-                        swal("Something was wrong", {icon:"danger"})
+                        swal("Something was wrong", {icon:"warning"}).then(/*NO-LOOP*/)
                     })
             }
         })
-
-
-
-
     }
 
+
+    /**
+     * Check if comment exists to delete or add
+     */
+    const setUnsetCommentLike = (comment) => {
+        let method = ''
+        let commentExists = ''
+        comment.likes_of_comments.map(it => {
+            if (it.user_id === user.id) {
+                commentExists = true
+                method = 'DELETE'
+            }
+        })
+
+        if (!commentExists) {
+            method = 'POST'
+        }
+
+        const opts = {
+            "comment_id":comment.id
+        }
+
+        authFetch('/api/beach/comment/like',{
+            method: method,
+            body: JSON.stringify(opts)
+        }).then(async () => {
+            await getBeachData()
+        }).catch(() => {
+                swal("Something was wrong", {icon:"danger"}).then(/*NO-LOOP*/)
+            })
+    }
+
+    //Note: React say that vars are unresolved but they comes from my state
     return (
         <div>
             <HeaderMenu/>
@@ -153,7 +175,6 @@ const BeachInfo = () => {
                 <section className={"beachDescription"}>
                     <img srcSet={'/api/beach/image/'+beach.id}  alt={"beach picture"}/>
                     <div>
-
                         <p>{beach.description}</p>
                     </div>
                 </section>
@@ -168,93 +189,93 @@ const BeachInfo = () => {
                 pDescription[0]!==undefined&&(
                     <dl>
                         <div>
-                        <dt>
-                            <h3>{pDescription[0].name}</h3>
-                            <StarComponent rating={beach.quality_when_it_works}/>
-                        </dt>
-                        <dd>
-                            <p>{pDescription[0].point_info}</p>
-                        </dd>
+                            <dt>
+                                <h3>{pDescription[0].name}</h3>
+                                <StarComponent rating={beach.quality_when_it_works}/>
+                            </dt>
+                            <dd>
+                                <p>{pDescription[0].point_info}</p>
+                            </dd>
                         </div>
 
                         <div>
-                        <dt>
-                            <h3>{pDescription[1].name}</h3>
-                            <StarComponent rating={beach.wave_consistency}/>
-                        </dt>
-                        <dd>
-                            <p>{pDescription[1].point_info}</p>
-                        </dd>
+                            <dt>
+                                <h3>{pDescription[1].name}</h3>
+                                <StarComponent rating={beach.wave_consistency}/>
+                            </dt>
+                            <dd>
+                                <p>{pDescription[1].point_info}</p>
+                            </dd>
                         </div>
 
                         <div>
-                        <dt>
-                            <h3>{pDescription[2].name}</h3>
-                            <StarComponent rating={beach.difficulty}/>
-                        </dt>
-                        <dd>
-                            <p>{pDescription[2].point_info}</p>
-                        </dd>
+                            <dt>
+                                <h3>{pDescription[2].name}</h3>
+                                <StarComponent rating={beach.difficulty}/>
+                            </dt>
+                            <dd>
+                                <p>{pDescription[2].point_info}</p>
+                            </dd>
                         </div>
 
                         <div>
-                        <dt>
-                            <h3>{pDescription[3].name}</h3>
-                            <StarComponent rating={beach.windsurf_y_kitesurf}/>
-                        </dt>
-                        <dd>
-                            <p>{pDescription[3].point_info}</p>
-                        </dd>
+                            <dt>
+                                <h3>{pDescription[3].name}</h3>
+                                <StarComponent rating={beach.windsurf_y_kitesurf}/>
+                            </dt>
+                            <dd>
+                                <p>{pDescription[3].point_info}</p>
+                            </dd>
                         </div>
 
                         <div>
-                        <dt>
-                            <h3>{pDescription[4].name}</h3>
-                            <StarComponent rating={beach.people_to_water}/>
-                        </dt>
-                        <dd>
-                            <p>{pDescription[4].point_info}</p>
-                        </dd>
+                            <dt>
+                                <h3>{pDescription[4].name}</h3>
+                                <StarComponent rating={beach.people_to_water}/>
+                            </dt>
+                            <dd>
+                                <p>{pDescription[4].point_info}</p>
+                            </dd>
                         </div>
 
                         <div>
-                        <dt>
-                            <h3>{pDescription[5].name}</h3>
-                            <StarComponent ratitng={beach.sea_weends?beach.sea_weends:0}/>
-                        </dt>
-                        <dd>
-                            <p>{pDescription[5].point_info}</p>
-                        </dd>
+                            <dt>
+                                <h3>{pDescription[5].name}</h3>
+                                <StarComponent ratitng={beach.sea_weends?beach.sea_weends:0}/>
+                            </dt>
+                            <dd>
+                                <p>{pDescription[5].point_info}</p>
+                            </dd>
                         </div>
 
                         <div>
-                        <dt>
-                            <h3>{pDescription[6].name}</h3>
-                            <StarComponent rating={beach.other_options?beach.other_options:0}/>
-                        </dt>
-                        <dd>
-                            <p>{pDescription[6].point_info}</p>
-                        </dd>
+                            <dt>
+                                <h3>{pDescription[6].name}</h3>
+                                <StarComponent rating={beach.other_options?beach.other_options:0}/>
+                            </dt>
+                            <dd>
+                                <p>{pDescription[6].point_info}</p>
+                            </dd>
                         </div>
 
                         <div>
-                        <dt>
-                            <h3>{pDescription[7].name}</h3>
-                            <StarComponent rating={beach.water_quality?beach.water_quality:0}/>
-                        </dt>
-                        <dd>
-                            <p>{pDescription[7].point_info}</p>
-                        </dd>
+                            <dt>
+                                <h3>{pDescription[7].name}</h3>
+                                <StarComponent rating={beach.water_quality?beach.water_quality:0}/>
+                            </dt>
+                            <dd>
+                                <p>{pDescription[7].point_info}</p>
+                            </dd>
                         </div>
 
                         <div>
-                        <dt>
-                            <h3>{pDescription[8].name}</h3>
-                            <StarComponent rating={beach.access?beach.access:0}/>
-                        </dt>
-                        <dd>
-                            <p>{pDescription[8].point_info}</p>
-                        </dd>
+                            <dt>
+                                <h3>{pDescription[8].name}</h3>
+                                <StarComponent rating={beach.access?beach.access:0}/>
+                            </dt>
+                            <dd>
+                                <p>{pDescription[8].point_info}</p>
+                            </dd>
                         </div>
 
                         <div>
@@ -342,13 +363,14 @@ const BeachInfo = () => {
                 <section className={"beachComments"}>
                     <h2>Beach Comments</h2>
                     {
-                        (checkCommentsEmpty(beach.comments) === true)?(
+                        (checkCommentsEmpty(beach.comments) === true)&&(
                         beach.comments.map(comment => {
                             return (
                                 <div id={comment.id} className={"comment"}>
                                     <p>{comment.comment}</p>
                                     <div className={"commentLike"}>
-                                        <span className={isLikeFromUser(comment.likes_of_comments)}>
+                                        <span onClick={async () => {await setUnsetCommentLike(comment)}}
+                                              className={isLikeFromUser(comment.likes_of_comments, user.id)}>
                                             <i className={"fas fa-heart"}/>
                                         </span>
                                         <p>{(comment.likes_of_comments)?calculateLikes(comment.likes_of_comments):0}</p>
@@ -360,20 +382,20 @@ const BeachInfo = () => {
                                             </span>
                                         )
                                     }
-
                                     {/*Trash*/}
                                 </div>
                             )
-                        })):(<h3>No existen comentarios !</h3>)
+                        }))
 
                     }
                     <form action={"."} onSubmit={e => sendComment(e)}>
                         <textarea onChange={e => setComment(e.target.value)} onBlur={e => checkInputs(e)}
                                   name={"comment"}
                                   id={"comment"}
-                                  title={"new Comment"}/>
+                                  title={"new Comment"}
+                                  required={true}/>
                         <span className={"errorForms"}/>
-                        <input className={"buttonYellow"}  type={"submit"}/>
+                        <input className={"buttonYellow"} value={"Comment"} type={"submit"}/>
                     </form>
                 </section>
 

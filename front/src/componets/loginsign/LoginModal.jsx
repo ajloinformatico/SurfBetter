@@ -18,6 +18,8 @@ const LoginModal = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const history = props.history
+
     /**
      * check inputs by onBlur() event
      * @param {event} e 
@@ -65,7 +67,7 @@ const LoginModal = (props) => {
      * If response.token exists save token
      * @param {event} e 
      */
-    const logIng = e => {
+    const logIng = (e) => {
         e.preventDefault()
         //get values from useStates
         const opts = {
@@ -79,8 +81,11 @@ const LoginModal = (props) => {
         }).then(response => response.json())
         .then(token => {
             if (token.access_token){
-                login(token)
-                window.location.replace("/profile")
+                swal("Welcome",`Welcome back ${email}`,{icon:"success"})
+                    .then(async () => {
+                        await login(token)
+                        await history.push("/profile")
+                    })
             }else {
                 console.log("Autentication Error:\nMail or password not correct")
                 swal({
@@ -88,7 +93,7 @@ const LoginModal = (props) => {
                     text: "Mail or password not correct",
                     icon: "error",
                     button: "Okey"
-                });
+                }).then(/*NO-LOOP*/)
             }
         })
     }
@@ -120,7 +125,7 @@ const LoginModal = (props) => {
 
                 <div className={"contentModal"}>
 
-                    <form id={"log-in-form"} action={'.'} onSubmit={e => logIng(e)}>
+                    <form id={"log-in-form"} action={'.'} onSubmit={async (e) => {await logIng(e)}}>
                         <h2>Log in</h2>
                         <fieldset className={"modalInputs"}>
                             <input type={"email"} id={"email"} name={"email"} title={"Please enter a valid email *"}
@@ -131,7 +136,7 @@ const LoginModal = (props) => {
                                onChange={e => setPassword(e.target.value)} onBlur={e => checkInputs(e)}
                                aria-label={"password"} size={30}  placeholder={"password *"} required={true}/>
 
-                            <span className="loginError" ></span>
+                            <span className="loginError" />
 
                         </fieldset>
                         <fieldset className={"modalButtons"}>
@@ -144,9 +149,8 @@ const LoginModal = (props) => {
                     </form>
                 </div>
             </div>
-    
         </section>
 
     )
 }
-export default LoginModal
+export default LoginModal;

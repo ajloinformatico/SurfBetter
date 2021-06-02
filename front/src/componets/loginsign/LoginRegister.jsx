@@ -1,43 +1,34 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import  React, {useState, useEffect} from "react";
-//img must because import here
-import slider1 from '../../assets/img/slider/slider1.jpg'
-import slider2 from '../../assets/img/slider/slider2.jpg'
-import slider3 from '../../assets/img/slider/slider3.jpg'
-
-import HeaderLoginRegister from "./HeaderLoginRegister.jsx"
-
-//Sign in and Login Modals
+import slider1 from '../../assets/img/slider/slider1.jpg';
+import slider2 from '../../assets/img/slider/slider2.jpg';
+import slider3 from '../../assets/img/slider/slider3.jpg';
+import HeaderLoginRegister from "./HeaderLoginRegister.jsx";
 import SignInModal from "./SignInModal.jsx";
 import LoginModal from "./LoginModal.jsx";
-import {useHistory} from "react-router";
-import { authFetch, useAuth } from "../auth/auth";
-
-
-//TODO: CHANGE HISTORY TO HISTORY PROPS
-
-
+import {useHistory} from "react-router-dom";
+import { useAuth } from "../auth/auth";
 
 /**
  * Load login component
  * @returns {JSX.Element}: return login component
  */
-const LoginRegister = (props) => {
+const LoginRegister = () => {
 
     //Use state for snackbar state (img being show)
-    const [slideBarState, setSlideBarState] = useState(1)
+    const [slideBarState, setSlideBarState] = useState(1);
 
     //Note: React route const to change page
-    const history = useHistory()
+    const history = useHistory();
     
-    const [logged] = useAuth()
+    const [logged] = useAuth();
 
     /**
      * Check if user exist
      */
     useEffect(() => {
-        logged&&history.push("/profile")
-        showSlide(0)
+        logged&&history.push("/profile");
+        showSlide(0);
     })
 
     /**
@@ -52,20 +43,20 @@ const LoginRegister = (props) => {
      * @param {number} n : index 1 right, -1 left
      */
     const showSlide = (n) => {
-        let index = slideBarState
-        index += n
+        let index = slideBarState;
+        index += n;
         const x = document.getElementsByClassName('slide');
         // Note: if state of slide is bigger thant slides divs set one
-        index > x.length&&(index = 1)
+        index > x.length&&(index = 1);
         // Note: if the state of the slide is less than the number that 1 leaves
         // the state in the number of divs so that it jumps to the first
-        index < 1&&(index = x.length)
+        index < 1&&(index = x.length);
         // Note: Load styles none and block
         for(let i = 0; i < x.length;i++){
             x[i].style.display = "none";
         }
         x[index-1].style.display = "block";
-        setSlideBarState(index)
+        setSlideBarState(index);
     }
 
     return (
@@ -97,8 +88,8 @@ const LoginRegister = (props) => {
                 </div>
                 {/*syle in line to cover the design point*/}
                 <div className={"sliderButtons"}>
-                    <a style={{color: 'black'}} onClick={e => showSlide(-1)}>&#10094;</a>
-                    <a style={{color: 'black'}} onClick={e => showSlide(1)}>&#10095;</a>
+                    <a style={{color: 'black'}} onClick={() => showSlide(-1)}>&#10094;</a>
+                    <a style={{color: 'black'}} onClick={() => showSlide(1)}>&#10095;</a>
                 </div>
             </section>
             <section className={"containMain"}>
@@ -120,4 +111,4 @@ const LoginRegister = (props) => {
         </div>
     )
 }
-export default LoginRegister
+export default LoginRegister;

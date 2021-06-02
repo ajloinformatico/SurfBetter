@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React ,{useState} from 'react'
+import React ,{useState} from 'react';
 import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.png";
 import { login } from '../auth/auth';
-//sweet alert
 import swal from 'sweetalert';
 
 /**
@@ -13,15 +12,15 @@ import swal from 'sweetalert';
 const SignInModal = (props) => {
 
     //Note: inputs states
-    const [name, setName] = useState("")
-    const [surname, setSurname] = useState("")
-    const [nick, setNick] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [repeatPassword, setRepeatPassword] = useState("")
+    const [name, setName] = useState("");
+    const [surname, setSurname] = useState("");
+    const [nick, setNick] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [repeatPassword, setRepeatPassword] = useState("");
 
     //Note: history get history by the props
-    const history = props.history
+    const history = props.history;
 
     /**
      * Check if string is correct by checking legth and not numbers
@@ -40,32 +39,32 @@ const SignInModal = (props) => {
                 }
             })
         } else {
-            flag = true
+            flag = true;
         }
         return !flag;
     }
 
     /**
      * set the error
-     * @param {useState} state 
-     * @param {target} input 
-     * @param {min_max} min and max
+     * @param {useState} state
+     * @param {target} input
+     * @param min_max
      */
      const setError = (state, input, min_max) => {
-        let error = false
+        let error = false;
         if (!state.trim()) {
             input.placeholder = input.id + " is empty";
-            error = true
+            error = true;
         } else if (!checkStrings(state, min_max[0], min_max[1])) {
-            input.placeholder = input.id + " is not valid"
-            error = true            
+            input.placeholder = input.id + " is not valid";
+            error = true;
         }
         if (error) {
-            input.classList.add("errors")
-            input.value = ""
-            return true
+            input.classList.add("errors");
+            input.value = "";
+            return true;
         } else {
-            return false
+            return false;
         }
     }
 
@@ -75,19 +74,20 @@ const SignInModal = (props) => {
      * @param {event} e: input event
      */
     const checkInputs = (e) => {
+        //Note: It is not an error it is correct
         const input = e.target;
         input.classList.remove("errors");
         const mailReg = new RegExp(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i);
         
         switch (input.id) {
             case ("name") : 
-                setError(name, input, [2, 64])&&setName("")
+                setError(name, input, [2, 64])&&setName("");
                 break;
             case ("surname") :
-                setSurname(surname, input, [2, 64])&&setSurname("")
+                setSurname(surname, input, [2, 64])&&setSurname("");
                 break;
             case ("nick") :
-                setNick(nick, input, [2, 30])&&setNick("")
+                setNick(nick, input, [2, 30])&&setNick("");
                 break;
             case ("email_login") :
                 if (!email.trim()) {
@@ -113,7 +113,7 @@ const SignInModal = (props) => {
                     input.classList.add("errors");
                     input.value = "";
                     input.placeholder = input.id + " isn't valid";
-                    setPassword("")
+                    setPassword("");
                 }
                 break;
             case ("re-password") : 
@@ -121,12 +121,12 @@ const SignInModal = (props) => {
                     input.classList.add("errors");
                     input.value = "";
                     input.placeholder = input.id + " is empty";
-                    setRepeatPassword("")
+                    setRepeatPassword("");
                 } else if (repeatPassword !== document.getElementById("password_login").value) {
                     input.classList.add("errors");
                     input.value = "";
                     input.placeholder = "Passwords do not match";
-                    setRepeatPassword("")
+                    setRepeatPassword("");
                 }
                 break;
             default :
@@ -140,6 +140,7 @@ const SignInModal = (props) => {
      * @param {event} e 
      */
     const signUp = e => {
+        //Note: React say that it is an error but i use it to prevent Default reload
         e.preventDefault();
         //get values from useStates
         const opts = {
@@ -156,6 +157,8 @@ const SignInModal = (props) => {
             body: JSON.stringify(opts)
         }).then(response => response.json())
         .then(token => {
+            //Note: React say that it is an error but its correct
+            //Is the key that i recive from the server
             if (token.access_token) {
                 swal({
                     title: "Welcome",
@@ -164,8 +167,8 @@ const SignInModal = (props) => {
                     button: "Okey"
                 })
                 .then(async () => {
-                    login(token)
-                    window.location.replace("/profile")
+                    await login(token)
+                    await history.push("/profile")
                 })
             } else {
                 swal({
@@ -173,17 +176,10 @@ const SignInModal = (props) => {
                     text: "Mail or nick not correct",
                     icon: "error",
                     button: "Okey"
-                });
+                }).then(/*NO-LOOP*/)
             }
-        })
-    }
-
-    /**
-     * Make the login and repleace to auths routes
-     */
-    const makeLoging = async () => {
-
-    }
+        });
+    };
 
     /**
      * Change to Log in form
@@ -212,7 +208,7 @@ const SignInModal = (props) => {
 
             <div className={"contentModal"}>
                 {/*All inputs are checked on js checkinputs()*/}
-                <form id={"sign-in-form"} action={'.'} onSubmit={e => signUp(e)} autoComplete={'on'}>
+                <form id={"sign-in-form"} action={'.'} onSubmit={async (e) => {await signUp(e)}} autoComplete={'on'}>
                     <h2>Sign in</h2>
                     <fieldset className={"modalInputs"}>
                         <input type={"text"} id={"name"} name={"name"} aria-label={"name"}
@@ -244,7 +240,7 @@ const SignInModal = (props) => {
                             I allow the storage of my data
                         </label>
                         
-                        <span className="errorForms"></span>
+                        <span className="errorForms"/>
 
                     </fieldset>
                     <fieldset className={"modalButtons"}>
@@ -252,14 +248,14 @@ const SignInModal = (props) => {
                                title={"Sign in"} value={"Sign in"}/>
 
                         <input type={"button"} className={"buttonBlue"} id={"go-to-log-in-button"} name={"go-to-log-in-button"}
-                               title={"Log in"} onClick={e => changeToLogin()} value={"Log in"}/>
+                               title={"Log in"} onClick={() => changeToLogin()} value={"Log in"}/>
                     </fieldset>
 
                 </form>
             </div>
         </div>
         </section>
-    )
-}
+    );
+};
 
-export default SignInModal
+export default SignInModal;

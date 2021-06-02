@@ -1,16 +1,20 @@
 import React, { useEffect } from "react";
-import {useHistory} from "react-router";
-import serverNotFound from "../assets/img/common/server_not_found.mp4"
+import {useHistory} from "react-router-dom";
+import serverNotFound from "../assets/img/common/server_not_found.mp4";
 
+/**
+ * Error mensage
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const ServerError = (props) => {
-    
-    
-    const history = useHistory()
 
+    const history = useHistory();
 
     useEffect(() => {
         props.serverStatus&&history.push('/')
-        console.log(props.serverStatus)
+        console.log(props.serverStatus);
     });
     
     return (
@@ -29,6 +33,6 @@ const ServerError = (props) => {
         
         </div>
 
-    )
-}
-export default ServerError
+    );
+};
+export default ServerError;

@@ -130,6 +130,87 @@
   }
 }
 
+%common-likes-style{
+  width: 15%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  >*{
+    display: block;
+  }
+  span{
+    position: relative;
+    top:10px;
+    z-index: 0;
+  }
+  p{
+    position: relative;
+    bottom: 5px;
+    z-index: 1;
+  }
+}
+
+%common-beach-comments-style{
+
+  background-color: white;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  align-self: center;
+  border-bottom: 1px solid $color-black;
+  >*{
+    display: block;
+    width: 15%;
+  }
+  /*Likes*/
+  .commentLike{
+    padding-top: .5em;
+    @extend %common-likes-style;
+    cursor:pointer;
+    transition: $mouse-is-over-normal;
+  }
+  .commentLike:hover{
+    color: $color-red;
+    transition: $mouse-is-hover-normal;
+  }
+  >p{
+    width: 70%;
+  }
+  .deleteComment {
+    cursor:pointer;
+    transition: $mouse-is-over-normal;
+  }
+  .deleteComment:hover {
+    color: $color-red;
+    transition: $mouse-is-hover-normal;
+  }
+}
+
+%common-beach-form-style {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between ;
+  margin: 1em;
+
+  textarea {
+    background-color: $color-gray-comment-form;
+    padding: .5em;
+    color: black;
+    border: 1px solid gray ;
+    margin-bottom: 1em;
+    width: 100%;
+    textarea::placeholder {
+      color: gray;
+    }
+  }
+
+}
+
 /*Mixing*/
 
 /**
@@ -224,7 +305,7 @@ header{
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
-  height: 100px;
+  height: 10vh;
 
   a{
     color: $color-white;
@@ -576,30 +657,77 @@ header{
       transition: $mouse-is-hover-normal;
     }
     /** Likes*/
-    >div{
-      width: 15%;
-      display: flex;
-      flex-flow: column;
-      justify-content: center;
-      align-items: center;
-      align-self: center;
-      >*{
-        display: block;
-      }
-      span{
-        position: relative;
-        top:10px;
-        z-index: 0;
-      }
-      p{
-        position: relative;
-        bottom: 5px;
-        z-index: 1;
-      }
+    .beachLikes {
+      @extend %common-likes-style;
+      cursor: pointer;
+      transition: $mouse-is-over-normal;
+    }
+    .beachLikes:hover{
+        color: $color-red;
+        transition: $mouse-is-hover-normal;
     }
   }
+  .beachBoxForm {
+    display: flex;
+    justify-content: space-between;
+    align-content: baseline;
+    align-items: baseline;
+    background-color: $color-header;
+    color: $color-white;
+    form{
+      width: 80%;
+      @extend %common-beach-form-style;
+      textarea{
+        background-color: $color-back-beaches;
+      }
+      input {
+        font-size: large;
+        width: 200px;
+        border: none;
+      }
+      input:hover{
+        background-color: $color-white;
+        color: $color-black;
+      }
+    }
+
+    span{
+      display: flex;
+      justify-content: center;
+      width: 20%;
+      cursor:pointer;
+      color: $color-white;
+      transition: $mouse-is-over-normal;
+    }
+    span:hover{
+      color: $color-black;
+      transition: $mouse-is-hover-normal;
+    }
+  }
+}
+
+/******************* BEACH BOX ********************/
+.beachBoxUnShow{
+  display: none;
 
 }
+.beachBoxShow{
+    border-top: 1px solid black;
+    background-color: $color-back-beaches;
+    margin-bottom: -.9em;
+    padding-bottom: .5em;
+    padding-top: .5em;
+
+    .comment {
+      @extend %common-beach-comments-style;
+      background-color: transparent;
+      padding-left: 1em;
+    }
+
+}
+
+
+
 /********************* BEACH DETAIL ******************/
 
 .beachDetail{
@@ -624,12 +752,12 @@ header{
   /** Beach image and text*/
   .beachDescription {
     display: flex;
-    flex-flow: row;
+    flex-flow: column;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    >*{
-      display: block;
+    >div{
+      width: 100%;
     }
     img {
       box-shadow: black 2px 3px 3px;
@@ -643,59 +771,49 @@ header{
       justify-content: center;
     }
   }
-
-  /*TODO LIKE BUTTON*/
   .beachDetailPoints {
   /*List of definition for the beach poitns list*/
     dl {
       display: flex;
-      flex-flow: column;
+      flex-flow: row;
+      flex-wrap: wrap;
       justify-content: space-between;
-      dd {
-        margin: 0;
-        padding: 0;
-      }
-    }
-  }
-
-  /*TODO COMMENTS*/
-  .beachComments {
-    background-color: $color-back-beaches;
-    box-shadow: black 2px 3px 3px;
-    padding-bottom: .5em;
-    padding-top: .5em;
-    margin-bottom: 2em;
-
-    form {
-      display: flex;
-      flex-flow: column;
-      align-items: center;
-      justify-content: space-between ;
-      margin: 1em;
-
-      textarea {
-        background-color: $color-gray-comment-form;
-        padding: .5em;
-        color: black;
-        border: 1px solid gray ;
-        margin-bottom: 1em;
+      >div{
         width: 100%;
-        textarea::placeholder {
-          color: gray;
+        div{
+          .star-ratings{
+            display: flex;
+            flex-flow: row;
+          }
+        }
+        dd {
+          margin: 0;
+          padding: 0;
         }
       }
 
     }
   }
 
+  /*TODO COMMENTS*/
+  .beachComments {
+    width: 100%;
+    background-color: $color-back-beaches;
+    box-shadow: black 2px 3px 3px;
+    padding-bottom: .5em;
+    padding-top: .5em;
+    margin-bottom: 2em;
+
+    .comment {
+      @extend %common-beach-comments-style
+    }
+
+    form {
+      @extend %common-beach-form-style;
+    }
+  }
 
 }
-
-
-
-
-
-
 
 /**************************** VARS ********************/
 .buttonBlue{
@@ -732,6 +850,22 @@ header{
 
 .seeMore{
   color: blue;
+}
+
+/*Scroll button*/
+#scroll-button{
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: $color-black; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
 }
 
 /*inputs errors*/
@@ -823,16 +957,14 @@ header{
     }
   }
 
-
   .profilesUserDescription{
     div {
-      width: 50%;
+      width: 40%;
     }
     div:last-child{
       margin-top:2em;
     }
   }
-
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -916,6 +1048,29 @@ header{
   #exitButtonHeader:hover{
     background-color: $color-header;
   }
+
+  /*Beach detail*/
+  .beachDetail {
+    .beachDetailPoints {
+      /*List of definition for the beach poitns list*/
+      dl {
+        > div {
+          width: 40%;
+          padding: 1em;
+        }
+      }
+    }
+    .beachDescription {
+      img {
+        box-shadow: black 2px 3px 3px;
+        width: 460px;
+      }
+    }
+    .beachComments {
+      width: 600px;
+      margin: 0 auto;
+    }
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -962,6 +1117,25 @@ header{
       }
     }
   }
+
+  .beachDetail {
+    /** Beach image and text*/
+    .beachDescription {
+      display: flex;
+      flex-flow: row;
+      div {
+        width: 50%;
+      }
+      img {
+        box-shadow: black 2px 3px 3px;
+        width: 460px;
+      }
+    }
+    .beachComments {
+      width: 70%;
+    }
+  }
+
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -973,6 +1147,15 @@ header{
 
     .containMain{
       width: 40%;
+    }
+  }
+
+  .beachDetail {
+    /** Beach image and text*/
+    .beachDescription {
+      div {
+        width: 60%;
+      }
     }
   }
 }

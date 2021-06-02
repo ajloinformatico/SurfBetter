@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
-import {useHistory} from "react-router";
+import {useHistory} from "react-router-dom";
 import {authFetch} from "../auth/auth";
 import OneStar from "../../assets/img/stars/1star.png";
 import TwoStar from "../../assets/img/stars/2star.png";
 import ThreeStar from "../../assets/img/stars/3star.png";
 import FourStar from "../../assets/img/stars/4star.png";
 import FiveStar from "../../assets/img/stars/5star.png";
-import {calculateLikes} from "../../Utils";
+import {calculateLikes, isLikeFromUser, setError} from "../../Utils";
+import swal from "sweetalert";
 
 
 /**
@@ -18,14 +19,16 @@ const BeachBox = (props) => {
     const history = useHistory()
     const [it , setIt] = useState(props.beach)
     const [user, setUser] = useState({})
+    const [isComment, setIsComment] = useState(true)
+    const [comment, setComment] = useState("")
 
 
     /**
      * UsseEfect to get User Name
      */
-    useEffect(async () => {
-        await getUser()
-        console.log(it)
+    useEffect(() => {
+        getUser().then(/*NO-LOOP*/)
+        getBeachData().then(/*NO-LOOP*/)
     },[])
 
 
@@ -36,6 +39,11 @@ const BeachBox = (props) => {
             .then(userInfo => setUser(userInfo))
     }
 
+    const getBeachData = async () => {
+        fetch("/api/beach/"+it.id)
+            .then(res => res.json())
+            .then(res => setIt(res))
+    }
 
 
 
@@ -92,28 +100,145 @@ const BeachBox = (props) => {
     }
 
 
-
     const openBeachInfo = (id) => {
         history.push("/beach/"+id)
     }
 
-    const setOrDeleteFav = (id) => {
-        alert("FAV")
+    const setOrDeleteFav = () => {
+        let method = ''
+        let likeExists = false
+        it.likes.map(it => {
+            if (it.user_id === user.id) {
+                likeExists = true
+                method = 'DELETE'
+            }
+        })
+
+        if (!likeExists) {
+            method = 'POST'
+        }
+
+        authFetch('api/beach/like',{
+            method: method,
+            body: JSON.stringify({"beach_id":it.id})
+        }).then(async () => {
+            await getBeachData()
+        }).catch(() => {
+            swal("Error","Something was wrong", {icon:"danger"}).then(/*NO-LOOP*/)
+        })
+
     }
 
-    const openCommentsOnTarget = () => {
-        alert ("open buttons")
+
+    const openCommentsOnTarget = (id) => {
+        const target = document.getElementById("comments-container"+id)
+        if (isComment) {
+            target.classList.remove('beachBoxUnShow')
+            target.classList.add('beachBoxShow')
+            setIsComment(!isComment)
+        } else {
+            target.classList.remove('beachBoxShow')
+            target.classList.add('beachBoxUnShow')
+            setIsComment(!isComment)
+        }
     }
 
 
+    const deleteComment = (comment_id) => {
+        swal({
+            text: "Are you shure you want to delete the comment",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true
+        })
+            .then((pleaseDelete) => {
+                if (pleaseDelete) {
+                    const opts = {
+                        "comment_id":comment_id
+                    }
+                    authFetch('/api/beach/comment/delete',{
+                        method: 'DELETE',
+                        body: JSON.stringify(opts)
+                    }).then(async () => {
+                        await getBeachData()
+                    })
+                        .catch(() => {
+                            swal("Error","Something was wrong", {icon:"danger"}).then(/*NO-LOOP*/)
+                        })
+                }
+            })
+    }
 
+    /**
+     * Check text area send comment
+     */
+    const checkInputs = (e) => {
+        const input = e.target;
+        input.classList.remove("errors");
+        setError(comment, input, [0, 400])&&setComment("")
+    }
+
+    /**
+     * Send comments
+     */
+    const sendComment = (e, beach_id) => {
+        if (comment.trim()) {
+            e.preventDefault();
+            const opts = {
+                "comment": comment,
+                "beach_id": beach_id
+            }
+            authFetch('/api/beach/comment', {
+                headers : {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                method: 'POST',
+                body: JSON.stringify(opts)
+            }).then(async () => {
+                await getBeachData()
+            })
+        } else {
+            swal("Error check your input", {icon: "success"}).then(/*NO-LOOP*/)
+        }
+    }
+
+
+    /** Check if comment exists to delete or add */
+    const setUnsetCommentLike = (comment) => {
+        let method = ''
+        let commentExists = false
+        comment.likes_of_comments.map(it => {
+            if (it.user_id === user.id) {
+                commentExists = true
+                method = 'DELETE'
+            }
+        })
+
+        if (!commentExists) {
+            method = 'POST'
+        }
+
+        const opts = {
+            "comment_id":comment.id
+        }
+
+        authFetch('/api/beach/comment/like',{
+            method: method,
+            body: JSON.stringify(opts)
+        }).then(async () => {
+            await getBeachData()
+        }).catch(() => {
+            swal("Something was wrong", {icon:"danger"}).then(/*NO-LOOP*/)
+        })
+    }
 
     return (
         <section id={it.id} className={"beachBox"}>
             <div className={"beachImage"} style={{backgroundImage : 'url(api/beach/image/'+it.id+')'}}>
-                                    <span className={setFlag(it.falg)}>
-                                        <i className={"fas fa-flag fa-2x"}/>
-                                    </span>
+                <span className={setFlag(it.falg)}>
+                    <i className={"fas fa-flag fa-2x"}/>
+                </span>
             </div>
             <div className={"beachInfo"}>
                 <div className={"beachHeader"}>
@@ -127,11 +252,6 @@ const BeachBox = (props) => {
 
                 </div>
                 <div className={"beachPoints"}>
-                    {/**
-                     * Icons by font awesome
-                     * here only not nullable icons
-                     */
-                    }
                     <ul>
                         <li>
                             <img srcSet={"https://img.icons8.com/ios-filled/30/000000/warranty-card.png"}
@@ -140,6 +260,7 @@ const BeachBox = (props) => {
                             <span>{it.quality_when_it_works}</span>
                         </li>
                         <li>
+                            {/*Alts not seted beacuse its icons*/}
                             <img srcSet={"https://img.icons8.com/ios-filled/30/000000/wave-lines.png"}
                                  alt={"Wave consistency"} title={"Wave consistency"}/>
                             <p>Wave Consistency</p>
@@ -164,17 +285,64 @@ const BeachBox = (props) => {
                         </li>
                     </ul>
                 </div>
-                <div className={"beachFooter"}>
-                                        <span onClick={() => openCommentsOnTarget()}>
-                                            <h3>Comments</h3>
+
+                <div id={"comments-container"+it.id} className={"beachBoxUnShow"}>
+
+                    {
+                        it.comments.map(comment => {
+                            return (
+                                <div id={comment.id} className={"comment"}>
+                                    <p>{comment.comment}</p>
+                                    <div className={"commentLike"}>
+                                        <span onClick={async () => {await setUnsetCommentLike(comment)}} className={isLikeFromUser(comment.likes_of_comments, user.id)}>
+                                            <i className={"fas fa-heart"}/>
                                         </span>
-                    <div className={"beachLikes"}>
-                        <span onClick={() => setOrDeleteFav()} className={(calculateLikes(it.likes)>0)?"red-flag":""}>
-                            <i className="fas fa-heart"/>
-                        </span>
-                        <p>{(it.likes)?calculateLikes(it.likes):0}</p>
-                    </div>
+                                        <p>{(comment.likes_of_comments)?calculateLikes(comment.likes_of_comments):0}</p>
+                                    </div>
+                                    {
+                                        (comment.user_id===user.id)&&(
+                                            <span  onClick={async () => {await deleteComment(comment.id)}} className={"deleteComment"}>
+                                                <i className={"fa fa-trash"}/>
+                                            </span>
+                                        )
+                                    }
+                                    {/*Trash*/}
+                                </div>
+                            )
+                        })
+                    }
+
                 </div>
+                {
+                    isComment?(
+                        <div className={"beachFooter"}>
+                            <span onClick={() => openCommentsOnTarget(it.id)}>
+                                <h3>Comments</h3>
+                            </span>
+                            <div className={"beachLikes"}>
+                                <span onClick={async () => {await setOrDeleteFav()}} className={isLikeFromUser(it.likes, user.id)}>
+                                    <i className="fas fa-heart"/>
+                                </span>
+                                <p>{(it.likes)?calculateLikes(it.likes):0}</p>
+                            </div>
+                        </div>
+                    ):(
+                        <div className={"beachBoxForm"}>
+                            <form onSubmit={e => sendComment(e, it.id)}>
+                                <textarea onChange={e => setComment(e.target.value)} onBlur={e => checkInputs(e)}
+                                    name={"comment"}
+                                    id={"comment"}
+                                    title={"new Comment"}
+                                    required={true}/>
+                                <input className={"buttonBlue"} type={"submit"} value={"Comment"}/>
+                            </form>
+                            <span className={"seeMore"} onClick={() => openCommentsOnTarget(it.id)}>
+                                <i className="fas fa-times-circle fa-2x"/>
+                            </span>
+                        </div>
+                    )
+                }
+
             </div>
         </section>
     )
