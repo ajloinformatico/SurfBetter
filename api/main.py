@@ -2,7 +2,9 @@ from flask import Flask
 import flask_cors
 from extensions import db, guard
 from models import User
-from routes import routes
+from routes_user import routes_user
+from routes_beaches import routes_beaches
+from routes_comments_likes import routes_comments_likes
 from image_service import api_images
 from seed_user import seed_user
 from seed_beach import seed_beaches, seed_description_points
@@ -49,7 +51,10 @@ def create_app():
     seed_likes_of_comment(app)
 
     # Load api routes blueprint module
-    app.register_blueprint(routes)
+    app.register_blueprint(routes_user)
+    app.register_blueprint(routes_comments_likes)
+    app.register_blueprint(routes_beaches)
+
 
     # Load api images routes blueprint module
     app.register_blueprint(api_images)

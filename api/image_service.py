@@ -56,7 +56,7 @@ def get_avatar():
 
 
 @api_images.route('/api/beach/image/<beach_id>', methods=["GET"])
-def get_beach_mage(beach_id: int):
+def get_beach_image(beach_id: int):
     """
     Get beach image
     """

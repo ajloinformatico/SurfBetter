@@ -193,6 +193,7 @@ class Beach(db.Model):
             "longitude": self.longitude
         }
 
+
     def __repr__(self):
         return "<Beach %r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r,%r>" % \
                (
