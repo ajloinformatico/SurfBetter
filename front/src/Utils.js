@@ -82,4 +82,12 @@ export const calculateLikes = (likes) => {
     return counter
 }
 
+/**
+ * SetUnset darkMode
+ */
+export const changeDarkMode = (htmlTarger, darkPressed) => {
+    darkPressed?htmlTarger.classList.add("darkMode"):
+        htmlTarger.classList.remove("darkMode")
+}
+
 

@@ -12,27 +12,17 @@ const StarComponent = (props) => {
     const [darkModeEnable, setDarkModeEnable] = useState(false)
 
     useEffect(() =>{
-        setBackGround()
-    })
-
-    /**
-     * TODO: TERMINAR con la kookie
-     * Change back style color
-     * @returns {string}
-     */
-    const setBackGround = async () => {
-        const htmlTarget = document.querySelector('html');
-        if (htmlTarget.classList.contains("darkMode")) {
+        (localStorage.getItem("theme") === "darkMode")?(
             setDarkModeEnable(true)
-        } else {
+        ):(
             setDarkModeEnable(false)
-        }
-    }
+        )
+    },[darkModeEnable])
 
     return (
         <div>
             {
-                darkModeEnable===true?(
+                darkModeEnable?(
                     <StarRatings
                         rating={props.rating}
                         starRatedColor={"#FFA62B"}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 import './assets/css/style.scss';
 import {
@@ -18,17 +18,33 @@ import ScrollButton from "./componets/widgets/ScrollButton";
 import MapHost from "./componets/map/MapHost";
 import Footer from "./componets/Footer";
 import HeaderMenu from "./componets/HeaderMenu";
+import {changeDarkMode} from "./Utils";
 // Note: Just to check if i can do fetch
-
 
 /**
  * 
  * @returns {jsx commponent with routes and user}
  */
 function App() {
+
+    useEffect(() => {
+        const htmlTarget = document.querySelector('html');
+        if (!localStorage.getItem("theme")) {
+            localStorage.setItem("theme", "lightMode")
+        } else {
+            if (localStorage.getItem("theme") === "darkMode") {
+                htmlTarget.classList.add('darkMode')
+                changeDarkMode(htmlTarget,true)
+            } else {
+                htmlTarget.classList.remove('darkMode')
+                changeDarkMode(htmlTarget,false)
+            }
+        }
+    });
+
+
     //LOVE REACT RETURNS AUTH USER
     const [logged] = useAuth();
-
     //History
     const history = useHistory();
 

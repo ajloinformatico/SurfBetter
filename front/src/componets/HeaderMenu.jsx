@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import logoSurfBetterHeader from "../assets/img/common/logoSurfBetterHeader.png";
 
 //Link for menu
@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 
 //Sweet Alert to custom alert
 import swal from 'sweetalert';
-
+import {changeDarkMode} from "../Utils";
 
 
 /**
@@ -16,28 +16,24 @@ import swal from 'sweetalert';
  */
 const HeaderMenu = () => {
 
-    //Note: State used to display and hidde menu 
+
+    //Note: State used to display and hidde menu
     const [menuNavState, setMenuNavState] = useState(false);
     //Note: DarkMode val TODO: SAVE ON MY API SERVICE
     const [darkModeState, setDarkModeState] = useState(false);
-
 
     /**
      * Change between darkMode and light mode
      * @param {event} e: Event
      */
-    const changeToDark = (e) => {
+    const changeToDark = () => {
         const htmlTarget = document.querySelector('html');
-        if (darkModeState){
-            htmlTarget.classList.add('darkMode')
-
-
-        } else {
-            htmlTarget.classList.remove('darkMode')
-        }
-
-        setDarkModeState(!darkModeState);
-
+        //Set localStorageItem
+        darkModeState?localStorage.setItem("theme","darkMode"):localStorage.setItem("theme","lightMode")
+        //ChangeTheme
+        changeDarkMode(htmlTarget,darkModeState)
+        //Set State
+        setDarkModeState(!darkModeState)
 
     }
     
@@ -112,7 +108,7 @@ const HeaderMenu = () => {
                         </Link>
                     </li>
                     <li>
-                        <a  onClick={e => changeToDark(e)} title="Dark Mode bottom">
+                        <a  onClick={() => changeToDark()} title="Dark Mode bottom">
                             <i id="darkModeButton" className="fas fa-moon fa-2x"/>
                         </a>
                     </li>
@@ -156,8 +152,9 @@ const HeaderMenu = () => {
                 </li>
 
                 <li>
-                    <a onClick={e => changeToDark(e)} title="Dark Mode bottom">
-                        Dark mode  <i id="darkModeButton" className="fas fa-moon"/>
+                    <a onClick={() => changeToDark()} title="Dark Mode bottom">
+                        {!darkModeState?("Light Mode"):("Dark Mode")}
+                        <i id="darkModeButton" className="fas fa-moon"/>
                     </a>
                 </li>
                 <li>

@@ -93,13 +93,13 @@
     right: 0;
     background-color: $color-white;
     header {
-      height: 10vh;
+      height: 100px;
       >a {
         display: block;
         margin-right: .3em;
       }
       img {
-        height: 10vh;
+        height: 100px;
       }
     }
 
@@ -108,11 +108,30 @@
       margin-bottom: 2em;
 
       form {
-        @extend %forms-common;
+        fieldset {
+          border: none;
+        }
+        .modalInputs{
+          input{
+            padding: .5em;
+            margin-bottom: 1em;
+          }
+          input:last-of-type{
+            margin-bottom: 0em;
+          }
+          textarea{
+            margin-top: 1em !important;
+            width: 250px !important;
+          }
+        }
         .modalButtons {
           border-color: transparent;
           display: flex;
-          justify-content: space-between;
+          justify-content: space-around;
+          input:hover{
+            background-color: white;
+            color: black;
+          }
         }
         .modalButtonSingle {
           display: flex;
@@ -1322,6 +1341,9 @@ footer{
     input[type="submit"]:hover{
       transition: $mouse-is-hover-normal;
     }
+  }
+  .container{
+    background-color: $color-black;
   }
 
 }
