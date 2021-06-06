@@ -117,7 +117,7 @@ const Profile = () => {
                             favorites!==undefined&&(
                                 favorites.map(it => {
                                     return(
-                                        <BeachBox beach={it}/>
+                                        <BeachBox beach={it} from={"profile"}/>
                                     )
                                 }))
                         }
@@ -128,7 +128,7 @@ const Profile = () => {
                             beachComments!==undefined&&(
                                 beachComments.map(it => {
                                     return (
-                                        <BeachBox beach={it}/>
+                                        <BeachBox beach={it} key={it.id} from={"profile"}/>
                                     )
                                 })
                             )

@@ -236,10 +236,11 @@ const SignInModal = (props) => {
                                aria-label={"re-password"} size={30} placeholder={"repeat password *"} required={true}/>
 
                         <label>
-                            <input type={"checkbox"} id={"check"} name={"check"} required={true}/>
-                            I allow the storage of my data
+                            <p>I allow the storage of my data
+                                <i style={{cursor: "pointer"}} onClick={() => history.push("/legal")} className="fas fa-question-circle"/>
+                                <input type={"checkbox"} id={"check"} name={"check"} required={true}/>
+                            </p>
                         </label>
-                        
                         <span className="errorForms"/>
 
                     </fieldset>

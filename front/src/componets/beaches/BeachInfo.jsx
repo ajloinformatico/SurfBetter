@@ -13,12 +13,13 @@ import {calculateLikes, isLikeFromUser, setError} from "../../Utils";
  * @constructor
  */
 const BeachInfo = () => {
-
     const history = useHistory()
 
 
-    //GET PARAM FROM URL
+    //Note: Get Params from url
     const params = useParams();
+    //Note: Where come back
+    const backPressed = params.back
     const [user, setUser] = useState({})
     const [beach, setBeach] = useState({})
     //Manage descriptions of each beach point
@@ -49,14 +50,14 @@ const BeachInfo = () => {
     /**
      * UsseEfect to get User Name
      */
-    useEffect(async () => {
-        await getUser()
-        await getBeachData()
-        await getBeachPoints()
+    useEffect(() => {
+        getUser().then(/*NO-LOOP*/)
+        getBeachData().then(/*NO-LOOP*/)
+        getBeachPoints().then(/*NO-LOOP*/)
     },[])
 
     const back = () => {
-        history.push("/")
+        history.push("/"+backPressed)
     }
 
     /**
@@ -173,7 +174,7 @@ const BeachInfo = () => {
                 </section>
 
                 <section className={"beachDescription"}>
-                    <img srcSet={'/api/beach/image/'+beach.id}  alt={"beach picture"}/>
+                    <img srcSet={'/api/beach/image/'+beach.id}  alt={"beach"}/>
                     <div>
                         <p>{beach.description}</p>
                     </div>
@@ -366,7 +367,7 @@ const BeachInfo = () => {
                         (checkCommentsEmpty(beach.comments) === true)&&(
                         beach.comments.map(comment => {
                             return (
-                                <div id={comment.id} className={"comment"}>
+                                <div key={comment.id} id={comment.id} className={"comment"}>
                                     <p>{comment.comment}</p>
                                     <div className={"commentLike"}>
                                         <span onClick={async () => {await setUnsetCommentLike(comment)}}

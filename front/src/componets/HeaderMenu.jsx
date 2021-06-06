@@ -28,9 +28,17 @@ const HeaderMenu = () => {
      */
     const changeToDark = (e) => {
         const htmlTarget = document.querySelector('html');
-        darkModeState?htmlTarget.style.backgroundColor = '#00333d'
-        :htmlTarget.style.backgroundColor = "white";
+        if (darkModeState){
+            htmlTarget.classList.add('darkMode')
+
+
+        } else {
+            htmlTarget.classList.remove('darkMode')
+        }
+
         setDarkModeState(!darkModeState);
+
+
     }
     
     /**

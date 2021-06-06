@@ -70,7 +70,7 @@ def get_one_beach_coords(beach_id: int):
 def search_beach(name: str):
     """Get beaches by a query"""
     try:
-        beaches = Beach.query.filter(Beach.name.like(f'%{name}%')).all()
+        beaches = Beach.query.filter(Beach.name.like(f'%{name.lower()}%')).all()
         print(beaches)
         beaches_list = [beach.convert_to_json() for beach in beaches]
         return jsonify(beaches_list), 200

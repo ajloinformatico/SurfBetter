@@ -4,7 +4,7 @@
 import React, {useState} from 'react';
 import swal from 'sweetalert';
 import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.png";
-import { authFetch, login } from '../auth/auth';
+import { authFetch} from '../auth/auth';
 
 /**
  * Password modal component

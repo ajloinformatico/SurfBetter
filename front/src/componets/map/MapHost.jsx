@@ -5,7 +5,7 @@ import mapsKey from "../../credentials/credentials";
 import swal from "sweetalert";
 
 
-const  GOOGLE_MAP_URL=`https://www.google.com/maps/api/js?v=3.exp&key=${mapsKey.mapsKey}`;
+const  GOOGLE_MAP_URL=`https://www.google.com/maps/api/js?&key=${mapsKey.mapsKey}`;
 
 /**
  * MapHost component
@@ -13,20 +13,19 @@ const  GOOGLE_MAP_URL=`https://www.google.com/maps/api/js?v=3.exp&key=${mapsKey.
  * @constructor
  */
 const MapHost = () => {
-
-    const [markers, setMarkers] = useState([]);
+    const [beaches, setBeaches] = useState([]);
 
     useEffect(() => {
-        getBeachesCords().then(/*NO-LOOP*/);
+        getBeaches().then(/*NO-LOOP*/);
     },[]);
 
-    const getBeachesCords = async () => {
-        fetch("/api/beaches/coords")
+    const getBeaches = async () => {
+        fetch("/api/beaches")
             .then(response => response.json())
             .catch(() => async () => {
                 await swal("Error", "Markers not found", {icon: "warning"}).then(/*NO-LOOP*/)
             })
-            .then(response => setMarkers(response));
+            .then(async response => await setBeaches(response))
     };
 
     /**
@@ -35,7 +34,7 @@ const MapHost = () => {
      */
     const setMap = () => {
         return(<Map
-            markers ={markers}
+            markers={beaches}
             googleMapURL={GOOGLE_MAP_URL}
             containerElement={<div style={{height: '90vh'}}/>}
             mapElement={<div style={{height: '100%'}}/>}
@@ -47,11 +46,9 @@ const MapHost = () => {
         <div>
             <HeaderMenu/>
             {
-                markers[0]!==undefined&&(setMap())
-
+                (beaches[0]!==undefined&&beaches[0]!==null)&&(setMap())
             }
         </div>
     );
 };
-
 export default MapHost;

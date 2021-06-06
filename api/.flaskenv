@@ -1,1 +1,2 @@
 FLASK_APP=main.py
+GMAIL_PASSWORD=pestillo01

@@ -1,6 +1,4 @@
-import {useEffect, useState} from "react";
 import {authFetch} from "./componets/auth/auth";
-import swal from "sweetalert";
 
 /**
  * Get user

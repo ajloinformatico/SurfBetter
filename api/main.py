@@ -6,6 +6,7 @@ from routes_user import routes_user
 from routes_beaches import routes_beaches
 from routes_comments_likes import routes_comments_likes
 from image_service import api_images
+from gmail_service import gmail_service
 from seed_user import seed_user
 from seed_beach import seed_beaches, seed_description_points
 from seed_comments_likes import seed_likes, seed_comments, seed_likes_of_comment
@@ -55,6 +56,8 @@ def create_app():
     app.register_blueprint(routes_comments_likes)
     app.register_blueprint(routes_beaches)
 
+    # Load gmail service
+    app.register_blueprint(gmail_service)
 
     # Load api images routes blueprint module
     app.register_blueprint(api_images)

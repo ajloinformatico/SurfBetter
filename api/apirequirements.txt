@@ -2,5 +2,6 @@ flask
 flask_sqlAlchemy
 flask_cors
 flask-praetorian
-python-dotenv
 gunicorn
+python-dotenv
+python-decouple

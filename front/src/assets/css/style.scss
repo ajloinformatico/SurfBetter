@@ -92,10 +92,15 @@
     left: 0;
     right: 0;
     background-color: $color-white;
-
-    header > a {
-      display: block;
-      margin-right: .3em;
+    header {
+      height: 10vh;
+      >a {
+        display: block;
+        margin-right: .3em;
+      }
+      img {
+        height: 10vh;
+      }
     }
 
     .contentModal {
@@ -153,7 +158,6 @@
 }
 
 %common-beach-comments-style{
-
   background-color: white;
   display: flex;
   flex-flow: row;
@@ -188,7 +192,27 @@
     color: $color-red;
     transition: $mouse-is-hover-normal;
   }
+  .beachTime {
+    position: relative;
+    left: 110px;
+    bottom: 10px;
+    font-size: small;
+    padding: 0;
+    margin: 0;
+  }
 }
+%common-input-text-area{
+  font-family: $font-inputs;
+  color: $color-black;
+  background-color: $color-gray-comment-form;
+  font-size: large;
+  padding: 1em;
+}
+
+%common-input-text-area_placeholder{
+  color: $color-header;
+}
+
 
 %common-beach-form-style {
   display: flex;
@@ -196,20 +220,15 @@
   align-items: center;
   justify-content: space-between ;
   margin: 1em;
-
   textarea {
-    background-color: $color-gray-comment-form;
     padding: .5em;
-    color: black;
     border: 1px solid gray ;
     margin-bottom: 1em;
     width: 100%;
-    textarea::placeholder {
-      color: gray;
-    }
   }
 
 }
+
 
 /*Mixing*/
 
@@ -283,11 +302,16 @@ main{
 }
 
 h1 {
-  font-size: $font-special;
+  font-family: $font-special;
 }
 
 h2 {
+  font-family: $font-special;
   font-size: $size-common-mobile-title;
+}
+
+h3{
+  font-family: $font-special;
 }
 
 p {
@@ -296,6 +320,13 @@ p {
 
 a{
   text-decoration: none;
+}
+
+input, textarea{
+  @extend %common-input-text-area;
+}
+input::placeholder, textarea::placeholder{
+  @extend %common-input-text-area_placeholder;
 }
 
 /*header-common*/
@@ -318,8 +349,8 @@ header{
   }
   /*Surf Better logo*/
   >img {
-    width: 200px;
-    height: 68.7667px;
+    width: 260px;
+    height: 10vh;
   }
 
   #trigger-mobile{
@@ -328,7 +359,7 @@ header{
 
   /*login header*/
   div>label{
-    @include create-header-font-awesome-button($color-white, $color-header);
+    @include create-header-font-awesome-button($color-white, transparent);
     padding-top: 2.4em;
     margin-right: 0.8em;
     cursor: pointer;
@@ -336,10 +367,23 @@ header{
       color: $color-white;
     }
     >a:hover{
-      @include do-transition-hover-font-awesome-button($color-black, $color-header)
+      @include do-transition-hover-font-awesome-button($color-black, transparent)
     }
   }
 }
+
+/*Common footer*/
+footer{
+  background-color: $color-header;
+  color: white;
+  overflow: hidden;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  margin-top: 2em;
+  display: block;
+}
+
+
 /*Menu mobile*/
 #menu-mobile{
   background-color: $color-black;
@@ -525,6 +569,7 @@ header{
     @extend %over-buttons;
     width: 200px;
     height: 200px;
+    object-fit: cover;
     border: 2pt solid black;
     border-radius: 50%;
     opacity: 1;
@@ -579,6 +624,7 @@ header{
   box-shadow: black 2px 3px 3px;
   margin-bottom: 2em;
   width: 340px;
+  height: 100%;
   background-color: $color-back-beaches;
 }
 
@@ -705,6 +751,39 @@ header{
     }
   }
 }
+/***************** Beach Search *****************/
+.beachSearch{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+  *{
+    display: block;
+    margin: 2em;
+    padding: .5em;
+  }
+  input:first-of-type{
+    background-color: $color-gray-comment-form;
+    width: 60%;
+    border: none;
+  }
+  input:first-of-type::placeholder{
+    color: $color-header
+  }
+  input:last-of-type{
+    width: 100px;
+    font-family: $font-common;
+    transition: $mouse-is-over-normal;
+  }
+  input:last-of-type:hover{
+    transition: $mouse-is-hover-normal;
+    color: black;
+    background-color: white;
+  }
+}
+
+
 
 /******************* BEACH BOX ********************/
 .beachBoxUnShow{
@@ -795,7 +874,6 @@ header{
     }
   }
 
-  /*TODO COMMENTS*/
   .beachComments {
     width: 100%;
     background-color: $color-back-beaches;
@@ -810,9 +888,224 @@ header{
 
     form {
       @extend %common-beach-form-style;
+      //input[]
+      input[type="text"]{
+        margin-bottom: 1em;
+      }
+      textarea{
+        height: 50px;
+        margin-bottom: .5em;
+        background-color: $color-gray-comment-form;
+      }
+      textarea::placeholder{
+        color: $color-header;
+      }
+      input[type="submit"] {
+        border:none;
+        font-family: $font-common;
+        transition: $mouse-is-over-normal;
+        color: $color-black;
+        background-color: $color-yellow;
+        width: 200px;
+        margin: 0 auto;
+      }
+      input[type="submit"]:hover {
+
+        border:none;
+        font-family: $font-common;
+        color: black;
+        background-color: white;
+        transition: $mouse-is-hover-normal;
+      }
+      input::placeholder{
+        color: $color-header;
+      }
     }
   }
+}
 
+/*************************** CONTACT *****************/
+.infolojo{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  img{
+    width: 128px;
+  }
+  a{
+    display: block;
+    width: 100px;
+    padding: .5em;
+    margin: 0 auto;
+  }
+}
+.infolojoMembers {
+  header{
+    background-color: transparent;
+    display: block;
+    h2{
+      font-size: x-large;
+    }
+  }
+  .members{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items:center;
+    width: 100%;
+    flex-wrap: wrap;
+    >div{
+      background-color: $color-gray-comment-form;
+      box-shadow: $color-black 3px 2px;
+      margin-bottom: 2em;
+      width: 300px;
+      padding-bottom: 1em;
+      img{
+        width: 300px;
+        height: 280px;
+        object-fit: cover;
+      }
+      div {
+        p{
+          padding-left: 1em;
+          padding-right: 1em;
+          height: 130px;
+        }
+        ul {
+          padding-left: 1em;
+          padding-right: 1em;
+          margin: 0;
+          display: flex;
+          flex-flow: row;
+          align-items: flex-end;
+          justify-content: space-between;
+          list-style: none;
+       }
+        li{
+          background-color: $color-white;
+          a{
+            color: $color-black;
+            transition: $mouse-is-over-normal;
+          }
+
+        }
+        li:hover{
+          a{
+            color: $color-white;
+
+          }
+          background-color: $color-black;
+        }
+
+      }
+    }
+    div:last-of-type{
+      div{
+          ul{
+            justify-content: space-around;
+          }
+        }
+      }
+  }
+}
+
+/*Contact footer*/
+#contact-me{
+  .footer-content{
+    form {
+      fieldset{
+        border: none;
+        min-inline-size: min-content;
+        width: 90%;
+        margin: 0 auto;
+        >*{
+          width: 100%;
+        }
+        input[type="text"]{
+          margin-bottom: 1em;
+        }
+        textarea{
+          height: 100px;
+          margin-bottom: .5em;
+          background-color: $color-gray-comment-form;
+        }
+        textarea::placeholder{
+          color: $color-header;
+        }
+        input[type="submit"] {
+          border:none;
+          font-family: $font-common;
+          transition: $mouse-is-over-normal;
+          color: $color-black;
+          background-color: $color-yellow;
+          width: 100px;
+          margin: 0 auto;
+        }
+        input[type="submit"]:hover {
+
+          border:none;
+          font-family: $font-common;
+          color: black;
+          background-color: white;
+          transition: $mouse-is-hover-normal;
+        }
+        input::placeholder{
+          color: $color-header;
+        }
+      }
+    }
+    .footerInfo{
+      border-top: 2pt solid gray;
+      width: 90%;
+      margin: 0 auto;
+
+      a {
+        color: $color-yellow;
+        transition: $mouse-is-over-normal;
+      }
+      a:hover{
+        color: black;
+        transition: $mouse-is-hover-normal;
+      }
+    }
+  }
+}
+
+.termsAndConditions {
+  text-align: left;
+}
+
+
+/**************************** FOOTER ******************/
+.CommonFooter {
+  display: flex;
+  flex-flow: column;
+  background-color: $color-header;
+  section:first-of-type{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    margin-bottom: 2em;
+    div{
+      width: 100%;
+      margin: 0 auto;
+      ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+  a{
+    color: $color-yellow;
+    cursor: pointer;
+    transition: $mouse-is-over-normal;
+  }
+  a:hover{
+    color: $color-black;
+    transition: $mouse-is-hover-normal;
+  }
 }
 
 /**************************** VARS ********************/
@@ -858,15 +1151,28 @@ header{
   bottom: 20px; /* Place the button at the bottom of the page */
   right: 30px; /* Place the button 30px from the right */
   z-index: 99; /* Make sure it does not overlap */
-  border: none; /* Remove borders */
-  outline: none; /* Remove outline */
   background-color: $color-black; /* Set a background color */
-  color: white; /* Text color */
+  color: $color-white; /* Text color */
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 15px; /* Some padding */
   border-radius: 10px; /* Rounded corners */
   font-size: 18px; /* Increase font size */
+  transition: $mouse-is-over-normal;
 }
+#scroll-button:hover{
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  background-color: $color-white; /* Set a background color */
+  color: $color-black; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+  transition: $mouse-is-over-normal;
+}
+
 
 /*inputs errors*/
 .errors{
@@ -893,6 +1199,131 @@ header{
 
 .trigger-nmobile{
   display: block;
+}
+
+/*Marker style*/
+.infoWindow {
+  background-color: $color-header;
+  color: white;
+  border-radius: 5pt;
+  padding: .5em;
+  cursor: pointer;
+  transition: $mouse-is-over-normal;
+}
+.infoWindow:hover {
+  background-color: transparent;
+  color: black;
+  transition: $mouse-is-hover-normal;
+}
+
+
+/****************************** DARK MODE ************************/
+
+
+
+.darkMode{
+  background: $dark-back;
+  color: $dark-font;
+
+
+  .beachDetailBack{
+    i:hover{
+      color: $dark-hover !important;
+    }
+  }
+  footer, header{
+    background-color: $dark-header;
+    a:hover{
+      color: $color-white;
+    }
+    #darkModeButton, #exitButtonHeader{
+      background-color: $dark-header;
+    }
+  }
+  .beachBoxShow {
+    border-top: 1px solid black;
+    background-color: $color-back-beaches;
+    margin-bottom: -.9em;
+    padding-bottom: .5em;
+    padding-top: .5em;
+  }
+  #menu-mobile{
+    background-color: $dark-header;
+    ul{
+      li:hover{
+        background-color: $color-yellow;
+      }
+    }
+  }
+
+  .beachComments{
+    background-color: $dark-header;
+    .comment{
+      background-color: #3B666B;
+    }
+    form{
+      input{
+        color: $color-black !important;
+      }
+    }
+  }
+
+  /*Contact*/
+  .infolojo{
+    img{
+      border: 3pt solid $color-black;
+      border-radius: 25pt;
+    }
+  }
+  .infolojoMembers{
+    header{
+      background-color: transparent;
+    }
+    .members>div{
+      background-color: $dark-color-content;
+
+      ul li a i{
+        background-color: $dark-color-content;
+      }
+    }
+  }
+
+  .beachSearch{
+    input[type="submit"]{
+      background-color: $color-yellow;
+      color: black;
+    }
+    input[type="submit"]:hover{
+      background-color: $color-yellow;
+      color: white;
+      opacity: .5;
+    }
+  }
+
+  /*Beach cards*/
+  .beachInfo{
+    background-color: $color-header;
+    div div a{
+      color: $color-yellow;
+    }
+  }
+  .beachFooter{
+    background-color: $dark-header;
+  }
+  .beachBoxShow{
+    background-color: $dark-color-content;
+  }
+  .beachBoxForm{
+    background-color: $dark-header;
+    input[type="submit"]{
+      color: $color-black;
+      background-color: $color-yellow;
+    }
+    input[type="submit"]:hover{
+      transition: $mouse-is-hover-normal;
+    }
+  }
+
 }
 
 @media only screen and (min-width: 520px) {
@@ -957,12 +1388,29 @@ header{
     }
   }
 
+
   .profilesUserDescription{
     div {
       width: 40%;
     }
     div:last-child{
       margin-top:2em;
+    }
+  }
+
+  /*Contact footer*/
+  #contact-me{
+    .footer-content{
+      form {
+        fieldset{
+          width: 500px;
+        }
+      }
+      .footerInfo{
+        border: none;
+        width: 500px;
+        margin: 0 auto;
+      }
     }
   }
 }
@@ -1033,7 +1481,79 @@ header{
     }
   }
 
+  .infolojo{
+    display: block;
+    margin-left: 1em;
+    figure{
+      display: flex;
+      flex-flow: row;
+      width: 100%;
+      margin: 0 auto;
+      justify-content: space-around;
 
+      figcaption{
+        display: block;
+        float: right;
+        width: 400px;
+        text-align: left;
+
+        a{
+          float: left;
+          width: 100px;
+          padding: .5em;
+          margin: 0 auto;
+        }
+      }
+      img{
+        display: block;
+        width: 200px;
+      }
+    }
+  }
+
+  /*Contact members*/
+  .infolojoMembers {
+    .members {
+      display: flex;
+      flex-flow: row;
+      justify-content: space-around;
+    }
+  }
+
+
+
+  /*Contact footer*/
+  #contact-me{
+    .footer-content{
+      display: flex;
+      justify-content: space-around;
+      form {
+        fieldset {
+          legend {
+            font-size: x-large;
+          }
+          input{
+            padding: .5em;
+          }
+          textarea{
+            padding: .5em;
+          }
+          input[type="submit"]{
+            font-size: large;
+            width: 200px;
+            margin: 0 auto;
+          }
+        }
+      }
+      .footerInfo{
+        margin: 0;
+        float: right;
+        p {
+          font-size: x-large;
+        }
+      }
+    }
+  }
 
   /*heder font-awesome-icons icons*/
   #darkModeButton{
@@ -1071,6 +1591,16 @@ header{
       margin: 0 auto;
     }
   }
+
+  /*Footer*/
+  .CommonFooter {
+    >section:first-of-type{
+      div{
+        width: 25%;
+      }
+    }
+  }
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -1083,12 +1613,6 @@ header{
     font-size: $font-comon-big-title-desk;
   }
 
-  header{
-    img{
-      width: 300px;
-      height: 100px;
-    }
-  }
   /*login*/
   /*slider*/
   .logSignMain {
@@ -1133,6 +1657,19 @@ header{
     }
     .beachComments {
       width: 70%;
+    }
+  }
+
+  .infolojo{
+    figure{
+      justify-content: space-around;
+      img{
+        display: block;
+        width: 300px;
+      }
+      figcaption{
+        width: 500px;
+      }
     }
   }
 

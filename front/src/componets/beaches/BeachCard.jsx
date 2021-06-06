@@ -8,6 +8,7 @@ import FourStar from "../../assets/img/stars/4star.png";
 import FiveStar from "../../assets/img/stars/5star.png";
 import {calculateLikes, isLikeFromUser, setError} from "../../Utils";
 import swal from "sweetalert";
+import parse from "html-react-parser";
 
 
 /**
@@ -41,8 +42,8 @@ const BeachBox = (props) => {
 
     const getBeachData = async () => {
         fetch("/api/beach/"+it.id)
-            .then(res => res.json())
-            .then(res => setIt(res))
+            .then(res =>  res.json())
+            .then(res =>  setIt(res))
     }
 
 
@@ -101,14 +102,14 @@ const BeachBox = (props) => {
 
 
     const openBeachInfo = (id) => {
-        history.push("/beach/"+id)
+        history.push("/beach/"+id+"/"+props.from)
     }
 
     const setOrDeleteFav = () => {
         let method = ''
         let likeExists = false
-        it.likes.map(it => {
-            if (it.user_id === user.id) {
+        it.likes.map(like => {
+            if (like.user_id === user.id) {
                 likeExists = true
                 method = 'DELETE'
             }
@@ -273,7 +274,7 @@ const BeachBox = (props) => {
                             <span>{it.difficulty}</span>
                         </li>
                         <li>
-                            <img srcSet={"https://img.icons8.com/ios-filled/30/000000/windsurfing--v1.png"}/>
+                            <img alt={"WindSurf and kySurf"} srcSet={"https://img.icons8.com/ios-filled/30/000000/windsurfing--v1.png"}/>
                             <p>Windsurf and kitesurf</p>
                             <span>{it.windsurf_y_kitesurf}</span>
                         </li>
@@ -295,7 +296,7 @@ const BeachBox = (props) => {
                                     <p>{comment.comment}</p>
                                     <div className={"commentLike"}>
                                         <span onClick={async () => {await setUnsetCommentLike(comment)}} className={isLikeFromUser(comment.likes_of_comments, user.id)}>
-                                            <i className={"fas fa-heart"}/>
+                                            <i className={"fas fa-heart fa"}/>
                                         </span>
                                         <p>{(comment.likes_of_comments)?calculateLikes(comment.likes_of_comments):0}</p>
                                     </div>
@@ -306,6 +307,7 @@ const BeachBox = (props) => {
                                             </span>
                                         )
                                     }
+                                    <p className={"beachTime"}>{parse(comment.created_date)}</p>
                                     {/*Trash*/}
                                 </div>
                             )

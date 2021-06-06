@@ -1,7 +1,7 @@
 /*Style Vars file*/
 
 /*Imports*/
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP');
 
 @font-face{
   font-family: krugthep;
@@ -10,7 +10,9 @@
 
 /*Fonts*/
 $font-common : 'Noto Sans JP';
+//$font-common : 'Noto Sans, sans-serif';
 $font-special : krugthep, sans-serif;
+$font-inputs: 'Playfair Display', serif;
 $font-comon-big-desk: 16pt;
 $font-comon-big-title-desk: 18pt;
 
@@ -23,17 +25,30 @@ $size-common-mobile: 12pt;
 
 /*Colors*/
 $color-header: #16697A;
+$color-footer: #0f3057;
 $color-yellow: #FFA62B;
+$color-font: dark;
 $color-white: white;
 $color-black: black;
 $color-red: red;
 $color-little-red: #a03535;
 $color-blue-content: #3EFDF6;
 $color-back-beaches: #EFEDEC;
-$color-gray-comment-form: #a8a8a8;
+$color-gray-comment-form: #d7d7d7;
 $color-background-beach-form: #6FE2DD;
 $color-background-modal-opacity: RGBA(0,0,0,0.45);
 $color-background-button-modal: #633c05;
+
+/*DARK*/
+$dark-header: #0f3057;
+$dark-back: $color-black;
+$dark-color-content: #5e5e5e;
+$dark-font: $color-white;
+$dark-hover: $color-yellow;
+
+
+
+
 
 /*Transitions*/
 $mouse-is-over-menu: linear 0.2s;

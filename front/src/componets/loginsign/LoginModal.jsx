@@ -5,7 +5,7 @@ import logoSurfBetterHeader from "../../assets/img/common/logoSurfBetterHeader.p
 import swal from 'sweetalert';
 
 //login
-import {login, useAuth} from "../auth/auth.jsx"
+import {login} from "../auth/auth.jsx"
 
 
 /**

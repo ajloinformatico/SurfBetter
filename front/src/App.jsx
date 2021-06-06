@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React from "react";
 import {useHistory} from "react-router-dom";
 import './assets/css/style.scss';
 import {
@@ -16,6 +16,8 @@ import BeachInfo from "./componets/beaches/BeachInfo";
 import {useAuth} from "./componets/auth/auth.jsx";
 import ScrollButton from "./componets/widgets/ScrollButton";
 import MapHost from "./componets/map/MapHost";
+import Footer from "./componets/Footer";
+import HeaderMenu from "./componets/HeaderMenu";
 // Note: Just to check if i can do fetch
 
 
@@ -38,6 +40,11 @@ function App() {
                     <LoginRegister history={history} />
                     <ScrollButton/>
                 </Route>
+                <Route path="/legal" exact>
+                    <LegalNotices/>
+                    <Footer/>
+                    <ScrollButton/>
+                </Route>
                 {
                     !logged&&
                         <Redirect to="login"/>
@@ -45,10 +52,12 @@ function App() {
                 {/*Protected rouetes*/}
                 <Route path="/" exact>
                     <BeachesHost/>
+                    <Footer/>
                     <ScrollButton/>
                 </Route>
                 <Route path="/beaches" exact>
                     <BeachesHost/>
+                    <Footer/>
                     <ScrollButton/>
                 </Route>
                 <Route path="/contact" exact>
@@ -57,22 +66,23 @@ function App() {
                 </Route>
                 <Route path="/profile" exact>
                     <Profile/>
+                    <Footer/>
                     <ScrollButton/>
                 </Route>
                 <Route path="/map" exact>
                     <MapHost/>
+                    <Footer/>
                     <ScrollButton/>
                 </Route>
-                <Route path="/legal" exact>
-                    <LegalNotices/>
-                    <ScrollButton/>
-                </Route>
-                <Route path="/beach/:id" exact>
+                <Route path="/beach/:id/:back" exact>
                     <BeachInfo/>
+                    <Footer/>
                     <ScrollButton/>
                 </Route>
                 <Route path="/*">
+                    <HeaderMenu/>
                     <h1>ERROR 404: NOT FOUND</h1>
+                    <Footer/>
                     <ScrollButton/>
                 </Route>
             </Switch>
