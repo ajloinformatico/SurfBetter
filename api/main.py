@@ -11,8 +11,6 @@ from seed_user import seed_user
 from seed_beach import seed_beaches, seed_description_points
 from seed_comments_likes import seed_likes, seed_comments, seed_likes_of_comment
 
-# TODO MAYBE I WILL DELETE IT
-
 
 def create_app():
     """
