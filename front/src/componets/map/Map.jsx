@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {GoogleMap, withScriptjs, withGoogleMap, InfoWindow} from "react-google-maps";
 import Marker from "react-google-maps/lib/components/Marker";
 import {useHistory} from "react-router-dom";
-import MapStyle from "./mapStyle";
 import StarComponent from "../beaches/StarComponent";
 
 
@@ -46,8 +45,9 @@ const Map = (props) => {
         <GoogleMap
             defaultZoom={7.8}
             defaultCenter={{lat: 37.3280626, lng: -5.6975306}}
-            defaultOptions={{ styles: MapStyle }}
+            defaultOptions={{ styles: props.mapStyle}}
         >
+
         {
             //Set Markers
             markers[0]!==undefined&&(

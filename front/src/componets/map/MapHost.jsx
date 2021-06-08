@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import Map from "./Map";
 import HeaderMenu from "../HeaderMenu";
 import mapsKey from "../../credentials/credentials";
+import {mapLight, mapDark} from "./mapStyle";
 import swal from "sweetalert";
 
 
@@ -12,7 +13,7 @@ const  GOOGLE_MAP_URL=`https://www.google.com/maps/api/js?&key=${mapsKey.mapsKey
  * @returns {JSX.Element}
  * @constructor
  */
-const MapHost = () => {
+const MapHost = (props) => {
     const [beaches, setBeaches] = useState([]);
 
     useEffect(() => {
@@ -25,21 +26,37 @@ const MapHost = () => {
             .catch(() => async () => {
                 await swal("Error", "Markers not found", {icon: "warning"}).then(/*NO-LOOP*/)
             })
-            .then(async response => await setBeaches(response))
+            .then(response => setBeaches(response))
     };
 
     /**
-     * Ser Map on JSX element if markers are diferent of defined
+     * Set Map on JSX element if markers are diferent of defined
+     * change style 
      * @returns {JSX.Element}
      */
     const setMap = () => {
-        return(<Map
-            markers={beaches}
-            googleMapURL={GOOGLE_MAP_URL}
-            containerElement={<div style={{height: '90vh'}}/>}
-            mapElement={<div style={{height: '100%'}}/>}
-            loadingElement={<i className={"fas fa-spinner fa-4x fa-rotate-90"}/>}
-        />);
+        if (props.darkMode){
+            return(
+                <Map
+                    mapStyle={mapDark}
+                    markers={beaches}
+                    googleMapURL={GOOGLE_MAP_URL}
+                    containerElement={<div style={{height: '90vh'}}/>}
+                    mapElement={<div style={{height: '100%'}}/>}
+                    loadingElement={<i className={"fas fa-spinner fa-4x fa-rotate-90"}/>}
+                />);
+        } else {
+            return(
+                <Map
+                    mapStyle={mapLight}
+                    markers={beaches}
+                    googleMapURL={GOOGLE_MAP_URL}
+                    containerElement={<div style={{height: '90vh'}}/>}
+                    mapElement={<div style={{height: '100%'}}/>}
+                    loadingElement={<i className={"fas fa-spinner fa-4x fa-rotate-90"}/>}
+                />);
+        }
+        
     };
 
     return (

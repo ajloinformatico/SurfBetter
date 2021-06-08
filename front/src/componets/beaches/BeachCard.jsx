@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable array-callback-return */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 import {authFetch} from "../auth/auth";
@@ -209,6 +212,7 @@ const BeachBox = (props) => {
     const setUnsetCommentLike = (comment) => {
         let method = ''
         let commentExists = false
+        //map not return nothing beacuse i use it only to find
         comment.likes_of_comments.map(it => {
             if (it.user_id === user.id) {
                 commentExists = true
@@ -246,6 +250,7 @@ const BeachBox = (props) => {
                     <h2>{it.name}</h2>
                     <div>
                         <img className={"star"} src={calculateMedia(it)}  width={"30"} height={"30"} title={"Total Points"} alt={"points"}/>
+                        {/*No href because i use history to to open beach info */}
                         <a className={"seeMore"} onClick={() => openBeachInfo(it.id)}>
                             <i className="fas fa-info-circle fa-2x"/>
                         </a>
@@ -261,7 +266,6 @@ const BeachBox = (props) => {
                             <span>{it.quality_when_it_works}</span>
                         </li>
                         <li>
-                            {/*Alts not seted beacuse its icons*/}
                             <img srcSet={"https://img.icons8.com/ios-filled/30/000000/wave-lines.png"}
                                  alt={"Wave consistency"} title={"Wave consistency"}/>
                             <p>Wave Consistency</p>
@@ -292,7 +296,7 @@ const BeachBox = (props) => {
                     {
                         it.comments.map(comment => {
                             return (
-                                <div id={comment.id} className={"comment"}>
+                                <div id={comment.id} key={comment.id} className={"comment"}>
                                     <p>{comment.comment}</p>
                                     <div className={"commentLike"}>
                                         <span onClick={async () => {await setUnsetCommentLike(comment)}} className={isLikeFromUser(comment.likes_of_comments, user.id)}>

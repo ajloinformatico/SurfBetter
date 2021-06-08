@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import logoSurfBetterHeader from "../assets/img/common/logoSurfBetterHeader.png";
 
 //Link for menu
@@ -20,7 +20,8 @@ const HeaderMenu = () => {
     //Note: State used to display and hidde menu
     const [menuNavState, setMenuNavState] = useState(false);
     //Note: DarkMode val TODO: SAVE ON MY API SERVICE
-    const [darkModeState, setDarkModeState] = useState(false);
+    const [darkModeState, setDarkModeState] = useState(null);
+
 
     /**
      * Change between darkMode and light mode
@@ -34,7 +35,6 @@ const HeaderMenu = () => {
         changeDarkMode(htmlTarget,darkModeState)
         //Set State
         setDarkModeState(!darkModeState)
-
     }
     
     /**
@@ -46,11 +46,9 @@ const HeaderMenu = () => {
             if (!menuNavState) {
                 navMobileMenu.classList.remove('menuMobileHidden');
                 navMobileMenu.classList.add('menuMobileVisible');
-                console.log('Show menu');
             } else {
                 navMobileMenu.classList.remove('menuMobileVisible')
                 navMobileMenu.classList.add('menuMobileHidden')
-                console.log('Hidde menu')
             }
             //Note finally change state
             setMenuNavState(!menuNavState)
@@ -109,11 +107,13 @@ const HeaderMenu = () => {
                     </li>
                     <li>
                         <a  onClick={() => changeToDark()} title="Dark Mode bottom">
-                            <i id="darkModeButton" className="fas fa-moon fa-2x"/>
+                            <i id="darkModeButton" className={
+                                //Change icon in fun of the darkMode
+                                darkModeState!==false?("fas fa-moon fa-2x"):("fas fa-sun fa-2x")
+                            }/>      
                         </a>
                     </li>
                     <li>
-                        {/*TODO: FUNCTION TO DROP TOKEN AND THEN BACK MAIN*/}
                         <a onClick={() => logOut()}  title="Exit app" alt="link to login">
                             <i id="exitButtonHeader" className="fas fa-door-open fa-2x"/>
                         </a>
@@ -154,7 +154,9 @@ const HeaderMenu = () => {
                 <li>
                     <a onClick={() => changeToDark()} title="Dark Mode bottom">
                         {!darkModeState?("Light Mode"):("Dark Mode")}
-                        <i id="darkModeButton" className="fas fa-moon"/>
+                        <i id="darkModeButton" className={
+                            darkModeState?("fas fa-moon"):("fas fa-sun")
+                        }/>
                     </a>
                 </li>
                 <li>

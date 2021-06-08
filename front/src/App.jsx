@@ -31,22 +31,28 @@ function App() {
         const htmlTarget = document.querySelector('html');
         if (!localStorage.getItem("theme")) {
             localStorage.setItem("theme", "lightMode")
+            setDark(false)
         } else {
             if (localStorage.getItem("theme") === "darkMode") {
                 htmlTarget.classList.add('darkMode')
                 changeDarkMode(htmlTarget,true)
+                setDark(true)
             } else {
                 htmlTarget.classList.remove('darkMode')
                 changeDarkMode(htmlTarget,false)
+                setDark(false)
             }
         }
-    });
+    },[]);
 
 
     //LOVE REACT RETURNS AUTH USER
     const [logged] = useAuth();
     //History
     const history = useHistory();
+    //DakMode
+    const [dark, setDark] = useState(false)
+    
 
     return (
         <Router history>
@@ -86,7 +92,7 @@ function App() {
                     <ScrollButton/>
                 </Route>
                 <Route path="/map" exact>
-                    <MapHost/>
+                    <MapHost darkMode={dark}/>
                     <Footer/>
                     <ScrollButton/>
                 </Route>

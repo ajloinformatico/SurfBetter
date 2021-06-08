@@ -8,7 +8,7 @@ import StarRatings from "react-star-ratings";
  */
 const StarComponent = (props) => {
 
-    
+    //make useEffect because i have to call it too much times
     const [darkModeEnable, setDarkModeEnable] = useState(false)
 
     useEffect(() =>{

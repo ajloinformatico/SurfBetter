@@ -18,7 +18,7 @@ const Footer = () => {
             </div>
             <div>
                 <h3>Contact</h3>
-                <p>Go to <a alt={"go contact"} rel={"noreferrer"} onClick={() => history.push("/contact")}>Contact page</a>and find out about us</p>
+                <p>Go to <a alt={"go contact"} rel={"noreferrer"} onClick={() => history.push("/contact")}>Contact page</a> and find out about us</p>
                 <p>Send email or visit our social networks</p>
             </div>
             <div>

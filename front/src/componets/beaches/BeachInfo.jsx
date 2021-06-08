@@ -1,3 +1,6 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useEffect, useState} from "react";
 import { useParams, useHistory } from "react-router-dom";
 import HeaderMenu from "../HeaderMenu.jsx";
@@ -27,6 +30,14 @@ const BeachInfo = () => {
     // Manage message
     const [comment, setComment] = useState("")
 
+    /**
+     * UsseEfect to get User Name
+     */
+     useEffect(() => {
+        getUser().then(/*NO-LOOP*/)
+        getBeachData().then(/*NO-LOOP*/)
+        getBeachPoints().then(/*NO-LOOP*/)
+    },[])
 
     const getBeachData = async () => {
         fetch("/api/beach/"+params.id)
@@ -46,15 +57,6 @@ const BeachInfo = () => {
             .catch(error => console.log(error))
             .then(pointsDescription => setPDescription(pointsDescription))
     }
-
-    /**
-     * UsseEfect to get User Name
-     */
-    useEffect(() => {
-        getUser().then(/*NO-LOOP*/)
-        getBeachData().then(/*NO-LOOP*/)
-        getBeachPoints().then(/*NO-LOOP*/)
-    },[])
 
     const back = () => {
         history.push("/"+backPressed)
@@ -192,7 +194,7 @@ const BeachInfo = () => {
                         <div>
                             <dt>
                                 <h3>{pDescription[0].name}</h3>
-                                <StarComponent rating={beach.quality_when_it_works}/>
+                                <StarComponent rating={beach.quality_when_it_works} />
                             </dt>
                             <dd>
                                 <p>{pDescription[0].point_info}</p>
