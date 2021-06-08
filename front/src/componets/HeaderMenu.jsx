@@ -29,14 +29,16 @@ const HeaderMenu = () => {
      */
     const changeToDark = () => {
         const htmlTarget = document.querySelector('html');
-        //Set localStorageItem
-        darkModeState?localStorage.setItem("theme","darkMode"):localStorage.setItem("theme","lightMode")
+        
         //ChangeTheme
         changeDarkMode(htmlTarget,darkModeState)
         //Set State
-        setDarkModeState(!darkModeState)
+        setDarkModeState(!darkModeState)   
+        //Set localStorageItem
+        darkModeState?localStorage.setItem("theme","darkMode"):localStorage.setItem("theme","lightMode")
     }
-    
+
+
     /**
      * by menuNavState check if is displayed or not to change style
      * @param {Event} e: Event 

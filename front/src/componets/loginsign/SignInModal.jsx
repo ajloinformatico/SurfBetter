@@ -235,7 +235,7 @@ const SignInModal = (props) => {
                                onChange={e => setRepeatPassword(e.target.value)} onBlur={e => checkInputs(e)}
                                aria-label={"re-password"} size={30} placeholder={"repeat password *"} required={true}/>
 
-                        <label>
+                        <label title={"Show more clicking at info icon"}>
                             <p>I allow the storage of my data
                                 <i style={{cursor: "pointer"}} onClick={() => history.push("/legal")} className="fas fa-question-circle"/>
                                 <input type={"checkbox"} id={"check"} name={"check"} required={true}/>

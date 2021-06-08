@@ -128,6 +128,7 @@ const Contact = () => {
                                 onChange={(e) => setSubject(e.target.value)}
                                    placeholder="Subject"  required={true}/>
                             <textarea name="message" id="message" title="Your message"
+                                aria-label={"message"}
                                 onChange={(e) => setText(e.target.value)}
                                       placeholder={"Hello SurfBetter 🖖"} required={true}/>
                             <input className={"buttonBlue"} type={"submit"} value={"Send"}/>

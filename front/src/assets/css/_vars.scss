@@ -1,5 +1,4 @@
 /*Style Vars file*/
-
 /*Imports*/
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP');
 
@@ -46,18 +45,12 @@ $dark-color-content: #5e5e5e;
 $dark-font: $color-white;
 $dark-hover: $color-yellow;
 
-
-
-
-
 /*Transitions*/
 $mouse-is-over-menu: linear 0.2s;
 $mouse-is-hover-menu:color 0.2s linear 0.2s;
 $modal-transition: all 500ms ease;
-
 $mouse-is-over-normal: linear 0.1s;
 $mouse-is-hover-normal:color  0.1s linear 0.1s;
-
 $normal-transition: all 500ms ease-in-out;
 
 /*BackGrounds*/
