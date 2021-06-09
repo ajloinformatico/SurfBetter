@@ -37,14 +37,14 @@ const BeachBox = (props) => {
 
 
     const getUser = async () => {
-        authFetch("/api/current_user")
+        authFetch("http://localhost:5000/api/current_user")
             .then(response => response.json())
             .catch(error => console.log(error))
             .then(userInfo => setUser(userInfo))
     }
 
     const getBeachData = async () => {
-        fetch("/api/beach/"+it.id)
+        fetch("http://localhost:5000/api/beach/"+it.id)
             .then(res =>  res.json())
             .then(res =>  setIt(res))
     }
@@ -122,7 +122,7 @@ const BeachBox = (props) => {
             method = 'POST'
         }
 
-        authFetch('api/beach/like',{
+        authFetch('http://localhost:5000/api/beach/like',{
             method: method,
             body: JSON.stringify({"beach_id":it.id})
         }).then(async () => {
@@ -160,7 +160,7 @@ const BeachBox = (props) => {
                     const opts = {
                         "comment_id":comment_id
                     }
-                    authFetch('/api/beach/comment/delete',{
+                    authFetch('http://localhost:5000/api/beach/comment/delete',{
                         method: 'DELETE',
                         body: JSON.stringify(opts)
                     }).then(async () => {
@@ -192,7 +192,7 @@ const BeachBox = (props) => {
                 "comment": comment,
                 "beach_id": beach_id
             }
-            authFetch('/api/beach/comment', {
+            authFetch('http://localhost:5000/api/beach/comment', {
                 headers : {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -228,7 +228,7 @@ const BeachBox = (props) => {
             "comment_id":comment.id
         }
 
-        authFetch('/api/beach/comment/like',{
+        authFetch('http://localhost:5000/api/beach/comment/like',{
             method: method,
             body: JSON.stringify(opts)
         }).then(async () => {
@@ -240,7 +240,7 @@ const BeachBox = (props) => {
 
     return (
         <section id={it.id} className={"beachBox"}>
-            <div className={"beachImage"} style={{backgroundImage : 'url(api/beach/image/'+it.id+')'}}>
+            <div className={"beachImage"} style={{backgroundImage : 'url(http://localhost:5000/api/beach/image/'+it.id+')'}}>
                 <span className={setFlag(it.falg)}>
                     <i className={"fas fa-flag fa-2x"}/>
                 </span>

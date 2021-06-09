@@ -6,10 +6,12 @@ RUN mkdir /api
 WORKDIR /api
 # Copy API data
 COPY * .
+# RUN mkdir /database
+# COPY database/database.db /database
 # Run Api dependency
 RUN pip3 install -r apirequirements.txt
-RUN mkdir database
-RUN touch database/database.db
+# RUN mkdir database
+# RUN touch database/database.db
 # Expose port
 EXPOSE 5000
 # Run flask by gunicorn server

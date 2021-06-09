@@ -40,19 +40,19 @@ const BeachInfo = () => {
     },[])
 
     const getBeachData = async () => {
-        fetch("/api/beach/"+params.id)
+        fetch("http://localhost:5000/api/beach/"+params.id)
             .then(res => res.json())
             .then(res => setBeach(res))
     }
 
     const getUser = async () => {
-        authFetch("/api/current_user")
+        authFetch("http://localhost:5000/api/current_user")
             .then(response => response.json())
             .then(userInfo => setUser(userInfo))
     }
 
     const getBeachPoints = async () => {
-        fetch("/api/beaches/points")
+        fetch("http://localhost:5000/api/beaches/points")
             .then(response => response.json())
             .catch(error => console.log(error))
             .then(pointsDescription => setPDescription(pointsDescription))
@@ -88,7 +88,7 @@ const BeachInfo = () => {
                 "comment": comment,
                 "beach_id": beach.id
             }
-            authFetch('/api/beach/comment', {
+            authFetch('http://localhost:5000/api/beach/comment', {
                 headers : {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
@@ -117,7 +117,7 @@ const BeachInfo = () => {
                 const opts = {
                     "comment_id":comment_id
                 }
-                authFetch('/api/beach/comment/delete',{
+                authFetch('http://localhost:5000/api/beach/comment/delete',{
                     method: 'DELETE',
                     body: JSON.stringify(opts)
                 }).then(async () => {
@@ -152,7 +152,7 @@ const BeachInfo = () => {
             "comment_id":comment.id
         }
 
-        authFetch('/api/beach/comment/like',{
+        authFetch('http://localhost:5000/api/beach/comment/like',{
             method: method,
             body: JSON.stringify(opts)
         }).then(async () => {
@@ -176,7 +176,7 @@ const BeachInfo = () => {
                 </section>
 
                 <section className={"beachDescription"}>
-                    <img srcSet={'/api/beach/image/'+beach.id}  alt={"beach"}/>
+                    <img srcSet={'http://localhost:5000/api/beach/image/'+beach.id}  alt={"beach"}/>
                     <div>
                         <p>{beach.description}</p>
                     </div>

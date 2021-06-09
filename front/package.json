@@ -21,7 +21,7 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
-    "start-api": "cd api && env/bin/python3 main.py",
+    "start-api": "cd ../api && env/bin/python3 main.py",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -46,5 +46,5 @@
     ]
   },
   "crossOriginLoading": "anonymous",
-  "proxy": "http://localhost:80"
+  "proxy": "http://localhost:5000"
 }

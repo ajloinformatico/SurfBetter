@@ -35,26 +35,26 @@ const Profile = () => {
     const [beachComments, setBeachComments] = useState([]);
 
     const getUser = async () => {
-        authFetch("/api/current_user")
+        authFetch("http://localhost:5000/api/current_user")
             .then(response => response.json())
             .catch(async () => await swal("Error","Something was wrong",{icon:"warning"})).then(/*NO-LOOP*/)
             .then(userInfo => setUser(userInfo));
     };
 
     const getFavoritesAndComments = async () => {
-        authFetch("/api/user/fav_comments_beches/0")
+        authFetch("http://localhost:5000/api/user/fav_comments_beches/0")
             .then(response => response.json())
             .catch(error => console.log(error))
             .then(favoritesInfo => setFavorites(favoritesInfo));
 
-        authFetch("/api/user/fav_comments_beches/1")
+        authFetch("http://localhost:5000/api/user/fav_comments_beches/1")
             .then(response => response.json())
             .catch(error => console.log(error))
             .then(beachesCommentsInfo => setBeachComments(beachesCommentsInfo));
     };
 
     const getAvatar = async () => {
-        authFetch("/api/avatar")
+        authFetch("http://localhost:5000/api/avatar")
             .then(response => setAvatar(response.url));
 
     };
@@ -69,7 +69,7 @@ const Profile = () => {
     const updateAvatar = () => {
         const formData = new FormData();
         formData.append("file", document.getElementById("file").files[0])  
-        authFetch('/api/avatar',{
+        authFetch('http://localhost:5000/api/avatar',{
             method: 'PUT',
             body: formData
         })

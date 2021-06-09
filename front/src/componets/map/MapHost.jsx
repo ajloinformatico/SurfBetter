@@ -21,7 +21,7 @@ const MapHost = (props) => {
     },[]);
 
     const getBeaches = async () => {
-        fetch("/api/beaches")
+        fetch("http://localhost:5000/api/beaches")
             .then(response => response.json())
             .catch(() => async () => {
                 await swal("Error", "Markers not found", {icon: "warning"}).then(/*NO-LOOP*/)

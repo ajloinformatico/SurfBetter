@@ -75,7 +75,7 @@ const LoginModal = (props) => {
             'password' : password
         }
         //execute fetch to flask server
-        fetch ('/api/login', {
+        fetch ('http://localhost:5000/api/login', {
             method: 'POST',
             body: JSON.stringify(opts)
         }).then(response => response.json())

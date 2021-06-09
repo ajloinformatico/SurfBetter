@@ -70,7 +70,7 @@ const PasswordModal = () => {
             "old-password":oldPassword,
             "new-password":newPassword,
         }
-        authFetch('/api/passwordreset',{
+        authFetch('http://localhost:5000/api/passwordreset',{
             method: 'PUT',
             body: JSON.stringify(opts)
         }).then(response => response.json())

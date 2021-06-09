@@ -13,7 +13,7 @@ const Contact = () => {
     }, [])
 
     const getUser = async () => {
-        authFetch("/api/current_user")
+        authFetch("http://localhost:5000/api/current_user")
             .then(response => response.json())
             .catch(error => console.log(error))
             .then(userInfo => setUser(userInfo))
@@ -31,7 +31,7 @@ const Contact = () => {
             "subject": subject,
             "message": text
         }
-        authFetch("/api/send_email", {
+        authFetch("http://localhost:5000/api/send_email", {
             method: "POST",
             body: JSON.stringify(opts)
         }).then(response => response.json())

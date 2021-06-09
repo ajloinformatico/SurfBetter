@@ -14,7 +14,7 @@ const Beaches = () => {
     }, []);
 
     const getBeaches = async () => {
-        fetch("/api/beaches")
+        fetch("http://localhost:5000/api/beaches")
             .then(response => response.json())
             .catch(error => async () => {
                 await swal("Error", "Something was wrong",{icon:"warning"}).then(/*NO-LOOP*/)

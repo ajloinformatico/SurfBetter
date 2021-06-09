@@ -152,7 +152,7 @@ const SignInModal = (props) => {
             'password' : password
         }
         //execute fetch to flask server
-        fetch('/api/signin', {
+        fetch('http://localhost:5000/api/signin', {
             method: 'POST',
             body: JSON.stringify(opts)
         }).then(response => response.json())

@@ -76,7 +76,7 @@ const UserCurrentInfoModal = (props) => {
             "email" : email,
             "description" : description
         };
-        authFetch('/api/userupdate', {
+        authFetch('http://localhost:5000/api/userupdate', {
             method: 'PUT',
             body: JSON.stringify(opts)
         }).then(response => response.json())
