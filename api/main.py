@@ -1,5 +1,6 @@
 from flask import Flask
 import flask_cors
+import os
 from extensions import db, guard
 from models import User
 from routes_user import routes_user
@@ -22,14 +23,15 @@ def create_app():
 
     # intialize flask basic conf & basic conf
     app = Flask(__name__)
-    app.debug = True
+    app.debug = False
     app.config['SECRET_KEY'] = 'top secret'
     app.config['JWT_ACCESS_LIFESPAN'] = {'hours': 24}
     app.config['JWT_REFRESH_LIFESPAN'] = {'days': 30}
 
     # initialize sqlite database TODO IF FAILS CHANGE TO SIMETHINF LIKE THAT : app.config['SQLALCHEMY_DATABASE_URI']
     #  = F"sqlite:///{os.path.join(os.getcwd(), 'database.db')}"
-    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database/database.db"
+    # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database/database.db"
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.getcwd()}/database/database.db"
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
