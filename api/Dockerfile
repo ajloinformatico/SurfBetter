@@ -11,9 +11,6 @@ RUN pip3 install -r apirequirements.txt
 RUN mkdir database
 RUN touch database/database.db
 # Expose port
-# EXPOSE 5000
-# Run flask
-CMD ["python3","main.py"]
-
-# Set gunicorn server ["./gunicorn.sh"]
-# ENTRYPOINT ["./gunicorn.sh"]
+EXPOSE 5000
+# Run flask by gunicorn server
+CMD ["gunicorn"  , "-b", "0.0.0.0:5000", "wsgi:app"]
