@@ -26,7 +26,6 @@ const BeachBox = (props) => {
     const [isComment, setIsComment] = useState(true)
     const [comment, setComment] = useState("")
 
-
     /**
      * UsseEfect to get User Name
      */
@@ -34,7 +33,6 @@ const BeachBox = (props) => {
         getUser().then(/*NO-LOOP*/)
         getBeachData().then(/*NO-LOOP*/)
     },[])
-
 
     const getUser = async () => {
         authFetch("http://localhost:5000/api/current_user")
@@ -48,8 +46,6 @@ const BeachBox = (props) => {
             .then(res =>  res.json())
             .then(res =>  setIt(res))
     }
-
-
 
     /**
      * Change flag color by changing style
@@ -103,7 +99,6 @@ const BeachBox = (props) => {
         }
     }
 
-
     const openBeachInfo = (id) => {
         history.push("/beach/"+id+"/"+props.from)
     }
@@ -133,7 +128,6 @@ const BeachBox = (props) => {
 
     }
 
-
     const openCommentsOnTarget = (id) => {
         const target = document.getElementById("comments-container"+id)
         if (isComment) {
@@ -146,7 +140,6 @@ const BeachBox = (props) => {
             setIsComment(!isComment)
         }
     }
-
 
     const deleteComment = (comment_id) => {
         swal({
@@ -206,7 +199,6 @@ const BeachBox = (props) => {
             swal("Error check your input", {icon: "success"}).then(/*NO-LOOP*/)
         }
     }
-
 
     /** Check if comment exists to delete or add */
     const setUnsetCommentLike = (comment) => {

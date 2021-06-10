@@ -1,0 +1,209 @@
+openapi: "3.0.1"
+info:
+  title: "SurfBetter Api"
+  description: "Api de mi proyecto de fin de ciclo"
+  version: "1.0.0"
+servers:
+  - url: "http://localhost:5000/api"
+paths:
+  /:
+    get:
+      summary: "GET hello_api" 
+      description: "hello api"
+      responses:
+        200:
+          description: OK
+    
+  /send_email:
+    post:
+      summary: "POST send_email"
+      operationId: "send_email"
+      responses:
+        200:
+          description: "OK"
+  /beach/comment/like:
+    delete:
+      summary: "DELETE delete_like_comment"
+      operationId: "delete_like_comment"
+      responses:
+        200:
+          description: "OK"
+    post:
+      summary: "POST add_like_comment"
+      operationId: "add_like_comment"
+      responses:
+        200:
+          description: "OK"
+  /beach/comment/delete:
+    delete:
+      summary: "DELETE delete_comment"
+      operationId: "delete_comment"
+      responses:
+        200:
+          description: "OK"
+  /beach/comment:
+    post:
+      summary: "POST add_comment"
+      operationId: "add_comment"
+      responses:
+        200:
+          description: "OK"
+  /beach/like:
+    delete:
+      summary: "DELETE delete_like_beach"
+      operationId: "delete_like"
+      responses:
+        200:
+          description: "OK"
+    post:
+      summary: "POST add_like_beach"
+      operationId: "add_like_beach"
+      responses:
+        200:
+          description: "OK"
+  /beach/image/{id}:
+    get:
+      summary: "GET get_beach_image"
+      operationId: "get_beach_id"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "number"
+            format: "int64"
+      responses:
+        200:
+          description: "OK"
+  /avatar:
+    get:
+      summary: "GET get_avatar"
+      operationId: "get_avatar"
+      responses:
+        200:
+          description: "OK"
+    put:
+      summary: "PUT put_avatar"
+      operationId: "put_avatar"
+      responses:
+        200:
+          description: "OK"
+  /userupdate:
+    put:
+      summary: "PUT update_user"
+      operationId: "put_avatar"
+      responses:
+        200:
+          description: "OK"
+  /refresh:
+    post:
+      summary: "POST post_refresh_token"
+      operationId: "refresh"
+      responses:
+        200:
+          description: "OK"
+  /passwordreset:
+    put:
+      summary: "PUT update_password"
+      operationId: "put_avatar"
+      responses:
+        200:
+          description: "OK"
+  /current_user:
+    get:
+      summary: "GET current_user"
+      operationId: "get_current_user"
+      responses:
+        200:
+          description: "OK"
+  /signin:
+    post:
+      summary: "POST signin"
+      operationId: "post_sign_in"
+      responses:
+        200:
+          description: "OK"
+  /login:
+    get:
+      summary: "GET login"
+      operationId: "get_login"
+      responses:
+        200:
+          description: "OK"
+  /user/fav_comments_beches/{type}:
+    get:
+      summary: "profile_common_fav_beaches"
+      operationId: "get_profile_common_fav_beaches"
+      parameters:
+        - name: "type"
+          in: "path"
+          required: true
+          shema:
+            type: "string"
+            format: "string"
+      responses:
+        200:
+          description: "OK"
+  /beaches/points:
+    get:
+      summary: "beaches_point"
+      operationId: "get_beaches_points"
+      responses:
+        200:
+          description: "OK"
+  beach/filter/{name}:
+    get:
+      summary: "beach_filter"
+      operationId: "get_beach_filet"
+      parameters:
+        - name: "name"
+          in: "path"
+          required: true
+          shema:
+            type: "string"
+            format: "string"
+      responses:
+        200:
+          description: "OK"
+  /beach/coords/{id}:
+    get:
+      summary: "one_beach_cords"
+      operationId: "get_one_beach_cords"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          shema:
+            type: "int"
+            format: "int64"
+      responses:
+        200:
+          description: "OK"
+  /beaches/coords:
+    get:
+      summary: "beach_cords"
+      operationId: "get_beach_cords"
+      responses:
+        200:
+          description: "OK"
+  /beach/{id}:
+    get:
+      summary: "beach_info"
+      operationId: "get_beach_info"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          shema:
+            type: "int"
+            format: "int64"
+      responses:
+        200:
+          description: "OK"
+  /beaches:
+    get:
+      summary: "beaches"
+      operationId: "get_beaches"
+      responses:
+        200:
+          description: "OK"
