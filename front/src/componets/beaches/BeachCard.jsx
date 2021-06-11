@@ -143,7 +143,7 @@ const BeachBox = (props) => {
 
     const deleteComment = (comment_id) => {
         swal({
-            text: "Are you shure you want to delete the comment",
+            text: "Are you sure you want to delete the comment",
             icon: "warning",
             buttons: true,
             dangerMode: true

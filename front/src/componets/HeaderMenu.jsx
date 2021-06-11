@@ -60,7 +60,7 @@ const HeaderMenu = () => {
     const logOut = () => {
         swal({
             title: "Log out",
-            text: "Are you shure you want to log out?",
+            text: "Are you sure you want to log out?",
             icon: "warning",
             buttons: true,
             dangerMode: true,
