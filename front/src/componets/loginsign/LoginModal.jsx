@@ -134,7 +134,7 @@ const LoginModal = (props) => {
 
                             <input type={"password"} id={"password"} name={"password"} title={"Please enter your password"}
                                onChange={e => setPassword(e.target.value)} onBlur={e => checkInputs(e)}
-                               aria-label={"password"} size={30}  placeholder={"password *"} required={true}/>
+                               aria-label={"password"} size={30}  placeholder={"Password *"} required={true}/>
 
                             <span className="loginError" />
 

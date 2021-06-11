@@ -363,7 +363,7 @@ const BeachInfo = () => {
                     </dl>
                 )}
                 </section>
-                <section className={"beachComments"}>
+                <section className={"beachComments"} id={"beach-info-beach-coments"}>
                     <h2>Beach Comments</h2>
                     {
                         (checkCommentsEmpty(beach.comments) === true)&&(

@@ -202,6 +202,7 @@
   }
   >p{
     width: 70%;
+    text-align: left;
   }
   .deleteComment {
     cursor:pointer;
@@ -640,7 +641,7 @@ footer{
 
 .beachBox{
   margin-top: 2em;
-  box-shadow: black 2px 3px 3px;
+  box-shadow: $color-yellow 3px 3px;
   margin-bottom: 2em;
   width: 340px;
   height: 100%;
@@ -860,6 +861,9 @@ footer{
     img {
       box-shadow: black 2px 3px 3px;
     }
+    p{
+      text-align: left;
+    }
   }
 
   /** Beach waves by forecast widget*/
@@ -893,6 +897,9 @@ footer{
     }
   }
 
+  #beach-info-beach-coments{
+    margin-bottom: 2em !important;
+  }
   .beachComments {
     width: 100%;
     background-color: $color-back-beaches;
