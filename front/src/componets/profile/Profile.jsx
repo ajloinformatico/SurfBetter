@@ -54,7 +54,7 @@ const Profile = () => {
     };
 
     const getAvatar = async () => {
-        authFetch("http://localhost:5000/api/avatar")
+        authFetch("/api/avatar")
             .then(response => setAvatar(response.url));
 
     };
@@ -69,7 +69,7 @@ const Profile = () => {
     const updateAvatar = () => {
         const formData = new FormData();
         formData.append("file", document.getElementById("file").files[0])  
-        authFetch('http://localhost:5000/api/avatar',{
+        authFetch('/api/avatar',{
             method: 'PUT',
             body: formData
         })
