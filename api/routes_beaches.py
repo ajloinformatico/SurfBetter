@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, render_template
 from flask_praetorian import auth_required
 import flask_praetorian
 from extensions import db
@@ -6,9 +6,6 @@ from models import Beach, DescriptionPoints, Likes, Comments, LikesOfComment
 
 routes_beaches = Blueprint("routes_beaches", __name__)
 
-@routes_beaches.route('/api')
-def api_runing():
-    return jsonify("HELLO SURFER"), 200
 
 @routes_beaches.route('/api/beaches/')
 def get_beaches():
@@ -98,3 +95,14 @@ def get_profile_favorites_beaches(type: int):
 
     except Exception as e:
         return {"Error": str(e)}
+
+
+# Extra hello and docs
+@routes_beaches.route('/api')
+def api_runing():
+    return jsonify("HELLO SURFER"), 200
+
+@routes_beaches.route('/docs')
+def docs():
+    return render_template('docs.html')
+
