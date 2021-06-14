@@ -13,6 +13,12 @@ from seed_beach import seed_beaches, seed_description_points
 from seed_comments_likes import seed_likes, seed_comments, seed_likes_of_comment
 
 
+def create_database_and_users():
+    if not os.path.exists('database'):
+        os.makedirs('database')
+    if not os.path.exists('statics/user'):
+        os.makedirs('statics/user')
+
 def create_app():
     """
     return instance of the api
@@ -31,6 +37,8 @@ def create_app():
     # initialize sqlite database TODO IF FAILS CHANGE TO SIMETHINF LIKE THAT : app.config['SQLALCHEMY_DATABASE_URI']
     #  = F"sqlite:///{os.path.join(os.getcwd(), 'database.db')}"
     # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database/database.db"
+    
+    create_database_and_users()
     app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.getcwd()}/database/database.db"
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
