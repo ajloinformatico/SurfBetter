@@ -17,9 +17,9 @@ Api Rest codificada con **React** y **Flask** en el cliente y servidor respectiv
 ### Ide: 🚀
 
 * ***Visual Studio:***
-  * Fase inicial de desarrollo y fixes del final del desarrollo
+  * Fase inicial de desarrollo y fixes del final del desarrollo .
 * ***WebStorm :***
-  * Desarrollo del cliente en las fases más complejas del desarrollo.
+  * Desarrollo del cliente en las fases más complejas del desarrollo .
 * ***Pycharm:***
   * Desarrollo de la Api en flask durante la modularización .
 
